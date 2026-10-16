@@ -1,0 +1,466 @@
+{{ 'countdown.css' | asset_url | stylesheet_tag }}
+<countdown-counter class="block countdown-section section-gap color-{{ section.settings.color_scheme }}">
+  <div class="page--width">
+    <div class="countdown-wrapper flex align-items-start wrap {{ section.settings.countdown_layout }}-content">
+      <div class="countdown-with-content">
+        {% if section.settings.heading != blank or section.settings.description != blank %}
+          <div class="countdown-heading-wrapper">
+            {% if section.settings.heading != blank %}
+              <{{ section.settings.heading_seo }} class="countdown-title {{ section.settings.heading_size }}">
+                {% if section.settings.heading != blank -%}
+                  {{- section.settings.heading -}}
+                {% endif %}
+              </{{ section.settings.heading_seo }}>
+            {% endif %}
+            {% if section.settings.description != blank %}
+              <div class="countdown-description {{ section.settings.description_size }}">
+                {{ section.settings.description | newline_to_br }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if section.settings.enable_countdown %}
+          <countdown-counter-timer class="countdown-counter" end-date="{{ section.settings.date }}">
+            <div class="countdown-counter--wrapper flex h2 body-font" data-countdown-counter>
+              <div class="counter-item">
+                <span class="counter-number days">00</span>
+                <span class="counter-label text-base">{{'sections.countdown.days' | t}}</span>
+              </div>
+              <div class="counter-item">
+                <span class="counter-number hour">00</span>
+                <span class="counter-label text-base">{{'sections.countdown.hours' | t}}</span>
+              </div>
+              <div class="counter-item">
+                <span class="counter-number minutes">00</span>
+                <span class="counter-label text-base">{{'sections.countdown.minutes' | t}}</span>
+              </div>
+              <div class="counter-item">
+                <span class="counter-number seconds">00</span>
+                <span class="counter-label text-base">{{'sections.countdown.seconds' | t}}</span>
+              </div>
+            </div>
+          </countdown-counter-timer>
+        {% endif %}
+        {%- if section.settings.btn_text != blank and section.settings.btn_link != blank -%}
+          <div class="button-wrapper">
+            <a
+              href="{{ section.settings.btn_link }}"
+              class="{% if section.settings.button_style == 'text' %}underline--link{% else %} {{ settings.button_font }}-font button button-{{ section.settings.button_style }} button-{{ section.settings.btn_size }} hover-{{ section.settings.hover_effect }}{% endif %}"
+            >
+              <span class="button-text">{{ section.settings.btn_text }}</span>
+              {% if section.settings.button_style == 'text' %}
+                <span class="link-arrow">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H8V8H7V1.707L1.354 7.354L1 7.707L0.293 7L0.646 6.646L6.293 1H0V0Z" fill="currentColor"/>
+                  </svg>
+                </span>
+              {% endif %}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+      {% if section.settings.product_list_enable %}
+        {% if section.settings.product_list != blank %}
+          <div class="countdown-product-list flex wrap align-items-start">
+            {%- for product_card in section.settings.product_list -%}
+              {% assign current_variant = product_card.selected_or_first_available_variant %}
+              <div class="product-list-item flex">
+                <div class="product-list-item--img">
+                  {%- if product_card.featured_media != blank -%}
+                    <img
+                      srcset="
+                        {%- if product_card.featured_media.width >= 165 -%}{{ product_card.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                        {%- if product_card.featured_media.width >= 360 -%}{{ product_card.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                        {%- if product_card.featured_media.width >= 533 -%}{{ product_card.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                        {%- if product_card.featured_media.width >= 720 -%}{{ product_card.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                        {%- if product_card.featured_media.width >= 940 -%}{{ product_card.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+                        {%- if product_card.featured_media.width >= 1066 -%}{{ product_card.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                        {{ product_card.featured_media | image_url }} {{ product_card.featured_media.width }}w
+                      "
+                      src="{{ product_card.featured_media | image_url: width: 533 }}"
+                      sizes="(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                      alt="{{ product_card.featured_media.alt | escape }}"
+                      class="product-card--img"
+                      loading="lazy"
+                      width="{{ product_card.featured_media.width }}"
+                      height="{{ product_card.featured_media.height }}"
+                    >
+                  {% else %}
+                    {%- capture current -%}{% cycle section.id: 1, 2, 3, 4 %}{%- endcapture -%}
+                    {%- assign placeholder_image = 'product-apparel-' | append: current -%}
+                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
+                </div>
+                <div class="product-list-detail">
+                  <span class="text-sm">{{- product_card.title | strip_html -}}</span>
+                  <product-price-list class="product-price-list">
+                    {%- assign price_min = product_card.price_min | default: 1899 | money -%}
+                    <product-sale-price class="product-price-actual">
+                      {%- if product_card.price_varies -%}
+                        <span class="product-actual-price varies-price">
+                          {{ 'products.product.price.from_price_html' | t: price: price_min }}
+                        </span>
+                      {%- else -%}
+                        <span class="product-actual-price">{{ price_min }}</span>
+                      {%- endif -%}
+                      {%- if product_card.compare_at_price_min > product_card.price_min -%}
+                        <small class="product-compare-price">{{ product_card.compare_at_price_min | money }}</small>
+                      {%- endif -%}
+                      {%- if current_variant.unit_price_measurement -%}
+                        <span class="product-unit-price">
+                          {{ current_variant.unit_price | money }} /
+                          {% if current_variant.unit_price_measurement.reference_value != 1 -%}
+                            {{- current_variant.unit_price_measurement.reference_value -}}
+                          {%- endif %}
+                          {{ current_variant.unit_price_measurement.reference_unit }}
+                        </span>
+                      {%- endif -%}
+                    </product-sale-price>
+                  </product-price-list>
+                  <a href="{{ product_card.url | within : collection }}" class="add-btn">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.2069 2.50039H8.63188V1.62539C8.63188 0.953391 8.08588 0.400391 7.40688 0.400391H4.5999C3.9279 0.400391 3.3749 0.946391 3.3749 1.62539V2.50039H1.7999C1.0299 2.50039 0.399902 3.12339 0.399902 3.90039V10.2004C0.399902 10.9704 1.0229 11.6004 1.7999 11.6004H10.1999C10.9699 11.6004 11.5999 10.9774 11.5999 10.2004V3.90039C11.5999 3.13039 10.9769 2.50039 10.1999 2.50039H10.2069ZM4.4319 1.62539C4.4319 1.52739 4.5089 1.45039 4.60688 1.45039H7.41388C7.51188 1.45039 7.58888 1.52739 7.58888 1.62539V2.50039H4.4389V1.62539H4.4319ZM10.5569 10.2074C10.5569 10.3964 10.4029 10.5574 10.2069 10.5574H1.8069C1.6179 10.5574 1.4569 10.4034 1.4569 10.2074V3.90739C1.4569 3.71839 1.6109 3.55739 1.8069 3.55739H3.3819V4.60739H4.4319V3.55739H7.58188V4.60739H8.63188V3.55739H10.2069C10.3959 3.55739 10.5569 3.71139 10.5569 3.90739V10.2074Z" fill="currentColor"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="countdown-product-list flex wrap align-items-start">
+            {% assign limit = 5 %}
+            {%- for i in (1..limit) -%}
+              <div class="product-list-item flex">
+                <div class="product-list-item--img">
+                  {%- capture current -%}{% cycle section.id: 1, 2, 3, 4 %}{%- endcapture -%}
+                  {%- assign placeholder_image = 'product-apparel-' | append: current -%}
+                  {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                <div class="product-list-detail">
+                  <span class="text-sm"> {{ 'onboarding.product_title' | t }}</span>
+                  <product-price-list class="product-price-list">
+                    {%- assign price_min = 1899 | money -%}
+                    <product-sale-price class="product-price-actual">
+                      <span class="product-actual-price">{{ price_min }}</span>
+                    </product-sale-price>
+                  </product-price-list>
+                  <a class="add-btn" disabled>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.2069 2.50039H8.63188V1.62539C8.63188 0.953391 8.08588 0.400391 7.40688 0.400391H4.5999C3.9279 0.400391 3.3749 0.946391 3.3749 1.62539V2.50039H1.7999C1.0299 2.50039 0.399902 3.12339 0.399902 3.90039V10.2004C0.399902 10.9704 1.0229 11.6004 1.7999 11.6004H10.1999C10.9699 11.6004 11.5999 10.9774 11.5999 10.2004V3.90039C11.5999 3.13039 10.9769 2.50039 10.1999 2.50039H10.2069ZM4.4319 1.62539C4.4319 1.52739 4.5089 1.45039 4.60688 1.45039H7.41388C7.51188 1.45039 7.58888 1.52739 7.58888 1.62539V2.50039H4.4389V1.62539H4.4319ZM10.5569 10.2074C10.5569 10.3964 10.4029 10.5574 10.2069 10.5574H1.8069C1.6179 10.5574 1.4569 10.4034 1.4569 10.2074V3.90739C1.4569 3.71839 1.6109 3.55739 1.8069 3.55739H3.3819V4.60739H4.4319V3.55739H7.58188V4.60739H8.63188V3.55739H10.2069C10.3959 3.55739 10.5569 3.71139 10.5569 3.90739V10.2074Z" fill="currentColor"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</countdown-counter>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.countdown.name",
+  "class": "section-countdown",
+  "tag": "section",
+   "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+      {
+      "type": "color_scheme",
+      "id":"color_scheme",
+      "label": "t:global.color_scheme.label", 
+      "default":"scheme-1"
+    },
+     {
+      "type":"checkbox",
+      "id":"enable_countdown",
+       "label":"t:sections.countdown.settings.enable_countdown.label",
+      "default":true
+    },
+    {
+      "type":"select",
+      "id":"countdown_layout",
+       "label":"t:sections.countdown.settings.countdown_layout.label",
+      "default":"horizontal",
+      "options": [
+        {
+          "value":"horizontal",
+          "label":"t:sections.countdown.settings.countdown_layout.options.horizontal.label"
+        },
+        {
+          "value":"vertical",
+         "label":"t:sections.countdown.settings.countdown_layout.options.vertical.label"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id":"product_list_enable",
+        "label":"t:sections.countdown.settings.product_list_enable.label",
+      "default":true
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+       "limit": 9,
+       "label":"t:sections.countdown.settings.product_list.label"
+    },
+    {
+      "type": "header",
+      "content": "t:global.header.content.content"
+    },
+    {
+      "type": "text",
+      "id": "date",
+      "info":"t:sections.countdown.settings.date.info",
+      "label":"t:sections.countdown.settings.date.label"
+    },
+     {
+        "type":"inline_richtext",
+        "id":"heading",
+        "label": "t:global.general_label.heading.label",
+        "default":"Countdown heading"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "default": "h2",
+             "label": "t:global.heading_size.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:global.heading_size.options.h1.label"
+        },
+        {
+          "value": "h2",
+         "label": "t:global.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+         "label": "t:global.heading_size.options.h3.label"
+        },
+        {
+          "value": "h4",
+        "label": "t:global.heading_size.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:global.heading_size.options.h5.label"
+        },
+        {
+          "value": "h6",
+        "label": "t:global.heading_size.options.h6.label"
+        }
+      ]
+      },
+      {
+        "type": "select",
+        "id": "heading_seo",
+        "default": "h2",
+        "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+         {
+            "value": "h1",
+            "label": "t:global.heading_seo.options.h1.label"
+          },
+          {
+            "value": "h2",
+           "label": "t:global.heading_seo.options.h2.label"
+          },
+          {
+            "value": "h3",
+           "label": "t:global.heading_seo.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_seo.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+          }
+        ]
+
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "t:global.general_label.description.label",
+        "default":"Tell your brand's story through images"
+      },
+       {
+        "type": "select",
+        "id": "description_size",
+        "default": "text-lg",
+         "label": "t:global.description_size.label",
+          "options": [
+            {
+              "value": "text-xl",
+              "label": "t:global.description_size.options.x-large.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:global.description_size.options.large.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:global.description_size.options.medium.label"
+            },
+            {
+              "value": "text-sm",
+              "label": "t:global.description_size.options.small.label"
+            },
+            {
+              "value": "text-xs",
+              "label": "t:global.description_size.options.x-small.label"
+
+            }
+          ]
+  },
+     {
+      "type": "header",
+      "content": "t:global.header.button.content"
+    },
+    {
+          "type": "text",
+          "id": "btn_text",
+          "label": "t:global.general_label.text.label",
+          "default":"Shop now"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "t:global.general_label.link.label"
+        },
+        {
+          "type": "select",
+          "id": "btn_size",
+          "default": "sm",
+          "label": "t:global.btn_size.label",
+          "options": [
+           {
+              "label": "t:global.btn_size.options.xsmall.label",
+              "value": "xsm"
+
+            },
+            {
+             "label": "t:global.btn_size.options.small.label",
+              "value": "sm"
+
+            },
+            {
+              "label": "t:global.btn_size.options.medium.label",
+              "value": "md"
+
+            },
+            {
+             "label": "t:global.btn_size.options.large.label",
+              "value": "lg"
+
+            }
+          ]
+        },
+        {
+          "type":"select",
+          "id":"button_style",
+          "label": "t:global.button_style.label",
+          "options": [
+            {
+              "label": "t:global.button_style.options.solid.label",
+              "value": "solid"
+            },
+            {
+              "label": "t:global.button_style.options.outline.label",
+              "value": "outline"
+            },
+            {
+              "label": "t:global.button_style.options.text.label",
+              "value":"text"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id":"hover_effect",
+          "label": "t:global.hover_effect.label",
+          "options": [
+            {
+              "label": "t:global.hover_effect.options.standard.label",
+              "value": "standard"
+            },
+            {
+              "label": "t:global.hover_effect.options.none.label",
+              "value": "none"
+            }
+          ] 
+    },
+    {
+      "type": "header",
+      "content": "t:global.section_spacing.content"
+    },
+    {
+    "type": "range",
+    "id": "top_space_desktop",
+    "label": "t:global.section_spacing.top_space_desktop.label",
+    "default": 100,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_desktop",
+   "label": "t:global.section_spacing.bottom_space_desktop.label",
+    "default": 100,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "top_space_mobile",
+   "label": "t:global.section_spacing.top_space_mobile.label",
+    "default": 60,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_mobile",
+    "label": "t:global.section_spacing.bottom_space_mobile.label",
+    "default": 60,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.countdown.presets.name"
+    }
+  ]
+}
+{% endschema %}

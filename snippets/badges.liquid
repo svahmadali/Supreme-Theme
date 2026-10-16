@@ -1,0 +1,48 @@
+{%- if product_card.available -%}
+  <div class="product-card-badges">
+    {% if settings.custom_tag %}
+      {% liquid
+        assign customtags = settings.custom_tag | downcase | split: ','
+        assign status = false
+        for tag in customtags
+          for productTagName in product.tags
+            assign product_tage_name = product_tage_name | downcase
+            if product_tage_name contains tag
+              assign status = true
+            endif
+          endfor
+        endfor
+      %}
+      {% if status == true and settings.custom_tag_badge != blank %}
+        <div class="badge badge-new">{{ settings.custom_tag_badge }}</div>
+      {% endif %}
+    {% endif %}
+    {% if settings.sale_badge and product_card.compare_at_price_max %}
+      {%- if product_card.compare_at_price > product_card.price -%}
+        <div class="badge badge-sale" id="product-badge-sale-{{ section.id }}-{{ product_card.id }}">{{ 'general.badges.sale' | t }}</div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {% if settings.preorder_badge %}
+      {% if product_card.selected_or_first_available_variant.inventory_quantity <= 0
+        and product_card.selected_or_first_available_variant.inventory_policy == 'continue'
+      %}
+        <div class="badge badge-preorder preorder" id="product-badge-preorder-{{ section.id }}-{{ product_card.id }}">
+          {{"general.badges.preorder" | t}}
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+
+{% else %}
+  {% if settings.soldout_badge
+    and product_card.available == false
+    or settings.soldout_badge
+    and product_card.selected_or_first_available_variant.inventory_quantity <= 0
+    and product_card.selected_or_first_available_variant.inventory_policy == 'deny'
+  %}
+    <div class="product-card-badges">
+      <div class="badge badge-sold" id="product-badge-soldout-{{ section.id }}-{{ product_card.id }}">{{'general.badges.soldout' | t}}</div>
+    </div>
+  {% endif %}
+{% endif %}

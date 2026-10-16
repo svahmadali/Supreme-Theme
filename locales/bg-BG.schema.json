@@ -1,0 +1,4310 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "global": {
+    "header": {
+      "color": {
+        "content": "Цветове"
+      },
+      "button": {
+        "content": "Бутон"
+      },
+      "marquee": {
+        "content": "Марки"
+      },
+      "content": {
+        "content": "Съдържание"
+      },
+      "collections": {
+        "label": "Колекции"
+      },
+      "blocks": {
+        "content": "Блокове"
+      },
+      "grid": {
+        "content": "Мрежа"
+      },
+      "mobile": {
+        "content": "Мобилен"
+      },
+      "popup": {
+        "content": "Изскачащ"
+      },
+      "layout": {
+        "content": "Оформление"
+      },
+      "images": {
+        "content": "Изображения"
+      },
+      "video": {
+        "content": "Conetnt"
+      }
+    },
+    "general_label": {
+      "image": {
+        "label": "Изображение"
+      },
+      "heading": {
+        "label": "Заглавие"
+      },
+      "description": {
+        "label": "Описание"
+      },
+      "background_image": {
+        "label": "Фоново изображение"
+      },
+      "desktop_alignment": {
+        "label": "Подравняване на работния плот"
+      },
+      "mobile_alignment": {
+        "label": "Мобилно подравняване"
+      },
+      "text": {
+        "label": "Текст"
+      },
+      "link": {
+        "label": "Връзка"
+      },
+      "content": {
+        "label": "Съдържание"
+      },
+      "column_gap": {
+        "label": "Пропаст между мрежата (десктоп)"
+      },
+      "column_gap_mobile": {
+        "label": "Пропаст между мрежата (мобилен)"
+      },
+      "overlay_color": {
+        "label": "Наслагване"
+      },
+      "overlay_opacity": {
+        "label": "Непрозрачност"
+      },
+      "collection": {
+        "label": "Колекция"
+      },
+      "collections": {
+        "label": "Колекции"
+      },
+      "video": {
+        "label": "Видео"
+      },
+      "products": {
+        "label": "Продукти"
+      },
+      "subheading": {
+        "label": "Подзаглавие"
+      },
+      "custom_image": {
+        "label": "Персонализирано изображение"
+      }
+    },
+    "color_scheme": {
+      "label": "Цветна схема"
+    },
+    "heading_size": {
+      "label": "Размер на заглавието",
+      "options": {
+        "h1": {
+          "label": "Xx-голям"
+        },
+        "h2": {
+          "label": "X-голям"
+        },
+        "h3": {
+          "label": "Голям"
+        },
+        "h4": {
+          "label": "Среден"
+        },
+        "h5": {
+          "label": "Малък"
+        },
+        "h6": {
+          "label": "X-Small"
+        }
+      }
+    },
+    "heading_seo": {
+      "label": "Заглавие SEO",
+      "info": "Етикетите за заглавие са само за SEO и не променят визуалния стил. ",
+      "options": {
+        "h1": {
+          "label": "Н1"
+        },
+        "h2": {
+          "label": "Н2"
+        },
+        "h3": {
+          "label": "Н3"
+        },
+        "h4": {
+          "label": "Н4"
+        },
+        "h5": {
+          "label": "H5"
+        },
+        "h6": {
+          "label": "H6"
+        }
+      }
+    },
+    "btn_size": {
+      "label": "Размер",
+      "options": {
+        "xsmall": {
+          "label": "Xsmall"
+        },
+        "small": {
+          "label": "Малък"
+        },
+        "medium": {
+          "label": "Среден"
+        },
+        "large": {
+          "label": "Голям"
+        }
+      }
+    },
+    "button_style": {
+      "label": "Стил на бутони",
+      "options": {
+        "solid": {
+          "label": "Твърд"
+        },
+        "outline": {
+          "label": "Контур"
+        },
+        "text": {
+          "label": "Текст"
+        }
+      }
+    },
+    "description_size": {
+      "label": "Описание Размер",
+      "options": {
+        "x-large": {
+          "label": "X-голям"
+        },
+        "large": {
+          "label": "Голям"
+        },
+        "medium": {
+          "label": "Среден"
+        },
+        "small": {
+          "label": "Малък"
+        },
+        "x-small": {
+          "label": "X-Small"
+        }
+      }
+    },
+    "content_position": {
+      "label": "Позиция на съдържанието",
+      "options": {
+        "top_left": {
+          "label": "Горе вляво"
+        },
+        "top_center": {
+          "label": "Топ център"
+        },
+        "top_right": {
+          "label": "Горно вдясно"
+        },
+        "middle_left": {
+          "label": "Средно ляво"
+        },
+        "middle_center": {
+          "label": "Среден център"
+        },
+        "middle_right": {
+          "label": "Средно вдясно"
+        },
+        "bottom_left": {
+          "label": "Отдолу вляво"
+        },
+        "bottom_center": {
+          "label": "Долен център"
+        },
+        "bottom_right": {
+          "label": "Отдолу вдясно"
+        }
+      }
+    },
+    "content_position_mobile": {
+      "label": "Позиция на съдържание Mobile"
+    },
+    "text_alignment": {
+      "label": "Подравняване на текст",
+      "options": {
+        "left": {
+          "label": "Вляво"
+        },
+        "right": {
+          "label": "Точно"
+        },
+        "center": {
+          "label": "Център"
+        }
+      }
+    },
+    "heading_alignment": {
+      "label": "Подравняване на заглавието",
+      "options": {
+        "left": {
+          "label": "Вляво"
+        },
+        "right": {
+          "label": "Точно"
+        },
+        "center": {
+          "label": "Център"
+        }
+      }
+    },
+    "content_alignment": {
+      "label": "Подравняване на съдържанието",
+      "options": {
+        "left": {
+          "label": "Вляво"
+        },
+        "right": {
+          "label": "Точно"
+        },
+        "center": {
+          "label": "Център"
+        }
+      }
+    },
+    "image_height": {
+      "label": "Височина на изображението",
+      "options": {
+        "auto": {
+          "label": "Адаптиране"
+        },
+        "small": {
+          "label": "Малък"
+        },
+        "medium": {
+          "label": "Среден"
+        },
+        "large": {
+          "label": "Голям"
+        },
+        "x-large": {
+          "label": "X-голям"
+        },
+        "full": {
+          "label": "Пълен екран"
+        }
+      }
+    },
+    "mobile_image_height": {
+      "label": "Височина на изображението (мобилен)"
+    },
+    "layout": {
+      "label": "Оформление",
+      "options": {
+        "fullwidth": {
+          "label": "Пълновидна ширина"
+        },
+        "content_left": {
+          "label": "Съдържание оставено"
+        }
+      }
+    },
+    "content_width": {
+      "label": "Ширина на съдържанието",
+      "options": {
+        "small": {
+          "label": "Малък"
+        },
+        "medium": {
+          "label": "Среден"
+        },
+        "large": {
+          "label": "Голям"
+        }
+      }
+    },
+    "hover_effect": {
+      "label": "Ефектът на задържане",
+      "options": {
+        "standard": {
+          "label": "Стандарт"
+        },
+        "none": {
+          "label": "Няма"
+        }
+      }
+    },
+    "position": {
+      "label": "Позиция",
+      "options": {
+        "left": {
+          "label": "Вляво"
+        },
+        "right": {
+          "label": "Точно"
+        },
+        "top": {
+          "label": "Отгоре"
+        },
+        "bottom": {
+          "label": "Отдолу"
+        }
+      }
+    },
+    "image_size": {
+      "label": "Съотношение на изображението",
+      "options": {
+        "auto": {
+          "label": "Адаптиране"
+        },
+        "landscape": {
+          "label": "Пейзаж"
+        },
+        "portrait": {
+          "label": "Портрет"
+        },
+        "square": {
+          "label": "Квадрат"
+        }
+      }
+    },
+    "image_size_option": {
+      "label": "Размер",
+      "small": {
+        "label": "Малък"
+      },
+      "medium": {
+        "label": "Среден"
+      },
+      "large": {
+        "label": "Голям"
+      }
+    },
+    "section_spacing": {
+      "content": "Разстояние между секцията",
+      "top_space_desktop": {
+        "label": "Отгоре (десктоп)"
+      },
+      "bottom_space_desktop": {
+        "label": "Отдолу (десктоп)"
+      },
+      "top_space_mobile": {
+        "label": "Топ (мобилен)"
+      },
+      "bottom_space_mobile": {
+        "label": "Отдолу (мобилен)"
+      }
+    },
+    "image_position": {
+      "label": "Позиция на изображението",
+      "options": {
+        "left": {
+          "label": "Вляво"
+        },
+        "center": {
+          "label": "Център"
+        },
+        "right": {
+          "label": "Точно"
+        },
+        "top": {
+          "label": "Отгоре"
+        },
+        "bottom": {
+          "label": "Отдолу"
+        }
+      }
+    },
+    "popup_position": {
+      "label": "Изскачаща позиция",
+      "options": {
+        "top_left": {
+          "label": "Горе вляво"
+        },
+        "top_center": {
+          "label": "Топ център"
+        },
+        "top_right": {
+          "label": "Горно вдясно"
+        },
+        "middle_left": {
+          "label": "Средно ляво"
+        },
+        "middle_center": {
+          "label": "Среден център"
+        },
+        "middle_right": {
+          "label": "Средно вдясно"
+        },
+        "bottom_left": {
+          "label": "Отдолу вляво"
+        },
+        "bottom_center": {
+          "label": "Долен център"
+        },
+        "bottom_right": {
+          "label": "Отдолу вдясно"
+        }
+      }
+    },
+    "language_selector": {
+      "header": {
+        "label": "Избор на език"
+      },
+      "paragraph": {
+        "label": "За да добавите език, отидете на вашите [езикови настройки.] (/Администратор/настройки/езици)"
+      },
+      "show_language_selector": {
+        "label": "Активирайте селектора на езика"
+      }
+    },
+    "currency_selector": {
+      "header": {
+        "label": "Селектор на валута"
+      },
+      "paragraph": {
+        "label": "За да добавите държава/регион, отидете на вашите [настройки за плащане] (/администратор/настройки/плащания)."
+      },
+      "show_language_selector": {
+        "label": "Активиране на селектор на валута"
+      }
+    },
+    "pagination_style": {
+      "label": "Стил на страници",
+      "options": {
+        "arrows": {
+          "label": "Стрелки"
+        },
+        "dots": {
+          "label": "Точки"
+        }
+      }
+    },
+    "image_ratio": {
+      "label": "Съотношение на изображението",
+      "options": {
+        "adapt": {
+          "label": "Адаптиране"
+        },
+        "landscape": {
+          "label": "Пейзаж"
+        },
+        "portrait": {
+          "label": "Портрет"
+        },
+        "square": {
+          "label": "Квадрат"
+        }
+      }
+    },
+    "media_layout": {
+      "label": "Оформление на медиите",
+      "options": {
+        "slider": {
+          "label": "Плъзгач"
+        },
+        "grid": {
+          "label": "Мрежа"
+        },
+        "stacked": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        }
+      }
+    },
+    "thumbnail_position": {
+      "label": "Позиция на миниатюри",
+      "options": {
+        "left": {
+          "label": "Вляво"
+        },
+        "right": {
+          "label": "Точно"
+        },
+        "bottom": {
+          "label": "Отдолу"
+        },
+        "overlay": {
+          "label": "Наслагване"
+        }
+      }
+    }
+  },
+  "sections": {
+    "age-verification": {
+      "name": "Проверка на възрастта",
+      "settings": {
+        "enable_age_verification": {
+          "label": "Активиране на проверка на възрастта"
+        },
+        "decline_text": {
+          "label": "Откажете текст"
+        },
+        "approve_text": {
+          "label": "Одобрете текст"
+        },
+        "paragraph": {
+          "content": "Това съдържание е само за потребители, които отговарят на изискването за възрастта."
+        },
+        "decline_heading": {
+          "label": "Под 18 заглавие"
+        },
+        "decline_subheading": {
+          "label": "Под 18 Описание"
+        },
+        "age_decline_button_text": {
+          "label": "Текст на бутона за отказ"
+        },
+        "agepopup_cookie_set": {
+          "label": "Честота",
+          "info": "Задайте колко дни трябва да минат, преди изскачащото да се върне, след като бъде уволнено."
+        }
+      }
+    },
+    "announcement-bar": {
+      "name": "Лента за обявяване",
+      "settings": {
+        "home_page_only": {
+          "label": "Активирайте само началната страница"
+        },
+        "enable_count_down": {
+          "label": "Активиране на отброяването"
+        },
+        "date": {
+          "info": "Крайната дата трябва да бъде зададена на бъдеща дата и да включва следния формат: Yyyy/mm/DD Пример: 2025/01/01.",
+          "label": "Крайна дата"
+        },
+        "auto_rotate": {
+          "label": "Автоматични съобщения"
+        },
+        "change_slides_speed": {
+          "label": "Променете всеки"
+        },
+        "header__3": {
+          "content": "Селектор на държава/регион",
+          "info": "За да добавите държава/регион, отидете на вашите [пазарни настройки.] (/Администратор/настройки/пазари)"
+        },
+        "enable_country_selector": {
+          "label": "Активирайте селектор на държава/регион"
+        },
+        "header__4": {
+          "content": "Избор на език",
+          "info": "За да добавите език, отидете на вашите [езикови настройки.] (/Администратор/настройки/езици)"
+        },
+        "enable_language_selector": {
+          "label": "Активирайте селектора на езика"
+        }
+      },
+      "blocks": {
+        "announcement": {
+          "name": "Съобщение",
+          "settings": {
+            "text": {
+              "label": "Текст",
+              "default": "Добре дошли в нашия магазин"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Лента за обявяване"
+      }
+    },
+    "apps": {
+      "name": "Приложения",
+      "settings": {
+        "include_margins": {
+          "label": "Направете маржовете на раздел същите като темата"
+        }
+      },
+      "presets": {
+        "name": "Приложения"
+      }
+    },
+    "before-after": {
+      "name": "Преди",
+      "settings": {
+        "header_before": {
+          "content": "Преди"
+        },
+        "before_image": {
+          "label": "Преди изображение"
+        },
+        "header_after": {
+          "content": "След"
+        },
+        "after_image": {
+          "label": "След изображение"
+        }
+      },
+      "presets": {
+        "name": "Преди"
+      }
+    },
+    "best-selling-products": {
+      "name": "Продукти за най -продавани",
+      "settings": {
+        "scrolling_speed": {
+          "label": "Скорост на превъртане"
+        },
+        "header_product_list": {
+          "content": "Списък на продуктите"
+        },
+        "product_list_heading": {
+          "label": "Заглавие на списъка с продукти"
+        },
+        "product_list": {
+          "label": "Списък на продукта"
+        },
+        "column_per_row": {
+          "label": "Колона на продукта"
+        },
+        "mobile_item_per_row": {
+          "label": "Продуктов артикул на ред (мобилен)",
+          "options": {
+            "1_column": {
+              "label": "1 колона"
+            },
+            "2_column": {
+              "label": "2 колона"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Продукти за най -продавани"
+      }
+    },
+    "collapsible-content": {
+      "name": "Сгъваемо съдържание",
+      "settings": {
+        "open_first": {
+          "label": "Отворете първо съдържание"
+        },
+        "content_position": {
+          "label": "Позиция на съдържанието",
+          "options": {
+            "top": {
+              "label": "Отгоре"
+            },
+            "left": {
+              "label": "Вляво"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "content": {
+          "name": "Съдържание"
+        }
+      },
+      "presets": {
+        "name": "Сгъваемо съдържание"
+      }
+    },
+    "collection-carousel": {
+      "name": "Колекция въртележка",
+      "blocks": {
+        "name": "Колекция",
+        "settings": {
+          "collection": {
+            "label": "Колекция"
+          },
+          "image": {
+            "label": "Персонализирано изображение"
+          },
+          "subheading": {
+            "label": "Подзаглавие"
+          },
+          "heading": {
+            "label": "Персонализирано заглавие"
+          },
+          "product_list": {
+            "label": "Продукти"
+          }
+        }
+      },
+      "presets": {
+        "name": "Колекция въртележка"
+      }
+    },
+    "collection-list": {
+      "name": "Списък на колекцията",
+      "settings": {
+        "collection": {
+          "label": "Колекция"
+        },
+        "card_style": {
+          "label": "Карта стил",
+          "options": {
+            "circle": {
+              "label": "Кръг"
+            },
+            "rounded": {
+              "label": "Заоблен"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        },
+        "text_alignment": {
+          "label": "Подравняване на текст"
+        },
+        "collection_text_size": {
+          "label": "Размер на текста на колекцията",
+          "options": {
+            "xlarge": {
+              "label": "Xlarge"
+            },
+            "large": {
+              "label": "Голям"
+            },
+            "medium": {
+              "label": "Среден"
+            },
+            "small": {
+              "label": "Малък"
+            },
+            "x-small": {
+              "label": "X-Small"
+            }
+          }
+        },
+        "number_item": {
+          "label": "Брой артикул на ред"
+        },
+        "mobile_item_per_row": {
+          "label": "Брой артикул на ред (мобилен)",
+          "options": {
+            "options__1": {
+              "label": "1 колона"
+            },
+            "options__2": {
+              "label": "2 колони"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "featured_collection": {
+          "name": "Колекция",
+          "settings": {
+            "collection": {
+              "label": "Колекция"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Списък на колекцията"
+      }
+    },
+    "collection-tab": {
+      "name": "Раздели за събиране",
+      "settings": {
+        "products_count": {
+          "label": "Брой на продуктите"
+        },
+        "mobile_item_per_row": {
+          "label": "Брой артикул на ред (мобилен)",
+          "options": {
+            "options__1": {
+              "label": "1 колона"
+            },
+            "options__2": {
+              "label": "2 колони"
+            }
+          }
+        },
+        "tab_style": {
+          "label": "Tab Style",
+          "options": {
+            "horizontal": {
+              "label": "Хоризонтален"
+            },
+            "vertical": {
+              "label": "Вертикална"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "name": "Колекция"
+      },
+      "presets": {
+        "name": "Раздели за събиране"
+      }
+    },
+    "compact-categories": {
+      "name": "Компактни категории",
+      "blocks": {
+        "name": "Категория",
+        "settings": {
+          "collection": {
+            "label": "Колекция"
+          },
+          "heading": {
+            "label": "Персонализирано заглавие"
+          },
+          "text_style": {
+            "label": "Текстов стил",
+            "options": {
+              "none": {
+                "label": "Няма"
+              },
+              "line": {
+                "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+              },
+              "image": {
+                "label": "Изображението се движи"
+              }
+            }
+          }
+        },
+        "image": {
+          "name": "Изображение"
+        }
+      },
+      "presets": {
+        "name": "Компактни категории"
+      }
+    },
+    "contact": {
+      "name": "Контакт",
+      "settings": {
+        "fullwidth": {
+          "label": "Активиране на пълна ширина"
+        },
+        "blocks": {
+          "content": {
+            "name": "Съдържание",
+            "settings": {
+              "header": {
+                "content": "Информация за контакт"
+              },
+              "email_label": {
+                "label": "Етикет за имейл"
+              },
+              "email_content": {
+                "label": "Имейл"
+              },
+              "phone_label": {
+                "label": "Етикет за контакт"
+              },
+              "phone_content": {
+                "label": "Контакт"
+              },
+              "address_label": {
+                "label": "Адрес етикет"
+              },
+              "address_content": {
+                "label": "Адрес"
+              }
+            }
+          },
+          "form": {
+            "name": "Форма",
+            "settings": {
+              "form_button_text": {
+                "label": "Текст на бутона на формуляра"
+              }
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Контакт"
+      }
+    },
+    "countdown": {
+      "name": "Отброяване",
+      "settings": {
+        "enable_countdown": {
+          "label": "Активиране на отброяването"
+        },
+        "countdown_layout": {
+          "label": "Оформление на отброяването",
+          "options": {
+            "horizontal": {
+              "label": "Пълновидна ширина"
+            },
+            "vertical": {
+              "label": "Вляво"
+            }
+          }
+        },
+        "product_list_enable": {
+          "label": "Показване на продуктовия списък"
+        },
+        "product_list": {
+          "label": "Списък на продукта"
+        },
+        "date": {
+          "info": "Крайната дата трябва да бъде зададена на бъдеща дата и да включва следния формат: Yyyy/mm/DD Пример: 2025/01/01.",
+          "label": "Дата"
+        }
+      },
+      "presets": {
+        "name": "Обратно отброяване"
+      }
+    },
+    "custom-liquid": {
+      "name": "Персонализирана течност",
+      "settings": {
+        "content": {
+          "label": "Течен код",
+          "info": "Добавете фрагменти от приложения или друг код, за да създадете разширени персонализации. "
+        }
+      },
+      "presets": {
+        "name": "Персонализирана течност"
+      }
+    },
+    "event-calendar": {
+      "name": "Календар на събитията",
+      "settings": {
+        "style_layout": {
+          "label": "Оформление",
+          "options": {
+            "event-grid": {
+              "label": "Мрежа"
+            },
+            "event-listing": {
+              "label": "Списък"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "event": {
+          "name": "Събитие",
+          "settings": {
+            "location": {
+              "label": "Местоположение"
+            },
+            "date": {
+              "label": "Дата"
+            },
+            "time": {
+              "label": "Време"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Календар на събитията"
+      }
+    },
+    "featured-blog": {
+      "name": "Препоръчани блогове",
+      "settings": {
+        "blog": {
+          "label": "Блогове"
+        },
+        "post_limit": {
+          "label": "Брой публикации в блога за показване"
+        },
+        "show_date": {
+          "label": "Дата на показване"
+        },
+        "show_comment": {
+          "label": "Покажете коментар"
+        },
+        "show_author": {
+          "label": "Автор на шоуто"
+        },
+        "show_excerpt": {
+          "label": "Покажи откъс"
+        },
+        "layout_style": {
+          "label": "Стил",
+          "options": {
+            "grid": {
+              "label": "Мрежа"
+            },
+            "width_image": {
+              "label": "Изображение на ширина"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Препоръчани блогове"
+      }
+    },
+    "featured-collection-list": {
+      "name": "Препоръчан списък за колекция",
+      "settings": {
+        "collection_list": {
+          "label": "Списък на колекцията"
+        },
+        "enable_background": {
+          "label": "Активирайте фон"
+        },
+        "enable_border": {
+          "label": "Активирайте границата"
+        },
+        "border_type": {
+          "label": "Тип граница",
+          "options": {
+            "round": {
+              "label": "Кръг"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        },
+        "image_position": {
+          "label": "Позиция на изображението",
+          "options": {
+            "left": {
+              "label": "Вляво"
+            },
+            "center": {
+              "label": "Отгоре"
+            }
+          }
+        },
+        "mobile_item_per_row": {
+          "label": "Брой артикул на ред (мобилен)",
+          "options": {
+            "options__1": {
+              "label": "1 колона"
+            },
+            "options__2": {
+              "label": "2 колони"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Препоръчан списък за колекция"
+      }
+    },
+    "featured-collection": {
+      "name": "Препоръчана колекция",
+      "settings": {
+        "enable_slider": {
+          "label": "Активирайте плъзгача"
+        },
+        "enable_card": {
+          "label": "Активиране на карта"
+        },
+        "show_collection_title": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "collection": {
+          "label": "Колекция"
+        },
+        "products_to_show": {
+          "label": "Продукт за показване"
+        },
+        "column_per_row": {
+          "label": "Колона на продукта"
+        },
+        "mobile_item_per_row": {
+          "label": "Продуктов артикул на ред (мобилен)",
+          "options": {
+            "1_column": {
+              "label": "1 колона"
+            },
+            "2_column": {
+              "label": "2 колона"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Препоръчана колекция"
+      }
+    },
+    "featured-product": {
+      "name": "Представен продукт",
+      "blocks": {
+        "title": {
+          "name": "Заглавие",
+          "settings": {
+            "title_size": {
+              "label": "Размер на заглавието"
+            }
+          }
+        },
+        "vendor": {
+          "name": "Продавач"
+        },
+        "sku": {
+          "name": "Ску"
+        },
+        "text": {
+          "name": "Текст"
+        },
+        "price": {
+          "name": "Цена",
+          "settings": {
+            "hide_shipping_content": {
+              "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+            }
+          }
+        },
+        "variant": {
+          "name": "Вариант",
+          "settings": {
+            "enable_size_chart": {
+              "label": "Активирайте диаграмата на размера"
+            },
+            "size_chart_text": {
+              "label": "Размерна диаграма"
+            },
+            "size_chart": {
+              "label": "Изберете диаграма на размера"
+            }
+          }
+        },
+        "quantity": {
+          "name": "Количество"
+        },
+        "buy_buttons": {
+          "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+          "settings": {
+            "dynamic_checkout_btn": {
+              "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+              "info": "Използвайки методите на плащане, налични във вашия магазин, клиентите виждат предпочитаната от тях опция, като PayPal или Apple Pay. "
+            },
+            "show_recipient_form": {
+              "label": "Показване на информационната форма на получател за карти за подаръци",
+              "info": "Позволява на купувачите да изпращат карти за подаръци на планирана дата заедно с лично съобщение. "
+            }
+          }
+        },
+        "share": {
+          "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "description": {
+          "name": "Описание"
+        },
+        "pickup": {
+          "name": "Пикап и наличност",
+          "settings": {
+            "pickup_store_text": {
+              "label": "Текст на връзката"
+            }
+          }
+        },
+        "custom_liquid": {
+          "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+          "settings": {
+            "custom_liquid": {
+              "label": "Течност",
+              "info": "Добавете фрагменти от приложения или друг течен код, за да създадете усъвършенствани персонализации."
+            }
+          }
+        },
+        "collapsible_content": {
+          "name": "Сгъваемо съдържание",
+          "settings": {
+            "type_of_content": {
+              "label": "Тип съдържание",
+              "options": {
+                "option1": {
+                  "label": "Сгъваем"
+                },
+                "option2": {
+                  "label": "Раздели"
+                }
+              }
+            },
+            "open_first_content": {
+              "label": "По подразбиране Отворете първо съдържание"
+            },
+            "show_description": {
+              "label": "Показване на описанието на заглавието"
+            },
+            "description_heading": {
+              "label": "Добавяне на описание заглавие"
+            },
+            "des_image": {
+              "label": "Описание изображение"
+            },
+            "content_paragraph_1": {
+              "content": "Съдържание 1"
+            },
+            "description": {
+              "label": "Добавете съдържание"
+            },
+            "add_page": {
+              "label": "Добавяне на страница"
+            },
+            "content_paragraph_2": {
+              "content": "Съдържание 2"
+            },
+            "content_paragraph_3": {
+              "content": "Съдържание 3"
+            }
+          }
+        },
+        "text_icon": {
+          "name": "Текст с икона",
+          "settings": {
+            "custom_svg_1": {
+              "label": "SVG 1"
+            },
+            "text_1": {
+              "label": "Текст 1"
+            },
+            "custom_svg_2": {
+              "label": "SVG 2"
+            },
+            "text_2": {
+              "label": "Текст 2"
+            },
+            "custom_svg_3": {
+              "label": "SVG 3"
+            },
+            "text_3": {
+              "label": "Текст 3"
+            },
+            "custom_svg_4": {
+              "label": "SVG 4"
+            },
+            "text_4": {
+              "label": "Текст 4"
+            }
+          }
+        }
+      },
+      "settings": {
+        "product": {
+          "label": "Продукт"
+        },
+        "image_size": {
+          "label": "Размер на изображението на продукта",
+          "options": {
+            "auto": {
+              "label": "Адаптиране"
+            },
+            "landscape": {
+              "label": "Пейзаж"
+            },
+            "portrait": {
+              "label": "Портрет"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Представен продукт"
+      }
+    },
+    "footer": {
+      "name": "Долен колонтитул",
+      "blocks": {
+        "menu": {
+          "name": "Меню",
+          "settings": {
+            "menu": {
+              "label": "Меню"
+            }
+          }
+        }
+      },
+      "settings": {
+        "enable_newsletter": {
+          "label": "Активирайте бюлетин"
+        },
+        "placeholder_text": {
+          "label": "Текст на заместник"
+        },
+        "image": {
+          "label": "Лого"
+        },
+        "image_width": {
+          "label": "Ширина на логото"
+        },
+        "header_contact": {
+          "content": "Контакт"
+        },
+        "email_label": {
+          "label": "Етикет за имейл"
+        },
+        "email": {
+          "label": "Имейл"
+        },
+        "phone_label": {
+          "label": "Телефон етикет"
+        },
+        "phone": {
+          "label": "Телефон"
+        },
+        "other_content": {
+          "content": "Друго съдържание"
+        },
+        "social_text": {
+          "label": "Социален текст"
+        },
+        "show_social": {
+          "label": "Показват социални"
+        },
+        "enable_currency_selector": {
+          "label": "Активиране на селектор на валута",
+          "info": "За да добавите валута, отидете на вашите [пазарни настройки.] (/Администратор/настройки/пазари)"
+        },
+        "enable_language_selector": {
+          "info": "За да добавите език, отидете на вашите [езикови настройки.] (/Администратор/настройки/езици)",
+          "label": "Активирайте селектора на езика"
+        },
+        "payment_enable": {
+          "label": "Покажете икони за плащане"
+        },
+        "show_copyright_text": {
+          "label": "Активирайте текста на авторските права"
+        },
+        "custom_copyright_text": {
+          "label": "Отменете текста на авторските права"
+        },
+        "enable_follow_on_shop": {
+          "info": "За да позволите на клиентите да следват вашия магазин в приложението на магазина от вашия магазин, заплащането на магазина трябва да бъде активирано. ",
+          "label": "Активирайте следване в магазина"
+        },
+        "header_footer_description": {
+          "content": "Описание на долния долен долен"
+        },
+        "header_mobile_layout": {
+          "content": "Мобилно оформление"
+        },
+        "open_menu": {
+          "label": "Първоначално се показва като отворен"
+        }
+      }
+    },
+    "header": {
+      "name": "Заглавка",
+      "settings": {
+        "menu": {
+          "label": "Главно меню"
+        },
+        "secondary_menu": {
+          "label": "Вторично меню",
+          "info": "Той ще работи само за менюто на чекмеджето."
+        },
+        "desktop_menu_position": {
+          "label": "Позиция на менюто на логото на работния плот",
+          "options": {
+            "logo-left-menu--left": {
+              "label": "Ляво меню за лого вляво"
+            },
+            "logo-left-menu--center": {
+              "label": "Център за ляво меню за лого"
+            },
+            "logo-center-menu--left": {
+              "label": "Менюто на централното лого вляво"
+            },
+            "logo-center-menu--drawer": {
+              "label": "Меню с Център за лого на чекмеджето"
+            },
+            "logo-left-menu--drawer": {
+              "label": "Меню с лого на чекмеджето вляво"
+            }
+          }
+        },
+        "enable_menu_background": {
+          "label": "Активирайте фона на менюто"
+        },
+        "sticky_header": {
+          "label": "Лепкава глава",
+          "options": {
+            "header-sticky-none": {
+              "label": "Няма"
+            },
+            "on_scroll_up": {
+              "label": "При превъртане нагоре"
+            },
+            "is-sticky": {
+              "label": "Винаги"
+            }
+          }
+        },
+        "transparent_header": {
+          "label": "Активирайте прозрачната заглавка"
+        },
+        "show_search": {
+          "label": "Показване на търсене"
+        },
+        "show_account_icon": {
+          "label": "Показване на акаунт"
+        },
+        "show_cart_icon": {
+          "label": "Покажи количка"
+        },
+        "enable_account": {
+          "label": "Активиране на акаунт"
+        },
+        "enable_social_account": {
+          "label": "Активирайте социалната сметка"
+        },
+        "enable_localiztion": {
+          "label": "Активиране на локализация"
+        },
+        "header__3": {
+          "content": "Селектор на държава/регион",
+          "info": "За да добавите държава/регион, отидете на вашите [пазарни настройки.] (/Администратор/настройки/пазари)"
+        },
+        "enable_country_selector": {
+          "label": "Активирайте селектор на държава/регион"
+        },
+        "header__4": {
+          "content": "Избор на език",
+          "info": "За да добавите език, отидете на вашите [езикови настройки.] (/Администратор/настройки/езици)"
+        },
+        "enable_language_selector": {
+          "label": "Активирайте селектора на езика"
+        },
+        "header_drawer_content": {
+          "content": "Съдържание на чекмеджето"
+        },
+        "link_text": {
+          "label": "Текст на връзката"
+        },
+        "pages": {
+          "content": "Страници"
+        },
+        "page_1": {
+          "label": "Страница 1"
+        },
+        "page_2": {
+          "label": "Страница 2"
+        },
+        "page_3": {
+          "label": "Страница 3"
+        },
+        "header_contact_details": {
+          "content": "Данни за контакт"
+        },
+        "email_placeholder": {
+          "label": "ИМЕЙЛЕН ПСЕЧЕР"
+        },
+        "email": {
+          "label": "Имейл"
+        },
+        "phone_placeholder": {
+          "label": "Запазетелят на телефона"
+        },
+        "phone": {
+          "label": "Телефон"
+        }
+      },
+      "blocks": {
+        "mega-menu": {
+          "name": "Мега меню",
+          "settings": {
+            "menu_label": {
+              "label": "Етикет на менюто",
+              "info": "Въведете елемент от менюто, за да приложите мега меню."
+            },
+            "collection_list": {
+              "label": "Списък на колекцията"
+            },
+            "content_1": {
+              "content": "Съдържание 1"
+            },
+            "subheading": {
+              "label": "Подзаглавие"
+            },
+            "content_2": {
+              "content": "Съдържание 2"
+            },
+            "content_3": {
+              "content": "Съдържание 3"
+            },
+            "content_4": {
+              "content": "Съдържание 4"
+            },
+            "content_5": {
+              "content": "Съдържание 5"
+            }
+          }
+        }
+      }
+    },
+    "icons-with-text": {
+      "name": "Икона с текст",
+      "settings": {
+        "items_per_row_mobile": {
+          "label": "Елементи на ред (мобилен)",
+          "options": {
+            "options__1": {
+              "label": "1 елемент"
+            },
+            "options__2": {
+              "label": "2 елемента"
+            }
+          }
+        },
+        "header_icon": {
+          "content": "Икона"
+        },
+        "icon_position": {
+          "label": "Позиция",
+          "options": {
+            "vertical": {
+              "label": "Отгоре"
+            },
+            "horizontal": {
+              "label": "Вляво"
+            }
+          }
+        },
+        "icon_size": {
+          "label": "Размер",
+          "options": {
+            "small": {
+              "label": "Малък"
+            },
+            "medium": {
+              "label": "Среден"
+            },
+            "large": {
+              "label": "Голям"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "icon": {
+          "name": "Икона",
+          "settings": {
+            "label": "Икона",
+            "options": {
+              "general": {
+                "group": "Общи"
+              },
+              "shipping": {
+                "label": "Доставка"
+              },
+              "return": {
+                "label": "Връщане"
+              },
+              "verified": {
+                "label": "Проверен"
+              },
+              "global": {
+                "label": "Глобален"
+              },
+              "dolla": {
+                "label": "Dolla"
+              },
+              "bell": {
+                "label": "Камбана"
+              },
+              "gift": {
+                "label": "Подарък"
+              },
+              "alarm": {
+                "label": "Аларма"
+              },
+              "ribben": {
+                "label": "Ренбе"
+              },
+              "star": {
+                "label": "Звезда"
+              },
+              "heart": {
+                "label": "Сърце"
+              },
+              "hand": {
+                "label": "Ръка"
+              },
+              "trash": {
+                "label": "Боклук"
+              },
+              "cart": {
+                "label": "Количка"
+              },
+              "basket": {
+                "label": "Кошница"
+              },
+              "calender": {
+                "label": "Календер"
+              },
+              "folder": {
+                "label": "Папка"
+              },
+              "case": {
+                "label": "Случай"
+              },
+              "search": {
+                "label": "Търсене"
+              },
+              "gallery": {
+                "label": "Галерия"
+              },
+              "sun": {
+                "label": "Слънце"
+              },
+              "cloud": {
+                "label": "Облак"
+              },
+              "fire": {
+                "label": "Огън"
+              },
+              "copy": {
+                "label": "Копиране"
+              },
+              "smile": {
+                "label": "Усмих се"
+              },
+              "sad": {
+                "label": "Тъжно"
+              },
+              "like": {
+                "label": "Като"
+              },
+              "dislike": {
+                "label": "Неприязън"
+              },
+              "key": {
+                "label": "Ключ"
+              },
+              "shield": {
+                "label": "Щит"
+              },
+              "community": {
+                "group": "Общност"
+              },
+              "user": {
+                "label": "Потребител"
+              },
+              "phone": {
+                "label": "Телефон"
+              },
+              "mail": {
+                "label": "Поща"
+              },
+              "location": {
+                "label": "Местоположение"
+              },
+              "map": {
+                "label": "Карта"
+              },
+              "store": {
+                "label": "Магазин"
+              },
+              "setting": {
+                "label": "Настройка"
+              },
+              "edit": {
+                "label": "Редактиране"
+              },
+              "link": {
+                "label": "Връзка"
+              },
+              "share": {
+                "label": "Споделяне"
+              },
+              "layers": {
+                "label": "Слоеве"
+              },
+              "card": {
+                "label": "Карта"
+              },
+              "book": {
+                "label": "Книга"
+              },
+              "plain": {
+                "label": "Обикновен"
+              },
+              "menu": {
+                "label": "Меню"
+              },
+              "download": {
+                "label": "Изтегляне"
+              },
+              "messages": {
+                "label": "Съобщения"
+              },
+              "dange": {
+                "label": "Dange"
+              },
+              "ruler": {
+                "label": "Владетел"
+              },
+              "graph": {
+                "label": "Графика"
+              },
+              "network": {
+                "label": "Мрежа"
+              },
+              "power": {
+                "label": "Мощност"
+              },
+              "eye": {
+                "label": "Око"
+              },
+              "minimize": {
+                "label": "Минимизиране"
+              },
+              "device": {
+                "group": "Устройство"
+              },
+              "camera": {
+                "label": "Камера"
+              },
+              "headphone": {
+                "label": "Слушалки"
+              },
+              "printer": {
+                "label": "Принтер"
+              },
+              "sound": {
+                "label": "Звук"
+              },
+              "calculator": {
+                "label": "Калкулатор"
+              },
+              "music": {
+                "label": "Музика"
+              },
+              "play": {
+                "label": "Игра"
+              },
+              "pause": {
+                "label": "Пауза"
+              },
+              "social": {
+                "group": "Социални"
+              },
+              "facebook": {
+                "label": "Facebook"
+              },
+              "instagram": {
+                "label": "Instagram"
+              },
+              "linkedin": {
+                "label": "LinkedIn"
+              },
+              "pinterest": {
+                "label": "Pinterest"
+              },
+              "snapchat": {
+                "label": "Snapchat"
+              },
+              "tikTok": {
+                "label": "Tiktok"
+              },
+              "tumblr": {
+                "label": "Tumblr"
+              },
+              "twitter": {
+                "label": "Twitter"
+              }
+            }
+          }
+        },
+        "image_icon": {
+          "label": "Икона на изображението"
+        }
+      },
+      "presets": {
+        "name": "Икона с текст"
+      }
+    },
+    "logo_list": {
+      "name": "Списък с лого",
+      "settings": {
+        "marquee": {
+          "content": "Марки"
+        },
+        "marquee_enable": {
+          "label": "Активирайте марке"
+        },
+        "direction": {
+          "label": "Посока",
+          "options": {
+            "right": {
+              "label": "Точно"
+            },
+            "left": {
+              "label": "Вляво"
+            }
+          }
+        },
+        "scrolling_speed": {
+          "label": "Скорост на превъртане"
+        },
+        "header_space_logo": {
+          "content": "Пространство между логото"
+        },
+        "column_gap": {
+          "label": "Пространство (десктоп)"
+        },
+        "column_gap_mobile": {
+          "label": "Пространство (мобилно)"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "Изображение",
+          "settings": {
+            "logo_image": {
+              "label": "Изображение на логото"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Списък с лого"
+      }
+    },
+    "main-404": {
+      "name": "Основен 404"
+    },
+    "main-account": {
+      "name": "Акаунт"
+    },
+    "main-activate-account": {
+      "name": "Активиране на акаунта"
+    },
+    "main-addresses": {
+      "name": "Адреси"
+    },
+    "main-article": {
+      "name": "Основна статия",
+      "settings": {
+        "show_image": {
+          "label": "Покажете замъгляване на ефекта"
+        },
+        "show_date": {
+          "label": "Показване на дата на статията"
+        },
+        "show_comment": {
+          "label": "Покажете коментар"
+        },
+        "show_author": {
+          "label": "Автор на шоуто"
+        },
+        "show_tags": {
+          "label": "Покажи маркери"
+        },
+        "show_comments": {
+          "label": "Покажете коментари на статии"
+        },
+        "show_social": {
+          "label": "Показване на икони на социален дял"
+        }
+      }
+    },
+    "main-blog-banner": {
+      "name": "Основен блог банер",
+      "settings": {
+        "banner_image": {
+          "label": "Изображение на банер",
+          "info": "Препоръчва се 1920 x 200px."
+        },
+        "image_height": {
+          "label": "Височина на знамето (десктоп)",
+          "options": {
+            "auto": {
+              "label": "Адаптиране"
+            },
+            "small": {
+              "label": "Малък"
+            },
+            "medium": {
+              "label": "Среден"
+            },
+            "large": {
+              "label": "Голям"
+            },
+            "x-large": {
+              "label": "X-голям"
+            },
+            "full": {
+              "label": "Пълен екран"
+            }
+          }
+        },
+        "mobile_image_height": {
+          "label": "Височина на знамето (мобилен)"
+        }
+      }
+    },
+    "main-blog": {
+      "name": "Основни блогове",
+      "settings": {
+        "show_first_blog": {
+          "label": "Горещо тази седмица"
+        },
+        "artical_per_page": {
+          "label": "Изкусен на страница"
+        },
+        "show_date": {
+          "label": "Дата на показване"
+        },
+        "show_comment": {
+          "label": "Покажете коментар"
+        },
+        "show_author": {
+          "label": "Автор на шоуто"
+        },
+        "show_excerpt": {
+          "label": "Покажи откъс"
+        },
+        "header_grid": {
+          "content": "Мрежа"
+        },
+        "mobile_item_per_row": {
+          "label": "Елементи на ред (мобилен)",
+          "options": {
+            "1_column": {
+              "label": "1 колона"
+            },
+            "2_column": {
+              "label": "2 колона"
+            }
+          }
+        }
+      }
+    },
+    "main-cart": {
+      "name": "Основна количка",
+      "settings": {
+        "cart_text": {
+          "label": "Текст на количката"
+        },
+        "account_login": {
+          "label": "Показване на регистър"
+        },
+        "register_content": {
+          "label": "Добавете съдържание за регистрация"
+        }
+      }
+    },
+    "main-collection-banner": {
+      "name": "Основен банер за колекция",
+      "settings": {
+        "show_collection_title": {
+          "label": "Показване на заглавието на колекцията"
+        },
+        "show_collection_description": {
+          "label": "Показване на описанието на колекцията"
+        },
+        "content_position": {
+          "label": "Позиция на съдържание",
+          "options": {
+            "none": {
+              "label": "Няма"
+            },
+            "below_image": {
+              "label": "Съдържание под знамето"
+            },
+            "description_below_banner": {
+              "label": "Само описание под знамето"
+            }
+          }
+        },
+        "show_collection_image": {
+          "label": "Показване на изображението на колекцията"
+        },
+        "custom_collection_image": {
+          "label": "Изображение на персонализирана колекция"
+        },
+        "mobile_image_height": {
+          "label": "Височина на изображението (мобилен)"
+        },
+        "collection_list": {
+          "label": "Списък на колекцията"
+        }
+      }
+    },
+    "main-collection": {
+      "name": "Основна колекция",
+      "settings": {
+        "products_to_show": {
+          "label": "Продукт за показване"
+        },
+        "image_size": {
+          "label": "Размер на изображението на мрежата",
+          "options": {
+            "auto": {
+              "label": "Адаптиране"
+            },
+            "landscape": {
+              "label": "Пейзаж"
+            },
+            "portrait": {
+              "label": "Портрет"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        },
+        "mobile_item_per_row": {
+          "label": "Продуктов артикул на ред (мобилен)",
+          "options": {
+            "1_column": {
+              "label": "1 колона"
+            },
+            "2_column": {
+              "label": "2 колона"
+            }
+          }
+        },
+        "header_filter_sort": {
+          "content": "Филтър и сортиране"
+        },
+        "enable_sorting": {
+          "label": "Активиране на сортиране"
+        },
+        "enable_filtering": {
+          "label": "Активирайте филтъра"
+        },
+        "filter_type": {
+          "label": "Тип филтър",
+          "options": {
+            "sidebar": {
+              "label": "Странична лента"
+            },
+            "drawer": {
+              "label": "Чекмедже"
+            }
+          }
+        },
+        "header_pagination": {
+          "content": "Pagination"
+        },
+        "pagination_type": {
+          "label": "Тип PAGINATION",
+          "options": {
+            "pagination": {
+              "label": "Pagination"
+            },
+            "infinite": {
+              "label": "Безкрайно превъртане"
+            },
+            "on-button": {
+              "label": "На бутона щракнете"
+            }
+          }
+        }
+      }
+    },
+    "main-collection-list": {
+      "name": "Основен списък на колекцията",
+      "settings": {
+        "collections_per_page": {
+          "label": "Колекции на страница"
+        },
+        "number_item": {
+          "label": "Брой артикул на ред"
+        },
+        "mobile_item_per_row": {
+          "label": "Продуктов артикул на ред (мобилен)",
+          "options": {
+            "options__1": {
+              "label": "1 колона"
+            },
+            "options__2": {
+              "label": "2 колони"
+            }
+          }
+        },
+        "sort": {
+          "label": "Сортиране",
+          "alphabetical": {
+            "label": "Азбучно, A-Z"
+          },
+          "alphabetical_reversed": {
+            "label": "Азбучно, Z-a"
+          },
+          "date_reversed": {
+            "label": "Дата, нова за стари"
+          },
+          "date": {
+            "label": "Дата, стар до нови"
+          },
+          "products_high": {
+            "label": "Брой на продуктите, висок до нисък"
+          },
+          "products_low": {
+            "label": "Брой на продуктите, нисък до висок"
+          }
+        },
+        "card_style": {
+          "label": "Карта стил",
+          "options": {
+            "circle": {
+              "label": "Кръг"
+            },
+            "rounded": {
+              "label": "Заоблен"
+            },
+            "Square": {
+              "label": "Квадрат"
+            }
+          }
+        },
+        "collection_text_size": {
+          "label": "Размер на текста на колекцията",
+          "options": {
+            "xlarge": {
+              "label": "Xlarge"
+            },
+            "large": {
+              "label": "Голям"
+            },
+            "medium": {
+              "label": "Среден"
+            },
+            "small": {
+              "label": "Малък"
+            },
+            "x-small": {
+              "label": "X-Small"
+            }
+          }
+        }
+      }
+    },
+    "main-login-drawer": {
+      "name": "Вход"
+    },
+    "main-login": {
+      "name": "Основно влизане"
+    },
+    "main-order": {
+      "name": "Поръчка"
+    },
+    "main-page-banner": {
+      "name": "Главна страница банер",
+      "settings": {
+        "show_page_title": {
+          "label": "Показване на заглавието на страницата"
+        },
+        "heading": {
+          "label": "Персонализирано заглавие"
+        },
+        "banner_image": {
+          "label": "Изображение на банер"
+        }
+      }
+    },
+    "main-page": {
+      "name": "Основна страница",
+      "settings": {
+        "show_page_title": {
+          "label": "Показване на заглавието на страницата"
+        },
+        "heading_size": {
+          "label": "Размер на заглавието"
+        }
+      }
+    },
+    "main-password": {
+      "name": "Основна парола"
+    },
+    "main-collection-product-grid": {
+      "name": "Продуктовата мрежа",
+      "settings": {
+        "products_per_page": {
+          "label": "Продукти на страница"
+        },
+        "columns_desktop": {
+          "label": "Брой колони на работния плот"
+        },
+        "enable_filtering": {
+          "label": "Активиране на филтриране",
+          "info": "Персонализирайте филтри с приложението за търсене и откриване. "
+        },
+        "filter_type": {
+          "label": "Оформление на настолния филтър",
+          "options__1": {
+            "label": "Хоризонтален"
+          },
+          "options__2": {
+            "label": "Вертикална"
+          },
+          "options__3": {
+            "label": "Чекмедже"
+          },
+          "info": "Чекмеджето е мобилното оформление по подразбиране."
+        },
+        "enable_sorting": {
+          "label": "Активиране на сортиране"
+        },
+        "image_ratio": {
+          "label": "Съотношение на изображението",
+          "options__1": {
+            "label": "Адаптирайте се към изображението"
+          },
+          "options__2": {
+            "label": "Портрет"
+          },
+          "options__3": {
+            "label": "Квадрат"
+          }
+        },
+        "show_secondary_image": {
+          "label": "Показване на второ изображение на Hover"
+        },
+        "show_vendor": {
+          "label": "Покажи доставчик"
+        },
+        "show_rating": {
+          "label": "Покажете рейтинг на продукта",
+          "info": "За да покажете рейтинг, добавете приложение за оценка на продукта. "
+        },
+        "header__1": {
+          "content": "Филтриране и сортиране"
+        },
+        "header__3": {
+          "content": "Продуктова карта"
+        },
+        "enable_tags": {
+          "label": "Активиране на филтриране",
+          "info": "Персонализирайте филтри с приложението за търсене и откриване. "
+        },
+        "quick_add": {
+          "label": "Бързо добавяне",
+          "info": "Bulk е оптимизиран за артикули, закупени в по -високи количества.",
+          "options": {
+            "option_1": "Няма",
+            "option_2": "Стандарт",
+            "option_3": "Насипно състояние"
+          }
+        },
+        "header_mobile": {
+          "content": "Мобилно оформление"
+        },
+        "columns_mobile": {
+          "label": "Брой колони на мобилни устройства",
+          "options__1": {
+            "label": "1 колона"
+          },
+          "options__2": {
+            "label": "2 колони"
+          }
+        }
+      }
+    },
+    "main-list-collections": {
+      "name": "Страница за списъка с колекции",
+      "settings": {
+        "title": {
+          "label": "Заглавие",
+          "default": "Колекции"
+        },
+        "sort": {
+          "label": "Сортиране на колекции от:",
+          "options__1": {
+            "label": "Азбучно, A-Z"
+          },
+          "options__2": {
+            "label": "Азбучно, Z-a"
+          },
+          "options__3": {
+            "label": "Дата, нова за стари"
+          },
+          "options__4": {
+            "label": "Дата, стар до нови"
+          },
+          "options__5": {
+            "label": "Брой на продуктите, висок до нисък"
+          },
+          "options__6": {
+            "label": "Брой на продуктите, нисък до висок"
+          }
+        },
+        "image_ratio": {
+          "label": "Съотношение на изображението",
+          "options__1": {
+            "label": "Адаптирайте се към изображението"
+          },
+          "options__2": {
+            "label": "Портрет"
+          },
+          "options__3": {
+            "label": "Квадрат"
+          },
+          "info": "Добавете изображения, като редактирате вашите колекции. "
+        },
+        "columns_desktop": {
+          "label": "Брой колони на работния плот"
+        },
+        "header_mobile": {
+          "content": "Мобилно оформление"
+        },
+        "columns_mobile": {
+          "label": "Брой колони на мобилни устройства",
+          "options__1": {
+            "label": "1 колона"
+          },
+          "options__2": {
+            "label": "2 колони"
+          }
+        }
+      }
+    },
+    "main-product": {
+      "name": "Основен продукт",
+      "blocks": {
+        "title": {
+          "name": "Заглавие",
+          "settings": {
+            "title_size": {
+              "label": "Размер на заглавието"
+            }
+          }
+        },
+        "vendor": {
+          "name": "Продавач"
+        },
+        "sku": {
+          "name": "Ску"
+        },
+        "text": {
+          "name": "Текст"
+        },
+        "price": {
+          "name": "Цена",
+          "settings": {
+            "hide_shipping_content": {
+              "label": "Скриване на съдържанието за доставка"
+            }
+          }
+        },
+        "variant": {
+          "name": "Вариант",
+          "settings": {
+            "enable_size_chart": {
+              "label": "Активирайте диаграмата на размера"
+            },
+            "size_chart_text": {
+              "label": "Размерна диаграма"
+            },
+            "size_chart": {
+              "label": "Изберете диаграма на размера"
+            }
+          }
+        },
+        "quantity": {
+          "name": "Количество"
+        },
+        "buy_buttons": {
+          "name": "Купете бутони",
+          "settings": {
+            "dynamic_checkout_btn": {
+              "label": "Показване на динамични бутони за каси",
+              "info": "Използвайки методите на плащане, налични във вашия магазин, клиентите виждат предпочитаната от тях опция, като PayPal или Apple Pay. "
+            },
+            "show_recipient_form": {
+              "label": "Показване на информационната форма на получател за карти за подаръци",
+              "info": "Позволява на купувачите да изпращат карти за подаръци на планирана дата заедно с лично съобщение. "
+            }
+          }
+        },
+        "share": {
+          "name": "Социален дял"
+        },
+        "description": {
+          "name": "Описание"
+        },
+        "pickup": {
+          "name": "Пикап и наличност",
+          "settings": {
+            "pickup_store_text": {
+              "label": "Текст на връзката"
+            }
+          }
+        },
+        "custom_liquid": {
+          "name": "Персонализирана течност",
+          "settings": {
+            "custom_liquid": {
+              "label": "Течност",
+              "info": "Добавете фрагменти от приложения или друг течен код, за да създадете усъвършенствани персонализации."
+            }
+          }
+        },
+        "collapsible_content": {
+          "name": "Сгъваемо съдържание",
+          "settings": {
+            "type_of_content": {
+              "label": "Тип съдържание",
+              "options": {
+                "option1": {
+                  "label": "Сгъваем"
+                },
+                "option2": {
+                  "label": "Раздели"
+                }
+              }
+            },
+            "open_first_content": {
+              "label": "По подразбиране Отворете първо съдържание"
+            },
+            "show_description": {
+              "label": "Показване на описанието на заглавието"
+            },
+            "description_heading": {
+              "label": "Добавяне на описание заглавие"
+            },
+            "des_image": {
+              "label": "Описание изображение"
+            },
+            "content_paragraph_1": {
+              "content": "Съдържание 1"
+            },
+            "description": {
+              "label": "Добавете съдържание"
+            },
+            "add_page": {
+              "label": "Добавяне на страница"
+            },
+            "content_paragraph_2": {
+              "content": "Съдържание 2"
+            },
+            "content_paragraph_3": {
+              "content": "Съдържание 3"
+            }
+          }
+        },
+        "complementary_products": {
+          "name": "Допълващи се продукти",
+          "settings": {
+            "paragraph": {
+              "content": "За да изберете допълващи продукти, добавете приложението за търсене и откриване. "
+            },
+            "products_count": {
+              "label": "Броят на продуктите"
+            }
+          }
+        },
+        "text_icon": {
+          "name": "Текст с икона",
+          "settings": {
+            "custom_svg_1": {
+              "label": "SVG 1"
+            },
+            "text_1": {
+              "label": "Текст 1"
+            },
+            "custom_svg_2": {
+              "label": "SVG 2"
+            },
+            "text_2": {
+              "label": "Текст 2"
+            },
+            "custom_svg_3": {
+              "label": "SVG 3"
+            },
+            "text_3": {
+              "label": "Текст 3"
+            },
+            "custom_svg_4": {
+              "label": "SVG 4"
+            },
+            "text_4": {
+              "label": "Текст 4"
+            }
+          }
+        }
+      },
+      "settings": {
+        "section_layout": {
+          "label": "Оформление на секцията",
+          "options": {
+            "full": {
+              "label": "Пълен"
+            },
+            "contain": {
+              "label": "Съдържат"
+            }
+          }
+        },
+        "enable_stickyProduct": {
+          "label": "Активирайте лепкавия продукт на работния плот"
+        },
+        "product_template_type": {
+          "label": "Стил на шаблона на продукта",
+          "options": {
+            "template1": {
+              "label": "Сплит въртележка"
+            },
+            "template2": {
+              "label": "Въртележка с миниатюри"
+            },
+            "template3": {
+              "label": "Подредени"
+            },
+            "template4": {
+              "label": "Решетка 2 колони"
+            },
+            "template5": {
+              "label": "Въртележка"
+            }
+          }
+        },
+        "image_size": {
+          "label": "Размер на изображението на продукта"
+        }
+      }
+    },
+    "main-register-drawer": {
+      "name": "Регистрация"
+    },
+    "main-register": {
+      "name": "Основен регистър"
+    },
+    "main-reset-password": {
+      "name": "Основна парола за нулиране"
+    },
+    "main-search": {
+      "name": "Основно търсене",
+      "settings": {
+        "enable_filtering": {
+          "label": "Активирайте филтъра"
+        },
+        "enable_sorting": {
+          "label": "Активиране на сортиране"
+        },
+        "image_size": {
+          "label": "Размер на изображението на мрежата"
+        }
+      }
+    },
+    "map": {
+      "name": "Карта",
+      "settings": {
+        "map_iframe": {
+          "label": "Карта iframe"
+        },
+        "image_height": {
+          "label": "Височина на картата"
+        },
+        "mobile_image_height": {
+          "label": "Височина на картата (мобилен)"
+        }
+      },
+      "presets": {
+        "name": "Карта"
+      }
+    },
+    "marquee": {
+      "name": "Марки",
+      "settings": {
+        "direction": {
+          "label": "Посока",
+          "options": {
+            "right": {
+              "label": "Точно"
+            },
+            "left": {
+              "label": "Вляво"
+            }
+          }
+        },
+        "scrolling_speed": {
+          "label": "Скорост на превъртане"
+        },
+        "column_gap": {
+          "label": "Пространство (десктоп)"
+        },
+        "column_gap_mobile": {
+          "label": "Пространство (мобилно)"
+        },
+        "twin_marquee": {
+          "label": "Активирайте близнаци"
+        },
+        "background": {
+          "label": "Фон за маркиране",
+          "options": {
+            "solid": {
+              "label": "Твърд"
+            },
+            "gradient": {
+              "label": "Градиент"
+            }
+          }
+        },
+        "solid_color": {
+          "label": "Маркиран твърд фон"
+        },
+        "gradient_color": {
+          "label": "Фон на градиент на маркет"
+        },
+        "twin_solid_color": {
+          "label": "Солиден фон на Twin Marquee"
+        },
+        "twin_gradient_color": {
+          "label": "Фон"
+        }
+      },
+      "blocks": {
+        "text": {
+          "name": "Текст",
+          "settings": {
+            "desktop_font_size": {
+              "label": "Размер на шрифта (десктоп)"
+            },
+            "mobile_font_size": {
+              "label": "Размер на шрифта (мобилен)"
+            },
+            "text_style": {
+              "label": "Стил",
+              "options": {
+                "none": {
+                  "label": "Няма"
+                },
+                "highlight": {
+                  "label": "удар"
+                },
+                "gradient": {
+                  "label": "Градиент"
+                }
+              }
+            },
+            "gradient_text": {
+              "label": "Текст на градиент"
+            }
+          }
+        },
+        "image": {
+          "name": "Изображение"
+        },
+        "button": {
+          "name": "Бутон"
+        }
+      },
+      "presets": {
+        "name": "Марки"
+      }
+    },
+    "media-gallery": {
+      "name": "Медийна галерия",
+      "settings": {
+        "icon": {
+          "label": "Икона на профила"
+        },
+        "icon_text": {
+          "label": "Текст на профила"
+        },
+        "link": {
+          "label": "Връзка"
+        },
+        "link_text": {
+          "label": "Текст на връзката"
+        }
+      },
+      "blocks": {
+        "name": "Медия",
+        "settings": {
+          "image": {
+            "label": "Изображение"
+          },
+          "video": {
+            "label": "Видео"
+          },
+          "social_media_icon": {
+            "label": "Икона на социалните медии",
+            "options": {
+              "facebook": {
+                "label": "Facebook"
+              },
+              "instagram": {
+                "label": "Instagram"
+              },
+              "linkedin": {
+                "label": "LinkedIn"
+              },
+              "pinterest": {
+                "label": "Pinterest"
+              },
+              "snapchat": {
+                "label": "Snapchat"
+              },
+              "tikTok": {
+                "label": "Tiktok"
+              },
+              "tumblr": {
+                "label": "Tumblr"
+              },
+              "twitter": {
+                "label": "Twitter"
+              },
+              "none": {
+                "label": "Няма"
+              }
+            }
+          },
+          "link": {
+            "label": "Връзка"
+          },
+          "product": {
+            "label": "Продукт"
+          },
+          "product_on_hover": {
+            "label": "!!!>>> Failed to fetch <<<!!!"
+          }
+        },
+        "presets": {
+          "name": "Медийна галерия"
+        }
+      }
+    },
+    "media-grid": {
+      "name": "Медийна мрежа",
+      "settings": {
+        "fullwidth": {
+          "label": "Активиране на пълна ширина"
+        },
+        "grid_gap": {
+          "label": "Пропаст в мрежата"
+        },
+        "desktop_height": {
+          "label": "Височина на работния плот",
+          "options": {
+            "300": {
+              "label": "Малък"
+            },
+            "400": {
+              "label": "Среден"
+            },
+            "500": {
+              "label": "Голям"
+            }
+          }
+        },
+        "mobile_height": {
+          "label": "Мобилна височина",
+          "options": {
+            "250": {
+              "label": "Малък"
+            },
+            "350": {
+              "label": "Среден"
+            },
+            "450": {
+              "label": "Голям"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "grid": {
+          "name": "Мрежа",
+          "settings": {
+            "video_on_hover": {
+              "label": "Видео на Hover"
+            },
+            "column": {
+              "label": "Колона"
+            },
+            "row": {
+              "label": "Ред"
+            },
+            "row_mobile": {
+              "label": "Ред (мобилен)"
+            },
+            "column_mobile": {
+              "label": "Колона (мобилна)"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Медийна мрежа"
+      }
+    },
+    "multicollection": {
+      "name": "Мултиколекция",
+      "blocks": {
+        "collection": {
+          "name": "Колекция",
+          "settings": {
+            "collection": {
+              "label": "Колекция"
+            },
+            "collection_heading": {
+              "label": "Заглавие"
+            },
+            "products_to_show": {
+              "label": "Продукт за показване"
+            },
+            "image_size": {
+              "label": "Размер на изображението на мрежата",
+              "options": {
+                "adapt": {
+                  "label": "Адаптиране"
+                },
+                "landscape": {
+                  "label": "Пейзаж"
+                },
+                "portrait": {
+                  "label": "Портрет"
+                },
+                "square": {
+                  "label": "Квадрат"
+                }
+              }
+            },
+            "collection_title": {
+              "label": "Съдържание на колекцията"
+            },
+            "custom_image": {
+              "label": "Персонализирано изображение"
+            },
+            "btn_text": {
+              "label": "Текст"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Мултиколекция"
+      }
+    },
+    "multiimage-with-text": {
+      "name": "Multiimage с текст",
+      "settings": {
+        "image_first": {
+          "label": "Първо изображение"
+        },
+        "image_second": {
+          "label": "Второ изображение"
+        }
+      },
+      "blocks": {
+        "heading": {
+          "name": "Заглавие"
+        },
+        "description": {
+          "name": "Описание"
+        },
+        "button": {
+          "name": "Бутон"
+        }
+      },
+      "presets": {
+        "name": "Multiimage с текст"
+      }
+    },
+    "multicolumn": {
+      "name": "Мултиколона",
+      "settings": {
+        "title": {
+          "label": "Заглавие",
+          "default": "Мултиколона"
+        },
+        "image_width": {
+          "label": "Ширина на изображението",
+          "options__1": {
+            "label": "Една трета ширина на колоната"
+          },
+          "options__2": {
+            "label": "Половин ширина на колоната"
+          },
+          "options__3": {
+            "label": "Пълна ширина на колоната"
+          }
+        },
+        "image_ratio": {
+          "label": "Съотношение на изображението",
+          "options__1": {
+            "label": "Адаптирайте се към изображението"
+          },
+          "options__2": {
+            "label": "Портрет"
+          },
+          "options__3": {
+            "label": "Квадрат"
+          },
+          "options__4": {
+            "label": "Кръг"
+          }
+        },
+        "columns_desktop": {
+          "label": "Брой колони на работния плот"
+        },
+        "column_alignment": {
+          "label": "Подравняване на колоната",
+          "options__1": {
+            "label": "Вляво"
+          },
+          "options__2": {
+            "label": "Център"
+          }
+        },
+        "background_style": {
+          "label": "Вторичен фон",
+          "options__1": {
+            "label": "Няма"
+          },
+          "options__2": {
+            "label": "Показване като фон на колоната"
+          }
+        },
+        "button_label": {
+          "label": "Етикет на бутона",
+          "default": "Етикет на бутона"
+        },
+        "button_link": {
+          "label": "Връзка на бутона"
+        },
+        "header_mobile": {
+          "content": "Мобилно оформление"
+        },
+        "columns_mobile": {
+          "label": "Брой колони на мобилни устройства",
+          "options__1": {
+            "label": "1 колона"
+          },
+          "options__2": {
+            "label": "2 колони"
+          }
+        },
+        "swipe_on_mobile": {
+          "label": "Активирайте пръст на мобилен телефон"
+        }
+      },
+      "blocks": {
+        "column": {
+          "name": "Колона",
+          "settings": {
+            "image": {
+              "label": "Изображение"
+            },
+            "title": {
+              "label": "Заглавие",
+              "default": "Колона"
+            },
+            "text": {
+              "label": "Описание",
+              "default": "<p>Сдвоете текст с изображение, за да се съсредоточите върху избрания от вас продукт, колекция или публикация в блога. </p>"
+            },
+            "link_label": {
+              "label": "Етикет на връзката"
+            },
+            "link": {
+              "label": "Връзка"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Мултиколона"
+      }
+    },
+    "newsletter_popup": {
+      "name": "Бюлетин",
+      "settings": {
+        "newsletter_enable": {
+          "label": "Активирайте изскачащото меню"
+        },
+        "enable_social_media": {
+          "label": "Активирайте социалните медии"
+        },
+        "newsletter_img": {
+          "label": "Изображение"
+        },
+        "newsletter_subheading": {
+          "label": "Подзаглавие"
+        },
+        "newsletter_heading": {
+          "label": "Заглавие"
+        },
+        "newsletter_content": {
+          "label": "Описание"
+        },
+        "popup_cookie_set": {
+          "label": "Честота",
+          "info": "Брой дни преди уволненото изскачащо меню да се появи отново. "
+        }
+      }
+    },
+    "newsletter": {
+      "name": "Бюлетин",
+      "settings": {
+        "content_position": {
+          "label": "Позиция на съдържанието",
+          "options": {
+            "left": {
+              "label": "Вляво"
+            },
+            "center": {
+              "label": "Център"
+            },
+            "right": {
+              "label": "Точно"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Бюлетин"
+      }
+    },
+    "parallax": {
+      "name": "Паралакс",
+      "settings": {
+        "enable_marquee": {
+          "label": "Активирайте заглавието Marquee"
+        },
+        "direction": {
+          "label": "Посока",
+          "options": {
+            "right": {
+              "label": "Точно"
+            },
+            "left": {
+              "label": "Вляво"
+            }
+          }
+        },
+        "scrolling_speed": {
+          "label": "Скорост на превъртане"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "Изображение"
+        },
+        "heading": {
+          "name": "Заглавие"
+        },
+        "description": {
+          "name": "Описание"
+        },
+        "button": {
+          "name": "Бутон"
+        }
+      },
+      "presets": {
+        "name": "Паралакс"
+      }
+    },
+    "product_bundle": {
+      "name": "Пакет от продукти",
+      "settings": {
+        "header_bundle": {
+          "content": "Пакет"
+        },
+        "product_list": {
+          "label": "Списък на продуктовите пакети"
+        },
+        "total_bundle": {
+          "label": "Брой на снопа"
+        },
+        "image_size": {
+          "label": "Размер на изображението на мрежата",
+          "options": {
+            "adapt": {
+              "label": "Адаптиране"
+            },
+            "landscape": {
+              "label": "Пейзаж"
+            },
+            "portrait": {
+              "label": "Портрет"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        },
+        "bundle_text": {
+          "label": "Текст на пакет"
+        }
+      },
+      "presets": {
+        "name": "Пакет от продукти"
+      }
+    },
+    "quick_view": {
+      "name": "Бърз изглед",
+      "blocks": {
+        "title": {
+          "name": "Заглавие",
+          "settings": {
+            "title_size": {
+              "label": "Размер на заглавието"
+            }
+          }
+        },
+        "sku": {
+          "name": "Ску"
+        },
+        "text": {
+          "name": "Текст"
+        },
+        "price": {
+          "name": "Цена",
+          "settings": {
+            "hide_shipping_content": {
+              "label": "Скриване на съдържанието за доставка"
+            }
+          }
+        },
+        "variant": {
+          "name": "Вариант",
+          "settings": {
+            "enable_size_chart": {
+              "label": "Активирайте диаграмата на размера"
+            },
+            "size_chart_text": {
+              "label": "Размерна диаграма"
+            },
+            "size_chart": {
+              "label": "Изберете диаграма на размера"
+            }
+          }
+        },
+        "quantity": {
+          "name": "Количество"
+        },
+        "buy_buttons": {
+          "name": "Купете бутони",
+          "settings": {
+            "dynamic_checkout_btn": {
+              "label": "Показване на динамични бутони за каси",
+              "info": "Използвайки методите на плащане, налични във вашия магазин, клиентите виждат предпочитаната от тях опция, като PayPal или Apple Pay. "
+            },
+            "show_recipient_form": {
+              "label": "Показване на информационната форма на получател за карти за подаръци",
+              "info": "Позволява на купувачите да изпращат карти за подаръци на планирана дата заедно с лично съобщение. "
+            }
+          }
+        }
+      }
+    },
+    "recently_view_products": {
+      "name": "Наскоро прегледайте продуктите",
+      "settings": {
+        "image_size": {
+          "label": "Размер на изображението на мрежата",
+          "options": {
+            "adapt": {
+              "label": "Адаптиране"
+            },
+            "landscape": {
+              "label": "Пейзаж"
+            },
+            "portrait": {
+              "label": "Портрет"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        },
+        "products_count": {
+          "label": "Броят на продуктите"
+        },
+        "mobile_item_per_row": {
+          "label": "Продуктов артикул на ред (мобилен)",
+          "options": {
+            "1": {
+              "label": "1 колона"
+            },
+            "2": {
+              "label": "2 колона"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Наскоро прегледайте продуктите"
+      }
+    },
+    "recommended-products": {
+      "name": "Препоръчителни продукти",
+      "settings": {
+        "image_size": {
+          "label": "Размер на изображението на мрежата",
+          "options": {
+            "adapt": {
+              "label": "Адаптиране"
+            },
+            "landscape": {
+              "label": "Пейзаж"
+            },
+            "portrait": {
+              "label": "Портрет"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        },
+        "products_count": {
+          "label": "Броят на продуктите"
+        },
+        "column_per_row": {
+          "label": "Колона на продукта"
+        },
+        "mobile_item_per_row": {
+          "label": "Продуктов артикул на ред (мобилен)",
+          "options": {
+            "1": {
+              "label": "1 колона"
+            },
+            "2": {
+              "label": "2 колона"
+            }
+          }
+        }
+      }
+    },
+    "related_post": {
+      "name": "Свързана публикация",
+      "settings": {
+        "post_limit": {
+          "label": "След лимит"
+        },
+        "show_date": {
+          "label": "Дата на показване"
+        },
+        "show_comment": {
+          "label": "Покажете коментар"
+        },
+        "show_author": {
+          "label": "Автор на шоуто"
+        },
+        "show_excerpt": {
+          "label": "Покажи откъс"
+        }
+      }
+    },
+    "rich-text": {
+      "name": "Богат текст",
+      "settings": {
+        "option_style": {
+          "label": "Стил",
+          "options": {
+            "none": {
+              "label": "Няма"
+            },
+            "collage": {
+              "label": "Колаж"
+            }
+          }
+        },
+        "content_width": {
+          "label": "Ширина на съдържанието",
+          "options": {
+            "small": {
+              "label": "Малък"
+            },
+            "medium": {
+              "label": "Среден"
+            },
+            "large": {
+              "label": "Голям"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "heading": {
+          "name": "Заглавие"
+        },
+        "description": {
+          "name": "Описание"
+        },
+        "button": {
+          "name": "Бутон"
+        }
+      },
+      "presets": {
+        "name": "Богат текст"
+      }
+    },
+    "scrolling_content": {
+      "name": "Превъртане на съдържание",
+      "setting": {
+        "mobile_item_per_row": {
+          "label": "Елементи на ред (мобилен)",
+          "options": {
+            "1_column": {
+              "label": "1 колона"
+            },
+            "2_column": {
+              "label": "2 колона"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "collections": {
+          "name": "Колекции"
+        },
+        "text": {
+          "name": "Медийно съдържание"
+        },
+        "products": {
+          "name": "Продукти"
+        }
+      },
+      "presets": {
+        "name": "Превъртане на съдържание"
+      }
+    },
+    "shop_the_look": {
+      "name": "Пазарувайте външния вид",
+      "blocks": {
+        "hotspot": {
+          "name": "Място",
+          "settings": {
+            "image": {
+              "label": "Изображение"
+            },
+            "header_spot_1": {
+              "content": "Място 1"
+            },
+            "header_spot_2": {
+              "content": "Място 2"
+            },
+            "header_spot_3": {
+              "content": "Място 3"
+            },
+            "header_spot_4": {
+              "content": "Място 4"
+            },
+            "spot": {
+              "label": "Място"
+            },
+            "product": {
+              "label": "Продукт"
+            },
+            "horizontal": {
+              "label": "Horizontl"
+            },
+            "vertical": {
+              "label": "Вертикална"
+            },
+            "spot_color": {
+              "label": "Място"
+            },
+            "spot_color_background": {
+              "label": "Петна фон"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Пазарувайте външния вид"
+      }
+    },
+    "showcase_collection_list": {
+      "name": "Списък на колекцията на витрини",
+      "blocks": {
+        "collection": {
+          "name": "Колекция"
+        }
+      },
+      "presets": {
+        "name": "Списък на колекцията на витрини"
+      }
+    },
+    "slideshow": {
+      "name": "Слайдшоу",
+      "settings": {
+        "slide_style": {
+          "label": "Слайдшоу стил",
+          "options": {
+            "single": {
+              "label": "Единичен слайд"
+            },
+            "double": {
+              "label": "Двоен слайд"
+            }
+          }
+        },
+        "image_height": {
+          "label": "Височина на плъзгането"
+        },
+        "mobile_image_height": {
+          "label": "Височина на слайда (мобилен)"
+        },
+        "autoplay": {
+          "label": "Активирайте автоматично игра"
+        },
+        "autoplay_interval": {
+          "label": "Време между слайдовете"
+        },
+        "slide_gap": {
+          "label": "Слайд пропаст"
+        },
+        "desktop_alignment": {
+          "label": "Подравняване на работния плот",
+          "options": {
+            "start": {
+              "label": "Отгоре"
+            },
+            "center": {
+              "label": "Средна"
+            },
+            "end": {
+              "label": "Отдолу"
+            }
+          }
+        },
+        "mobile_alignment": {
+          "label": "Мобилно подравняване"
+        },
+        "icon_color": {
+          "label": "Икона"
+        },
+        "icon_background": {
+          "label": "Предистория"
+        },
+        "header_pagination": {
+          "content": "Pagination"
+        },
+        "header_arrow_icon": {
+          "content": "Цвят на иконата на стрелка"
+        }
+      },
+      "blocks": {
+        "image_slide": {
+          "name": "Слайд на изображението",
+          "settings": {
+            "collection_list_enable": {
+              "label": "Списък на колекцията на шоуто"
+            },
+            "collection_list": {
+              "label": "Колекция"
+            },
+            "header_button_1": {
+              "content": "Бутон 1"
+            },
+            "header_button_2": {
+              "content": "Бутон 2"
+            }
+          }
+        },
+        "video_slide": {
+          "name": "Видео слайд",
+          "settings": {
+            "slide_video": {
+              "label": "HOPIFY HOSTED VIDEO"
+            },
+            "collection_list_enable": {
+              "label": "Списък на колекцията на шоуто"
+            },
+            "collection_list": {
+              "label": "Колекция"
+            },
+            "header_button_1": {
+              "content": "Бутон 1"
+            },
+            "header_button_2": {
+              "content": "Бутон 2"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Слайдшоу"
+      }
+    },
+    "store-locator": {
+      "name": "Съхранявайте локатор",
+      "settings": {
+        "style_option": {
+          "label": "Стил",
+          "options": {
+            "left": {
+              "label": "Вляво"
+            },
+            "top": {
+              "label": "Отгоре"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "store": {
+          "name": "Магазин",
+          "settings": {
+            "store_image": {
+              "label": "Съхранявайте изображение"
+            },
+            "store_name": {
+              "label": "Заглавие"
+            },
+            "location_label": {
+              "label": "Етикет на локация"
+            },
+            "location": {
+              "label": "Подробности за местоположението"
+            },
+            "phone_label": {
+              "label": "Телефон етикет"
+            },
+            "phone": {
+              "label": "Телефон"
+            },
+            "time_label": {
+              "label": "Етикет на времето"
+            },
+            "time_date": {
+              "label": "Време"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Съхранявайте локатор"
+      }
+    },
+    "testimonial": {
+      "name": "Свидетелство",
+      "settings": {
+        "content_alignment": {
+          "label": "Блок подравняване на съдържанието"
+        },
+        "blocks": {
+          "quote": {
+            "name": "Цитат",
+            "settings": {
+              "header_author": {
+                "content": "Автор"
+              },
+              "author": {
+                "label": "Име"
+              }
+            }
+          }
+        },
+        "presets": {
+          "name": "Свидетелство"
+        }
+      }
+    },
+    "video": {
+      "name": "Видео",
+      "settings": {
+        "image": {
+          "label": "Изображение за визуализация на видео"
+        },
+        "video_url": {
+          "label": "Vidoe URL"
+        },
+        "video": {
+          "label": "Видео"
+        },
+        "animate_content": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "video_type": {
+          "label": "Тип",
+          "options": {
+            "onclick": {
+              "label": "Onclick"
+            },
+            "autoplay": {
+              "label": "AutoPlay"
+            }
+          }
+        },
+        "video_heading": {
+          "label": "Заглавие на видео"
+        }
+      },
+      "presets": {
+        "name": "Видео"
+      }
+    }
+  },
+  "settings_schema": {
+    "logo": {
+      "name": "Лого",
+      "settings": {
+        "logo_image": {
+          "label": "Лого"
+        },
+        "white_image": {
+          "label": "Бяло лого",
+          "info": "Се появява на прозрачната заглавка."
+        },
+        "logo_width": {
+          "label": "Ширина на логото на работния плот"
+        },
+        "favicon": {
+          "label": "Favicon Image",
+          "info": "Ще бъде намален до 32 x 32px"
+        }
+      }
+    },
+    "colors": {
+      "name": "Цветове",
+      "settings": {
+        "background": {
+          "label": "Предистория"
+        },
+        "alternate_background": {
+          "label": "Преден план"
+        },
+        "heading": {
+          "label": "Заглавие"
+        },
+        "text": {
+          "label": "Текст"
+        },
+        "link_text": {
+          "label": "Връзка"
+        },
+        "border": {
+          "label": "Граница"
+        },
+        "button_bg": {
+          "label": "Фон на бутона"
+        },
+        "button_text": {
+          "label": "Текст на бутона"
+        },
+        "button_border": {
+          "label": "Граница на бутона"
+        },
+        "secondary_button_bg": {
+          "label": "Вторичен фона на бутона"
+        },
+        "secondary_button_text": {
+          "label": "Текст на вторичен бутон"
+        },
+        "secondary_button_border": {
+          "label": "Граница на вторичния бутон"
+        },
+        "button_background": {
+          "label": "Фон на солидни бутони"
+        },
+        "input_bg": {
+          "label": "Фон за въвеждане"
+        },
+        "input_text": {
+          "label": "Въвеждащ текст"
+        },
+        "input_border": {
+          "label": "Входна граница"
+        },
+        "arrow_background": {
+          "label": "Фон за стрелка"
+        },
+        "arrow_color": {
+          "label": "Стрелка"
+        }
+      }
+    },
+    "global": {
+      "settings": {
+        "header_global": {
+          "content": "Глобален"
+        },
+        "success_background": {
+          "label": "Предистория на успеха"
+        },
+        "success_text": {
+          "label": "Текст на успеха"
+        },
+        "error_background": {
+          "label": "Фон за грешка"
+        },
+        "error_text": {
+          "label": "Текст на грешка"
+        },
+        "header_content": {
+          "content": "Заглавка"
+        },
+        "header_background": {
+          "label": "Предистория"
+        },
+        "header_text": {
+          "label": "Текст"
+        },
+        "header_text_hover": {
+          "label": "Текстов ховър"
+        },
+        "transparent_header_text": {
+          "label": "Прозрачен текст на заглавката"
+        },
+        "submenu_background": {
+          "label": "Подменю фон"
+        },
+        "submenu_text": {
+          "label": "Текст на подменю"
+        },
+        "submenu_text_hover": {
+          "label": "Text Text Hover"
+        },
+        "footer_content": {
+          "content": "Долен колонтитул"
+        },
+        "footer_background": {
+          "label": "Предистория"
+        },
+        "footer_text": {
+          "label": "Текст"
+        },
+        "hover_footer_text": {
+          "label": "Върчи текст"
+        },
+        "footer_border_color": {
+          "label": "Цвят на границата"
+        }
+      }
+    },
+    "typography": {
+      "name": "Типография",
+      "settings": {
+        "type_header_font": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+          "info": "Изборът на различен шрифт може да повлияе на скоростта на вашия магазин. "
+        },
+        "heading_letter_type": {
+          "label": "Главни букви"
+        },
+        "heading_scale": {
+          "label": "Основен размер"
+        },
+        "type_heading_letter_spacing": {
+          "label": "Разстояние между буквите"
+        },
+        "header__1": {
+          "content": "Заглавия"
+        },
+        "header__2": {
+          "content": "Тяло"
+        },
+        "type_body_font": {
+          "label": "Шрифт",
+          "info": "Изборът на различен шрифт може да повлияе на скоростта на вашия магазин. "
+        },
+        "body_scale": {
+          "label": "Основен размер"
+        },
+        "type_body_letter_spacing": {
+          "label": "Разстояние между буквите"
+        },
+        "accent_text": {
+          "content": "Текст на акцент"
+        },
+        "type_accent_letter_spacing": {
+          "label": "Разстояние между буквите"
+        },
+        "navigation": {
+          "content": "Навигация"
+        },
+        "navigation_font": {
+          "label": "Шрифт",
+          "options": {
+            "heading": {
+              "label": "Заглавие"
+            },
+            "body": {
+              "label": "Тяло"
+            },
+            "accent": {
+              "label": "Акцент"
+            }
+          }
+        },
+        "font_weight": {
+          "label": "Тегло",
+          "options": {
+            "normal": {
+              "label": "Нормално"
+            },
+            "bold": {
+              "label": "Смел"
+            }
+          }
+        },
+        "header_button": {
+          "content": "Бутон"
+        },
+        "button_letter_type": {
+          "label": "Главни букви"
+        },
+        "header_lables": {
+          "content": "Етикети"
+        },
+        "paragraph": {
+          "content": "Включва подсказки, филтрирани заглавия, варианти и етикети на форми"
+        },
+        "label_letter_type": {
+          "label": "Главни букви"
+        }
+      }
+    },
+    "layout": {
+      "name": "Оформление",
+      "settings": {
+        "page_width": {
+          "label": "Ширина на страницата"
+        },
+        "fullwidth": {
+          "label": "Пълна ширина"
+        },
+        "header_styling": {
+          "content": "Стилизиране"
+        },
+        "button_style": {
+          "label": "Бутони",
+          "options": {
+            "round": {
+              "label": "Кръг"
+            },
+            "slightly_round": {
+              "label": "Леко кръгло"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        },
+        "input_style": {
+          "label": "Входове",
+          "options": {
+            "round": {
+              "label": "Кръг"
+            },
+            "slightly_round": {
+              "label": "Леко кръгло"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        },
+        "product_card": {
+          "label": "Продуктови карти",
+          "options": {
+            "round": {
+              "label": "Кръг"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        },
+        "blocks_style": {
+          "label": "Блокове",
+          "options": {
+            "round": {
+              "label": "Кръг"
+            },
+            "square": {
+              "label": "Квадрат"
+            }
+          }
+        }
+      }
+    },
+    "product": {
+      "name": "Продукт",
+      "settings": {
+        "show_save_amount": {
+          "label": "Покажете спестяване на сума"
+        },
+        "off_type": {
+          "label": "Запазване на типа дисплей",
+          "options": {
+            "amount": {
+              "label": "Сума"
+            },
+            "percentage": {
+              "label": "Процент"
+            }
+          }
+        },
+        "save_amount_text": {
+          "label": "Запазете текст на сумата"
+        },
+        "enable_preorder": {
+          "label": "Активиране на предварителна поръчка"
+        }
+      }
+    },
+    "product_cards": {
+      "name": "Продуктови карти",
+      "settings": {
+        "card_style": {
+          "label": "Стил",
+          "options": {
+            "standard": {
+              "label": "Стандарт"
+            },
+            "card": {
+              "label": "Карта"
+            }
+          }
+        },
+        "text_alignment": {
+          "label": "Подравняване на текст"
+        },
+        "second_image_hove": {
+          "label": "Показване на второ изображение на Hover"
+        },
+        "show_vendor_card": {
+          "label": "Покажи доставчик"
+        },
+        "enable_card_border": {
+          "label": "Активирайте границата на картата"
+        },
+        "mobile_layout": {
+          "content": "Мобилно оформление"
+        },
+        "mobile_hide_quick_button": {
+          "label": "Скрийте бързия бутон на мобилен телефон"
+        },
+        "mobile_hide_varaint": {
+          "label": "Скриване на вариант на мобилни устройства"
+        },
+        "mobile_hide_switch_varaint": {
+          "label": "Скриване на цветовете Swatches на мобилни устройства"
+        },
+        "mobile_show_vendor_card": {
+          "label": "Скриване на доставчик на мобилни устройства"
+        }
+      }
+    },
+    "swatches": {
+      "name": "Swatches",
+      "settings": {
+        "swatches_style": {
+          "label": "Стил на суичове",
+          "options": {
+            "square": {
+              "label": "Квадрат"
+            },
+            "circle": {
+              "label": "Кръг"
+            }
+          }
+        },
+        "colorname": {
+          "label": "Име на цветовите опции",
+          "info": "Името на опцията, което съдържа цветовете. "
+        },
+        "swatchs_custom_value": {
+          "label": "Персонализирани цветни кодове/изображения",
+          "info": "Въведете всеки мост в нов ред. "
+        },
+        "sizename": {
+          "label": "Име на опции за размер",
+          "info": "Името на опцията, което съдържа размера. "
+        }
+      }
+    },
+    "badges": {
+      "name": "Значки",
+      "settings": {
+        "header_sale_badge": {
+          "content": "Значка за продажба"
+        },
+        "sale_badge_bg": {
+          "label": "Цвят на фона"
+        },
+        "sale_badge_text": {
+          "label": "Цвят на текст"
+        },
+        "custom_bdge": {
+          "content": "Персонализирана значка"
+        },
+        "new_badge_bg": {
+          "label": "Цвят на фона"
+        },
+        "new_badge_text": {
+          "label": "Цвят на текст"
+        },
+        "sold_out_badge": {
+          "content": "Разпродадена значка"
+        },
+        "sold_badge_bg": {
+          "label": "Цвят на фона"
+        },
+        "sold_badge_text": {
+          "label": "Цвят на текст"
+        },
+        "preorder_badge": {
+          "content": "Предварителна значка"
+        },
+        "preorder_badge_bg": {
+          "label": "Цвят на фона"
+        },
+        "preorder_badge_text": {
+          "label": "Цвят на текст"
+        },
+        "show_badge": {
+          "content": "Покажете значка"
+        },
+        "sale_badge": {
+          "label": "Покажете значка за продажба"
+        },
+        "soldout_badge": {
+          "label": "Значка за продажба"
+        },
+        "preorder_badge_1": {
+          "label": "Предварителна значка"
+        },
+        "header_custom": {
+          "content": "Персонализиран маркер"
+        },
+        "custom_tag": {
+          "label": "Етикети на продукта"
+        },
+        "custom_tag_badge": {
+          "label": "Текст на значка"
+        }
+      }
+    },
+    "search_input": {
+      "name": "Поведение на търсене",
+      "settings": {
+        "header": {
+          "content": "Търсене"
+        },
+        "predictive_search_enabled": {
+          "label": "Активирайте прогнозното търсене"
+        },
+        "enable_queries": {
+          "label": "Активиране на заявки"
+        },
+        "enable_article": {
+          "label": "Активиране на статии"
+        },
+        "enable_collections": {
+          "label": "Активиране на колекции"
+        },
+        "enable_pages": {
+          "label": "Активиране на страници"
+        },
+        "search_suggestions": {
+          "content": "Предложения за търсене"
+        },
+        "suggestions_list": {
+          "label": "Списък на Suhhestion",
+          "info": "Използвайте \",\" за множество заявки."
+        },
+        "enable_suggestions": {
+          "label": "Активиране на предложения"
+        },
+        "suggestions_heading": {
+          "label": "Заглавие"
+        },
+        "header_collection_suggestions": {
+          "content": "Предложения за събиране"
+        },
+        "enable_collection_suggestions": {
+          "label": "Активиране на предложение за събиране"
+        },
+        "collection_suggestions_heading": {
+          "label": "Заглавие"
+        },
+        "collection_suggestions": {
+          "label": "Колекция"
+        },
+        "header_product_suggestions": {
+          "content": "Предложения на продукта"
+        },
+        "enable_product_suggestions": {
+          "label": "Активирайте предложенията на продукта"
+        },
+        "product_suggestions_heading": {
+          "label": "Заглавие"
+        },
+        "product_suggestions": {
+          "label": "Продукти"
+        }
+      }
+    },
+    "cart_drawer": {
+      "name": "Чекмедже на количката",
+      "settings": {
+        "enable_cart_drawer": {
+          "label": "Активирайте чекмеджето на количката"
+        },
+        "empty_drawer_content": {
+          "content": "Празно съдържание на количката"
+        },
+        "empty_text": {
+          "label": "Текст"
+        },
+        "collection_list": {
+          "label": "Списък на колекцията"
+        },
+        "header_upsell": {
+          "content": "Продукти на Upsell"
+        },
+        "enable_upsell_product": {
+          "label": "Активирайте продукта на UpSell"
+        },
+        "upsell_product_heading": {
+          "label": "Заглавие"
+        },
+        "upsell_product": {
+          "label": "Продукти"
+        }
+      }
+    },
+    "drawer_overlay": {
+      "name": "Чекмедже",
+      "settings": {
+        "background_color_overlay": {
+          "label": "Цвят на фона на наслагване"
+        },
+        "overlay_color_opacity": {
+          "label": "Наслагване на непрозрачност"
+        }
+      }
+    },
+    "gift_card": {
+      "name": "Карта за подарък",
+      "settings": {
+        "gift_card_logo": {
+          "label": "Изображение на логото"
+        },
+        "gift_logo_width": {
+          "label": "Ширина на логото"
+        }
+      }
+    },
+    "login_drawer": {
+      "name": "Вход/чекмедже за регистриране",
+      "settings": {
+        "drawer_login": {
+          "label": "Активирайте чекмеджето на акаунта"
+        }
+      }
+    },
+    "social-media": {
+      "name": "Социални медии",
+      "settings": {
+        "header": {
+          "content": "Социални сметки"
+        },
+        "social_twitter_link": {
+          "label": "X / Twitter",
+          "info": "https://x.com/shopify"
+        },
+        "social_facebook_link": {
+          "label": "Facebook",
+          "info": "https://facebook.com/shopify"
+        },
+        "social_pinterest_link": {
+          "label": "Pinterest",
+          "info": "https://pinterest.com/shopify"
+        },
+        "social_instagram_link": {
+          "label": "Instagram",
+          "info": "http://instagram.com/shopify"
+        },
+        "social_tiktok_link": {
+          "label": "Tiktok",
+          "info": "https://tiktok.com/@shopify"
+        },
+        "social_tumblr_link": {
+          "label": "Tumblr",
+          "info": "https://shopify.tumblr.com"
+        },
+        "social_snapchat_link": {
+          "label": "Snapchat",
+          "info": "https://www.snapchat.com/add/shopify"
+        },
+        "social_youtube_link": {
+          "label": "YouTube",
+          "info": "https://www.youtube.com/shopify"
+        },
+        "social_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https://vimeo.com/shopify"
+        }
+      }
+    },
+    "cart": {
+      "name": "Количка",
+      "settings": {
+        "show_cart_note": {
+          "label": "Активиране на бележка за количка"
+        },
+        "shipping_estimates": {
+          "label": "Активиране на оценката на доставката"
+        },
+        "show_shipping": {
+          "label": "Активирайте бар за доставка",
+          "info": "Забележка: Тази функция работи само с метод за доставка. "
+        },
+        "shipping_rate": {
+          "label": "Минимална цена на доставка",
+          "info": "Напишете номер, без букви или специални знаци."
+        },
+        "shipping_text": {
+          "label": "Съобщение",
+          "info": "Използване || Цена || "
+        },
+        "shipping_success_text": {
+          "label": "Съобщение за успех"
+        },
+        "enable_gift_wrap": {
+          "label": "Активирайте опаковки за подаръци"
+        },
+        "gift_wrap_product": {
+          "label": "Продукт"
+        },
+        "gift_wrap_text": {
+          "label": "Текст"
+        }
+      }
+    },
+    "scroll_to_top": {
+      "name": "Превъртете отгоре",
+      "settings": {
+        "enable_back_to_top": {
+          "label": "Активирайте превъртането догоре"
+        },
+        "back_to_top_btn_position": {
+          "label": "Хоризонтално положение",
+          "options": {
+            "left": {
+              "label": "Вляво"
+            },
+            "center": {
+              "label": "Център"
+            },
+            "right": {
+              "label": "Точно"
+            }
+          }
+        },
+        "back_to_top_bottom_position": {
+          "label": "Вертикално положение"
+        },
+        "header_color": {
+          "content": "Цвят"
+        },
+        "btp_icon": {
+          "label": "Икони"
+        },
+        "btp_background": {
+          "label": "Предистория"
+        }
+      }
+    }
+  }
+}

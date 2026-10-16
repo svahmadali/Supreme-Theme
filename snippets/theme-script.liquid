@@ -1,0 +1,85 @@
+{{ 'swiper.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'parallax-min.css' | asset_url | stylesheet_tag: preload: true }}
+
+{{ 'theme-base.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'theme-main.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'drawer.css' | asset_url | stylesheet_tag: preload: true }}
+
+{{ 'swiper.css' | asset_url | stylesheet_tag }}
+{{ 'parallax-min.css' | asset_url | stylesheet_tag }}
+{{ 'theme-base.css' | asset_url | stylesheet_tag }}
+{{ 'theme-main.css' | asset_url | stylesheet_tag }}
+{{ 'drawer.css' | asset_url | stylesheet_tag }}
+<style>
+   {% assign swatchescolor = settings.swatchs_custom_value | newline_to_br %}
+  {% assign swatchescolor = swatchescolor | split: '<br />' %}
+  {% for color in swatchescolor %}
+    {% assign colorvalue = color | strip | split: ':' %}
+    [data-color="{{- colorvalue.first -}}"]{
+      {%- if colorvalue.last contains '#' -%}
+        --background-color-swatch: {{- colorvalue.last -}}!important;
+      {%- else -%}
+         background-image:url({{ colorvalue.last }}) !important;
+      {%- endif -%}
+    }
+  {% endfor %}
+</style>
+<script>
+  window.shopUrl = '{{ request.origin }}';
+  window.routes = {
+    cart_add_url: '{{ routes.cart_add_url }}',
+    cart_change_url: '{{ routes.cart_change_url }}',
+    cart_update_url: '{{ routes.cart_update_url }}',
+    cart_url: '{{ routes.cart_url }}',
+    predictive_search_url: '{{ routes.predictive_search_url }}',
+  };
+
+window.cartStrings = {
+  error: `{{'sections.cart.cart_error' | t }}`,
+  quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`,
+    empty: `{{'sections.cart.empty' | t }}`,
+    shop_now: `{{'sections.cart.shop_now' | t }}`,
+}
+  window.variantStrings = {
+    addToCart: `{{  'products.product.add_to_cart' | t }}`,
+    preOrder: `{{  'products.product.preorder' | t }}`,
+    soldOut: `{{  'products.product.soldout' | t }}`,
+    unavailable: `{{'products.product.unavailable' | t }}`,
+    unavailable_with_option: `{{'products.product.value_unavailable' | t }}`
+}
+
+const animationCheck = `{{ settings.animation_enable }}`;
+const googleMapApiKey = `{{ settings.google_map_api }}`;
+const mapID = `{{ settings.map_id }}`;
+const currencyRate = `{{settings.shipping_rate}}`;
+const shippingmessage = `{{ settings.shipping_text }}`;
+const shippingsuccessmessage = `{{ settings.shipping_success_text }}`;
+
+const shippingStatus =`{{ settings.show_shipping }}`
+const ON_CHANGE_DEBOUNCE_TIMER = 300;
+const PUB_SUB_EVENTS = {
+  cartUpdate: 'cart-update',
+  quantityUpdate: 'quantity-update',
+  variantChange: 'variant-change',
+  cartError: 'cart-error'
+};
+  const storeLoader='<div class="loader-state"><svg height="18" width="18" class="loader-icon"><circle r="7" cx="9" cy="9"></circle><circle stroke-dasharray="87.96459430051421 87.96459430051421" r="7" cx="9" cy="9"></circle></svg></div>';
+</script>
+<script type="text/javascript" src="{{ 'jquery.min.js' | asset_url }}" defer="defer"></script>
+<script type="text/javascript" src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'header.js' | asset_url }}" defer></script>
+<script src="{{ 'vimeo-player.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
+<script type="text/javascript" src="{{ 'product-addtocart-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'pickup-availability.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+<script type="text/javascript" src="{{ 'search.js' | asset_url }}" defer="defer"></script>
+<script type="text/javascript" src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
+<script type="text/javascript" src="{{ 'cart.js' | asset_url }}" defer></script>
+
+<script type="text/javascript" src="{{ 'ScrollTrigger.min.js' | asset_url }}" defer="defer"></script>
+
+<script src="{{ 'parallax-min.js' | asset_url }}" defer></script>
+<script type="module" src="{{ 'photoswipe.js' | asset_url }}" async></script>
+<script type="module" src="{{ 'photoswipe-lightbox.js' | asset_url }}" async></script>
+

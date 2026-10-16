@@ -1,0 +1,353 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+<div class="customer login section-gap color-{{ section.settings.color_scheme }}">
+  <div class="customer_wrapper   {% if section.settings.heading_side != blank or section.settings.content_side != blank  %}with-content{% endif %}">
+    <div id="recover">
+      <div class="customer-head text-align-center">
+        <h4>{{ 'customer.recover_password.title' | t }}</h4>
+        <p class="text-md">{{ 'customer.recover_password.enter_email' | t }}</p>
+      </div>
+      {%- form 'recover_customer_password', class: 'account-form flex column align-items-start' -%}
+        {%- if form.errors -%}
+          <div id="recover-email-error" role="alert" class="alert alert-warning">
+            {{ form.errors.messages.form }}
+          </div>
+        {%- endif -%}
+        {% assign recover_success = form.posted_successfully? %}
+        <div class="form-control">
+          <label for="RecoverEmail" class="hidden">{{ 'customer.login_page.email' | t }}</label>
+          <input
+            type="email"
+            name="email"
+            id="RecoverEmail"
+            autocomplete="email"
+            autocapitalize="off"
+            {% if form.errors %}
+              aria-invalid="true"
+              aria-describedby="RecoverEmail-email-error"
+            {% endif %}
+            placeholder="{{ 'customer.login_page.email' | t }}"
+            pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)*[a-zA-Z]{2,}))$"
+            required
+            class="input"
+          >
+        </div>
+
+        <button class="button button-md w-100 {{ settings.button_font }}-font" type="submit">
+          {{ 'customer.login_page.submit' | t }}
+        </button>
+
+        <a href="#login" class="underline" data-target-login>
+          {{- 'customer.login_page.cancel' | t -}}
+        </a>
+      {% endform %}
+    </div>
+
+    <div id="login">
+      {% if section.settings.heading != blank or section.settings.description != blank %}
+        <div class="customer-head text-align-{{ section.settings.content_alignment }}">
+          {% if section.settings.heading != blank %}
+            <{{ section.settings.heading_seo }} class="section-title body-font {{ section.settings.heading_size }}">
+              {{- section.settings.heading -}}
+            </{{ section.settings.heading_seo }}>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <div class="section-description {{ section.settings.description_size }}">
+              {{ section.settings.description | newline_to_br }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <div class="customer-form-wrapper">
+        {%- form 'customer_login', novalidate: 'novalidate', class: 'account-form flex column align-items-start' -%}
+          {%- if recover_success == true -%}
+            <div id="success-message" role="alert" class="alert alert-success">
+              {{ 'customer.recover_password.success' | t }}
+            </div>
+          {% endif %}
+          {%- if form.errors -%}
+            <div id="error-message" role="alert" class="alert alert-warning">
+              <div class="error-heading">
+                {{ form.errors | default_errors }}
+              </div>
+            </div>
+          {% endif %}
+          <div class="form-control">
+            <label for="CustomerEmail" class="hidden">{{ 'customer.login_page.email' | t }}</label>
+            <input
+              type="email"
+              name="customer[email]"
+              id="CustomerEmail"
+              autocomplete="email"
+              autocapitalize="off"
+              {% if form.errors contains 'form' %}
+                aria-invalid="true"
+              {% endif %}
+              placeholder="{{ 'customer.login_page.email' | t }}"
+              pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)*[a-zA-Z]{2,}))$"
+              required
+              class="input"
+            >
+          </div>
+          <div class="form-control">
+            <label for="CustomerPassword" class="hidden">{{ 'customer.login_page.password' | t }}</label>
+            <input
+              type="password"
+              name="customer[password]"
+              id="CustomerPassword"
+              autocomplete="current-password"
+              autocapitalize="off"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+              {% endif %}
+              placeholder="{{ 'customer.login_page.password' | t }}"
+              required
+              class="input"
+            >
+          </div>
+
+          <a href="#recover" class="underline text-sm forgot-password" data-target-recover>
+            {{- 'customer.login_page.forgot_password' | t -}}
+          </a>
+          <button class="button button-md w-100 {{ settings.button_font }}-font" type="submit">
+            {{ 'customer.login_page.submit' | t }}
+          </button>
+
+          <a href="{{ routes.account_register_url }}" class="underline">
+            {{- 'customer.login_page.create_account' | t }}
+          </a>
+        {% endform %}
+        {% if section.settings.heading_side != blank or section.settings.content_side != blank %}
+          <div class="customer-content">
+            {% if section.settings.heading_side != blank %}
+              <h5>{{ section.settings.heading_side }}</h5>
+            {% endif %}
+            {% if section.settings.content_side != blank %}
+              <div class="rte">{{ section.settings.content_side }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+    }
+
+  }
+</style>
+<script>
+  var url = window.location.href;
+  let forgetPasswordElement = document.querySelector('[data-target-recover]');
+  let loginElement = document.querySelector('[data-target-login]');
+  let loginSection = document.getElementById('login');
+  var resetSection = document.getElementById('recover');
+  if (url.indexOf('#recover') > -1) {
+    loginSection.style.display = 'none';
+    resetSection.style.display = 'block';
+  } else {
+    resetSection.style.display = 'none';
+    loginSection.style.display = 'block';
+  }
+  forgetPasswordElement.addEventListener('click', function (event) {
+    event.preventDefault();
+    loginSection.style.display = 'none';
+    resetSection.style.display = 'block';
+    var url = window.location.pathname + '#recover';
+    history.pushState({}, null, url);
+  });
+  loginElement.addEventListener('click', function (event) {
+    event.preventDefault();
+    resetSection.style.display = 'none';
+    loginSection.style.display = 'block';
+    var url = window.location.pathname;
+    history.pushState({}, null, url);
+  });
+</script>
+{% schema %}
+{
+   "name": "t:sections.main-login.name",
+ "class":"section-customers-login",
+"tag": "section",
+"settings": [
+  {
+    "type": "color_scheme",
+    "id":"color_scheme",
+    "label": "t:global.color_scheme.label",
+    "default":"scheme-3"
+  },
+  {
+      "type":"inline_richtext",
+      "id":"heading",
+     "label": "t:global.general_label.heading.label",
+      "default":"Login account"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "default": "h1",
+        "label": "t:global.heading_size.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:global.heading_size.options.h1.label"
+        },
+        {
+          "value": "h2",
+         "label": "t:global.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+         "label": "t:global.heading_size.options.h3.label"
+        },
+        {
+          "value": "h4",
+        "label": "t:global.heading_size.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:global.heading_size.options.h5.label"
+        },
+        {
+          "value": "h6",
+        "label": "t:global.heading_size.options.h6.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_seo",
+      "default": "h1",
+      "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+         {
+            "value": "h1",
+            "label": "t:global.heading_seo.options.h1.label"
+          },
+          {
+            "value": "h2",
+           "label": "t:global.heading_seo.options.h2.label"
+          },
+          {
+            "value": "h3",
+           "label": "t:global.heading_seo.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_seo.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+          }
+        ]
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+       "label": "t:global.general_label.description.label",
+      "default":"Please fill in the information below"
+    },
+     {
+      "type": "select",
+      "id": "description_size",
+      "default": "text-lg",
+     "label": "t:global.description_size.label",
+          "options": [
+            {
+              "value": "text-xl",
+              "label": "t:global.description_size.options.x-large.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:global.description_size.options.large.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:global.description_size.options.medium.label"
+            },
+            {
+              "value": "text-sm",
+              "label": "t:global.description_size.options.small.label"
+            },
+            {
+              "value": "text-xs",
+              "label": "t:global.description_size.options.x-small.label"
+
+            }
+          ]
+},
+{
+  "type": "text_alignment",
+  "id":"content_alignment",
+  "label": "t:global.content_alignment.label",
+  "default":"center"
+},
+ {
+    "type":"inline_richtext",
+    "id":"heading_side",
+    "label": "t:global.general_label.heading.label",
+    "default":"Heading"
+  },
+  {
+    "type":"richtext",
+    "id":"content_side",
+   "label": "t:global.general_label.content.label",
+    "default":"<p>Content</p>"
+  },
+  {
+    "type": "header",
+    "content": "t:global.section_spacing.content"
+    },
+    {
+    "type": "range",
+    "id": "top_space_desktop",
+    "label": "t:global.section_spacing.top_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_desktop",
+     "label": "t:global.section_spacing.bottom_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "top_space_mobile",
+    "label": "t:global.section_spacing.top_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_mobile",
+     "label": "t:global.section_spacing.bottom_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  }
+]
+}
+{% endschema %}

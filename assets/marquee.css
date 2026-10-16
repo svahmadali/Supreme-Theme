@@ -1,0 +1,56 @@
+.scrolling-text--card {
+  position: relative;
+  background: var(--gradient-marque-background);
+  background-color: rgb(var(--background-color));
+  padding-block: var(--section-grid-gap);
+  isolation: isolate;
+  will-change: transform;
+  --marquee-gap: 1.3rem;
+}
+
+.marque-twin--true .scrolling-text--card.first {
+  transform: rotate(calc(-3deg));
+}
+
+.marque-twin--true .scrolling-text--card.second {
+  transform: rotate(calc(3deg));
+}
+
+.scrolling-text {
+  color: rgba(var(--text-color));
+}
+
+.scrolling-text.highlight-text {
+  display: block;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 0.06rem;
+  -webkit-text-stroke-color: rgba(var(--text-color));
+}
+
+.scrolling-text.gradient-text {
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-repeat: no-repeat;
+  background-image: var(--gradient-text);
+}
+
+.scrolling-text--icon.icon--small {
+  min-width: 6.875rem;
+  width: 6.875rem;
+}
+
+.scrolling-text--icon.icon--medium {
+  min-width: 8.75rem;
+  width: 8.75rem;
+}
+
+.scrolling-text--icon.icon--large {
+  min-width: 11.25rem;
+  width: 11.25rem;
+}
+
+.scrolling-text--icon img {
+  object-fit: cover;
+  width: auto;
+}

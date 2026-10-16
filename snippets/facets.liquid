@@ -1,0 +1,53 @@
+<div class="facets-container {% if section.settings.filter_type == "sidebar"%}sidebar-enabled{% endif %}">
+  {% if section.settings.enable_filtering and results.filters.size > 0 %}
+    <facets-drawer>
+      <a scroll="disable" href="#" class="facets-filters--button inline-block" data-facet-drawer-head>
+        <div class="flex align-items-center">
+          Filters
+          <div class="filter_icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 2H0V3H5V2Z" fill="currentcolor"/>
+              <path d="M10 2H8V3H10V2Z" fill="currentcolor"/>
+              <path d="M2 7H0V8H2V7Z" fill="currentcolor"/>
+              <path d="M10 7H5V8H10V7Z" fill="currentcolor"/>
+              <path d="M8 2.5C8 1.67157 7.32843 1 6.5 1C5.67157 1 5 1.67157 5 2.5C5 3.32843 5.67157 4 6.5 4C7.32843 4 8 3.32843 8 2.5Z" stroke="currentcolor"/>
+              <path d="M5 7.5C5 6.67157 4.32843 6 3.5 6C2.67157 6 2 6.67157 2 7.5C2 8.32843 2.67157 9 3.5 9C4.32843 9 5 8.32843 5 7.5Z" stroke="currentcolor"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </facets-drawer>
+  {% endif %}
+  <div class="facets-views--options">
+    <div class="facets-views-title">{{  'products.facets.view' | t }}</div>
+    <facets-content-view class="facets-views-option--list">
+      <a href="#" class="facets-views-option" data-option="grid-col-3--wide" aria-label="grid column 3">
+        <div class="facets-views-cubes">
+          <div class="facets-views-cube active"></div>
+          <div class="facets-views-cube active"></div>
+          <div class="facets-views-cube last active"></div>
+        </div>
+      </a>
+      <a href="#" class="facets-views-option is-active" data-option="grid-col-4--wide" aria-label="grid column 4">
+        <div class="facets-views-cubes">
+          <div class="facets-views-cube"></div>
+          <div class="facets-views-cube"></div>
+          <div class="facets-views-cube"></div>
+          <div class="facets-views-cube last"></div>
+        </div>
+      </a>
+      <a href="#" class="facets-views-option index_option" data-option="grid-col-6--wide index-options-card" aria-label="grid column 6">
+        <div>
+          <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="6" height="6" transform="matrix(1 0 0 -1 0 6)" fill="currentcolor"/>
+            <rect width="6" height="6" transform="matrix(1 0 0 -1 7 6)" fill="currentcolor"/>
+            <rect width="6" height="6" transform="matrix(1 0 0 -1 14 6)" fill="currentcolor"/>
+            <rect width="6" height="6" transform="matrix(1 0 0 -1 7 13)" fill="currentcolor"/>
+            <rect width="6" height="6" transform="matrix(1 0 0 -1 0 13)" fill="currentcolor"/>
+            <rect width="6" height="6" transform="matrix(1 0 0 -1 14 13)" fill="currentcolor"/>
+          </svg>
+        </div>
+      </a>
+    </facets-content-view>
+  </div>
+</div>

@@ -1,0 +1,338 @@
+{% assign current_variant = product_card.selected_or_first_available_variant %}
+{% assign dataindex = 0 %}
+{%- liquid
+  if media_ratio == 'landscape'
+    assign mediaratio = 75
+  elsif media_ratio == 'square'
+    assign mediaratio = 100
+  elsif media_ratio == 'portrait'
+    assign mediaratio = 125
+  else
+    if product_card.featured_media != blank
+      assign mediaratio = 1 | divided_by: product_card.featured_media.preview_image.aspect_ratio | times: 100
+    else
+      assign mediaratio = 100
+    endif
+  endif
+-%}
+{%- assign product_form_id = 'product-form-' | append: product_card.id -%}
+{%- assign product_form_id = product_form_id | append: section.id -%}
+{% capture color_option %}
+    {%- for option in product_card.options_with_values -%}
+     {%- liquid
+        assign color_options = settings.colorname | downcase
+        assign option_name = option.name | downcase
+         assign index_value= forloop.index
+          -%}
+        {% if color_options contains option_name %}
+        <fieldset class="product-variant--picker product-swatch color-swatch--wide" >
+          <ul>
+            {%- for value in option.values limit: 5 -%}
+              {% liquid 
+                if forloop.first
+                endif
+                assign variant_option = 'option' | append: option.position 
+                assign color_variant = product_card.variants | where: variant_option, value | first
+                assign variant_value = product_card.variants | where: variant_option, value | compact: 'featured_media' | first
+                if product_card.url contains '?'
+                  assign product_Url =  product_card.url | split : '&variant=' | first | append:'&variant=' | append: color_variant.id
+                else
+                  assign product_Url =  product_card.url | append:'?variant=' | append: color_variant.id
+                endif
+              
+              -%}
+              <li class="product-variant--item swatch-color swatch-{{ settings.swatches_style }} product-swatch-item" data-product-url="{{ product_Url }}"  data-card-color-option>
+
+                 <label class="hidden" for="product-{{ product_card.id }}_option-{{ section.id }}-{{ forloop.index }}-{{ block.id }}-{{ value | handle }}">{{ value | escape }}</label>
+                <input
+                  class="product-swatch-option"
+                  id="product-{{ product_card.id }}_option-{{ section.id }}-{{ forloop.index }}-{{ block.id }}-{{ value | handle }}"
+                  type="radio"
+                  name="color-option-{{ index_value  }}-{{ product_card.id }}-{{ block.id }}-{{ option_name }}"
+                  form="{{ product_form_id }}"
+                  value="{{ value | escape }}"
+                  title="{{ value | escape }}"
+                  {% if option.selected_value == value  %}checked="checked"{% endif %}
+        
+                >
+               
+                <span class="swatch-variant-item swatch-variant-color {% if settings.show_variant_image %} swatch-variant-img{% endif %}"
+                  {% if variant_value and settings.show_variant_image %}
+                    style="background-image:url({{ variant_value.featured_media.preview_image | image_url: width: 22 }});"
+                  {% else %}
+                    data-color="{{ value }}"
+                    style="--background-color-swatch:{{ value }};"
+                  {% endif %}
+                ></span>
+                {% render 'product-card-image' variant: variant_value , product_card: product_card ,section:section %}
+              </li>
+            {% endfor %}
+            {% if option.values.size > 5 %}
+              <li class="product-swatch-item">
+                <a href="{{ product_card.url | within : collection }}" class="textSmall"
+                  >+{{ option.values.size | minus: 5 -}} more
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+    </fieldset> 
+        {% endif %}
+  {% endfor %}
+{% endcapture %}
+{% capture other_options %}
+   {%- for option in product_card.options_with_values -%}
+     {%- liquid
+        assign color_options = settings.colorname | downcase
+        assign option_name = option.name | downcase
+         assign index_value= forloop.index
+          -%}
+        {% unless color_options contains option_name %}
+
+           <fieldset class="product-variant--picker product-variant-option-item" data-product-item="{{ product_card.id }}-{{ section.id }}">
+              <div class="product-select-option">
+                <button class="select-option">
+                  <span class="product-selected {{ settings.labels_font }}-font" data-type="{{ option.name  }}">{{ option.name }} / {{ option.selected_value }}</span>
+                  <svg width="9" height="7" class="icon icon-chevron-bottom" viewBox="0 0 10 7">
+                    <path d="m1 1 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+                  </svg>
+                </button>
+                <ul class="list-unstyled product-select-list">
+              {%- for value in option.values -%}
+                  
+              <li class="product-swatch-item">
+                <input
+                  class="product-swatch-option"
+                  id="product-{{ product_card.id }}_option-{{ section.id }}-{{ forloop.index }}-{{ block.id }}-{{ value | handle }}"
+                  type="radio"
+                  form="{{ product_form_id }}"
+                  name="variant-option-{{ index_value }}-{{ product_card.id }}-{{ block.id }}-{{ option_name }}"
+                  value="{{ value | escape }}"
+                  title="{{ value | escape }}"
+                  {% if option.selected_value == value %} checked="checked" {% endif %}
+                >
+                 <label for="product-{{ product_card.id }}_option-{{ section.id }}-{{ forloop.index }}-{{ block.id }}-{{ value | handle }}">{{ value | escape }}</label>
+              </li>
+        
+              {% endfor %}
+  
+                </ul>
+              </div>
+               
+      </fieldset>
+          
+        {% endunless %}
+       
+    {% endfor %}
+{% endcapture %}
+
+<product-card
+  class="product-card-wrapper {% if settings.card_effect == "zoom"%} zoom-image--effect{% endif %} {% if settings.card_style == "card"%} card-true{% endif %} {% if slider %} swiper-slide{% endif %} product-information--wrapper {% if settings.enable_card_border %}border-true{% endif %}"
+  data-product-info
+>
+  
+  <div class="product-card-media">
+    <a
+      href="{{ product_card.url | within : collection }}"
+      aria-label="
+        {% if product_card.title %}
+          {{- product_card.title | strip_html -}}
+        {% else %}
+          {{ 'onboarding.product_title' | t }}
+        {% endif %}
+      "
+      {% if product_card == blank %}
+        aria-disabled="true"
+      {% endif %}
+      tabindex="-1"
+      class="media-ratio main-card-image"
+
+      style="--media-ratio:{{ mediaratio }}%"
+    >
+      {%- if product_card.featured_media != blank -%}
+        <img
+          srcset="
+            {%- if product_card.featured_media.width >= 165 -%}{{ product_card.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+            {%- if product_card.featured_media.width >= 360 -%}{{ product_card.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+            {%- if product_card.featured_media.width >= 533 -%}{{ product_card.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+            {%- if product_card.featured_media.width >= 720 -%}{{ product_card.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+            {%- if product_card.featured_media.width >= 940 -%}{{ product_card.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+            {%- if product_card.featured_media.width >= 1066 -%}{{ product_card.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+            {{ product_card.featured_media | image_url }} {{ product_card.featured_media.width }}w
+          "
+          src="{{ product_card.featured_media | image_url: width: 533 }}"
+          sizes="(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+          alt="{{ product_card.featured_media.alt | escape }}"
+          class="product-card--img"
+          loading="lazy"
+          width="{{ product_card.featured_media.width }}"
+          height="{{ product_card.featured_media.height }}"
+        >
+        {%- if product_card.media[1] != blank and settings.second_image_hove -%}
+          <img
+            srcset="
+              {%- if product_card.media[1].width >= 165 -%}{{ product_card.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if product_card.media[1].width >= 360 -%}{{ product_card.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if product_card.media[1].width >= 533 -%}{{ product_card.media[1] | image_url: width: 533 }} 533w,{%- endif -%}
+              {%- if product_card.media[1].width >= 720 -%}{{ product_card.media[1] | image_url: width: 720 }} 720w,{%- endif -%}
+              {%- if product_card.media[1].width >= 940 -%}{{ product_card.media[1] | image_url: width: 940 }} 940w,{%- endif -%}
+              {%- if product_card.media[1].width >= 1066 -%}{{ product_card.media[1] | image_url: width: 1066 }} 1066w,{%- endif -%}
+              {{ product_card.media[1] | image_url }} {{ product_card.media[1].width }}w
+            "
+            src="{{ product_card.media[1] | image_url: width: 533 }}"
+            sizes="(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+            alt="{{ product_card.media[1].alt | escape }}"
+            class="product-card-hover--img"
+            loading="lazy"
+            width="{{ product_card.media[1].width }}"
+            height="{{ product_card.media[1].height }}"
+          >
+        {%- endif -%}
+      {% else %}
+        {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </a>
+
+    {% render 'badges', product_card: product_card, section: section, current_variant: current_variant %}
+
+    <quick-view
+      class="quick-view-button {% if settings.mobile_hide_quick_button %}mobile-hidden{% endif %}"
+      data-product-url="{{ product_card.url }}"
+    >
+      <a
+        href="{{ product_card.url }}"
+        class="quick-view-button-icon"
+        data-quickview-button
+        aria-label="Quick view"
+      >
+        <span class="quick-view-main-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none">
+            <path d="M17.6667 7.66666C17.6667 9.74996 15.1667 14.3334 9.33331 14.3334C3.5 14.3334 1 9.74996 1 7.66666C1 5.58334 3.5 1 9.33331 1C15.1667 1 17.6667 5.58334 17.6667 7.66666Z" stroke="currentcolor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M11.832 7.66699C11.832 9.04769 10.7127 10.167 9.33203 10.167C7.95134 10.167 6.83205 9.04769 6.83205 7.66699C6.83205 6.28629 7.95134 5.167 9.33203 5.167C10.7127 5.167 11.832 6.28629 11.832 7.66699Z" stroke="currentcolor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+
+        <span class="button-loader loading--spinner hidden" data-spin-loader>
+          <svg width="25" height="25" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="6" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+              <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"/>
+            </circle>
+          </svg>
+        </span>
+      </a>
+    </quick-view>
+
+    {% if content != false and search != true %}
+      <div class="product-card-buttons">
+        {%- unless product_card.has_only_default_variant -%}
+          {% if other_options != blank %}
+            <variant-set-option
+              class="{% if settings.mobile_hide_varaint %}mobile-hidden{% endif %}"
+              data-template="{{ template }}"
+              data-section="{{ section.id }}"
+              data-url="{{ product_card.url }}"
+              data-unavailable=""
+              data-product="{{ product_card.id }}"
+              data-producthandle="{{ product_card.handle }}"
+              data-unavailable="{{ current_variant.available }}"
+              data-index="{{ dataindex }}"
+            >
+              {{ other_options }}
+            </variant-set-option>
+            {% assign dataindex = dataindex | plus: 1 %}
+          {% endif %}
+        {% endunless %}
+        {% render 'card-form', product: product_card, product_form_id: product_form_id %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="product-card--text text-align-{{ settings.text_alignment }}">
+     <div class="product-form--error-message-wrapper" role="alert" hidden="">
+    <span class="product-form--error-message"></span>
+  </div>
+    <span class="product-card-title">
+      <a
+        href="{{ product_card.url | within : collection }}"
+        {% if product_card == blank %}
+          aria-disabled="true"
+        {% endif %}
+      >
+        {% if product_card.title %}
+          {{- product_card.title | strip_html -}}
+        {% else %}
+          {{ 'onboarding.product_title' | t }}
+        {% endif %}
+      </a>
+    </span>
+
+    <product-price-list class="product-price-list" id="product-price-list-{{ product_card.id }}-{{ section.id }}">
+      {%- assign price_min = product_card.price_min | default: 1899 | money -%}
+      <product-sale-price class="product-price-actual">
+        {%- if product_card.price_varies -%}
+          <span class="product-actual-price varies-price">
+            {{ 'products.product.price.from_price_html' | t: price: price_min }}
+          </span>
+        {%- else -%}
+          <span class="product-actual-price">{{ price_min }}</span>
+        {%- endif -%}
+        {%- if product_card.compare_at_price_min > product_card.price_min -%}
+          <small class="product-compare-price">{{ product_card.compare_at_price_min | money }}</small>
+        {%- endif -%}
+        {%- if current_variant.unit_price_measurement -%}
+          <span class="product-unit-price">
+            (
+            {{ current_variant.unit_price | money }} /
+            {% if current_variant.unit_price_measurement.reference_value != 1 -%}
+              {{- current_variant.unit_price_measurement.reference_value -}}
+            {%- endif %}
+            {{ current_variant.unit_price_measurement.reference_unit }}
+            )
+          </span>
+        {%- endif -%}
+      </product-sale-price>
+    </product-price-list>
+    {% if content != false and search != true %}
+      {% if color_option != blank %}
+        <variant-set-option
+          class="{% if settings.mobile_hide_switch_varaint %}mobile-hidden{% endif %}"
+          data-template="{{ template }}"
+          data-section="{{ section.id }}"
+          data-url="{{ product_card.url }}"
+          data-unavailable=""
+          data-product="{{ product_card.id }}"
+          data-producthandle="{{ product_card.handle }}"
+          data-unavailable="{{ current_variant.available }}"
+          data-index="{{ dataindex }}"
+        >
+          {{ color_option }}
+        </variant-set-option>
+      {% endif %}
+    {% endif %}
+
+    {% if product_card.vendor != blank and settings.show_vendor_card %}
+      {% if content != false and search != true %}
+        <div class="product-card-vendor {% if settings.mobile_show_vendor_card %}mobile-hidden{% endif %}">
+          {{ product_card.vendor }}
+        </div>
+      {% endif %}
+    {% endif %}
+    <script type="application/json" data-name="main-product-section">
+      {{ product_card.variants | json }}
+    </script>
+    <script type="application/json" data-name="product-options">
+      [{%- for option in product_card.options_with_values -%}{"name": "{{ option.name }}","position": {{ forloop.index }},"values": [{%- for value in option.values -%}"{{ value }}"{% unless forloop.last %}, {% endunless %}{%- endfor -%}] }{% unless forloop.last %}, {% endunless %} {%- endfor -%} ]
+    </script>
+    <script type="application/json" data-name="product-inventories">
+      [
+        {% for variant in product_card.variants %}
+          {
+            "id": {{ variant.id }},
+            "inventory_management": "{{ variant.inventory_management }}",
+            "inventory_policy": "{{ variant.inventory_policy }}",
+            "inventory_quantity": {{ variant.inventory_quantity }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    </script>
+  </div>
+</product-card>

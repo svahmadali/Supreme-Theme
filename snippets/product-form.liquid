@@ -1,0 +1,104 @@
+
+{% liquid
+  assign gift_card_recipient = false
+  if block.settings.show_recipient_form and product.gift_card?
+    assign gift_card_recipient = true
+  endif
+  assign pre_order = false
+  if settings.enable_preorder and current_variant.inventory_quantity <= 0 and current_variant.inventory_policy == 'continue'
+    assign pre_order = true
+  endif
+
+
+  assign selected_product = product.selected_or_first_available_variant
+  assign compare_at_price = selected_product.compare_at_price
+  assign price = selected_product.price | default: 1999
+  assign money_price = price | money
+
+
+%}
+<{% if product != blank %}product-form{% else %}div{% endif %}
+  class="product-form"
+  data-hide-errors="{{ gift_card_recipient }}"
+  data-section-id="{{ section.id }}"
+>
+
+  <div class="product-form--error-message-wrapper" role="alert" hidden="">
+    <span class="product-form--error-message"></span>
+  </div>
+  {% if product != blank %}
+    {%- form 'product',
+      product,
+      id: product_form_id,
+      class: 'form main-product-form',
+      novalidate: 'novalidate',
+      data-type: 'add-to-cart-form'
+    -%}
+      <input
+        type="hidden"
+        class="product-variant-id"
+        name="id"
+        value="{{product.selected_or_first_available_variant.id  }}"
+        {% unless current_variant.available %}
+            disabled
+        {% endunless %}
+      >
+
+      {% if gift_card_recipient %}
+        {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+      {% endif %}
+
+      <div class="atc-wrapper checkout-btn {% if block.settings.dynamic_checkout_btn %}dynamic-checkout-enabled{% endif %}">
+        <button
+          type="submit"
+          name="add"
+          id="add-to-cart-{{ section.id }}"
+          class="atc-button button button-md {{ settings.button_font }}-font"
+          {% unless current_variant.available %}
+            disabled
+          {% endunless %}
+          {% if settings.enable_cartdrawer %}
+            data-add-to-cart
+          {% endif %}
+          data-add-to-cart-main
+        >
+          
+          <span data-add-to-cart-text >
+             {%- unless current_variant.available -%}
+              <span class="button-text">{{ 'products.product.sold_out' | t }}</span>
+          
+              {%- else -%}
+                  <span class="add-to-cart-text">
+                  <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.3831 2.625H9.55499V1.53125C9.55499 0.69125 8.92124 0 8.13312 0H4.87501C4.09501 0 3.45313 0.6825 3.45313 1.53125V2.625H1.625C0.731251 2.625 0 3.40375 0 4.375V12.25C0 13.2125 0.723126 14 1.625 14H11.375C12.2687 14 13 13.2212 13 12.25V4.375C13 3.4125 12.2769 2.625 11.375 2.625H11.3831ZM4.68001 1.53125C4.68001 1.40875 4.76938 1.3125 4.88311 1.3125H8.14124C8.25499 1.3125 8.34437 1.40875 8.34437 1.53125V2.625H4.68813V1.53125H4.68001ZM11.7894 12.2587C11.7894 12.495 11.6106 12.6962 11.3831 12.6962H1.63313C1.41375 12.6962 1.22688 12.5037 1.22688 12.2587V4.38375C1.22688 4.1475 1.40563 3.94625 1.63313 3.94625H3.46126V5.25875H4.68001V3.94625H8.33624V5.25875H9.55499V3.94625H11.3831C11.6025 3.94625 11.7894 4.13875 11.7894 4.38375V12.2587Z" fill="currentColor"/>
+                  </svg>
+                  <span class="button-text"> {%- if preOrder -%}
+                <span class="button-text">{{ 'products.product.preorder' | t }}</span>{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}</span>
+                     <span class="product-price-main">{{ money_price }}</span>
+                </span>
+            {%- endunless -%}
+          </span>
+         
+          <span class="button-loader loading--spinner hidden">
+            <svg width="25" height="25" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="6" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+                <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"/>
+              </circle>
+            </svg>
+          </span>
+        </button>
+        {%- if block.settings.dynamic_checkout_btn -%}
+            <div data-shopify="payment-button button-md {{ settings.button_font }}-font" class="shopify-payment-button">
+            {{ form | payment_button }}
+            </div>
+        {%- endif -%}
+      </div>
+    {% endform %}
+  {% else %}
+    <div class="atc-wrapper checkout-btn ">
+      <button class="btn btn-medium add-to-cart-btn {{ settings.button_font }}-font" disabled>
+        <span class="button-text">{{ 'products.product.sold_out' | t }}</span>
+      </button>
+    </div>
+  {% endif %}
+</{% if product != blank %}product-form{% else %}div{% endif %}>

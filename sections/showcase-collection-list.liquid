@@ -1,0 +1,405 @@
+{{ 'showcase-collection-list.css' | asset_url | stylesheet_tag }}
+<custom-tabs class="block showcase-collection-list color-{{ section.settings.color_scheme }}">
+  <div class="showcase-collection-list--wrapper desktop-height--{{ section.settings.image_height }}">
+    {% if section.blocks.size > 0 %}
+      <div class="showcase-collection-list--imgs mobile-height--{{ section.settings.mobile_image_height }}">
+        {%- for block in section.blocks -%}
+          {% liquid
+            assign collection = block.settings.collection
+            assign image = ''
+            if block.settings.image != blank
+              assign image = block.settings.image
+            elsif collection.featured_image
+              assign image = collection.featured_image
+            endif
+          %}
+          <div
+            class="showcase-collection-list--img-item {% if forloop.first %}is-active{% endif %}"
+            {{ block.shopify_attributes }}
+            data-tab-content
+            data-image-id="{{ block.id }}"
+          >
+            {%- if image != blank -%}
+              {%- liquid
+                assign height = image.width | divided_by: image.aspect_ratio | round
+                assign sizes = '100vw'
+                assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+              -%}
+              {{
+                image
+                | image_url: width: 3840
+                | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+              }}
+            {% else %}
+              {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+              {%- if placeholder_slide == 1 -%}
+                {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- else -%}
+                {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="showcase-collection-list--content">
+        <div class="page--width">
+          <div class="relative showcase-collection-list-text--box">
+            {%- for block in section.blocks -%}
+              {% assign collection = block.settings.collection %}
+
+              <div class="showcase-collection-list--title">
+                {% if collection != blank or block.settings.heading != blank %}
+                  <{{ section.settings.heading_seo }}
+                    class="showcase-collection-list--text {{ section.settings.heading_size }} {% if forloop.first %}is-active{% endif %}"
+                    tabindex="0"
+                    data-tab-head
+                  >
+                    {% if block.settings.heading != blank -%}
+                      {{- block.settings.heading -}}
+                    {%- elsif collection != blank -%}
+                      {{- collection.title -}}
+                    {% else %}
+                      {{ 'onboarding.collection_title' | t }}
+                    {%- endif -%}
+                  </{{ section.settings.heading_seo }}>
+                {% endif %}
+
+                {% if block.settings.description or collection != blank %}
+                  <div
+                    class="showcase-collection-info"
+                    data-tab-content
+                    data-id="{{ block.id }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {% if block.settings.description %}
+                      <div class="description discription_data">
+                        {{ block.settings.description | newline_to_br }}
+                      </div>
+                    {% endif %}
+                    {% if collection != blank and block.settings.btn_text != blank %}
+                      <a
+                        href="{{ collection.url }}"
+                        class="{% if block.settings.button_style == 'text' %}underline--link{% else %}{{ settings.button_font }}-font button button-{{ block.settings.button_style }} button-{{ block.settings.btn_size }} hover-{{ block.settings.hover_effect }}{% endif %}"
+                      >
+                        <span class="button-text">
+                          {%- if block.settings.btn_text != blank %}{{ block.settings.btn_text }}{% endif -%}
+                        </span>
+                        {% if block.settings.button_style == 'text' %}
+                          <span class="link-arrow">
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H8V8H7V1.707L1.354 7.354L1 7.707L0.293 7L0.646 6.646L6.293 1H0V0Z" fill="currentColor"/>
+                            </svg>
+                          </span>
+                        {% endif %}
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</custom-tabs>
+
+<script>
+document.querySelectorAll('.showcase-collection-list--text').forEach(el => {
+  el.addEventListener('click', () => changeImageForTab(el));
+  el.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      changeImageForTab(el);
+    }
+  });
+});
+function changeImageForTab(activeTab) {
+  const tabs = document.querySelectorAll('.showcase-collection-list--text');
+  const contents = document.querySelectorAll('[data-tab-content]');
+  const images = document.querySelectorAll('.showcase-collection-list--img-item');
+
+  tabs.forEach(el => el.classList.remove('is-active'));
+  contents.forEach(el => el.classList.remove('is-active'));
+  images.forEach(el => el.classList.remove('is-active'));
+
+  const index = Array.from(tabs).indexOf(activeTab);
+  activeTab.classList.add('is-active');
+  contents[index]?.classList.add('is-active');
+  images[index]?.classList.add('is-active');
+}
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.showcase_collection_list.name",
+   "class": "section-showcase-collection-list",
+  "tag": "section",
+   "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+      {
+        "type": "color_scheme",
+        "id":"color_scheme",
+        "label": "t:global.color_scheme.label", 
+        "default":"scheme-3"
+    },
+
+    {
+      "type": "select",
+      "id": "image_height",
+      "default": "full",
+      "label": "t:global.image_height.label",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:global.image_height.options.auto.label",
+        },
+        {
+          "value": "450",
+        "label": "t:global.image_height.options.small.label"
+        },
+        {
+          "value": "550",
+          "label": "t:global.image_height.options.medium.label"
+        },
+        {
+          "value": "650",
+       "label": "t:global.image_height.options.large.label"
+        },
+         {
+          "value": "750",
+       "label": "t:global.image_height.options.x-large.label"
+        },
+        {
+          "value": "full",
+          "label": "t:global.image_height.options.full.label"
+        }
+      ]
+
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_height",
+      "default": "450",
+      "label": "t:global.mobile_image_height.label",
+      "options": [
+        {
+          "value": "auto",
+         "label": "t:global.image_height.options.auto.label",
+        },
+        {
+          "value": "300",
+         "label": "t:global.image_height.options.small.label",
+        },
+        {
+          "value": "350",
+         "label": "t:global.image_height.options.medium.label",
+        },
+         {
+          "value": "400",
+        "label": "t:global.image_height.options.large.label",
+        },
+        {
+          "value": "450",
+        "label": "t:global.image_height.options.x-large.label",
+        },
+        {
+          "value": "full",
+         "label": "t:global.image_height.options.full.label",
+        }
+      ]
+
+    },
+     {
+          "type": "select",
+          "id": "heading_size",
+          "default": "h2",
+          "label": "t:global.heading_size.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:global.heading_size.options.h1.label"
+        },
+        {
+          "value": "h2",
+         "label": "t:global.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+         "label": "t:global.heading_size.options.h3.label"
+        },
+        {
+          "value": "h4",
+        "label": "t:global.heading_size.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:global.heading_size.options.h5.label"
+        },
+        {
+          "value": "h6",
+        "label": "t:global.heading_size.options.h6.label"
+        }
+      ]
+        },
+    {
+          "type": "select",
+          "id": "heading_seo",
+          "default": "h3",
+           "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+         {
+            "value": "h1",
+            "label": "t:global.heading_seo.options.h1.label"
+          },
+          {
+            "value": "h2",
+           "label": "t:global.heading_seo.options.h2.label"
+          },
+          {
+            "value": "h3",
+           "label": "t:global.heading_seo.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_seo.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+          }
+        ]
+        }
+  ],
+    "blocks": [
+    {
+      "type": "collection",
+      "name": "t:sections.showcase_collection_list.blocks.collection.name",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:global.general_label.collection.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:global.general_label.custom_image.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Collection name",
+          "label": "t:global.general_label.heading.label",
+        },
+        {
+          "type":"textarea",
+          "id":"description",
+           "label": "t:global.general_label.description.label",
+          "default":"Add short description here."
+        },
+        {
+    "type": "header",
+      "content": "t:global.header.button.content"
+    },
+       {
+          "type": "text",
+          "id": "btn_text",
+          "label": "t:global.general_label.text.label",
+          "default":"Shop now"
+        },
+        {
+          "type": "select",
+          "id": "btn_size",
+            "default": "sm",
+            "label": "t:global.btn_size.label",
+          "options": [
+           {
+              "label": "t:global.btn_size.options.xsmall.label",
+              "value": "xsm"
+
+            },
+            {
+             "label": "t:global.btn_size.options.small.label",
+              "value": "sm"
+
+            },
+            {
+              "label": "t:global.btn_size.options.medium.label",
+              "value": "md"
+
+            },
+            {
+             "label": "t:global.btn_size.options.large.label",
+              "value": "lg"
+
+            }
+          ]
+        },
+        {
+          "type":"select",
+          "id":"button_style",
+          "label": "t:global.button_style.label",
+          "options": [
+            {
+              "label": "t:global.button_style.options.solid.label",
+              "value": "solid"
+            },
+            {
+              "label": "t:global.button_style.options.outline.label",
+              "value": "outline"
+            },
+            {
+              "label": "t:global.button_style.options.text.label",
+              "value":"text"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id":"hover_effect",
+          
+          "label": "t:global.hover_effect.label",
+          "options": [
+            {
+              "label": "t:global.hover_effect.options.standard.label",
+              "value": "standard"
+            },
+            {
+              "label": "t:global.hover_effect.options.none.label",
+              "value": "none"
+            }
+          ] 
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name":"t:sections.showcase_collection_list.presets.name",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+         {
+          "type": "collection"
+        },
+         {
+          "type": "collection"
+        },
+         {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,244 @@
+{{ 'search.css' | asset_url | stylesheet_tag }}
+<search-modal-dialog class="drawer drawer-search drawer-is-top" id="search-drawer-model" role="dialog">
+  <div class="overlay" data-drawer-close></div>
+  <div class="drawer-base">
+    <modal-dialog-head class="modal-dialog-head">
+      <h2 class="drawer-heading h3">{{ 'general.search.search' | t }}</h2>
+      <a href="#" class="drawer-close" data-drawer-close aria-label="close">
+        <close-btn>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 1L1 21M1 1L21 21" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"></path>
+          </svg>
+        </close-btn>
+      </a>
+    </modal-dialog-head>
+    <modal-dialog-form class="modal-dialog-form">
+      <form action="{{ routes.search_url }}" method="get" class="predictive-search-form" role="search">
+        <div class="search-input-field">
+          <label for="search-input-template" class="hidden">{{ 'general.search.search' | t }}</label>
+          <input
+            type="search"
+            id="search-input-template"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="I’m looking for ..."
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            aria-label="Search"
+            data-search-input
+          >
+          <div class="search-button--wrapper">
+            <button type="reset" class="text-sm underline clear-search" data-clear-input>{{'products.facets.clear' | t}}</button>
+            <button type="button" class="drawer-search-icon">
+              <svg
+                class="icon-small"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M19 19L15.5967 15.5963M18.0385 9.5202C18.0385 14.2258 14.2243 18.0405 9.5192 18.0405C4.8142 18.0405 1 14.2258 1 9.5202C1 4.81464 4.8142 1 9.5192 1C14.2243 1 18.0385 4.81464 18.0385 9.5202Z" stroke="black" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="results-all text-sm text-align-end" data-result-count></div>
+      </form>
+      <div class="predictive-search-results" data-suggestion-content>
+        {% if settings.enable_collection_suggestions and settings.collection_suggestions != blank %}
+          {% assign search_collection = settings.collection_suggestions %}
+          <div class="predictive-search--collection relative">
+            <div class="predictive-search-collection-img">
+              {%- if search_collection.featured_image -%}
+                <img
+                  srcset="
+                    {%- if search_collection.featured_image.width >= 165 -%}{{ search_collection.featured_image | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if search_collection.featured_image.width >= 330 -%}{{ search_collection.featured_image | image_url: width: 330 }} 330w,{%- endif -%}
+                    {%- if search_collection.featured_image.width >= 535 -%}{{ search_collection.featured_image | image_url: width: 535 }} 535w,{%- endif -%}
+                    {%- if search_collection.featured_image.width >= 750 -%}{{ search_collection.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+                    {%- if search_collection.featured_image.width >= 1000 -%}{{ search_collection.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                    {%- if search_collection.featured_image.width >= 1500 -%}{{ search_collection.featured_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                    {%- if search_collection.featured_image.width >= 3000 -%}{{ search_collection.featured_image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                    {{ search_collection.featured_image | image_url }} {{ search_collection.featured_image.width }}w
+                  "
+                  src="{{ search_collection.featured_image | image_url: width: 1500 }}"
+                  sizes="(min-width: 750px) calc(100vw - 10rem),calc(100vw - 3rem)"
+                  alt="{{ search_collection.featured_image.alt | escape }}"
+                  height="{{ search_collection.featured_image.height }}"
+                  width="{{ search_collection.featured_image.width }}"
+                  loading="lazy"
+                >
+              {% else %}
+                {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            <div class="predictive-search-collection--text">
+              <h3>
+                {% if settings.collection_suggestions_heading != blank -%}
+                  {{- settings.collection_suggestions_heading -}}
+                {%- else -%}
+                  {{- search_collection.title -}}
+                {%- endif %}
+              </h3>
+              <a href="{{ search_collection.url }}" class="underline--link">
+                <span class="button-text">{{ 'sections.collection_list.view_all' | t }}</span>
+                <span class="link-arrow">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H8V8H7V1.707L1.354 7.354L1 7.707L0.293 7L0.646 6.646L6.293 1H0V0Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+        <div class="predictive-search-results--details">
+          {%- if settings.enable_suggestions and settings.suggestions_list != blank -%}
+            <div class="predictive-popular-search">
+              {%- if settings.suggestions_heading != blank -%}
+                <span class="predictive-search-title">{{ settings.suggestions_heading }}</span>
+              {% endif %}
+              {% if settings.suggestions_list != blank %}
+                <ul class="search-popular">
+                  {% assign list_Query = settings.suggestions_list | split: ',' %}
+                  {% for query in list_Query %}
+                    {% assign query = query | strip %}
+                    {% if query != blank %}
+                      <li>
+                        <a
+                          class="search-popular-link"
+                          title="{{ query }}"
+                          href="{{ routes.search_url }}?q={{query}}"
+                          tabindex="0"
+                        >
+                          {{ query -}}
+                        </a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% endif %}
+          {%- if settings.enable_product_suggestions and settings.product_suggestions != blank -%}
+            <div class="predictive-search-products">
+              {%- if settings.product_suggestions_heading != blank -%}
+                <span class="predictive-search-title">{{ settings.product_suggestions_heading }}</span>
+              {% endif %}
+              <div class="predictive-search-grid ">
+                {%- for product_card in settings.product_suggestions -%}
+                  {%- capture current -%}{% cycle section.id: 1, 2, 3, 4 %}{%- endcapture -%}
+                  {%- assign placeholder_image = 'product-apparel-' | append: current -%}
+                  <product-card class="product-card-wrapper">
+                    <div class="product-card-media">
+                      <a
+                        href="{{ product_card.url | within : collection }}"
+                        aria-label="{{ product_card.title }}"
+                        {% if product_card == blank %}
+                          aria-disabled="true"
+                        {% endif %}
+                        tabindex="-1"
+                        class="product-card-media-img"
+                      >
+                        {%- if product_card.featured_media != blank -%}
+                          <img
+                            srcset="
+                              {%- if product_card.featured_media.width >= 165 -%}{{ product_card.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                              {%- if product_card.featured_media.width >= 360 -%}{{ product_card.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                              {%- if product_card.featured_media.width >= 533 -%}{{ product_card.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                              {%- if product_card.featured_media.width >= 720 -%}{{ product_card.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                              {%- if product_card.featured_media.width >= 940 -%}{{ product_card.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+                              {%- if product_card.featured_media.width >= 1066 -%}{{ product_card.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                              {{ product_card.featured_media | image_url }} {{ product_card.featured_media.width }}w
+                            "
+                            src="{{ product_card.featured_media | image_url: width: 533 }}"
+                            sizes="(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                            alt="{{ product_card.featured_media.alt | escape }}"
+                            class="product-card--img"
+                            loading="lazy"
+                            width="{{ product_card.featured_media.width }}"
+                            height="{{ product_card.featured_media.height }}"
+                          >
+
+                        {% else %}
+                          {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                        {% endif %}
+                      </a>
+                      <span class="product-card-title">
+                        <a
+                          href="{{ product_card.url | within : collection }}"
+                          {% if product_card == blank %}
+                            aria-disabled="true"
+                          {% endif %}
+                        >
+                          {% if product_card.title %}
+                            {{- product_card.title | strip_html -}}
+                          {% endif %}
+                        </a>
+                      </span>
+                      <product-price-list
+                        class="product-price-list"
+                        id="product-price-list-{{ product_card.id }}-{{ section.id }}"
+                      >
+                        {%- assign price_min = product_card.price_min | default: 1899 | money -%}
+                        <product-sale-price class="product-price-actual">
+                          {%- if product_card.price_varies -%}
+                            <span class="product-actual-price varies-price">
+                              {{ 'products.product.price.from_price_html' | t: price: price_min }}
+                            </span>
+                          {%- else -%}
+                            <span class="product-actual-price">{{ price_min }}</span>
+                          {%- endif -%}
+                          {%- if product_card.compare_at_price_min > product_card.price_min -%}
+                            <small class="product-compare-price">{{ product_card.compare_at_price_min | money }}</small>
+                          {%- endif -%}
+                          {%- if current_variant.unit_price_measurement -%}
+                            <span class="product-unit-price">
+                              (
+                              {{ current_variant.unit_price | money }} /
+                              {% if current_variant.unit_price_measurement.reference_value != 1 -%}
+                                {{- current_variant.unit_price_measurement.reference_value -}}
+                              {%- endif %}
+                              {{ current_variant.unit_price_measurement.reference_unit }}
+                              )
+                            </span>
+                          {%- endif -%}
+                        </product-sale-price>
+                      </product-price-list>
+                    </div>
+                  </product-card>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="predictive-search-result-main" data-predictive-search-body></div>
+
+      <div class="predictive-search-loading hidden" data-loading-content>
+        <div class="search-loader">
+          <svg
+            width="40"
+            height="40"
+            style="shape-rendering: auto; animation-play-state: running; animation-delay: 0s; background: none;"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="xMidYMid"
+          >
+            <circle cx="50" cy="50" fill="none" stroke="#d9e2ed" stroke-width="6" r="35"
+                stroke-dasharray="164.93361431346415 56.97787143782138"
+                style="animation-play-state: running; animation-delay: 0s;"
+                transform="rotate(115.597 50 50)">
+                <animateTransform attributeName="transform" type="rotate" calcMode="linear"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s"
+                    repeatCount="indefinite">
+                </animateTransform>
+            </circle>
+          </svg>
+        </div>
+      </div>
+    </modal-dialog-form>
+  </div>
+</search-modal-dialog>

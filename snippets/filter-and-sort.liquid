@@ -1,0 +1,71 @@
+{% comment %}
+  {% liquid
+    if results.url
+      assign results_url = results.url
+    else
+      assign terms = results.terms | escape
+      assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+    endif
+  %}
+{% endcomment %}
+<factes-filter class="collection-facets--toolbar flex align-items-center justify-content-between">
+  <div class="facets-product--count">
+    <span class="text-sm" id="facet-product-count">
+      {%- if results.results_count -%}
+        {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
+      {%- elsif results.products_count == results.all_products_count -%}
+        {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
+      {%- else -%}
+        {{
+          'products.facets.product_count'
+          | t: product_count: results.products_count, count: results.all_products_count
+        }}
+      {%- endif -%}
+    </span>
+  </div>
+  {% if section.settings.enable_sorting == true %}
+    {% assign sort_by = results.sort_by | default: results.default_sort_by %}
+    {% capture sortbyvalue %}
+       {%- for option in results.sort_options -%}
+         {% if sort_by ==  option.value %}
+             {% assign selectedSortBy = option.name %}
+           {% endif %}
+              <li data-value="price-asc {% if option.value == sort_by %} selected{% endif %}" tabindex="0">
+                <label class="filter-sort-names" id="sortByName-{{ forloop.index }}">
+                  <input
+                    type="radio"
+                    class="facets-sort-checkbox"
+                    name="sort_by"
+                    id="sortByName-{{ forloop.index }}"
+                    value="{{ option.value | escape }}"
+                    data-name="{{ option.name | escape }}"
+                    {% if option.value == sort_by %}
+                      checked
+                    {% endif %}
+                  >
+                  <span>
+                    {{ option.name | escape }}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M13.71 3.156a.75.75 0 0 1 .128 1.053l-6.929 8.846-.01.013c-.045.057-.104.134-.163.197a1 1 0 0 1-.382.263 1 1 0 0 1-.714-.005 1 1 0 0 1-.38-.268 6 6 0 0 1-.17-.212l-2.932-3.84a.75.75 0 1 1 1.193-.91l2.657 3.48 6.65-8.489a.75.75 0 0 1 1.052-.128"></path>
+                    </svg>
+                  </span>
+                </label>
+              </li>
+            {% endfor %}
+    {% endcapture %}
+
+    <form id="filter-facets-sort-form" class="sorting">
+      <sidebar-sort class="collection-facets-sort--wrapper">
+        <label for="sort-options" class="collection-facets-sort-label">{{ 'products.facets.sort_by_label' | t }}</label>
+        <div class="collection-facets--dropdown">
+          <button id="facets-dropdown" class="collection-facets-dropdown--btn" data-facet-sort>
+            <strong>{{ selectedSortBy }}</strong>
+          </button>
+          <ul class="collection-facets--list" id="collection-facets-list">
+            {{ sortbyvalue }}
+          </ul>
+        </div>
+      </sidebar-sort>
+    </form>
+  {% endif %}
+</factes-filter>

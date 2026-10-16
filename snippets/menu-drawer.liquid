@@ -1,0 +1,250 @@
+{% capture content %}
+      {% if section.settings.collection_image != blank %}
+        <main-collection class="main-collection-image">
+           {% assign image = section.settings.collection_image %}
+              <img
+                srcset="
+                  {%- if image.width >= 165 -%}{{ image | image_url: width: 165 }} 165w,{%- endif -%}
+                  {%- if image.width >= 330 -%}{{ image | image_url: width: 330 }} 330w,{%- endif -%}
+                  {%- if image.width >= 535 -%}{{ image | image_url: width: 535 }} 535w,{%- endif -%}
+                  {%- if image.width >= 850 -%}{{ image | image_url: width: 850 }} 850w,{%- endif -%}
+                  {%- if image.width >= 1000 -%}{{ image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                  {%- if image.width >= 1500 -%}{{ image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                  {%- if image.width >= 3000 -%}{{ image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                  {{ image | image_url }} {{ image.width }}w
+                "
+                src="{{ image | image_url: width: 1500 }}"
+                sizes="calc(100vw - 3rem)"
+                alt="{{ image.alt | escape }}"
+                height="{{ image.height }}"
+                width="{{ image.width }}"
+                loading="lazy"
+              >
+        </main-collection>
+      {% endif %}
+       {% if section.settings.content_heading != blank or  section.settings.link_text != blank and section.settings.url != blank %}
+        <div class="drawer-main-collection--text">
+          {% if section.settings.content_heading != blank %}
+            <h3 class="drawer-main-collection-title">{{ section.settings.content_heading }}</h3>
+          {% endif %}
+           {% if section.settings.link_text != blank and section.settings.url != blank   %}
+            <a href="{{ section.settings.url }}" class="underline--link">
+               <span class="button-text">{{ section.settings.link_text }}</span>
+              <span class="link-arrow">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H8V8H7V1.707L1.354 7.354L1 7.707L0.293 7L0.646 6.646L6.293 1H0V0Z" fill="currentColor"></path>
+                </svg>
+              </span>
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+{% endcapture %}
+<header-menu-drawer class="header-menu-drawer drawer" id="DrawerMenu" data-drawer-content>
+  <div class="header-menu-drawer-body">
+    <div class="header-menu-drawer--card">
+      <div class="header-menu-drawer-content">
+        <a href="#" class="drawer-close" data-close-drawer tabindex="0" aria-label="close">
+          <close-btn>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 1L1 21M1 1L21 21" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"></path>
+            </svg>
+          </close-btn>
+        </a>
+        <ul class="list-style-none header-menu-drawer-list">
+          {% for link in section.settings.secondary_menu.links %}
+            {% liquid
+              assign mega_menu_status = false
+              assign link_title = link.title | downcase
+              for block in section.blocks
+                assign mega_menu_title = block.settings.menu_label | downcase
+                if mega_menu_title == link_title
+                  capture collections_content
+                    if block.settings.collection_list.count > 0
+                      render 'block-menu-item', type: 'collections_content', block: block
+                    endif
+                  endcapture
+                  capture custom_content
+                    for i in (1..5)
+                      assign image_setting = 'content_image_' | append: i
+                      assign heading_setting = 'content_heading_' | append: i
+                      assign subheading_setting = 'content_subheading_' | append: i
+                      assign link_setting = 'content_link_' | append: i
+                      render 'block-menu-item', type: 'custom_content', image: block.settings[image_setting], heading: block.settings[heading_setting], subheading: block.settings[subheading_setting], link: block.settings[link_setting], custom_class: 'header-menu-drawer-submenu-items'
+                    endfor
+                  endcapture
+                  if collections_content != blank or custom_content != blank
+                    assign mega_menu_status = true
+                    break
+                  endif
+                endif
+              endfor
+            %}
+            <li class="{% if mega_menu_status %} megamenu-drawer{% endif %}" data-menu-link>
+              <span class="header-menu-drawer-item {{ settings.navigation_font }}-font">
+                <a class="header-menu-drawer-text h2" href="{{ link.url }}">{{ link.title }}</a>
+                {% if mega_menu_status or link.levels > 0 %}
+                  <button
+                    class="header-menu-drawer-icon"
+                    data-submenu-open
+                    tabindex="0"
+                  >
+                    <svg
+                      width="19"
+                      height="20"
+                      viewBox="0 0 19 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M18.5 10.4091H10.8636V9.59091H18.5V10.4091ZM9.86364 9.59091V10.4091L9.13636 10.4091L9.13636 9.59091H9.86364ZM9.13636 11.4091L9.86364 11.4091L9.86364 19.5H9.13636V11.4091ZM8.13636 9.59091L8.13636 10.4091H0.5V9.59091H8.13636ZM9.86364 8.59091H9.13636V0.5L9.86364 0.5L9.86364 8.59091Z" fill="currentColor" stroke="currentColor"/>
+                    </svg>
+                  </button>
+                {% endif %}
+              </span>
+              {% if mega_menu_status %}
+                <div class="header-menu-drawer-submenu" data-submenu-wrapper>
+                  {% if link.levels > 1 %}
+                    <ul class="header-menu-drawer-submenu--nav" data-submenu-link>
+                      {% for childlink in link.links %}
+                        <li>
+                          <span
+                            class="header-menu-drawer-submenu-text {{ settings.navigation_font }}-font"
+                          >
+                            <a href="{{ childlink.url }}">{{- childlink.title -}}</a>
+                            {% if childlink.levels > 0 %}
+                              <button
+                                class="header-menu-drawer-icon"
+                                data-grand-submenu-toggle
+                                tabindex="0"
+                              >
+                                <svg
+                                  width="19"
+                                  height="20"
+                                  viewBox="0 0 19 20"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path d="M18.5 10.4091H10.8636V9.59091H18.5V10.4091ZM9.86364 9.59091V10.4091L9.13636 10.4091L9.13636 9.59091H9.86364ZM9.13636 11.4091L9.86364 11.4091L9.86364 19.5H9.13636V11.4091ZM8.13636 9.59091L8.13636 10.4091H0.5V9.59091H8.13636ZM9.86364 8.59091H9.13636V0.5L9.86364 0.5L9.86364 8.59091Z" fill="currentColor" stroke="currentColor"/>
+                                </svg>
+                              </button>
+                            {% endif %}
+                          </span>
+                          {% if childlink.levels > 0 %}
+                            <ul class="header-menu-drawer-submenu-subnav" data-grand-submenu-wrapper>
+                              {% for grandchildlink in childlink.links %}
+                                <li>
+                                  <a href="{{ grandchildlink.url }}" class="underline megamenu-link">
+                                    {{- grandchildlink.title -}}
+                                  </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                  {% if collections_content != blank %}
+                    <ul class="header-menu-drawer-submenu-items">
+                      {{ collections_content }}
+                    </ul>
+                  {% endif %}
+                  {% if custom_content != blank %}
+                    {{ custom_content }}
+                  {% endif %}
+                </div>
+              {% elsif link.levels > 0 %}
+                <div class="header-menu-drawer-submenu " data-submenu-wrapper>
+                  <ul class="header-menu-drawer-submenu--nav">
+                    {% for childlink in link.links %}
+                      <li data-submenu-link>
+                        <span
+                          class="header-menu-drawer-submenu-text {{ settings.navigation_font }}-font"
+                        >
+                          <a href="{{ childlink.url }}">{{ childlink.title -}}</a>
+                          {% if childlink.levels > 0 %}
+                            <button
+                              class="header-menu-drawer-icon"
+                              data-grand-submenu-toggle
+                              tabindex="0"
+                            >
+                              <svg
+                                width="19"
+                                height="20"
+                                viewBox="0 0 19 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M18.5 10.4091H10.8636V9.59091H18.5V10.4091ZM9.86364 9.59091V10.4091L9.13636 10.4091L9.13636 9.59091H9.86364ZM9.13636 11.4091L9.86364 11.4091L9.86364 19.5H9.13636V11.4091ZM8.13636 9.59091L8.13636 10.4091H0.5V9.59091H8.13636ZM9.86364 8.59091H9.13636V0.5L9.86364 0.5L9.86364 8.59091Z" fill="currentColor" stroke="currentColor"></path>
+                              </svg>
+                            </button>
+                          {% endif %}
+                        </span>
+                        {% if childlink.levels > 0 %}
+                          <ul class="header-menu-drawer-submenu-subnav" data-grand-submenu-wrapper>
+                            {% for grandchildlink in childlink.links %}
+                              <li>
+                                <a href="{{ grandchildlink.url }}">
+                                  {{- grandchildlink.title -}}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+        {% capture pages %}
+             {% for page in (1..3) %}
+              {% assign page_index = 'page_'| append: forloop.index %}
+           
+              {% if section.settings[page_index] != blank %}
+               <li ><a href="{{ section.settings[page_index].url }}">{{ section.settings[page_index].title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          {% endcapture %}
+
+        {% capture contact_details %}
+             {% if section.settings.email_placeholder != blank  and section.settings.email != blank %}
+              <li>
+                <strong>{{ section.settings.email_placeholder }}</strong>
+                <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+              </li>
+            {% endif %}
+            {% if section.settings.phone_placeholder != blank  and section.settings.phone != blank %}
+              <li>
+                <strong>{{ section.settings.phone_placeholder }}</strong>
+                <a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a>
+              </li>
+            {% endif %}
+          {% endcapture %}
+        {% if pages != blank or contact_details != blank %}
+          <div class="header-menu-drawer-link-with-info">
+            {% if pages != blank %}
+              <ul class="header-menu-drawer--links">
+                {{ pages }}
+              </ul>
+            {% endif %}
+
+            {% if contact_details != blank %}
+              <ul class="header-menu-drawer-contact-info">
+                {{ contact_details }}
+              </ul>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+      {% if content != blank %}
+        <div class="header-menu-drawer-main-collections relative">
+          {{ content }}
+        </div>
+      {% endif %}
+      
+    </div>
+  </div>
+</header-menu-drawer>

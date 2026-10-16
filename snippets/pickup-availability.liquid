@@ -1,0 +1,152 @@
+{%- assign pickup_availabilities = current_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+<availability-element
+  class="pickup-availability block"
+  id="pickup-availability-content"
+  data-pickup-availability-content
+>
+  {%- if pickup_availabilities.size > 0 and current_variant.available -%}
+    {%- liquid
+      assign closest_location = pickup_availabilities.first
+    -%}
+    <div class="availability-content">
+      <div class="pickup-available-header">
+        {%- if closest_location.available -%}
+          <svg viewBox="0 0 24 24" stroke="none" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.25 12C1.25 6.06294 6.06294 1.25 12 1.25C17.9371 1.25 22.75 6.06294 22.75 12C22.75 17.9371 17.9371 22.75 12 22.75C6.06294 22.75 1.25 17.9371 1.25 12ZM17.0303 10.0303C17.3232 9.73744 17.3232 9.26256 17.0303 8.96967C16.7374 8.67678 16.2626 8.67678 15.9697 8.96967L11 13.9393L9.03033 11.9697C8.73744 11.6768 8.26256 11.6768 7.96967 11.9697C7.67678 12.2626 7.67678 12.7374 7.96967 13.0303L10.4697 15.5303C10.6103 15.671 10.8011 15.75 11 15.75C11.1989 15.75 11.3897 15.671 11.5303 15.5303L17.0303 10.0303Z"
+            ></path>
+          </svg>
+        {%- endif -%}
+        <div class="availability-content--text">
+          <p class="availability-desc body-font bold">
+            {%- if closest_location.available -%}
+              {{
+                'products.product.pickup_availability.pick_up_available_at_html'
+                | t: location_name: closest_location.location.name
+              }}
+            {%- else -%}
+              {{
+                'products.product.pickup_availability.pick_up_unavailable_at_html'
+                | t: location_name: closest_location.location.name
+              }}
+            {%- endif -%}
+          </p>
+          <div class="text-sm" class="caption">{{ closest_location.pick_up_time }}</div>
+          <a
+            href="#availability-drawer-{{ section.id }}"
+            class="view-store underline--link"
+            data-drawer-main-head
+            data-id="availability-drawer"
+          >
+            {%- if pickupAvailabilities.size == 1 -%}
+              {{ 'products.product.pickup_availability.view_store_info' | t }}
+            {%- else -%}
+              {{ 'products.product.pickup_availability.check_other_stores' | t }}
+            {%- endif -%}
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</availability-element>
+
+<availability-drawer
+  class="drawer drawer-availability"
+  id="availability-drawer-{{ section.id }}"
+  data-model-main-body
+>
+  <div class="overlay" data-drawer-close></div>
+  <div class="drawer-base">
+    <modal-dialog-head class="modal-dialog-head">
+      <h4 class="drawer-heading h5">{{ "products.store_availibility" | t }}</h4>
+      <a href="#" class="drawer-close" aria-label="Close" data-drawer-close>
+        <close-btn>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 1L1 21M1 1L21 21" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"/>
+          </svg>
+        </close-btn>
+      </a>
+    </modal-dialog-head>
+
+    <modal-dialog-form class="modal-dialog-form" data-model-content>
+      <availability-content class="block">
+        {%- unless current_variant.product.has_only_default_variant -%}
+          <div class="availability-product">
+            <div class="availability-product-img">
+              {%- if current_variant.featured_media != null -%}
+                {%- assign featured_media = current_variant.featured_media -%}
+
+                {{
+                  featured_media.preview_image
+                  | image_url: width: 100
+                  | image_tag: loading: lazy, sizes: '50vw', widths: '150, 200, 300, 400'
+                }}
+              {% elsif product.featured_media != null %}
+                {%- assign featured_media = product.featured_media -%}
+
+                {{
+                  featured_media.preview_image
+                  | image_url: width: 100
+                  | image_tag: loading: lazy, sizes: '50vw', widths: '150, 200, 300, 400'
+                }}
+              {% else %}
+                {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            <div class="availability-product--text">
+              <span>{{ product.title }}</span>
+              <p class="text-sm">
+                {%- for product_option in current_variant.product.options_with_values -%}
+                  {{ product_option.name | escape }}:&nbsp;
+                  {%- for value in product_option.values -%}
+                    {%- if product_option.selected_value == value -%}
+                      {{ value | escape }}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {%- unless forloop.last -%},&nbsp;{%- endunless -%}
+                {%- endfor -%}
+              </p>
+            </div>
+          </div>
+        {%- endunless -%}
+        <div class="availability-listing">
+          {%- for availability in pickup_availabilities -%}
+            <div class="availability-listing--item flex align-items-start">
+              <span class="availability-status in-stock">
+                {%- if availability.available -%}
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="7.5" cy="7.5" r="7.5" fill="#81C77E"/>
+                    <path d="M3.8248 7.30027L3.64327 7.47861L3.8248 7.65695L5.65559 9.45557L5.83712 9.63391L6.34021 10.1281L6.34144 10.1294L6.51541 10.3003L6.69061 10.1281L7.19369 9.63391L7.37522 9.45557L11.1752 5.72238L11.3567 5.54405L11.1752 5.36571L10.6721 4.87147L10.4969 4.69934L10.3217 4.87147L6.51541 8.61087L4.67828 6.80603L4.50308 6.63391L4.32788 6.80603L3.8248 7.30027Z" fill="white" stroke="white" stroke-width="0.5"/>
+                  </svg>
+                  {{ 'products.product.pickup_availability.pick_up_available' | t }}
+                {% else %}
+                  <span class="availability-status in-stock">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                      <path d="M9.40499 5L9.88639 5.50433L5.59505 10L5.11365 9.49568L9.40499 5Z" fill="white"/>
+                      <path d="M10 9.4049L9.49567 9.8863L5 5.59496L5.50432 5.11356L10 9.4049Z" fill="white"/>
+                    </svg>
+                    {{ 'products.product.pickup_availability.unavailable' | t }}
+                  </span>
+                {% endif %}
+              </span>
+
+              {%- assign address = availability.location.address -%}
+              <div class="availability-cont--wrapper">
+                <title class="block">{{ availability.location.name | escape }}</title>
+                <info class="availability-info">
+                  {%- if availability.available -%}
+                    {{ availability.pick_up_time | downcase }}
+                  {% endif %}
+                  {{ address | format_address }}
+                  {%- if address.phone.size > 0 -%}
+                    <a href="tel:{{ address.phone }}" class="unstyled-link">{{ address.phone }}</a>
+                  {%- endif -%}
+                </info>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </availability-content>
+    </modal-dialog-form>
+  </div>
+</availability-drawer>

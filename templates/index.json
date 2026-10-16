@@ -1,0 +1,944 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_pQDJzd": {
+      "type": "slideshow",
+      "blocks": {
+        "image_slide_Q9aGzn": {
+          "type": "image_slide",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "image": "shopify://shop_images/alchemyrefiner_alchemymagic_3_83e2df54-712f-427f-b9e3-bf18d373d6f9_0.jpg",
+            "collection_list_enable": true,
+            "collection_list": [],
+            "content_width": "small",
+            "content_alignment": "left",
+            "content_position": "bottom--left",
+            "content_position_mobile": "bottom--left",
+            "heading": "Up to 50% Off Limited Time",
+            "heading_size": "h1",
+            "heading_seo": "h1",
+            "description": "Celebrate the season with style and savings. Don’t miss out on exclusive discounts across our bestsellers.",
+            "description_size": "text-lg",
+            "btn_text": "SHOP NOW",
+            "btn_link": "shopify://collections/frontpage",
+            "btn_size": "md",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "btn_text_2": "Shop now",
+            "btn_link_2": "",
+            "btn_size_2": "sm",
+            "button_style_2": "solid",
+            "hover_effect_2": "standard",
+            "overlay_color": "#000000",
+            "overlay_opacity": 39
+          }
+        },
+        "image_slide_fBHV4U": {
+          "type": "image_slide",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "collection_list_enable": true,
+            "collection_list": [],
+            "content_width": "small",
+            "content_alignment": "left",
+            "content_position": "bottom--left",
+            "content_position_mobile": "bottom--left",
+            "heading": "Fresh Finds, Just Dropped",
+            "heading_size": "h1",
+            "heading_seo": "h1",
+            "description": "Explore the latest trends with our newest arrivals. Curated for style, designed for comfort – shop now before they’re gone.",
+            "description_size": "text-lg",
+            "btn_text": "SHOP NOW",
+            "btn_link": "shopify://collections/frontpage",
+            "btn_size": "md",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "btn_text_2": "Shop now",
+            "btn_link_2": "",
+            "btn_size_2": "sm",
+            "button_style_2": "solid",
+            "hover_effect_2": "standard",
+            "overlay_color": "#000000",
+            "overlay_opacity": 36
+          }
+        }
+      },
+      "block_order": [
+        "image_slide_Q9aGzn",
+        "image_slide_fBHV4U"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "slide_style": "single",
+        "image_height": "full",
+        "mobile_image_height": "full",
+        "autoplay": false,
+        "autoplay_interval": 1,
+        "slide_gap": 0,
+        "desktop_alignment": "center",
+        "mobile_alignment": "center",
+        "icon_color": "#ffffff",
+        "icon_background": "#000000"
+      }
+    },
+    "featured_collection_knYHgc": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "color_scheme": "",
+        "enable_slider": false,
+        "enable_card": false,
+        "heading": "ON-TREND LOOKS",
+        "heading_size": "h5",
+        "heading_seo": "h2",
+        "description": "Discover the latest styles that are making waves this season—bold silhouettes, modern cuts, and effortless combinations curated for everyday chic.",
+        "description_size": "text-base",
+        "show_collection_title": false,
+        "collection": "",
+        "image_size": "adapt",
+        "products_to_show": 4,
+        "column_per_row": 4,
+        "mobile_item_per_row": "2",
+        "column_gap": 2,
+        "column_gap_mobile": 10,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 80,
+        "top_space_mobile": 35,
+        "bottom_space_mobile": 35
+      }
+    },
+    "best_selling_products_Gi4jtA": {
+      "type": "best-selling-products",
+      "name": "Best selling products",
+      "settings": {
+        "color_scheme": "",
+        "image_height": "full",
+        "mobile_image_height": "400",
+        "marquee_heading": "MOST LOVED PICKS",
+        "scrolling_speed": 15,
+        "heading": "Don’t Miss",
+        "heading_size": "h2",
+        "heading_seo": "h2",
+        "description": "Our most-wanted products are going fast! Loved by shoppers and trending everywhere, these styles are flying off the shelves. Grab yours before they're gone for good.",
+        "description_size": "text-lg",
+        "secondary_color_scheme": "",
+        "product_list_heading": "TRENDING PRODUCTS",
+        "product_list": [],
+        "column_per_row": 5,
+        "mobile_item_per_row": "2",
+        "image_size": "adapt",
+        "column_gap": 3,
+        "column_gap_mobile": 4,
+        "btn_text": "EXPLORE PRODUCT",
+        "btn_size": "md",
+        "button_style": "solid",
+        "hover_effect": "standard",
+        "overlay_color": "#000000",
+        "overlay_opacity": 18,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      }
+    },
+    "collection_tab_XE8YEN": {
+      "type": "collection-tab",
+      "blocks": {
+        "collection_tab_peRAkm": {
+          "type": "collection-tab",
+          "settings": {
+            "collection_heading": "",
+            "collection": "",
+            "btn_text": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_tab_8mgXjU": {
+          "type": "collection-tab",
+          "settings": {
+            "collection_heading": "",
+            "collection": "",
+            "btn_text": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_tab_nLLh99": {
+          "type": "collection-tab",
+          "settings": {
+            "collection_heading": "",
+            "collection": "",
+            "btn_text": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_peRAkm",
+        "collection_tab_8mgXjU",
+        "collection_tab_nLLh99"
+      ],
+      "name": "Collection tabs",
+      "settings": {
+        "color_scheme": "",
+        "heading": "CURATED LOOKS",
+        "heading_size": "h5",
+        "heading_seo": "h2",
+        "description": "",
+        "description_size": "text-lg",
+        "products_count": 6,
+        "mobile_item_per_row": "2",
+        "tab_style": "vertical",
+        "image_size": "adapt",
+        "column_gap": 5,
+        "column_gap_mobile": 3,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 35,
+        "bottom_space_mobile": 40
+      }
+    },
+    "collection_carousel_34WGLQ": {
+      "type": "collection-carousel",
+      "blocks": {
+        "collection_DWpEgf": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "collection": "",
+            "subheading": "SALE 50% OFF",
+            "heading": "Luxe Minimal",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_9kctd8": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "collection": "",
+            "subheading": "",
+            "heading": "Most-Loved Looks",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_LYLNk8": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "collection": "",
+            "subheading": "",
+            "heading": "Occasion Ready",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_9a3eKg": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "collection": "",
+            "subheading": "",
+            "heading": "Eco Luxe",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_bd4tq3": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "collection": "",
+            "subheading": "",
+            "heading": "Flat 15% OFF",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_RXrh77": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "collection": "",
+            "subheading": "",
+            "heading": "Summer Drift",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        }
+      },
+      "block_order": [
+        "collection_DWpEgf",
+        "collection_9kctd8",
+        "collection_LYLNk8",
+        "collection_9a3eKg",
+        "collection_bd4tq3",
+        "collection_RXrh77"
+      ],
+      "name": "Collection carousel",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Most-Loved Looks",
+        "heading_size": "h5",
+        "heading_seo": "h2",
+        "description": "Discover the pieces everyone’s obsessing over timeless, bold, and effortlessly elegant.",
+        "description_size": "text-lg",
+        "content_alignment": "center",
+        "image_ratio": "square",
+        "column_gap": 10,
+        "column_gap_mobile": 10,
+        "top_space_desktop": 50,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 40
+      }
+    },
+    "compact_categories_Q7HDdU": {
+      "type": "compact-categories",
+      "blocks": {
+        "category_xjEkUK": {
+          "type": "category",
+          "settings": {
+            "collection": "frontpage",
+            "heading": "TIMELESS",
+            "text_style": "image"
+          }
+        },
+        "category_jDGyAH": {
+          "type": "category",
+          "settings": {
+            "collection": "frontpage",
+            "heading": "50% OFF",
+            "text_style": "line"
+          }
+        },
+        "image_VJmRq8": {
+          "type": "image",
+          "settings": {
+            "link": "shopify://collections",
+            "image_size": "medium"
+          }
+        },
+        "category_CMLgCB": {
+          "type": "category",
+          "settings": {
+            "collection": "frontpage",
+            "heading": "MODERN LOOKS",
+            "text_style": "line"
+          }
+        },
+        "category_6hE89b": {
+          "type": "category",
+          "settings": {
+            "collection": "frontpage",
+            "heading": "HOT & HAPPENING",
+            "text_style": "image"
+          }
+        },
+        "image_HKQKmx": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image_size": "medium"
+          }
+        },
+        "category_36PyTW": {
+          "type": "category",
+          "settings": {
+            "collection": "frontpage",
+            "heading": "STYLISH",
+            "text_style": "image"
+          }
+        },
+        "image_C88cc7": {
+          "type": "image",
+          "settings": {
+            "link": "shopify://collections",
+            "image_size": "medium"
+          }
+        },
+        "category_7gH3QA": {
+          "type": "category",
+          "settings": {
+            "collection": "frontpage",
+            "heading": "TRENDY",
+            "text_style": "line"
+          }
+        },
+        "category_nNxYqe": {
+          "type": "category",
+          "settings": {
+            "collection": "frontpage",
+            "heading": "VIBES",
+            "text_style": "line"
+          }
+        }
+      },
+      "block_order": [
+        "category_xjEkUK",
+        "category_jDGyAH",
+        "image_VJmRq8",
+        "category_CMLgCB",
+        "category_6hE89b",
+        "image_HKQKmx",
+        "category_36PyTW",
+        "image_C88cc7",
+        "category_7gH3QA",
+        "category_nNxYqe"
+      ],
+      "name": "Compact categories",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "column_gap": 35,
+        "column_gap_mobile": 10,
+        "content_width": "large",
+        "content_size": "h1",
+        "overlay_color": "#000000",
+        "overlay_opacity": 50,
+        "top_space_desktop": 120,
+        "bottom_space_desktop": 120,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 40
+      }
+    },
+    "showcase_collection_list_C37a3g": {
+      "type": "showcase-collection-list",
+      "blocks": {
+        "collection_9Fncdz": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "OUTFITS",
+            "description": "From everyday essentials to statement looks, explore ready-to-wear outfit pairings designed for modern living. Whether you're dressing up or dressing down, our outfit edits bring together effortless styling with fashion-forward thinking. Mix, match, and layer with confidence — we’ve done the styling for you.",
+            "btn_text": "SHOP NOW",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_rwXKgG": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "TRENDS",
+            "description": "Stay ahead of the style curve with pieces inspired by what's trending right now. From runway-inspired textures to street-ready silhouettes, this collection showcases what’s hot and what’s next. Refresh your wardrobe with styles that are designed to turn heads and define the season.",
+            "btn_text": "SHOP NOW",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_D7Rh8g": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "POPULAR STYLE",
+            "description": "The pieces everyone’s talking about — and wearing. This collection brings together our top-rated, most-loved styles that consistently fly off the shelves. Trusted by our community and styled by thousands, these are the essentials you’ll want on repeat.",
+            "btn_text": "SHOP NOW",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_pjikBt": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "MOMENTS",
+            "description": "Where the city breeze meets casual grace. Outside Moments captures the essence of those in-between times — spontaneous errands, street-side pauses, and unplanned sunsets. This collection is built for motion and mood, with relaxed tailoring, breathable fabrics, and a palette drawn from everyday beauty.",
+            "btn_text": "SHOP NOW",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_xC4mKt": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "OCCASION",
+            "description": "Dress the part, no matter the moment. Whether it’s an intimate dinner, a festive celebration, or a day that calls for something special, our Occasion collection brings you curated pieces that shine. From sleek eveningwear to polished day looks, make every event unforgettable.",
+            "btn_text": "SHOP NOW",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        }
+      },
+      "block_order": [
+        "collection_9Fncdz",
+        "collection_rwXKgG",
+        "collection_D7Rh8g",
+        "collection_pjikBt",
+        "collection_xC4mKt"
+      ],
+      "name": "Showcase collection list",
+      "settings": {
+        "color_scheme": "",
+        "image_height": "full",
+        "mobile_image_height": "300",
+        "heading_size": "h2",
+        "heading_seo": "h2"
+      }
+    },
+    "multi_image_with_text_hGJnQx": {
+      "type": "multi-image-with-text",
+      "blocks": {
+        "heading_JRjfyy": {
+          "type": "heading",
+          "settings": {
+            "heading": "ELEGANCE REIGNS AND POWER DRESSES UP",
+            "heading_size": "h1",
+            "heading_seo": "h2"
+          }
+        },
+        "heading_t67kQJ": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "• FRESH EDITS • VOGUE-INSPIRED",
+            "heading_size": "h6",
+            "heading_seo": "h6"
+          }
+        },
+        "description_99nTXV": {
+          "type": "description",
+          "settings": {
+            "description": "Step into a world where fashion meets function, and every piece tells a story. Our collections are thoughtfully curated to suit every mood, every occasion, and every version of you — from effortless everyday basics to statement pieces that turn heads. We believe style should be bold, inclusive, and always evolving. \n\nWith quality craftsmanship, trend-driven designs, and seamless shopping experiences, we make sure you’re not just wearing clothes — you’re wearing confidence.",
+            "description_size": "text-lg"
+          }
+        },
+        "button_VBzfVz": {
+          "type": "button",
+          "settings": {
+            "btn_text": "MORE DETAILS",
+            "btn_link": "shopify://pages/contact-us",
+            "btn_size": "md",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JRjfyy",
+        "heading_t67kQJ",
+        "description_99nTXV",
+        "button_VBzfVz"
+      ],
+      "name": "Multiimage with text",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "content_alignment": "left",
+        "column_gap": 50,
+        "column_gap_mobile": 9,
+        "top_space_desktop": 150,
+        "bottom_space_desktop": 150,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "video_dUTKwC": {
+      "type": "video",
+      "name": "Video",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "animate_content": true,
+        "video_type": "autoplay",
+        "video_heading": "New Season",
+        "heading": "Mindful Luxury, Crafted to Inspire",
+        "heading_size": "h2",
+        "heading_seo": "h3",
+        "description": "At the intersection of elegance and ethics, we bring you fashion that feels as good as it looks. Each piece is designed with sustainability in mind—using eco-conscious fabrics, low-impact processes, and timeless silhouettes. \n\nThis is luxury redefined for a new era—where style doesn’t cost the planet. Wear your values with pride and step into a future of mindful sophistication.",
+        "description_size": "text-xl",
+        "text_alignment": "left",
+        "btn_text": "GET THE LOOK",
+        "btn_link": "shopify://collections/all",
+        "btn_size": "md",
+        "button_style": "solid",
+        "hover_effect": "standard",
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 30
+      }
+    },
+    "multi_collections_PNGTyf": {
+      "type": "multi-collections",
+      "blocks": {
+        "collection_PHqeKF": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_heading": "",
+            "products_to_show": 6,
+            "image_size": "adapt",
+            "collection_title": "",
+            "btn_text": "SHOP NOW"
+          }
+        },
+        "collection_FqYBt9": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_heading": "",
+            "products_to_show": 6,
+            "image_size": "adapt",
+            "collection_title": "",
+            "btn_text": "SHOP NOW"
+          }
+        }
+      },
+      "block_order": [
+        "collection_PHqeKF",
+        "collection_FqYBt9"
+      ],
+      "name": "Multicollection",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "column_gap": 20,
+        "column_gap_mobile": 5,
+        "heading": "Look for Every Vibe",
+        "heading_size": "h2",
+        "heading_seo": "h2",
+        "description": "Your one-stop collection for every occasion, every mood, and every moment. Find pieces that speak your language.",
+        "description_size": "text-lg",
+        "content_alignment": "left",
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 35,
+        "bottom_space_mobile": 40
+      }
+    },
+    "parallax_VrzptQ": {
+      "type": "parallax",
+      "blocks": {
+        "image_qHE7qh": {
+          "type": "image",
+          "settings": {
+            "image_ratio": "square",
+            "product_list": []
+          }
+        },
+        "image_N7LJUC": {
+          "type": "image",
+          "settings": {
+            "image_ratio": "square",
+            "product_list": []
+          }
+        },
+        "heading_JKhBtx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Winter Essentials",
+            "heading_size": "h4",
+            "heading_seo": "h4"
+          }
+        },
+        "description_XdiMf9": {
+          "type": "description",
+          "settings": {
+            "description": "Wrap yourself in warmth and elegance this season with our curated Winter Collection — where cozy meets chic. From plush coats and soft knits to statement boots and layered accessories, each piece is designed to bring both comfort and confidence to your cold-weather wardrobe.",
+            "description_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "image_qHE7qh",
+        "image_N7LJUC",
+        "heading_JKhBtx",
+        "description_XdiMf9"
+      ],
+      "name": "Parallax",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "heading": "WINTER  Style SHOP 30% OFF —",
+        "heading_size": "h1",
+        "enable_marquee": true,
+        "direction": "right",
+        "scrolling_speed": 20,
+        "overlay_color": "#000000",
+        "overlay_opacity": 100,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "scrolling_content_WdixiJ": {
+      "type": "scrolling-content",
+      "blocks": {
+        "collections_88XqcG": {
+          "type": "collections",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "collection_list": [],
+            "subheading": "ETERNAL STYLE",
+            "heading": "Curated Styles",
+            "heading_size": "h4",
+            "heading_seo": "h5"
+          }
+        },
+        "text_hXdcrJ": {
+          "type": "text",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "subheading": "NEW ARRIVALS",
+            "heading": "Luxury Lounge Style  SHOP 30% OFF",
+            "heading_size": "h1",
+            "heading_seo": "h2",
+            "description": "Elevate your everyday with our Luxury Lounge Style edit — where comfort meets couture. This exclusive collection is crafted for those who appreciate the finer things, even in their downtime. From buttery-soft fabrics to refined silhouettes, each piece is designed to wrap you in effortless sophistication.\n\nWhether you're lounging at home, running errands, or meeting friends for a casual brunch, our selection merges high-end style with laid-back ease. Discover premium loungewear sets, cozy-chic knits, elevated basics, and minimalist layers — all with a luxe finish that sets you apart.\n\nNow is the time to indulge. With 30% OFF, you can bring home comfort without compromise. Because true luxury isn’t loud — it’s lived in, loved, and styled to perfection.",
+            "description_size": "text-base",
+            "btn_text": "VIEW MORE",
+            "btn_link": "shopify://collections",
+            "btn_size": "md",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "content_alignment": "left"
+          }
+        },
+        "products_QKG9jC": {
+          "type": "products",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "product_list": [],
+            "subheading": "DEALS INSIDE",
+            "heading": "Elevated Fashion",
+            "heading_size": "h4",
+            "heading_seo": "h5"
+          }
+        }
+      },
+      "block_order": [
+        "collections_88XqcG",
+        "text_hXdcrJ",
+        "products_QKG9jC"
+      ],
+      "name": "Scrolling content",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "mobile_item_per_row": "2"
+      }
+    },
+    "media_gallery_gGNcPF": {
+      "type": "media-gallery",
+      "blocks": {
+        "media_ktRiRR": {
+          "type": "media",
+          "settings": {
+            "social_media_icon": "instagram",
+            "link": "",
+            "product": "",
+            "product_on_hover": true
+          }
+        },
+        "media_y6Lpfx": {
+          "type": "media",
+          "settings": {
+            "social_media_icon": "instagram",
+            "link": "",
+            "product": "",
+            "product_on_hover": true
+          }
+        },
+        "media_CmzGy8": {
+          "type": "media",
+          "settings": {
+            "social_media_icon": "instagram",
+            "link": "",
+            "product": "",
+            "product_on_hover": true
+          }
+        },
+        "media_FHy8FU": {
+          "type": "media",
+          "settings": {
+            "social_media_icon": "instagram",
+            "link": "",
+            "product": "",
+            "product_on_hover": true
+          }
+        },
+        "media_9F84DQ": {
+          "type": "media",
+          "settings": {
+            "social_media_icon": "instagram",
+            "link": "",
+            "product": "",
+            "product_on_hover": true
+          }
+        },
+        "media_nh7M4V": {
+          "type": "media",
+          "settings": {
+            "social_media_icon": "instagram",
+            "link": "",
+            "product": "",
+            "product_on_hover": true
+          }
+        },
+        "media_9EyDf6": {
+          "type": "media",
+          "settings": {
+            "social_media_icon": "instagram",
+            "link": "",
+            "product": "",
+            "product_on_hover": true
+          }
+        }
+      },
+      "block_order": [
+        "media_ktRiRR",
+        "media_y6Lpfx",
+        "media_CmzGy8",
+        "media_FHy8FU",
+        "media_9F84DQ",
+        "media_nh7M4V",
+        "media_9EyDf6"
+      ],
+      "name": "Media gallery",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "heading": "Telling Stories Through Seasonal Style",
+        "heading_size": "h2",
+        "heading_seo": "h6",
+        "description": "Let your wardrobe speak volumes. This curated showcase blends imagery and emotion, highlighting the essence of seasonal fashion through elevated textures, neutral palettes, and cozy silhouettes.",
+        "description_size": "text-lg",
+        "icon_text": "SUPREME",
+        "link": "shopify://collections",
+        "link_text": "FOLLOW",
+        "column_gap": 20,
+        "column_gap_mobile": 20,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "testimonial_XXATBL": {
+      "type": "testimonial",
+      "blocks": {
+        "quote_Qm36RJ": {
+          "type": "quote",
+          "settings": {
+            "heading": "LOVE IT!",
+            "description": "<p>The fit is amazing, and the quality is even better than I expected. I get compliments every time I wear it! It’s flattering, comfortable, and versatile — definitely one of my favorite wardrobe pieces now.</p>",
+            "author": "Emily Carter",
+            "text": "Stylish"
+          }
+        },
+        "quote_tbrbia": {
+          "type": "quote",
+          "settings": {
+            "heading": "HIGHLY RECOMMEND!",
+            "description": "<p>The whole experience felt premium — from the packaging to the final look. Stylish, comfortable, and timeless. It felt like luxury without the fuss, and I love how effortlessly it fits into my daily outfits.</p>",
+            "author": "Alina Kera",
+            "text": "Stylish"
+          }
+        },
+        "quote_kbQVm6": {
+          "type": "quote",
+          "settings": {
+            "heading": "EXACTLY!",
+            "description": "<p>From cozy knits to minimal layering pieces, I found everything I was looking for in one place. The fabric feels great on skin, the fit is spot on, and everything just works together so well.</p>",
+            "author": "Jordan Maro",
+            "text": "Style"
+          }
+        },
+        "quote_cyzmMq": {
+          "type": "quote",
+          "settings": {
+            "heading": "FASHION FORWARD!",
+            "description": "<p>Clean silhouettes, beautiful tones, effortless layers, and a great fit — this brand has become my go-to for everyday elevated style. Every piece feels thoughtfully designed and truly wearable from day to night.</p>",
+            "author": "Elias Duja",
+            "text": "Style"
+          }
+        }
+      },
+      "block_order": [
+        "quote_Qm36RJ",
+        "quote_tbrbia",
+        "quote_kbQVm6",
+        "quote_cyzmMq"
+      ],
+      "name": "Testimonial",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "Loved By CUSTOMERS",
+        "heading_size": "h4",
+        "heading_seo": "h6",
+        "description": "",
+        "description_size": "text-lg",
+        "image_ratio": "landscape",
+        "content_alignment": "left",
+        "column_gap": 20,
+        "column_gap_mobile": 20,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 50,
+        "bottom_space_mobile": 50
+      }
+    }
+  },
+  "order": [
+    "slideshow_pQDJzd",
+    "featured_collection_knYHgc",
+    "best_selling_products_Gi4jtA",
+    "collection_tab_XE8YEN",
+    "collection_carousel_34WGLQ",
+    "compact_categories_Q7HDdU",
+    "showcase_collection_list_C37a3g",
+    "multi_image_with_text_hGJnQx",
+    "video_dUTKwC",
+    "multi_collections_PNGTyf",
+    "parallax_VrzptQ",
+    "scrolling_content_WdixiJ",
+    "media_gallery_gGNcPF",
+    "testimonial_XXATBL"
+  ]
+}

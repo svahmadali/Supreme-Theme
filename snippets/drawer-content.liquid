@@ -1,0 +1,151 @@
+{% assign count_int_main = 1 %}
+
+{% capture content_head_main %}
+  {% if block.settings.show_description %}
+    <li class="tab-item">
+        <a href="#tab_item_{{ count_int_main }}_{{ block.id }}" class="tab-link" data-drawer-head><span class="tab-dot"></span>
+    {% if block.settings.description_heading != blank %}
+          {{- block.settings.description_heading -}}
+        {% else %}
+          {{ 'general.extra_label.description' | t }}
+        {% endif %}</a>
+    </li>
+  {% endif %}
+   {% for i in (1..3) %}
+     {% assign count_int_main = count_int_main | plus: 1 %}
+    {% liquid
+      assign headingindex = 'heading_' | append: forloop.index
+      assign heading = block.settings[headingindex]
+    
+    %}
+     {% if heading != blank %}
+      <li class="tab-item">
+          <a href="#tab_item_{{ count_int_main }}_{{ block.id }}"  class="tab-link" data-drawer-head>
+            <span class="tab-dot"></span>  {{ heading }}</a>
+      </li>
+  {% endif %}
+    {% endfor %}
+  {% endcapture %}
+{% if content_head_main != blank %}
+  <product-content-element data-id="product_content_drawer_{{ block.id }}">
+    <div class="drawer-tabs-wrapper">
+      <ul class="tab">
+        {{ content_head_main }}
+      </ul>
+    </div>
+    <template data-product-content-main>
+      {% assign count_int = 1 %}
+      {% assign count_content_int = 1 %}
+      {% capture content_head %}
+  {% if block.settings.show_description %}
+    <li class="tab-item">
+        <a href="#tab_item_{{ count_int }}_{{ block.id }}" data-id="tab_item_{{ count_int }}_{{ block.id }}" class="tab-link product-tab-link" data-tab-head><span class="tab-dot"></span>
+    {% if block.settings.description_heading != blank %}
+          {{- block.settings.description_heading -}}
+        {% else %}
+          {{'general.extra_label.description' | t}}
+        {% endif %}</a>
+    </li>
+  {% endif %}
+   {% for i in (1..3) %}
+     {% assign count_int = count_int | plus: 1 %}
+    {% liquid
+      assign headingindex = 'heading_' | append: forloop.index
+      assign heading = block.settings[headingindex]
+    
+    %}
+     {% if heading != blank %}
+      <li class="tab-item">
+          <a href="#tab_item_{{ count_int }}_{{ block.id }}" data-id="tab_item_{{ count_int }}_{{ block.id }}" class="tab-link product-tab-link" data-tab-head>
+            <span class="tab-dot"></span>{{ heading }}</a>
+      </li>
+  {% endif %}
+    {% endfor %}
+  {% endcapture %}
+      <product-info-drawer
+        class="drawer drawer-info"
+        id="product_content_drawer_{{ block.id }}"
+        role="dialog"
+        data-drawer-content
+      >
+        {% capture content_body %}
+      {% if block.settings.show_description %}
+        <div class="drawer-tab--text" id="tab_item_{{ count_content_int }}_{{ block.id }}">
+        <h5 class="drawer-tab-title">{% if block.settings.description_heading != blank %}{{- block.settings.description_heading -}}
+        {% else %}
+          Description
+        {% endif %}
+       </h5>
+          {{
+            product.description
+            | replace: '<table', '<div class="table-content"><table '
+            | replace: '</table>', '</table></div>'
+          }}
+        {% if block.settings.des_image != blank %}
+              <div class="tab-image-box">
+              {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+              {%- capture sizes -%}
+                  (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+              {%- endcapture -%}
+              {{ block.settings.des_image | image_url: width: 1500 | image_tag: sizes: sizes, widths: widths }}
+              </div>
+          {% endif %}
+          </div>
+    {% endif %}
+       {% for i in (1..3) %}
+         {% assign count_content_int = count_content_int | plus: 1 %}
+            {% liquid
+              assign headingindex = 'heading_' | append: forloop.index
+              assign heading = block.settings[headingindex]
+              assign description_index = 'description_' | append: forloop.index
+              assign custom_description = block.settings[description_index]
+              assign image_index = 'image_'| append: forloop.index
+              assign custom_images = block.settings[image_index]
+            %}
+         {% if heading != blank %}
+            <div class="drawer-tab--text " id="tab_item_{{ count_content_int }}_{{ block.id }}">
+              <h5 class="drawer-tab-title">{{ heading }}</h5>
+               {{ custom_description }}
+            {% if custom_images != blank %}
+              <div class="tab-image-box">
+              {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+              {%- capture sizes -%}
+                  (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+              {%- endcapture -%}
+              {{ custom_images | image_url: width: 1500 | image_tag: sizes: sizes, widths: widths }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+       {% endfor %}
+     {% endcapture %}
+        <div class="overlay" data-drawer-close></div>
+        <div class="drawer-base">
+          {% if content_head != blank %}
+            <modal-dialog-head class="modal-dialog-head">
+              <div class="drawer-tabs-wrapper">
+                <ul class="tab">
+                  {{ content_head }}
+                </ul>
+              </div>
+              <a href="#" class="drawer-close" data-drawer-close aria-label="close">
+                <close-btn>
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 1L1 21M1 1L21 21" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"></path>
+                  </svg>
+                </close-btn>
+              </a>
+            </modal-dialog-head>
+          {% endif %}
+          {% if content_head != blank and content_body != blank %}
+            <modal-dialog-form class="modal-dialog-form">
+              <div class="drawer-tab-content rte">
+                {{ content_body }}
+              </div>
+            </modal-dialog-form>
+          {% endif %}
+        </div>
+      </product-info-drawer>
+    </template>
+  </product-content-element>
+{% endif %}

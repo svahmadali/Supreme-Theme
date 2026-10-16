@@ -1,0 +1,287 @@
+{% liquid
+  if results.url
+    assign results_url = results.url
+  else
+    assign terms = results.terms | escape
+    assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  endif
+%}
+<factes-filter
+  class="{% if section.settings.filter_type =='drawer' %}drawer facets-drawer{% else %}sidebar{% endif %}"
+  id="facets-content-filter"
+  role="dialog"
+>
+  <form id="filter-facets-form" class="sidebar__form">
+    {%- if results.terms -%}
+      <input type="hidden" name="q" value="{{ results.terms | escape }}">
+      <input name="options[prefix]" type="hidden" value="last">
+    {%- endif -%}
+    {% if results.current_vendor or results.current_type %}
+      <input type="hidden" name="q" value="{{ results.current_vendor }}{{ results.current_type }}">
+    {% endif %}
+    <div class="overlay" data-close-drawer></div>
+    <div class="drawer-base">
+      <modal-dialog-head class="modal-dialog-head">
+        <h4 class="drawer-heading h6">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 13.4404H4M15.56 13.4404H13.56" stroke="black" stroke-linecap="square" stroke-linejoin="round"></path>
+            <path d="M11.9986 15.0001C12.4137 15.0001 12.8117 14.8352 13.1052 14.5417C13.3987 14.2482 13.5636 13.8502 13.5636 13.4351C13.5636 13.0201 13.3987 12.622 13.1052 12.3285C12.8117 12.035 12.4137 11.8701 11.9986 11.8701C11.5835 11.8701 11.1855 12.035 10.892 12.3285C10.5985 12.622 10.4336 13.0201 10.4336 13.4351C10.4336 13.8502 10.5985 14.2482 10.892 14.5417C11.1855 14.8352 11.5835 15.0001 11.9986 15.0001Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M6 6.55957H4M15.69 6.55957H9.69" stroke="black" stroke-linecap="square" stroke-linejoin="round"></path>
+            <path d="M8.13141 8.13C8.54647 8.13 8.94453 7.96512 9.23803 7.67162C9.53152 7.37813 9.69641 6.98006 9.69641 6.565C9.69641 6.14994 9.53152 5.75187 9.23803 5.45838C8.94453 5.16488 8.54647 5 8.13141 5C7.71634 5 7.31828 5.16488 7.02478 5.45838C6.73129 5.75187 6.56641 6.14994 6.56641 6.565C6.56641 6.98006 6.73129 7.37813 7.02478 7.67162C7.31828 7.96512 7.71634 8.13 8.13141 8.13Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          Filters
+          <span class="facets-drawer-results">
+            (
+            {%- if results.results_count -%}
+              {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
+            {%- elsif results.products_count == results.all_products_count -%}
+              {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
+            {%- else -%}
+              {{
+                'products.facets.product_count'
+                | t: product_count: results.products_count, count: results.all_products_count
+              }}
+            {%- endif -%}
+            )</span
+          >
+        </h4>
+
+        <div class="drawer-close">
+          <close-btn data-close-drawer tabindex="0">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 1L1 21M1 1L21 21" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"></path>
+            </svg>
+          </close-btn>
+        </div>
+      </modal-dialog-head>
+      <modal-dialog-form class="modal-dialog-form">
+        {%- for filter in results.filters -%}
+          {% capture random %}{{ 'now' | date: "%09N" }}{% endcapture %}
+          {% liquid
+            assign color_options = settings.colorname | downcase
+            assign filter_label = filter.label | downcase
+            assign filter_limit = 50
+            if color_options contains filter_label
+              assign filter_limit = 100
+            endif
+
+            assign is_color = false
+            if color_options contains filter_label
+              assign is_color = true
+            endif
+
+            assign swatch_status = false
+            if filter.presentation == 'swatch' or filter.presentation == 'image'
+              assign swatch_status = true
+            endif
+          %}
+
+          {%- case filter.type -%}
+            {% when 'boolean', 'list' %}
+              {% if filter.param_name == 'filter.v.availability' %}
+                <div class="facets-availability js-filter" data-index="{{ forloop.index }}">
+                  <label for="facets-availability" class="facets-heading {{ settings.labels_font }}-font"
+                    >{{ 'products.facets.in_stock_only' | t }}</label
+                  >
+                  <input
+                    id="facets-availability"
+                    type="checkbox"
+                    class="toggle-switch"
+                    role="switch"
+                    name="{{ filter.param_name }}"
+                    value="1"
+                  >
+                </div>
+
+              {% else %}
+                <disclosure-accordion class="accordion">
+                  <details class="disclosure-accordion js-filter" open="" data-index="{{ forloop.index }}">
+                    <summary class="accordion-summary facets-heading">
+                      <span class="facets-title {{ settings.labels_font }}-font">
+                        {{- filter_label | escape | capitalize -}}
+                      </span>
+                      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <mask id="path-1-inside-1_1357_7780" fill="white">
+                        <path d="M11 5V6L0 6L5.96046e-08 5H11Z"/>
+                        <path d="M6 11H5L5 0L6 1.19209e-07L6 11Z"/>
+                        </mask>
+                        <path d="M11 5V6L0 6L5.96046e-08 5H11Z" fill="currentColor"/>
+                        <path d="M6 11H5L5 0L6 1.19209e-07L6 11Z" fill="currentColor"/>
+                        <path d="M11 5H12V4H11V5ZM11 6V7H12V6H11ZM0 6H-1L-1 7H-4.33488e-08L0 6ZM5.96046e-08 5V4H-1L-1 5H5.96046e-08ZM6 11V12H7V11H6ZM5 11H4V12H5V11ZM5 0V-1L4 -1V-8.66977e-08L5 0ZM6 1.19209e-07L7 2.05907e-07V-1L6 -1V1.19209e-07ZM10 5V6H12V5H10ZM11 5L4.33488e-08 5L-4.33488e-08 7L11 7V5ZM1 6V5H-1L-1 6H1ZM5.96046e-08 6H11V4H5.96046e-08V6ZM6 10H5V12H6V10ZM6 11L6 8.66977e-08L4 -8.66977e-08L4 11H6ZM5 1L6 1V-1L5 -1V1ZM5 3.25116e-08L5 11H7L7 2.05907e-07L5 3.25116e-08Z" fill="currentColor" mask="url(#path-1-inside-1_1357_7780)"/>
+                      </svg>
+                    </summary>
+
+                    <div class="disclosure-accordion-content">
+                      <ul class="{% if is_color  or swatch_status%}product-variant--picker product-swatch color-swatch--circle{% else%}facets-category-list{% endif %} ">
+                        {%- for value in filter.values limit: filter_limit -%}
+                          <li class="{% if is_color  or swatch_status%}factes-color-swatch{%else %}facets-category-options-item {%endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %}">
+                            <div class="{% if is_color  or swatch_status%}product-variant--item{%else %}double-label{%endif %}">
+                              <input
+                                class="checkbox"
+                                type="checkbox"
+                                name="{{ value.param_name }}"
+                                value="{{ value.value }}"
+                                title="{{ value.label | escape }}"
+                                id="Filter-{{ filter.label | handle }}-{{ forloop.index }}-{{ random }}"
+                                {% if value.active %}
+                                  checked
+                                {% endif %}
+                                {% if value.count == 0 and value.active == false %}
+                                  disabled
+                                {% endif %}
+                              >
+                              <label
+                                class="{%if is_color or swatch_status%}filter-variant-item{% else %}facets-filters-options-label{% endif %}"
+                                for="Filter-{{ filter.label | handle }}-{{ forloop.index }}-{{ random }}"
+                                title="{{ value.label | escape }}"
+                                {% if is_color %}
+                                  data-color="{{ value.label | escape }}"
+                                  style="--background-color-swatch:{{ value.label | escape }}"
+                                {% endif %}
+                              >
+                                {% if swatch_status or is_color %}
+                                  {% if swatch_status %}
+                                    {% render 'swatch-filter', value: value %}
+                                  {% else %}
+                                    <span> </span>
+                                    {{- value.label | escape -}}
+                                  {% endif %}
+                                {% else %}
+                                  <span>
+                                    {{- value.label | escape -}}
+                                  </span>
+                                {% endif %}
+                              </label>
+                            </div>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </details>
+                </disclosure-accordion>
+              {% endif %}
+            {% when 'price_range' %}
+              {% liquid
+                assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+                assign uses_comma_decimals = false
+                if currencies_using_comma_decimals contains cart.currency.iso_code
+                  assign uses_comma_decimals = true
+                endif
+                if uses_comma_decimals
+                  assign max_value = filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                  assign min_value = filter.range_min | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                else
+                  assign max_value = filter.range_max | money_without_currency
+                  assign min_value = filter.range_min | money_without_currency
+                endif
+
+                if filter.max_value.value
+                  assign max_value = filter.max_value.value | money_without_currency
+                endif
+                if filter.min_value.value
+                  assign min_value = filter.min_value.value | money_without_currency
+                endif
+              %}
+              <disclosure-accordion class="accordion ">
+                <details class="disclosure-accordion  js-filter" open="" data-index="{{ forloop.index }}">
+                  <summary class="accordion-summary facets-heading">
+                    <span class="facets-title {{ settings.labels_font }}-font">
+                      {{- filter_label | escape | capitalize -}}
+                    </span>
+                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <mask id="path-1-inside-1_1357_7780" fill="white">
+                      <path d="M11 5V6L0 6L5.96046e-08 5H11Z"/>
+                      <path d="M6 11H5L5 0L6 1.19209e-07L6 11Z"/>
+                      </mask>
+                      <path d="M11 5V6L0 6L5.96046e-08 5H11Z" fill="currentColor"/>
+                      <path d="M6 11H5L5 0L6 1.19209e-07L6 11Z" fill="currentColor"/>
+                      <path d="M11 5H12V4H11V5ZM11 6V7H12V6H11ZM0 6H-1L-1 7H-4.33488e-08L0 6ZM5.96046e-08 5V4H-1L-1 5H5.96046e-08ZM6 11V12H7V11H6ZM5 11H4V12H5V11ZM5 0V-1L4 -1V-8.66977e-08L5 0ZM6 1.19209e-07L7 2.05907e-07V-1L6 -1V1.19209e-07ZM10 5V6H12V5H10ZM11 5L4.33488e-08 5L-4.33488e-08 7L11 7V5ZM1 6V5H-1L-1 6H1ZM5.96046e-08 6H11V4H5.96046e-08V6ZM6 10H5V12H6V10ZM6 11L6 8.66977e-08L4 -8.66977e-08L4 11H6ZM5 1L6 1V-1L5 -1V1ZM5 3.25116e-08L5 11H7L7 2.05907e-07L5 3.25116e-08Z" fill="currentColor" mask="url(#path-1-inside-1_1357_7780)"/>
+                    </svg>
+                  </summary>
+
+                  <div class="disclosure-accordion-content">
+                    <price-range-bar class="price-range-bar">
+                      <div class="price-rangebar-input-group facets-price-ranges" id="facet-product-grid">
+                        <div
+                          class="facets-range no-js-hidden price-rangebar-group range-slider"
+                          {%- if uses_comma_decimals -%}
+                            data-min-value="{{ min_value | replace: '.', '' | replace: ',', '.' | floor }}"
+                            data-max-value="{{ max_value | replace: '.', '' | replace: ',', '.' | floor }}"
+                            data-min="{{ filter.range_min | money_without_currency | replace: '.', '' | replace: ',', '.' | floor }}"
+                            data-max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' | floor }}"
+                          {%- else -%}
+                            data-min-value="{{ min_value | replace: ',', '' | floor }}"
+                            data-max-value="{{ max_value | replace: ',', '' | floor }}"
+                            data-min="{{ filter.range_min | money_without_currency | replace: ',', '' | floor }}"
+                            data-max="{{ filter.range_max | money_without_currency | replace: ',', '' | floor }}"
+                          {%- endif -%}
+                          data-target="price"
+                        ></div>
+                        <label class="input-price text-sm">
+                          <span class="prefixs">{{ cart.currency.symbol }}</span>
+
+                          <input
+                            class="input field__input_min"
+                            name="{{ filter.min_value.param_name }}"
+                            id="Filter-{{ filter.label | escape }}-GTE"
+                            {%- if filter.min_value.value -%}
+                              {%- if uses_comma_decimals -%}
+                                value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                              {%- else -%}
+                                value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                              {%- endif %}
+                            {%- endif -%}
+                            type="number"
+                            placeholder="0"
+                            min="0"
+                            {%- if uses_comma_decimals -%}
+                              max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+
+                            {%- else -%}
+                              max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                            {% endif %}
+                          >
+                        </label>
+
+                        <span class="subheading">-</span>
+
+                        <label class="input-price text-sm">
+                          <span class="prefixs">{{ cart.currency.symbol }}</span>
+                          <input
+                            class="input field__input_max"
+                            name="{{ filter.max_value.param_name }}"
+                            id="Filter-{{ filter.label | escape }}-LTE"
+                            {%- if filter.max_value.value -%}
+                              {%- if uses_comma_decimals -%}
+                                value="{{ filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                              {%- else -%}
+                                value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                              {%- endif %}
+                            {%- endif -%}
+                            type="number"
+                            min="0"
+                            {%- if uses_comma_decimals -%}
+                              placeholder="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+
+                              max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                            {%- else -%}
+                              placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+
+                              max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                            {% endif %}
+                          >
+                        </label>
+                      </div>
+                    </price-range-bar>
+                  </div>
+                </details>
+              </disclosure-accordion>
+          {% endcase %}
+        {% endfor %}
+      </modal-dialog-form>
+      <modal-dialog-foot class="modal-dialog-foot">
+        <a href="#" class="button button-md w-100 {{ settings.button_font }}-font" data-close-drawer>{{ 'products.facets.apply' | t }}</a>
+      </modal-dialog-foot>
+    </div>
+  </form>
+</factes-filter>

@@ -1,0 +1,36 @@
+{% liquid
+  assign submenu_options = options | default: '[]'
+%}
+
+<div class="configurator-submenu" data-configurator-submenu="{{ submenu_key }}" hidden>
+  <div class="configurator-submenu-pills" role="group" aria-label="{{ title }}">
+    {% for option in submenu_options %}
+      {% liquid
+        assign pill_label = option.label
+        if pill_label == blank
+          # Fallback if `options` is an array of strings instead of objects.
+          assign pill_label = option
+        endif
+
+        assign option_selected = false
+        if option.selected == true
+          assign option_selected = true
+        endif
+
+        # If `selected` isn't provided (or isn't boolean), default the first pill as selected.
+        if option_selected == false and forloop.first
+          assign option_selected = true
+        endif
+      %}
+
+      {% render 'configurator-pill-button',
+        label: pill_label,
+        index: forloop.index0,
+        selected: option_selected,
+        show_tick_icon: true,
+        data_attr: 'data-submenu-pill',
+        price_note: option.price_adjustment
+      %}
+    {% endfor %}
+  </div>
+</div>

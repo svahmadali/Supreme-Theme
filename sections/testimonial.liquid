@@ -1,0 +1,445 @@
+{{ 'testimonial.css' | asset_url | stylesheet_tag }}
+<div class="testimonial-section section-gap color-{{ section.settings.color_scheme }}">
+  <div class="page--width">
+    <div class="testimonial-heading flex align-items-center">
+      {% if section.settings.heading != blank or section.settings.description != blank %}
+        <heading-main class="main-heading">
+          {% if section.settings.heading != blank %}
+            <{{ section.settings.heading_seo }} class="section-title body-font {{ section.settings.heading_size }}">
+              {% if section.settings.heading != blank -%}
+                {{- section.settings.heading -}}
+              {% endif %}
+            </{{ section.settings.heading_seo }}>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <div class="section-description {{ section.settings.description_size }}">
+              {{ section.settings.description | newline_to_br }}
+            </div>
+          {% endif %}
+        </heading-main>
+      {% endif %}
+    </div>
+    {% if section.blocks.size > 3 %}
+      <div class="slider-controls">
+        <div
+          class="swiper-button-prev swiper-button swiper-button-prev-{{ section.id }}"
+        ></div>
+        <div
+          class="swiper-button-next swiper-button swiper-button-next-{{ section.id }}"
+        ></div>
+      </div>
+    {% endif %}
+
+    <div class="testimonial-slider--card flex wrap">
+      {% if section.settings.image != null %}
+        {%- liquid
+          if section.settings.image_ratio == 'landscape'
+            assign mediaratio = 75
+          elsif section.settings.image_ratio == 'square'
+            assign mediaratio = 100
+          elsif section.settings.image_ratio == 'portrait'
+            assign mediaratio = 125
+          else
+            if article.image != blank
+              assign mediaratio = 1 | divided_by: article.image.aspect_ratio | times: 100
+            else
+              assign mediaratio = 100
+            endif
+          endif
+        -%}
+        <div class="testimonial-main--img">
+          <div class="media-ratio" style="--media-ratio:{{ mediaratio }}%">
+            {% assign image_url = section.settings.image %}
+            <img
+              srcset="
+                {%- if image_url.width >= 165 -%}{{ image_url | image_url: width: 165 }} 165w,{%- endif -%}
+                {%- if image_url.width >= 330 -%}{{ image_url | image_url: width: 330 }} 330w,{%- endif -%}
+                {%- if image_url.width >= 535 -%}{{ image_url | image_url: width: 535 }} 535w,{%- endif -%}
+                {%- if image_url.width >= 750 -%}{{ image_url | image_url: width: 750 }} 750w,{%- endif -%}
+                {%- if image_url.width >= 1000 -%}{{ image_url | image_url: width: 1000 }} 1000w,{%- endif -%}
+                {%- if image_url.width >= 1500 -%}{{ image_url | image_url: width: 1500 }} 1500w,{%- endif -%}
+                {%- if image_url.width >= 3000 -%}{{ image_url | image_url: width: 3000 }} 3000w,{%- endif -%}
+                {{ image_url | image_url }} {{ image_url.width }}w
+              "
+              src="{{ image_url | image_url: width: 1500 }}"
+              sizes="calc(100vw - 3rem)"
+              alt="{{ image_url.alt | escape }}"
+              height="{{ image_url.height }}"
+              width="{{ image_url.width }}"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      {% endif %}
+      {% if section.blocks.size != 0 %}
+        <slider-component
+          class="swiper testimonial-slider"
+          data-settings='
+                {
+                "loop": true,
+                "slidesPerView": 1,
+                "centeredSlides":false,
+                "speed":600,
+                "spaceBetween":"{{ section.settings.column_gap_mobile }}px",
+                "breakpoints": {
+                  "992": {
+                    "slidesPerView": {% if section.settings.image != blank %}2{% else %}3{% endif %},
+                    "spaceBetween":"{{ section.settings.column_gap }}px"
+                  }
+                },
+                 "navigation": {
+                  "nextEl": ".swiper-button-next-{{ section.id }}",
+                  "prevEl": ".swiper-button-prev-{{ section.id }}"
+                }
+              }
+          '
+        >
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide">
+                <div class="testimonial-card flex text-align-{{ section.settings.content_alignment }} align-items-center wrap">
+                  <div class="testimonial-content">
+                    {% if block.settings.heading != blank %}
+                      <h5 class="testimonial-title">{{ block.settings.heading }}</h5>
+                    {% endif %}
+
+                    {% if block.settings.description != blank %}
+                      <div class="testimonial-text text-xl rte">
+                        {{ block.settings.description | replace: '<p><p>', '<br>' }}
+                      </div>
+                    {% endif %}
+                  </div>
+                  {% if block.settings.author != blank or block.setting.text != blank %}
+                    <div class="testimonials-user-info flex align-items-center">
+                      {% if block.settings.author_image != blank %}
+                        <div class="testimonial-user-avatar avatar-large">
+                          {% assign image_url = block.settings.author_image %}
+                          <img
+                            class="testimonial-img"
+                            srcset="
+                              {%- if image_url.width >= 50 -%}{{ image_url | image_url: width: 50 }} 50w,{%- endif -%}
+                              {%- if image_url.width >= 75 -%}{{ image_url | image_url: width: 75 }} 75w,{%- endif -%}
+                              {{ image_url | image_url }} {{ image_url.width }}w
+                            "
+                            src="{{ image_url | image_url: width: 80 }}"
+                            sizes="calc(100vw - 3rem)"
+                            alt="{{ image_url.alt | escape }}"
+                            height="{{ image_url.height }}"
+                            width="{{ image_url.width }}"
+                            loading="lazy"
+                          >
+                        </div>
+                      {% endif %}
+
+                      <div class="testimonial-user-detail">
+                        {% if block.settings.author != blank %}
+                          <div class="testimonial-name text-base">{{ block.settings.author }}</div>
+                        {% endif %}
+                        {% if block.settings.text != blank %}
+                          <span class="testimonial-invest text-base">{{ block.settings.text }}</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </slider-component>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.testimonial.name",
+  "class": "section-testimonial",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+     {
+      "type": "color_scheme",
+      "id":"color_scheme",
+      "label": "t:global.color_scheme.label", 
+      "default":"scheme-1"
+    },
+    {
+      "type":"inline_richtext",
+      "id":"heading",
+      "label": "t:global.general_label.heading.label",
+      "default":"What our clients say"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "default": "h3",
+     "label": "t:global.heading_size.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:global.heading_size.options.h1.label"
+        },
+        {
+          "value": "h2",
+         "label": "t:global.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+         "label": "t:global.heading_size.options.h3.label"
+        },
+        {
+          "value": "h4",
+        "label": "t:global.heading_size.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:global.heading_size.options.h5.label"
+        },
+        {
+          "value": "h6",
+        "label": "t:global.heading_size.options.h6.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_seo",
+      "default": "h1",
+       "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+         {
+            "value": "h1",
+            "label": "t:global.heading_seo.options.h1.label"
+          },
+          {
+            "value": "h2",
+           "label": "t:global.heading_seo.options.h2.label"
+          },
+          {
+            "value": "h3",
+           "label": "t:global.heading_seo.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_seo.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+          }
+        ]
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+       "label": "t:global.general_label.description.label",
+      "default":"Real feedback from our happy shoppers."
+    },
+     {
+      "type": "select",
+      "id": "description_size",
+      "default": "text-lg",
+       "label": "t:global.description_size.label",
+          "options": [
+            {
+              "value": "text-xl",
+              "label": "t:global.description_size.options.x-large.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:global.description_size.options.large.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:global.description_size.options.medium.label"
+            },
+            {
+              "value": "text-sm",
+              "label": "t:global.description_size.options.small.label"
+            },
+            {
+              "value": "text-xs",
+              "label": "t:global.description_size.options.x-small.label"
+
+            }
+          ]
+
+  },
+  {
+    "type": "image_picker",
+    "id":"image",
+   "label": "t:global.general_label.image.label"
+  },
+     {
+      "type": "select",
+      "id": "image_ratio",
+      "default": "square",
+    "label": "t:global.image_size.label",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:global.image_size.options.auto.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:global.image_size.options.landscape.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:global.image_size.options.portrait.label"
+        },
+        {
+          "value": "square",
+          "label": "t:global.image_size.options.square.label"
+        }
+      ]
+    },
+  {
+    "type": "text_alignment",
+    "id":"content_alignment",
+    "label": "t:sections.testimonial.settings.content_alignment.label",
+    "default":"left"
+  },
+     {
+        "type": "range",
+        "id":"column_gap",
+        "label":"t:global.general_label.column_gap.label",
+        "min":0,
+        "max":50,
+        "default":20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id":"column_gap_mobile",
+       "label":"t:global.general_label.column_gap_mobile.label",
+        "min":0,
+        "max":50,
+        "default":20,
+        "step": 1,
+        "unit": "px"
+      },
+   {
+    "type": "header",
+    "content": "t:global.section_spacing.content"
+    },
+    {
+    "type": "range",
+    "id": "top_space_desktop",
+    "label": "t:global.section_spacing.top_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_desktop",
+     "label": "t:global.section_spacing.bottom_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "top_space_mobile",
+    "label": "t:global.section_spacing.top_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_mobile",
+     "label": "t:global.section_spacing.bottom_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "t:sections.testimonial.settings.blocks.quote.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+           "label": "t:global.general_label.heading.label",
+          "default": "Customer Highlights"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "default": "<p>Add client reviews & testimonials to showcase your store’s happy clients.</p>",
+           "label": "t:global.general_label.description.label"
+        },
+
+        {
+          "type": "header",
+          "content": "t:sections.testimonial.settings.blocks.quote.settings.header_author.content"
+        },
+        {
+          "type": "image_picker",
+          "id":"author_image",
+           "label": "t:global.general_label.image.label"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "default": "Author name here",
+         "label":"t:sections.testimonial.settings.blocks.quote.settings.author.label"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Text",
+             "label": "t:global.general_label.text.label"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "t:sections.testimonial.name",
+      "blocks": [
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        },
+         {
+          "type": "quote"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

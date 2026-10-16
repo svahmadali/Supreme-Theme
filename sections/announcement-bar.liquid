@@ -1,0 +1,181 @@
+{{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
+{% if section.blocks.size > 0 %}
+  {% if section.settings.home_page_only == false or template.name == 'index' %}
+    <announcement-bar class="block announcement-bar{% if section.settings.enable_count_down %} announcement-with-counter{% endif %}{% if section.settings.enable_currency_selector or section.settings.enable_language_selector %} announcement-with-currency{% endif %} color-{{ section.settings.color_scheme }}">
+      <div class="announcement-bar--inner">
+        <div class="page--width">
+          <div class="announcement-bar-content">
+            {% if section.settings.enable_count_down %}
+              <countdown-counter-timer class="countdown-counter" end-date="{{ section.settings.date }}">
+                <div class="countdown-timer--wrapper" data-countdown-counter>
+                  <div class="countdown-timer-item">
+                    <span class="countdown-timer-number days">00</span>
+                    <span class="countdown-timer-label">{{'sections.countdown.days' | t}}</span>
+                  </div>
+                  <div class="countdown-timer-item">:</div>
+                  <div class="countdown-timer-item">
+                    <span class="countdown-timer-number hour">00</span>
+                    <span class="countdown-timer-label">{{'sections.countdown.hours' | t}}</span>
+                  </div>
+                  <div class="countdown-timer-item">:</div>
+                  <div class="countdown-timer-item">
+                    <span class="countdown-timer-number minutes">00</span>
+                    <span class="countdown-timer-label">{{'sections.countdown.hours' | t}}</span>
+                  </div>
+                  <div class="countdown-timer-item">:</div>
+                  <div class="countdown-timer-item">
+                    <span class="countdown-timer-number seconds">00</span>
+                    <span class="countdown-timer-label">{{'sections.countdown.seconds' | t}}</span>
+                  </div>
+                </div>
+              </countdown-counter-timer>
+            {% endif %}
+            <announcementbar-block class="announcement-block">
+              <slider-component
+                class="swiper"
+                {% if section.blocks.size > 1 %}
+                  data-settings='
+                        {
+                            "loop ": true,
+                            "centeredSlides ":true,
+                            "slidesPerView ":1,
+                            "speed":600,
+                    "disableOnInteraction": false,
+                            {% if section.settings.auto_rotate %}
+                               "autoplay": {
+                                "delay": {{ section.settings.change_slides_speed | times:100 }}
+
+                              },
+                            {% endif %}
+                            "navigation": {
+                              "nextEl": ".swiper-button-next-{{ section.id }}",
+                              "prevEl": ".swiper-button-prev-{{ section.id }}"
+                          }
+                        }
+                  '
+                {% endif %}
+              >
+                <div class="swiper-wrapper" id="swiper-slider-wrapper-{{ section.id }}">
+                  {% for block in section.blocks %}
+                    <div class="swiper-slide" {{ block.shopify_attributes }}>
+                      <div class="announcement-bar-text ">
+                        <p>{{ block.settings.announcement_text }}</p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </slider-component>
+              <!-- Optional: Swiper Navigation -->
+              {% if section.blocks.size > 1 %}
+                <div class="swiper-button-prev swiper-button swiper-button-prev-{{ section.id }}"></div>
+                <div class="swiper-button-next swiper-button swiper-button-next-{{ section.id }}"></div>
+              {% endif %}
+            </announcementbar-block>
+            {% render 'header-localization-form', section: section %}
+          </div>
+        </div>
+      </div>
+    </announcement-bar>
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "max_blocks": 12,
+  "class": "announcement-bar-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id":"color_scheme",
+      "label": "t:global.color_scheme.label",
+      "default":"scheme-1"
+    },
+    {
+    "type": "checkbox",
+    "id": "home_page_only",
+    "label": "t:sections.announcement-bar.settings.home_page_only.label",
+    "default": true
+    },
+    {
+       "type": "checkbox",
+      "id": "enable_count_down",
+      "label": "t:sections.announcement-bar.settings.enable_count_down.label",
+      "default": false
+    },
+     {
+      "type": "text",
+      "id": "date",
+      "info": "t:sections.announcement-bar.settings.date.info",
+      "label": "t:sections.announcement-bar.settings.date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.announcement-bar.settings.auto_rotate.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 20,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__3.content",
+      "info": "t:sections.announcement-bar.settings.header__3.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_currency_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__4.content",
+      "info": "t:sections.announcement-bar.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_language_selector.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "announcement_text",
+          "default": "Welcome to our store",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        }
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.announcement-bar.presets.name",
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

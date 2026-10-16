@@ -1,0 +1,190 @@
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+{% for block in section.blocks %}
+  {% case block.type %}
+    {%- when '@app' -%}
+      {% render block %}
+    {% when 'vendor' %}
+      <div class="product-card-vendor">
+        <span>{{- product.vendor -}}</span>
+      </div>
+    {% when 'title' %}
+      {% if product_info %}
+        {% if product != blank %}
+          <a href="{{ product.url }}" class="product--heading" {{ block.shopify_attributes }}>
+            <h2 class="{{ block.settings.title_size }}">{{- product.title | strip_html -}}</h2>
+          </a>
+        {% else %}
+          <div class="product--heading" {{ block.shopify_attributes }}>
+            <h2 class="{{ block.settings.title_size }}">{{ 'onboarding.product_title' | t }}</h2>
+          </div>
+        {% endif %}
+      {% else %}
+        <div class="product--heading" tabindex="0" {{ block.shopify_attributes }}>
+          <h2 class="{{ block.settings.title_size }}">{{- product.title | strip_html -}}</h2>
+        </div>
+      {% endif %}
+    {% when 'sku' %}
+      {% if current_variant.sku != blank %}
+        <div id="product-sku-{{ section.id }}" class="product-sku" {{ block.shopify_attributes }}>
+          <span class="product-sku-name" data-variant-sku>{{ current_variant.sku }}</span>
+        </div>
+      {% endif %}
+    {% when 'text' %}
+      {% if block.settings.text != blank %}
+        <span class="product-text" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+      {% endif %}
+    {% when 'price' %}
+      <div
+        id="price-{{ section.id }}"
+        class=" product-price-wrapper product-main-price no-js-hidden"
+        role="status"
+        data-main-price
+        {{ block.shopify_attributes }}
+      >
+        <product-price-list class="product-price-list" id="product-price-list-{{ section.id }}">
+          {% render 'price', product: product, section: section %}
+        </product-price-list>
+        {% unless block.settings.hide_shipping_content %}
+          {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+            <span class="text-sm  product-tax-shipping">
+              {%- if cart.taxes_included -%}
+               {{ 'products.product.taxes_included' | t }} 
+              {%- endif -%}
+
+              {%- if shop.shipping_policy.body != blank -%}
+                {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+            </span>
+          {%- endif -%}
+        {% endunless %}
+        {% if product != blank %}
+          <div {{ block.shopify_attributes }}>
+            {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+            {%- form 'product', product, id: product_form_installment_id, class: 'text-small' -%}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              {{ form | payment_terms }}
+            {%- endform -%}
+          </div>
+        {% endif %}
+      </div>
+
+    {% when 'description' %}
+      {% if product.description != '' %}
+        <div class="product--description description rte" {{ block.shopify_attributes }}>
+          {{
+            product.description
+            | replace: '<table', '<div class="table-content"><table '
+            | replace: '</table>', '</table></div>'
+          }}
+        </div>
+      {% endif %}
+    {% when 'variant' %}
+      {% render 'product-variant', product_form_id: product_form_id, product: product, section: section, block: block %}
+    {%- when 'quantity' -%}
+      {% render 'quantity', product: product, product_form_id: product_form_id %}
+
+    {% when 'button' %}
+      {% render 'product-form',
+        product: product,
+        product_form_id: product_form_id,
+        current_variant: current_variant,
+        block: block
+      %}
+
+    {%- when 'share' -%}
+      {%- render 'social-share',
+        share_link: product.url,
+        share_title: product.title,
+        share_product: product,
+        block: block
+      %}
+    {% when 'custom_liquid' %}
+      <div class="custom-liquid rte" {{ block.shopify_attributes }}>
+        {{
+          block.settings.custom_liquid
+          | replace: '<table', '<div class="table-content"><table'
+          | replace: '</table>', '</table></div>'
+        }}
+      </div>
+    {% when 'complementary_products' %}
+      {% if section.settings.product_template_type != 'template1' %}
+        {% render 'complementary-products', product: product, section: section, block: block %}
+      {% endif %}
+    {% when 'text_icon' %}
+      {% capture content %}
+        {% liquid
+              assign iconclass = block.settings.icon_size
+            %}
+           {% for i in (1..4) %}
+               {% liquid
+              assign index_icon = 'custom_svg_' | append: forloop.index
+              assign custom_icon = block.settings[index_icon]
+              assign text_index = 'text_' | append: forloop.index
+              assign text = block.settings[text_index]
+            %}
+             {% if text != blank or custom_icon != blank %}
+              <li>
+                {% if custom_icon !=  blank  %}
+            
+                  {% assign image_icon = custom_icon %}  
+                  <img
+                    class="check-icon {% if iconclass == 'small' %}check-icon--small{% elsif iconclass == 'medium' %} check-icon--medium{% else %} check-icon--large{% endif %}"
+                srcset="
+                  {%- if image_icon.width >= 20 -%}{{ image_icon | image_url: width: 20 }} 20w,{%- endif -%}
+                  {%- if image_icon.width >= 50 -%}{{ image_icon | image_url: width: 50 }} 50w,{%- endif -%}
+                  {%- if image_icon.width >= 70 -%}{{ image_icon | image_url: width: 70 }} 70w,{%- endif -%}
+                  {%- if image_icon.width >= 80 -%}{{ image_icon | image_url: width: 80 }} 80w,{%- endif -%}
+                  {{ image_icon | image_url }} {{ image_icon.width }}w
+                "
+                src="{{ image_icon | image_url: width: 80 }}"
+                sizes="calc(100vw - 3rem)"
+                alt="{{ image_icon.alt | escape }}"
+                height="{{ image_icon.height }}"
+                width="{{ image_icon.width }}"
+                loading="lazy"
+              >
+ 
+                 {% endif %}
+              {% if text !=  blank  %}
+              <span>{{ text }}</span>
+              {% endif %}
+            </li>
+            {% endif %}
+           {% endfor %}
+      {% endcapture %}
+      {% if content != blank %}
+        <ul class="delivery-info-coontent{% if block.settings.enable_background %} show-background{% endif %}{% if block.settings.list_style == 'list' %} list-view{% endif %}">
+          {{ content }}
+        </ul>
+      {% endif %}
+    {%- when 'pickup' -%}
+      {%- assign pickupAvailabilities = current_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+      <availability-content
+        class="pickup-availability"
+        id="pickup-availability-{{ section.id }}"
+        role="dialog"
+        data-variant-id="{{  current_variant.id }}"
+        data-root-url="{{ routes.root_url }}"
+        {% if current_variant.available and pickupAvailabilities.size > 0 %}
+          available
+        {% endif %}
+        data-pickup-availability
+        {{ block.shopify_attributes }}
+      >
+        {% render 'pickup-availability',
+          section: section,
+          product: product,
+          block: block,
+          current_variant: current_variant
+        %}
+      </availability-content>
+    {%- when 'collapsible_content' -%}
+      {% if section.settings.product_template_type != 'template1' %}
+        {% if block.settings.type_of_content == 'option1' %}
+          {% render 'collapsible-content', block: block, product: product %}
+        {% else %}
+          {% render 'drawer-content', section: section, block: block, product: product %}
+        {% endif %}
+      {% endif %}
+  {% endcase %}
+{% endfor %}

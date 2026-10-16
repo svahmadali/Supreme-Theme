@@ -1,0 +1,57 @@
+{%- liquid
+  assign selected_product = product.selected_or_first_available_variant
+  assign compare_at_price = selected_product.compare_at_price
+  assign price = selected_product.price | default: 1999
+  assign money_price = price | money
+-%}
+<product-sale-price class="product-price-actual">
+  {%- if selected_product.price_varies -%}
+    <span class="product-actual-price varies-price">
+      {{ 'products.product.price.from_price_html' | t: price: money_price }}
+    </span>
+  {%- else -%}
+    <span class="product-actual-price">{{ money_price }}</span>
+  {%- endif -%}
+
+  <small class="product-compare-price">
+    {{ compare_at_price | money -}}
+  </small>
+  {% if settings.show_save_amount %}
+    {% assign off_text = settings.save_amount_text %}
+    <span
+      class="text-sm product-saving-price {% if selected_product.compare_at_price > selected_product.price %}price-saving{% else %}hidden{% endif %}"
+      data-price-saving
+    >
+      {%- if selected_product.compare_at_price > selected_product.price -%}
+        {% if settings.off_type == 'percentage' %}
+          {{-
+            selected_product.compare_at_price
+            | minus: selected_product.price
+            | times: 100
+            | divided_by: selected_product.compare_at_price
+            | append: '% '
+            | append: off_text
+          -}}
+        {% else %}
+          {{-
+            selected_product.compare_at_price
+            | minus: selected_product.price
+            | money_without_currency
+            | round: 2
+            | append: ' '
+            | append: off_text
+          -}}
+        {% endif %}
+      {% endif %}
+    </span>
+  {% endif %}
+  {%- if selected_product.unit_price_measurement -%}
+    <span class="product-unit-price">
+      ( {{ selected_product.unit_price | money }} /
+      {%- if selected_product.unit_price_measurement.reference_value != 1 -%}
+        {{- selected_product.unit_price_measurement.reference_value -}}
+      {%- endif %}
+      {{ selected_product.unit_price_measurement.reference_unit }} )
+    </span>
+  {%- endif -%}
+</product-sale-price>

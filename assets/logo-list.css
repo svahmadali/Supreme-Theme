@@ -1,0 +1,94 @@
+.logo-list-grid {
+  display: flex;
+  justify-self: center;
+  flex-wrap: wrap;
+  grid-gap: var(--section-grid-gap, 1rem);
+}
+
+.logo-list-item {
+  width: 100%;
+}
+
+.logo-list-marquee--inner .logo-list-item {
+  padding-inline: var(--section-grid-gap, 1rem);
+}
+
+.logo-list-image .media-ratio {
+  background: transparent;
+}
+
+.logo-list-item.image--large {
+  max-width: calc(14.8rem - var(--section-grid-gap, 1rem));
+}
+
+.logo-list-item.image--medium {
+  max-width: calc(11.8rem - var(--section-grid-gap, 1rem));
+}
+
+.logo-list-item.image--small {
+  max-width: calc(9.88rem - var(--section-grid-gap, 1rem));
+}
+
+.logo-list-image {
+  border-radius: var(--rounded-block);
+  overflow: hidden;
+}
+
+.logo-list-image img {
+  width: 100%;
+}
+
+.logo-list-marquee {
+  display: flex;
+  align-items: center;
+  padding: 0rem var(--section-grid-gap, 1rem);
+  white-space: nowrap;
+  width: 100%;
+}
+
+.logo-list-marquee--inner {
+  display: flex;
+  flex: 0 0 auto;
+  width: auto;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  /* grid-gap: var(--section-grid-gap, 1rem); */
+}
+
+.direction-left .logo-list-marquee--inner {
+  animation: scroll-left var(--duration, 32s) linear infinite;
+  animation-play-state: running;
+}
+
+.direction-right .logo-list-marquee--inner {
+  animation: scroll-right var(--duration, 32s) linear infinite;
+  animation-play-state: running;
+}
+
+@media screen and (min-width: 1201px) {
+  .logo-list-item.image--large {
+    max-width: calc(14.375rem - var(--section-grid-gap, 1rem));
+  }
+
+  .logo-list-item.image--medium {
+    max-width: calc(11.875rem - var(--section-grid-gap, 1rem));
+  }
+
+  .logo-list-item.image--small {
+    max-width: calc(9.375rem - var(--section-grid-gap, 1rem));
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .logo-list-item.image--large {
+    width: calc(50% - var(--section-grid-gap, 1rem));
+    max-width: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+  }
+  .logo-list-grid .logo-list-item {
+    max-width: calc(50% - var(--section-grid-gap, 1rem) * 0.5);
+  }
+}

@@ -1,0 +1,655 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "show_page_title": true,
+        "heading_size": "h2",
+        "heading_seo": "h2",
+        "content_alignment": "center",
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "rich_text_XbK8WW": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_9YRMFM": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lookbook 2025",
+            "heading_size": "h1",
+            "heading_seo": "h2"
+          }
+        },
+        "description_XgP8zH": {
+          "type": "description",
+          "settings": {
+            "description": "<p>Step into our seasonal lookbook — a visual journey through style, texture, and trend. From effortless layers to bold statements, each piece is styled to inspire. Browse curated outfits, explore new arrivals, and get inspired by the way real people wear real fashion.<br/><br/>Whether you're shopping for now or saving for later, this is where your next look begins.</p>",
+            "description_size": "lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9YRMFM",
+        "description_XgP8zH"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "content_alignment": "center",
+        "option_style": "none",
+        "content_width": "medium",
+        "top_space_desktop": 105,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "media_grid_r3D7bM": {
+      "type": "media-grid",
+      "blocks": {
+        "grid_PGMV9D": {
+          "type": "grid",
+          "settings": {
+            "video_on_hover": false,
+            "heading": "",
+            "heading_size": "h1",
+            "heading_seo": "h1",
+            "description": "",
+            "description_size": "text-lg",
+            "content_width": "medium",
+            "content_position": "bottom--left",
+            "desktop_alignment": "left",
+            "content_position_mobile": "bottom--left",
+            "mobile_alignment": "left",
+            "btn_text": "",
+            "btn_link": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "column": 2,
+            "row": 1,
+            "row_mobile": "1",
+            "column_mobile": "1",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "grid_gtEHjm": {
+          "type": "grid",
+          "settings": {
+            "video_on_hover": false,
+            "heading": "",
+            "heading_size": "h1",
+            "heading_seo": "h1",
+            "description": "",
+            "description_size": "text-lg",
+            "content_width": "medium",
+            "content_position": "bottom--left",
+            "desktop_alignment": "left",
+            "content_position_mobile": "bottom--left",
+            "mobile_alignment": "left",
+            "btn_text": "",
+            "btn_link": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "column": 2,
+            "row": 2,
+            "row_mobile": "1",
+            "column_mobile": "1",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "grid_4Kp8yN": {
+          "type": "grid",
+          "settings": {
+            "video_on_hover": false,
+            "heading": "",
+            "heading_size": "h1",
+            "heading_seo": "h1",
+            "description": "",
+            "description_size": "text-lg",
+            "content_width": "medium",
+            "content_position": "bottom--left",
+            "desktop_alignment": "left",
+            "content_position_mobile": "bottom--left",
+            "mobile_alignment": "left",
+            "btn_text": "",
+            "btn_link": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "column": 2,
+            "row": 1,
+            "row_mobile": "2",
+            "column_mobile": "1",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "grid_PGMV9D",
+        "grid_gtEHjm",
+        "grid_4Kp8yN"
+      ],
+      "name": "Media grid",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "fullwidth": false,
+        "grid_gap": 12,
+        "desktop_height": "400",
+        "mobile_height": "350",
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 40
+      }
+    },
+    "rich_text_zGdamd": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_iWg8EX": {
+          "type": "heading",
+          "settings": {
+            "heading": "Light Layers, Brighter Days",
+            "heading_size": "h2",
+            "heading_seo": "h3"
+          }
+        },
+        "description_EnXfgx": {
+          "type": "description",
+          "settings": {
+            "description": "<p>Breathe new life into your wardrobe with pieces that capture the freshness of spring. This edit blends functionality and finesse — featuring light layers, soft neutrals, and fabrics that move with you. From relaxed tailoring and easy-fit trousers to airy linen shirts and flowing dresses, each item is crafted to transition effortlessly from sunny days to breezy evenings. Perfect for brunch plans, city strolls, or quiet weekends away — these looks bring comfort and elegance into harmony. Spring style starts here, soft and self-assured.</p>",
+            "description_size": "lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iWg8EX",
+        "description_EnXfgx"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "content_alignment": "left",
+        "option_style": "collage",
+        "content_width": "large",
+        "top_space_desktop": 105,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 15
+      }
+    },
+    "featured_collection_z6d8JW": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "color_scheme": "",
+        "enable_slider": false,
+        "enable_card": false,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_seo": "h1",
+        "description": "",
+        "description_size": "text-base",
+        "show_collection_title": false,
+        "collection": "",
+        "image_size": "adapt",
+        "products_to_show": 5,
+        "column_per_row": 5,
+        "mobile_item_per_row": "1",
+        "column_gap": 6,
+        "column_gap_mobile": 20,
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 90,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 40
+      }
+    },
+    "video_xBtFVQ": {
+      "type": "video",
+      "name": "Video",
+      "settings": {
+        "color_scheme": "",
+        "video_url": "",
+        "animate_content": false,
+        "video_type": "autoplay",
+        "video_heading": "",
+        "heading": "Drip-Inspired Luxury Outfits",
+        "heading_size": "h2",
+        "heading_seo": "h4",
+        "description": "",
+        "description_size": "text-lg",
+        "text_alignment": "left",
+        "btn_text": "DISCOVER LOOK",
+        "btn_link": "",
+        "btn_size": "md",
+        "button_style": "solid",
+        "hover_effect": "standard",
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      }
+    },
+    "multi_image_with_text_9eByqg": {
+      "type": "multi-image-with-text",
+      "blocks": {
+        "heading_VVhRd7": {
+          "type": "heading",
+          "settings": {
+            "heading": "MAKE A STATEMENT. OWN THE ROOM.",
+            "heading_size": "h1",
+            "heading_seo": "h5"
+          }
+        },
+        "description_RdnHMb": {
+          "type": "description",
+          "settings": {
+            "description": "Step into the spotlight with pieces designed to stand out. From sharply tailored blazers and dramatic silhouettes to bold prints and rich textures, this collection is made to turn heads.\n\n It’s confidence you can wear — whether you're owning the office, lighting up a party, or elevating everyday errands. These aren’t just clothes — they’re conversation starters. Power up your wardrobe with looks that speak before you do.",
+            "description_size": "text-lg"
+          }
+        },
+        "button_XNjDPT": {
+          "type": "button",
+          "settings": {
+            "btn_text": "MORE LOOK",
+            "btn_link": "shopify://collections/all",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VVhRd7",
+        "description_RdnHMb",
+        "button_XNjDPT"
+      ],
+      "name": "Multiimage with text",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "content_alignment": "left",
+        "column_gap": 50,
+        "column_gap_mobile": 20,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "parallax_xgD3mH": {
+      "type": "parallax",
+      "blocks": {
+        "heading_EnmVj8": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Draped in Confidence",
+            "heading_size": "h1",
+            "heading_seo": "h1"
+          }
+        },
+        "description_pbRV8a": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "description": "",
+            "description_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_EnmVj8",
+        "description_pbRV8a"
+      ],
+      "name": "Parallax",
+      "settings": {
+        "color_scheme": "",
+        "heading": "L O O K B O O K  - 2 0 0 5  - ",
+        "heading_size": "h5",
+        "enable_marquee": true,
+        "direction": "left",
+        "scrolling_speed": 15,
+        "overlay_color": "#000000",
+        "overlay_opacity": 5,
+        "top_space_desktop": 150,
+        "bottom_space_desktop": 150,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "media_grid_mCXfpA": {
+      "type": "media-grid",
+      "blocks": {
+        "grid_Rr7Jax": {
+          "type": "grid",
+          "settings": {
+            "video_on_hover": false,
+            "heading": "",
+            "heading_size": "h1",
+            "heading_seo": "h1",
+            "description": "",
+            "description_size": "text-lg",
+            "content_width": "medium",
+            "content_position": "bottom--left",
+            "desktop_alignment": "left",
+            "content_position_mobile": "bottom--left",
+            "mobile_alignment": "left",
+            "btn_text": "",
+            "btn_link": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "column": 2,
+            "row": 2,
+            "row_mobile": "1",
+            "column_mobile": "1",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "grid_gQVadX": {
+          "type": "grid",
+          "settings": {
+            "video_on_hover": false,
+            "heading": "",
+            "heading_size": "h1",
+            "heading_seo": "h1",
+            "description": "",
+            "description_size": "text-lg",
+            "content_width": "medium",
+            "content_position": "bottom--left",
+            "desktop_alignment": "left",
+            "content_position_mobile": "bottom--left",
+            "mobile_alignment": "left",
+            "btn_text": "",
+            "btn_link": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "column": 2,
+            "row": 2,
+            "row_mobile": "1",
+            "column_mobile": "1",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "grid_Rr7Jax",
+        "grid_gQVadX"
+      ],
+      "name": "Media grid",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "fullwidth": true,
+        "grid_gap": 0,
+        "desktop_height": "500",
+        "mobile_height": "350",
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 5,
+        "bottom_space_mobile": 0
+      }
+    },
+    "parallax_PCaYBr": {
+      "type": "parallax",
+      "blocks": {
+        "heading_96cAdh": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bold Contrast, Timeless Confidence",
+            "heading_size": "h1",
+            "heading_seo": "h6"
+          }
+        },
+        "description_keWKrG": {
+          "type": "description",
+          "settings": {
+            "description": "Where style meets individuality—this striking visual captures the essence of modern edge and effortless elegance. The monochrome palette highlights the sharp fashion sense and powerful personality of today’s trendsetters. Perfect for campaigns that celebrate confidence, uniqueness, and bold fashion choices.",
+            "description_size": "text-lg"
+          }
+        },
+        "image_CkeyRM": {
+          "type": "image",
+          "settings": {
+            "image_ratio": "square",
+            "product_list": []
+          }
+        }
+      },
+      "block_order": [
+        "heading_96cAdh",
+        "description_keWKrG",
+        "image_CkeyRM"
+      ],
+      "name": "Parallax",
+      "settings": {
+        "color_scheme": "",
+        "heading": "",
+        "heading_size": "h5",
+        "enable_marquee": true,
+        "direction": "left",
+        "scrolling_speed": 15,
+        "overlay_color": "#000000",
+        "overlay_opacity": 78,
+        "top_space_desktop": 150,
+        "bottom_space_desktop": 150,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "collection_carousel_DnDECf": {
+      "type": "collection-carousel",
+      "blocks": {
+        "collection_66LKC7": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "",
+            "collection": "",
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_MNTCYm": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "",
+            "collection": "",
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_iPKYWJ": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "",
+            "collection": "",
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_RAiV8H": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "",
+            "collection": "",
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        },
+        "collection_UNWQUD": {
+          "type": "collection",
+          "settings": {
+            "color_scheme": "",
+            "collection": "",
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h5",
+            "heading_seo": "h2",
+            "product_list": [],
+            "btn_text": "Shop now",
+            "btn_size": "sm",
+            "button_style": "text",
+            "hover_effect": "standard"
+          }
+        }
+      },
+      "block_order": [
+        "collection_66LKC7",
+        "collection_MNTCYm",
+        "collection_iPKYWJ",
+        "collection_RAiV8H",
+        "collection_UNWQUD"
+      ],
+      "name": "Collection carousel",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Modern Minimalism",
+        "heading_size": "h2",
+        "heading_seo": "h2",
+        "description": "Clean lines, calm tones, and thoughtful silhouettes — Modern Minimalism strips fashion down to what matters most: quality, fit, and timeless appeal. <br>This collection is built around essentials that make a statement without trying too hard.",
+        "description_size": "text-lg",
+        "content_alignment": "center",
+        "image_ratio": "square",
+        "column_gap": 10,
+        "column_gap_mobile": 10,
+        "top_space_desktop": 100,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "testimonial_kKrM4t": {
+      "type": "testimonial",
+      "blocks": {
+        "quote_fNbNNF": {
+          "type": "quote",
+          "settings": {
+            "heading": "LOVE IT!",
+            "description": "<p>The fit is amazing, and the quality is even better than I expected. I get compliments every time I wear it! It’s flattering, comfortable, and versatile — definitely one of my favorite wardrobe pieces now.</p>",
+            "author": "Author name here",
+            "text": "Text"
+          }
+        },
+        "quote_QRemwe": {
+          "type": "quote",
+          "settings": {
+            "heading": "RECOMMEND!",
+            "description": "<p>The whole experience felt premium — from the packaging to the final look. Stylish, comfortable, and timeless. It felt like luxury without the fuss, and I love how effortlessly it fits into my daily outfits.</p>",
+            "author": "Author name here",
+            "text": "Text"
+          }
+        },
+        "quote_dxQTwY": {
+          "type": "quote",
+          "settings": {
+            "heading": "EXACTLY!",
+            "description": "<p>From cozy knits to minimal layering pieces, I found everything I was looking for in one place. The fabric feels great on skin, the fit is spot on, and everything just works together so well.</p>",
+            "author": "Author name here",
+            "text": "Text"
+          }
+        },
+        "quote_qiUV3g": {
+          "type": "quote",
+          "disabled": true,
+          "settings": {
+            "heading": "FASHION FORWARD!",
+            "description": "<p>Clean silhouettes, beautiful tones, effortless layers, and a great fit — this brand has become my go-to for everyday elevated style. Every piece feels thoughtfully designed and truly wearable from day to night.</p>",
+            "author": "Author name here",
+            "text": "Text"
+          }
+        }
+      },
+      "block_order": [
+        "quote_fNbNNF",
+        "quote_QRemwe",
+        "quote_dxQTwY",
+        "quote_qiUV3g"
+      ],
+      "name": "Testimonial",
+      "settings": {
+        "color_scheme": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_seo": "h1",
+        "description": "",
+        "description_size": "text-lg",
+        "image_ratio": "square",
+        "content_alignment": "left",
+        "column_gap": 20,
+        "column_gap_mobile": 20,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 60
+      }
+    }
+  },
+  "order": [
+    "main-page",
+    "rich_text_XbK8WW",
+    "media_grid_r3D7bM",
+    "rich_text_zGdamd",
+    "featured_collection_z6d8JW",
+    "video_xBtFVQ",
+    "multi_image_with_text_9eByqg",
+    "parallax_xgD3mH",
+    "media_grid_mCXfpA",
+    "parallax_PCaYBr",
+    "collection_carousel_DnDECf",
+    "testimonial_kKrM4t"
+  ]
+}

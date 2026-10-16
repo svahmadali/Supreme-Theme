@@ -1,0 +1,111 @@
+<sticky-bar-product
+  class="product-sticky-bar block color-{{ section.settings.color_scheme }}"
+  data-section="{{ section.id }}"
+>
+  <div class="sticky-bar-product-wrapper flex align-items-center justify-content-between">
+    <div class="flex align-items-start">
+      <div class="sticky-bar-product-img">
+        {%- if product.selected_or_first_available_variant.featured_media != null -%}
+          {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+        {% else %}
+          {%- assign featured_media = product.featured_media -%}
+        {% endif %}
+        {% if featured_media != blank %}
+          <img
+            src="{{ featured_media | image_url: width: 100 }}"
+            width="100"
+            height="100"
+            loading="lazy"
+            data-sticky-image
+          >
+        {% else %}
+          {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+      <div class="sticky-bar-product-info">
+        <span class="sticky-bar-product-title">{{ product.title | escape }}</span>
+        <div
+          id="price-{{ section.id }}"
+          class=" product-price-wrapper product-main-price no-js-hidden"
+          role="status"
+          data-main-price
+          {{ block.shopify_attributes }}
+        >
+          <product-price-list class="product-price-list" id="product-price-list-{{ section.id }}">
+            {% render 'price', product: product, section: section %}
+          </product-price-list>
+          {% unless block.settings.hide_shipping_content %}
+            {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+              <span class="text-sm  product-tax-shipping">
+                {%- if cart.taxes_included -%}
+                  <!-- {{ 'products.product.include_taxes' | t }} -->
+                  Taxes included
+                {%- endif -%}
+                {%- if shop.shipping_policy.body != blank -%}
+                  {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                {%- endif -%}
+              </span>
+            {%- endif -%}
+          {% endunless %}
+          {% if product != blank %}
+            <div {{ block.shopify_attributes }}>
+              {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+              {%- form 'product', product, id: product_form_installment_id, class: 'text-small' -%}
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                {{ form | payment_terms }}
+              {%- endform -%}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      name="add"
+      id="sticky-add-to-cart-{{ section.id }}"
+      class="atc-button {{ settings.button_font }}-font"
+      form="{{ 'product-form-' | append: section.id }}"
+      data-sticky-atc-wrapper
+      {% unless current_variant.available %}
+        disabled
+      {% endunless %}
+      {% if settings.enable_cartdrawer %}
+        data-add-to-cart
+      {% endif %}
+      data-add-to-cart-main
+    >
+      <span data-add-to-cart-text>
+        {%- unless current_variant.available -%}
+          <span class="add-to-cart-text">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.01 3H11.76V1.75C11.76 0.79 10.98 0 10.01 0H6C5.04 0 4.25 0.78 4.25 1.75V3H2C0.9 3 0 3.89 0 5V14C0 15.1 0.89 16 2 16H14C15.1 16 16 15.11 16 14V5C16 3.9 15.11 3 14 3H14.01ZM5.76 1.75C5.76 1.61 5.87 1.5 6.00997 1.5H10.02C10.16 1.5 10.27 1.61 10.27 1.75V3H5.77V1.75H5.76ZM14.51 14.01C14.51 14.28 14.29 14.51 14.01 14.51H2.01C1.74 14.51 1.51 14.29 1.51 14.01V5.01C1.51 4.74 1.73 4.51 2.01 4.51H4.26V6.01H5.76V4.51H10.26V6.01H11.76V4.51H14.01C14.28 4.51 14.51 4.73 14.51 5.01V14.01Z" fill="currentColor"/>
+            </svg>
+          </span>
+        {%- else -%}
+          <span class="add-to-cart-text">
+            <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.3831 2.625H9.55499V1.53125C9.55499 0.69125 8.92124 0 8.13312 0H4.87501C4.09501 0 3.45313 0.6825 3.45313 1.53125V2.625H1.625C0.731251 2.625 0 3.40375 0 4.375V12.25C0 13.2125 0.723126 14 1.625 14H11.375C12.2687 14 13 13.2212 13 12.25V4.375C13 3.4125 12.2769 2.625 11.375 2.625H11.3831ZM4.68001 1.53125C4.68001 1.40875 4.76938 1.3125 4.88311 1.3125H8.14124C8.25499 1.3125 8.34437 1.40875 8.34437 1.53125V2.625H4.68813V1.53125H4.68001ZM11.7894 12.2587C11.7894 12.495 11.6106 12.6962 11.3831 12.6962H1.63313C1.41375 12.6962 1.22688 12.5037 1.22688 12.2587V4.38375C1.22688 4.1475 1.40563 3.94625 1.63313 3.94625H3.46126V5.25875H4.68001V3.94625H8.33624V5.25875H9.55499V3.94625H11.3831C11.6025 3.94625 11.7894 4.13875 11.7894 4.38375V12.2587Z" fill="currentColor"/>
+            </svg>
+            <span class="button-text hidden">
+              {%- if preOrder -%}
+                <span class="button-text">{{'products.product.preorder' | t}}</span>
+              {%- else -%}
+                {{- 'products.product.add_to_cart' | t -}}
+              {%- endif -%}
+            </span>
+            <span class="product-price-main hidden">{{ money_price }}</span>
+          </span>
+        {%- endunless -%}
+      </span>
+
+      <span class="button-loader loading--spinner hidden">
+        <svg width="25" height="25" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="6" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+            <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"/>
+          </circle>
+        </svg>
+      </span>
+    </button>
+  </div>
+</sticky-bar-product>

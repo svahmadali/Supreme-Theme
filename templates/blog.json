@@ -1,0 +1,57 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-blog-banner",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "image_height": "450",
+        "mobile_image_height": "300",
+        "heading": "LATEST BLOGS",
+        "heading_size": "h2",
+        "heading_seo": "h1",
+        "description": "Stay inspired with the latest fashion trends, styling tips, and seasonal highlights.",
+        "description_size": "text-lg",
+        "content_alignment": "center",
+        "overlay_color": "#000000",
+        "overlay_opacity": 50,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "show_first_blog": true,
+        "artical_per_page": 15,
+        "show_date": true,
+        "show_comment": true,
+        "show_author": false,
+        "show_excerpt": false,
+        "image_ratio": "landscape",
+        "mobile_item_per_row": "1",
+        "column_gap": 24,
+        "column_gap_mobile": 6,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 65,
+        "top_space_mobile": 20,
+        "bottom_space_mobile": 30
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main"
+  ]
+}

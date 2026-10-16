@@ -1,0 +1,7 @@
+<h3 class="configurator-side-panel-title">{{ title }}</h3>
+
+<div class="configurator-side-panel-list" role="menu" aria-label="{{ aria_label | default: title }}">
+  {% for option in options %}
+    {% render 'configurator-side-menu-item', label: option, index: forloop.index0, is_active: false %}
+  {% endfor %}
+</div>

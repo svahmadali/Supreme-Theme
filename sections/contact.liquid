@@ -1,0 +1,610 @@
+{{ 'contact.css' | asset_url | stylesheet_tag }}
+<contact-us class="block contact-us-section section-gap">
+   <div class="{% if section.settings.fullwidth %} page--width-full{% else %}page--width{% endif %}">
+  {% if section.blocks.size > 0 %}
+    <div class="contact-us-card">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'content' %}
+            <div
+              id="contact-content-{{ block.id }}"
+              class="contact-us-image--wrapper contact-us-info-overlay relative flex color-{{ block.settings.color_scheme }}"
+              {{ block.shopify_attributes }}
+            >
+              {% if block.settings.background_image != blank %}
+                <div class="media-ratio">
+                  {%- liquid
+                    assign height = block.settings.background_image.width | divided_by: block.settings.background_image.aspect_ratio | round
+                    assign sizes = '100vw'
+                    assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                  -%}
+                  {{
+                    block.settings.background_image
+                    | image_url: width: 3840
+                    | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+                  }}
+                </div>
+              {% endif %}
+              <div class="contact-us-info">
+                {% if block.settings.heading != blank %}
+                  <{{ block.settings.heading_seo }} class="contact-us-info-title {{ block.settings.heading_size }}">
+                    {% if block.settings.heading != blank -%}
+                      {{- block.settings.heading -}}
+                    {% endif %}
+                  </{{ block.settings.heading_seo }}>
+                {% endif %}
+                {% if block.settings.email_label != blank or block.settings.email_content != blank %}
+                  <div class="contact-us-info-item">
+                    <span class="contact-us-icon">
+                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.8631 12.4595C16.2346 11.8747 15.3253 11.6734 14.4896 11.9376L13.3932 12.2772C12.611 12.5224 11.7485 12.4344 11.0933 12.0382C9.50881 11.0823 8.18505 9.83087 7.14877 8.3216C6.72089 7.69273 6.62061 6.8815 6.88135 6.14572L7.24237 5.12068C7.52317 4.33459 7.30923 3.47934 6.68746 2.88821L5.2233 1.51728C4.75531 1.07708 4.11348 0.838107 3.43823 0.882128C2.77635 0.91986 2.16127 1.228 1.75344 1.71852L1.24533 2.33481C-0.432773 4.36604 -0.412716 7.18964 1.29213 9.20201C3.89285 12.2834 6.87466 15.0819 10.144 17.5345C11.227 18.3457 12.5307 18.7482 13.8278 18.7482C15.1047 18.7482 16.3817 18.3583 17.4514 17.5785L18.1066 17.1005C18.6281 16.7169 18.9557 16.1384 18.9958 15.5095C19.0359 14.8869 18.7885 14.2769 18.3205 13.8367L16.8631 12.4595Z" fill="currentColor"/>
+                        <path d="M18.1669 9.73243C18.1977 9.73243 18.2298 9.73054 18.2612 9.72614C18.6269 9.67709 18.8816 9.35951 18.8301 9.01552C18.211 4.90023 14.7231 1.62007 10.348 1.03774C9.98366 0.988064 9.64403 1.22892 9.59255 1.57228C9.54107 1.91627 9.79579 2.23447 10.1615 2.2829C13.9496 2.78662 16.9702 5.62783 17.5057 9.1916C17.5525 9.50603 17.8393 9.73243 18.1669 9.73243Z" fill="currentColor"/>
+                        <path d="M15.5261 10.0865C15.5568 10.0865 15.5889 10.0847 15.6204 10.0802C15.9861 10.0318 16.2408 9.71362 16.1893 9.36963C15.7367 6.35423 13.1821 3.95071 9.97498 3.52434C9.60928 3.4734 9.27098 3.71614 9.2195 4.0595C9.16802 4.40349 9.42275 4.72169 9.78845 4.77012C12.4086 5.11788 14.4958 7.08182 14.8656 9.54571C14.9123 9.86015 15.1985 10.0865 15.5261 10.0865Z" fill="currentColor"/>
+                        <path d="M9.59095 6.00081C9.22391 5.95113 8.88762 6.1945 8.83815 6.53849C8.78867 6.88248 9.04474 7.19943 9.41044 7.24659C10.8719 7.43399 12.0312 8.52445 12.2291 9.89789C12.2746 10.2136 12.5614 10.4425 12.891 10.4425C12.9211 10.4425 12.9512 10.4406 12.9819 10.4368C13.3476 10.3903 13.6044 10.0733 13.5542 9.72935C13.2754 7.79748 11.6468 6.26431 9.59095 6.00081Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div class="contact-us-links">
+                      {% if block.settings.email_label != blank %}
+                        <span>{{ block.settings.email_label }}</span>
+                      {% endif %}
+                      {% if block.settings.email_content != blank %}
+                        <a href="mailto:{{  block.settings.email_content }}">{{ block.settings.email_content }}</a>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+                {% if block.settings.phone_label != blank or block.settings.phone_content != blank %}
+                  <div class="contact-us-info-item">
+                    <span class="contact-us-icon">
+                      <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.1254 0.642578H2.87464C1.27502 0.642578 0 2.06342 0 3.78888V14.4963C0 16.2471 1.29816 17.6426 2.87464 17.6426H19.1254C20.725 17.6426 22 16.2217 22 14.4963V3.78888C22 2.03809 20.7018 0.642578 19.1254 0.642578ZM18.2908 13.7604C18.1517 13.9381 17.9663 14.0142 17.7808 14.0142C17.6184 14.0142 17.4563 13.9634 17.3403 13.8365L13.4225 10.132L11.5214 11.9335C11.22 12.238 10.7564 12.238 10.4319 11.9335L8.53085 10.132L4.63632 13.8365C4.31178 14.1409 3.77862 14.0395 3.56985 13.5827C3.43079 13.2783 3.52344 12.8976 3.75533 12.6946L7.48767 9.14245L3.75533 5.6156C3.50032 5.3618 3.40767 4.95595 3.59298 4.65138C3.82487 4.24537 4.31159 4.16925 4.61304 4.47368L10.8259 10.3602C10.9185 10.4363 11.0345 10.4363 11.1273 10.3602L17.3401 4.47368C17.6415 4.16926 18.1283 4.24537 18.3602 4.65138C18.5457 4.9558 18.4528 5.38711 18.1978 5.6156L14.466 9.14245L18.2215 12.7201C18.5229 12.9737 18.546 13.4305 18.291 13.7604L18.2908 13.7604Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div class="contact-us-links">
+                      {% if block.settings.phone_label != blank %}
+                        <span>{{ block.settings.phone_label }}</span>
+                      {% endif %}
+                      {% if block.settings.phone_content != blank %}
+                        <a href="tel:{{ block.settings.phone_content }}">{{ block.settings.phone_content }}</a>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+                {% if block.settings.address_label != blank or block.settings.address_content != blank %}
+                  <div class="contact-us-info-item">
+                    <span class="contact-us-icon">
+                      <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.1254 0.642578H2.87464C1.27502 0.642578 0 2.06342 0 3.78888V14.4963C0 16.2471 1.29816 17.6426 2.87464 17.6426H19.1254C20.725 17.6426 22 16.2217 22 14.4963V3.78888C22 2.03809 20.7018 0.642578 19.1254 0.642578ZM18.2908 13.7604C18.1517 13.9381 17.9663 14.0142 17.7808 14.0142C17.6184 14.0142 17.4563 13.9634 17.3403 13.8365L13.4225 10.132L11.5214 11.9335C11.22 12.238 10.7564 12.238 10.4319 11.9335L8.53085 10.132L4.63632 13.8365C4.31178 14.1409 3.77862 14.0395 3.56985 13.5827C3.43079 13.2783 3.52344 12.8976 3.75533 12.6946L7.48767 9.14245L3.75533 5.6156C3.50032 5.3618 3.40767 4.95595 3.59298 4.65138C3.82487 4.24537 4.31159 4.16925 4.61304 4.47368L10.8259 10.3602C10.9185 10.4363 11.0345 10.4363 11.1273 10.3602L17.3401 4.47368C17.6415 4.16926 18.1283 4.24537 18.3602 4.65138C18.5457 4.9558 18.4528 5.38711 18.1978 5.6156L14.466 9.14245L18.2215 12.7201C18.5229 12.9737 18.546 13.4305 18.291 13.7604L18.2908 13.7604Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div class="contact-us-links">
+                      {% if block.settings.address_label != blank %}
+                        <span>{{ block.settings.address_label }}</span>
+                      {% endif %}
+                      {% if block.settings.address_content != blank %}
+                        <p>{{ block.settings.address_content }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% when 'form' %}
+            <div
+              class="contact-us-form--wrapper color-{{ block.settings.color_scheme }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="contact-us--form">
+                {% if block.settings.heading != blank or block.settings.description != blank %}
+                  <heading-main class="main-heading">
+                    {% if block.settings.heading != blank %}
+                      <{{ block.settings.heading_seo }} class="contact-us-title {{ block.settings.heading_size }}">
+                        {% if block.settings.heading != blank -%}
+                          {{- block.settings.heading -}}
+                        {% endif %}
+                      </{{ block.settings.heading_seo }}>
+                    {% endif %}
+                    {% if block.settings.description != blank %}
+                      <div class="contact-us-description {{ block.settings.description_size }}">
+                        {{ block.settings.description | newline_to_br }}
+                      </div>
+                    {% endif %}
+                  </heading-main>
+                {% endif %}
+                {%- form 'contact', id: 'ContactUsForm', class: 'contact-us-form' -%}
+                  <form
+                    method="post"
+                    action=""
+                    id="ContactForm"
+                    accept-charset="UTF-8"
+                    class="contact--form"
+                    data-cptcha="true"
+                    data-hcaptcha-bound="true"
+                  >
+                    <div class="form-control-wrapper flex">
+                      <div class="form-control">
+                        <label class="hidden" for="FirstName-{{ block.id }}">
+                          {{- 'templates.contact.form.firstname' | t -}}
+                        </label>
+                        <input
+                          type="text"
+                          id="FirstName-{{ block.id }}"
+                          name="contact[first_name]"
+                          class="input"
+                          autocapitalize="off"
+                          placeholder="{{ 'templates.contact.form.firstname' | t }}"
+                          required=""
+                          value="{% if form.first_name %}{{ form.first_name }}{% elsif customer %}{{ customer.first_name }}{% endif %}"
+                        >
+                      </div>
+                      <div class="form-control">
+                        <label class="hidden" for="LastName-{{ block.id }}">
+                          {{- 'templates.contact.form.lastname' | t -}}
+                        </label>
+                        <input
+                          type="text"
+                          id="LastName-{{ block.id }}"
+                          name="contact[last_name]"
+                          placeholder="{{ 'templates.contact.form.lastname' | t }}"
+                          class="input"
+                          autocapitalize="off"
+                          placeholder="{{ 'templates.contact.form.lastname' | t }}"
+                          required=""
+                          value="{% if form.last_name %}{{ form.last_name }}{% elsif customer %}{{ customer.last_name }}{% endif %}"
+                        >
+                      </div>
+                    </div>
+                    <div class="form-control-wrapper flex">
+                      <div class="form-control">
+                        <label class="hidden" for="Email-{{ block.id }}">
+                          {{- 'templates.contact.form.email' | t -}}
+                        </label>
+                        <input
+                          type="text"
+                          id="Email-{{ block.id }}"
+                          name="contact[email]"
+                          class="input"
+                          autocomplete="email"
+                          autocapitalize="off"
+                          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                          aria-required="true"
+                          spellcheck="false"
+                          placeholder="{{ 'templates.contact.form.email' | t }}"
+                          pattern="^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$"
+                          required=""
+                        >
+                      </div>
+                      <div class="form-control">
+                        <label class="hidden" for="Phone-{{ block.id }}">
+                          {{- 'templates.contact.form.phone' | t -}}
+                        </label>
+                        <input
+                          type="text"
+                          id="Phone-{{ block.id }}"
+                          name="contact[phone]"
+                          class="input"
+                          autocapitalize="off"
+                          placeholder="{{ 'templates.contact.form.phone' | t }}"
+                          required=""
+                        >
+                      </div>
+                    </div>
+                    <div class="form-control">
+                      <label class="hidden" for="Message-{{ block.id }}">
+                        {{- 'templates.contact.form.comment' | t -}}
+                      </label>
+                      <textarea
+                        rows="6"
+                        cols="8"
+                        id="Message-{{ block.id }}"
+                        name="contact[body]"
+                        class="textarea"
+                        placeholder=" {{- 'templates.contact.form.comment' | t -}}"
+                        required=""
+                      ></textarea>
+                    </div>
+
+                    {%- if form.posted_successfully? -%}
+                      <div class="form-message--wrapper form-message-success" tabindex="-1" autofocus>
+                        {{ 'templates.contact.form.post_success' | t }}
+                      </div>
+                    {%- elsif form.errors -%}
+                      <div class="form-message--wrapper form-message-error">
+                        {{ 'templates.contact.form.error_heading' | t }}
+                      </div>
+                      <ul class="form-status-list caption-large" role="list">
+                        <li>
+                          <a href="#ContactForm-email" class="link">
+                            {{ form.errors.translated_fields.email | capitalize }}
+                            {{ form.errors.messages.email }}
+                          </a>
+                        </li>
+                      </ul>
+                    {%- endif -%}
+                    <div class="form-control align-left">
+                      <button type="submit" class="button button-md w-100">
+                        <span class="button-text">{{ block.settings.form_button_text | default: 'Submit' }}</span>
+                      </button>
+                    </div>
+                  </form>
+                {% endform %}
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  {% endif %}
+                      </div>
+</contact-us>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+  }
+   {% if section.blocks.size > 0 %}
+     {% for block in section.blocks %}
+         {% case block.type %}
+          {% when 'content' %}
+            #contact-content-{{ block.id }}{
+                --background-color-overlay: {{ block.settings.overlay_color.red }} {{ block.settings.overlay_color.green }} {{ block.settings.overlay_color.blue }};
+                --overlay-color-opacity: {{ block.settings.overlay_opacity | divided_by:100.0 }};
+             }
+           {% endcase %}
+     {% endfor %}
+   {% endif %}
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.contact.name",
+  "class": "section-contact",
+  "tag": "section",
+   "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id":"fullwidth",
+      "label": "t:sections.contact.settings.fullwidth.label"
+    },
+    {
+      "type": "header",
+      "content": "t:global.section_spacing.content"
+    },
+    {
+    "type": "range",
+    "id": "top_space_desktop",
+    "label": "t:global.section_spacing.top_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_desktop",
+    "label": "t:global.section_spacing.bottom_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "top_space_mobile",
+     "label": "t:global.section_spacing.top_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_mobile",
+   "label": "t:global.section_spacing.bottom_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  }
+  ],
+  "blocks": [
+    {
+      "type": "content",
+      "name":"t:sections.contact.settings.blocks.content.name",
+      "limit": 1,
+      "settings": [
+          {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "t:global.general_label.background_image.label"
+          },
+         {
+          "type":"inline_richtext",
+          "id":"heading",
+          "label": "t:global.general_label.heading.label",
+          "default":"Information heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "default": "h3",
+          "label": "t:global.heading_size.label",
+          "options": [
+            {
+              "value": "h1",
+              "label": "t:global.heading_size.options.h1.label"
+            },
+            {
+              "value": "h2",
+            "label": "t:global.heading_size.options.h2.label"
+            },
+            {
+              "value": "h3",
+            "label": "t:global.heading_size.options.h3.label"
+            },
+            {
+              "value": "h4",
+            "label": "t:global.heading_size.options.h4.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:global.heading_size.options.h5.label"
+            },
+            {
+              "value": "h6",
+            "label": "t:global.heading_size.options.h6.label"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "heading_seo",
+          "default": "h3",
+           "label": "t:global.heading_seo.label",
+          "info": "t:global.heading_seo.info",
+          "options": [
+            {
+                "value": "h1",
+                "label": "t:global.heading_seo.options.h1.label"
+              },
+              {
+                "value": "h2",
+              "label": "t:global.heading_seo.options.h2.label"
+              },
+              {
+                "value": "h3",
+              "label": "t:global.heading_seo.options.h3.label"
+              },
+              {
+                "value": "h4",
+              "label": "t:global.heading_seo.options.h4.label"
+              },
+              {
+                "value": "h5",
+                "label": "t:global.heading_seo.options.h5.label"
+              },
+              {
+                "value": "h6",
+              "label": "t:global.heading_seo.options.h6.label"
+              }
+            ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.contact.settings.blocks.content.name"
+        },
+        
+        {
+          "type": "text",
+          "id": "email_label",
+          "default": "Email address",
+          "label": "t:sections.contact.settings.blocks.content.settings.email_label.label"
+        },
+        {
+          "type": "text",
+          "id": "email_content",
+          "default": "abc@example.com",
+        "label": "t:sections.contact.settings.blocks.content.settings.email_content.label"
+        },
+       {
+          "type": "text",
+          "id": "phone_label",
+          "default": "Call us",
+        "label": "t:sections.contact.settings.blocks.content.settings.phone_label.label"
+        },
+        {
+          "type": "text",
+          "id": "phone_content",
+          "default": "1234567890",
+         "label": "t:sections.contact.settings.blocks.content.settings.phone_content.label"
+        },
+        {
+          "type": "text",
+          "id": "address_label",
+          "default": "Location",
+         "label": "t:sections.contact.settings.blocks.content.settings.address_label.label"
+        },
+        {
+          "type": "richtext",
+          "id": "address_content",
+         "label": "t:sections.contact.settings.blocks.content.settings.address_content.label"
+        },
+        {
+          "type": "header",
+          "content": "t:global.header.color.content"
+        },
+         {
+            "type": "color_scheme",
+            "id":"color_scheme",
+            "label": "t:global.color_scheme.label", 
+            "default":"scheme-2"
+        },
+         {
+            "type": "color",
+            "id": "overlay_color",
+            "default": "#000000",
+            "label": "t:global.general_label.overlay_color.label"
+          },
+          {
+            "type": "range",
+            "id": "overlay_opacity",
+             "label": "t:global.general_label.overlay_opacity.label",
+            "default": 1,
+             "min": 0,
+             "max": 100,
+            "step": 1,
+             "unit": "%"
+          }
+      ]
+    },
+    {
+      "type": "form",
+      "name":"t:sections.contact.settings.blocks.form.name",
+      "limit": 1,
+      "settings": [
+         {
+              "type": "color_scheme",
+              "id":"color_scheme",
+              "label": "t:global.color_scheme.label", 
+              "default":"scheme-3"
+          },
+        {
+          "type":"inline_richtext",
+          "id":"heading",
+          "label": "t:global.general_label.heading.label",
+          "default":"Contact us"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "default": "h2",
+           "label": "t:global.heading_size.label",
+            "options": [
+              {
+                "value": "h1",
+                "label": "t:global.heading_size.options.h1.label"
+              },
+              {
+                "value": "h2",
+              "label": "t:global.heading_size.options.h2.label"
+              },
+              {
+                "value": "h3",
+              "label": "t:global.heading_size.options.h3.label"
+              },
+              {
+                "value": "h4",
+              "label": "t:global.heading_size.options.h4.label"
+              },
+              {
+                "value": "h5",
+                "label": "t:global.heading_size.options.h5.label"
+              },
+              {
+                "value": "h6",
+              "label": "t:global.heading_size.options.h6.label"
+              }
+            ]
+
+        },
+        {
+          "type": "select",
+          "id": "heading_seo",
+          "default": "h2",
+          "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+         {
+            "value": "h1",
+            "label": "t:global.heading_seo.options.h1.label"
+          },
+          {
+            "value": "h2",
+           "label": "t:global.heading_seo.options.h2.label"
+          },
+          {
+            "value": "h3",
+           "label": "t:global.heading_seo.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_seo.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+          }
+        ]
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+         "label": "t:global.general_label.description.label",
+          "default":"Contact us description here"
+        },
+         {
+          "type": "select",
+          "id": "description_size",
+          "default": "text-lg",
+           "label": "t:global.description_size.label",
+          "options": [
+            {
+              "value": "text-xl",
+              "label": "t:global.description_size.options.x-large.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:global.description_size.options.large.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:global.description_size.options.medium.label"
+            },
+            {
+              "value": "text-sm",
+              "label": "t:global.description_size.options.small.label"
+            },
+            {
+              "value": "text-xs",
+              "label": "t:global.description_size.options.x-small.label"
+
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "form_button_text",
+          "default": "Contact us",
+          "label": "t:sections.contact.settings.blocks.form.settings.form_button_text.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact.presets.name",
+      "blocks":[
+        {
+          "type": "content"
+        },
+        {
+          "type": "form"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

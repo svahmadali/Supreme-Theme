@@ -1,0 +1,528 @@
+{{ 'store-locator.css' | asset_url | stylesheet_tag }}
+<custom-tabs-click class="block store-locator-section section-gap color-{{ section.settings.color_scheme }}">
+  <div class="page--width" data-tab-group>
+    {% if section.settings.heading != blank or section.settings.description != blank %}
+      <heading-main class="main-heading text-align-{{ section.settings.content_alignment }}">
+        {% if section.settings.heading != blank %}
+          <{{ section.settings.heading_seo }} class="section-title {{ section.settings.heading_size }}">
+            {% if section.settings.heading != blank -%}
+              {{- section.settings.heading -}}
+            {% endif %}
+          </{{ section.settings.heading_seo }}>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="section-description {{ section.settings.description_size }}">
+            {{ section.settings.description | newline_to_br }}
+          </div>
+        {% endif %}
+      </heading-main>
+    {% endif %}
+    {% if section.blocks.size > 0 %}
+      <div class="store-locator-wrapper tab-{{ section.settings.style_option }}">
+        <ul class="store-locator-tab tab-nav justify-content-center heading-font">
+          {% for block in section.blocks %}
+            {% if block.settings.store_name != blank %}
+              <li class="tab-nav-item">
+                <a
+                  href="#tablinks-{{ block.id }}"
+                  class="tab-nav-link {% if forloop.first %}is-active{% endif %}"
+                  data-tab-head
+                >
+                  {{- block.settings.store_name -}}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="store-locator-details--wrapper">
+          {% for block in section.blocks %}
+            {% liquid
+              assign media_size = block.settings.image_size
+              if media_size == 'landscape'
+                assign imageratio = 75
+              elsif media_size == 'square'
+                assign imageratio = 100
+              elsif media_size == 'portrait'
+                assign imageratio = 125
+              else
+                if block.settings.store_image != blank
+                  assign imageratio = 1 | divided_by: block.settings.store_image.aspect_ratio | times: 100
+                else
+                  assign imageratio = 100
+                endif
+              endif
+            %}
+            <div
+              class="store-locator-details {% if forloop.first %}is-active{% endif %}"
+              data-id="tablinks-{{ block.id }}"
+              data-tab-content
+            >
+              <div class="store-locator-img">
+                <div class="media-ratio" style="--media-ratio:{{ imageratio }}%">
+                  {%- if block.settings.store_image != blank -%}
+                    {%- liquid
+                      assign height = block.settings.store_image.width | divided_by: block.settings.store_image.aspect_ratio | round
+                      assign sizes = '100vw'
+                      assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                    -%}
+                    {{
+                      block.settings.store_image
+                      | image_url: width: 3840
+                      | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+                    }}
+                  {% else %}
+                    {%- capture current -%}{% cycle section.id: 1, 2 %}{%- endcapture -%}
+                    {%- assign placeholder_image = 'hero-apparel-' | append: current -%}
+                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </div>
+              </div>
+              <div class="store-locator-address">
+                {% if block.settings.store_name != blank %}
+                  <h5>{{ block.settings.store_name }}</h5>
+                {% endif %}
+                {% if block.settings.location != blank %}
+                  <div class="store-address-item">
+                    {% if block.settings.location_label != blank %}
+                      <span class="text-lg bold">{{ block.settings.location_label }}</span>
+                    {% endif %}
+                    <p class="text-base">{{ block.settings.location }}</p>
+                  </div>
+                {% endif %}
+                {% if block.settings.phone != blank %}
+                  <div class="store-address-item">
+                    {% if block.settings.phone_label != blank %}
+                      <span class="text-lg bold">{{ block.settings.phone_label }}</span>
+                    {% endif %}
+                    <p class="text-base">{{ block.settings.phone }}</p>
+                  </div>
+                {% endif %}
+                {% if block.settings.time_date != blank %}
+                  <div class="store-address-item">
+                    {% if block.settings.time_label != blank %}
+                      <span class="text-lg bold">{{ block.settings.time_label }}</span>
+                    {% endif %}
+                    <p class="text-base">{{ block.settings.time_date }}</p>
+                  </div>
+                {% endif %}
+                {%- if block.settings.btn_text != blank and block.settings.btn_link != blank -%}
+                  <div class="button-wrapper">
+                    <a
+                      href="{{ block.settings.btn_link }}"
+                      class="{% if block.settings.button_style == 'text' %}underline--link{% else %}{{ settings.button_font }}-font button button-{{ block.settings.button_style }} button-{{ block.settings.btn_size }} hover-{{ block.settings.hover_effect }}{% endif %}"
+                    >
+                      <span class="button-text">{{ block.settings.btn_text }}</span>
+                      {% if block.settings.button_style == 'text' %}
+                        <span class="link-arrow">
+                          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H8V8H7V1.707L1.354 7.354L1 7.707L0.293 7L0.646 6.646L6.293 1H0V0Z" fill="currentColor"/>
+                          </svg>
+                        </span>
+                      {% endif %}
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</custom-tabs-click>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+    --grid-gap:{{ section.settings.column_gap }}px;
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+      --grid-gap:{{ section.settings.column_gap_mobile }}px;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.store-locator.name",
+  "class": "section-store-locator",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+  {
+        "type": "color_scheme",
+        "id":"color_scheme",
+       "label": "t:global.color_scheme.label", 
+        "default":"scheme-2"
+    },
+    {
+      "type": "select",
+      "id": "style_option",
+      "label": "t:sections.store-locator.settings.style_option.label",
+      "default":"top",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.store-locator.settings.style_option.options.left.label"
+        },
+        {
+          "value": "top",
+           "label": "t:sections.store-locator.settings.style_option.options.top.label"
+        }
+      ]
+    },
+    {
+          "type":"inline_richtext",
+          "id":"heading",
+           "label": "t:global.general_label.heading.label",
+          "default":"Heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "default": "h3",
+           "label": "t:global.heading_size.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:global.heading_size.options.h1.label"
+        },
+        {
+          "value": "h2",
+         "label": "t:global.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+         "label": "t:global.heading_size.options.h3.label"
+        },
+        {
+          "value": "h4",
+        "label": "t:global.heading_size.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:global.heading_size.options.h5.label"
+        },
+        {
+          "value": "h6",
+        "label": "t:global.heading_size.options.h6.label"
+        }
+      ]
+        },
+        {
+          "type": "select",
+          "id": "heading_seo",
+          "default": "h3",
+          "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+         {
+            "value": "h1",
+            "label": "t:global.heading_seo.options.h1.label"
+          },
+          {
+            "value": "h2",
+           "label": "t:global.heading_seo.options.h2.label"
+          },
+          {
+            "value": "h3",
+           "label": "t:global.heading_seo.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_seo.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+          }
+        ]
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "t:global.general_label.description.label",
+          "default":"Tell your brand's story through images"
+        },
+         {
+          "type": "select",
+          "id": "description_size",
+          "default": "text-lg",
+            "label": "t:global.description_size.label",
+          "options": [
+            {
+              "value": "text-xl",
+              "label": "t:global.description_size.options.x-large.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:global.description_size.options.large.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:global.description_size.options.medium.label"
+            },
+            {
+              "value": "text-sm",
+              "label": "t:global.description_size.options.small.label"
+            },
+            {
+              "value": "text-xs",
+              "label": "t:global.description_size.options.x-small.label"
+
+            }
+          ]
+
+    },
+    {
+      "type": "text_alignment",
+      "id":"content_alignment",
+      "label": "t:global.content_alignment.label",
+      "default":"center"
+    },
+     {
+        "type": "range",
+        "id":"column_gap",
+        "label":"t:global.general_label.column_gap.label",
+        "min":0,
+        "max":50,
+        "default":20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id":"column_gap_mobile",
+      "label":"t:global.general_label.column_gap_mobile.label",
+        "min":0,
+        "max":50,
+        "default":20,
+        "step": 1,
+        "unit": "px"
+      },
+  {
+    "type": "header",
+    "content": "t:global.section_spacing.content"
+    },
+    {
+    "type": "range",
+    "id": "top_space_desktop",
+    "label": "t:global.section_spacing.top_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_desktop",
+     "label": "t:global.section_spacing.bottom_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "top_space_mobile",
+    "label": "t:global.section_spacing.top_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_mobile",
+     "label": "t:global.section_spacing.bottom_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  }
+
+  ],
+  "blocks": [
+    {
+      "type": "store",
+      "name": "t:sections.store-locator.blocks.store.name",
+      "settings": [
+        {
+          "type": "image_picker",
+           "id": "store_image",
+          "label":"t:sections.store-locator.blocks.store.settings.store_image.label"
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+         "label": "t:global.image_size.label",
+          "default": "adapt",
+          "options": [
+             {
+                "value": "adapt",
+               "label": "t:global.image_size.options.auto.label"
+              },
+              {
+                "value": "landscape",
+                "label": "t:global.image_size.options.landscape.label"
+              },
+              {
+                "value": "portrait",
+                "label": "t:global.image_size.options.portrait.label"
+              },
+              {
+                "value": "square",
+                "label": "t:global.image_size.options.square.label"
+              }
+          ]
+      },
+        {
+          "type": "text",
+          "id": "store_name",
+         "label":"t:sections.store-locator.blocks.store.settings.store_image.label",
+          "default":"Place"
+        },
+        {
+          "type": "text",
+          "id":"location_label",
+          "label":"t:sections.store-locator.blocks.store.settings.location_label.label",
+          "default":"ADDRESS"
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label":"t:sections.store-locator.blocks.store.settings.location.label"
+        },
+        {
+          "type": "text",
+          "id":"phone_label",
+          "label":"t:sections.store-locator.blocks.store.settings.phone_label.label",
+          "default":"Call the store"
+        },
+        {
+          "type":"text",
+          "id":"phone",
+        "label":"t:sections.store-locator.blocks.store.settings.phone.label",
+          "default":"(343)-444-343"
+        },
+         {
+          "type": "text",
+          "id":"time_label",
+         "label":"t:sections.store-locator.blocks.store.settings.time_label.label",
+          "default":"Opening Hours"
+        },
+        {
+          "type":"text",
+          "id":"time_date",
+           "label":"t:sections.store-locator.blocks.store.settings.time_date.label",
+          "default":"Mon–Sat: 11am–6pm, Sun: 12–6pm"
+        },
+         {
+      "type": "header",
+      "content": "t:global.header.button.content"
+    },
+        {
+          "type": "text",
+          "id": "btn_text",
+         "label": "t:global.general_label.text.label",
+          "default":"Shop now"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "t:global.general_label.link.label"
+        },
+        {
+          "type": "select",
+          "id": "btn_size",
+            "default": "sm",
+          "label": "t:global.btn_size.label",
+          "options": [
+           {
+              "label": "t:global.btn_size.options.xsmall.label",
+              "value": "xsm"
+
+            },
+            {
+             "label": "t:global.btn_size.options.small.label",
+              "value": "sm"
+
+            },
+            {
+              "label": "t:global.btn_size.options.medium.label",
+              "value": "md"
+
+            },
+            {
+             "label": "t:global.btn_size.options.large.label",
+              "value": "lg"
+
+            }
+          ]
+        },
+        {
+          "type":"select",
+          "id":"button_style",
+          "label": "t:global.button_style.label",
+          "options": [
+            {
+              "label": "t:global.button_style.options.solid.label",
+              "value": "solid"
+            },
+            {
+              "label": "t:global.button_style.options.outline.label",
+              "value": "outline"
+            },
+            {
+              "label": "t:global.button_style.options.text.label",
+              "value":"text"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id":"hover_effect",
+           "label": "t:global.hover_effect.label",
+          "options": [
+            {
+              "label": "t:global.hover_effect.options.standard.label",
+              "value": "standard"
+            },
+            {
+              "label": "t:global.hover_effect.options.none.label",
+              "value": "none"
+            }
+          ] 
+        }
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.store-locator.presets.name",
+      "blocks": [
+        {
+          "type": "store"
+        },
+        {
+          "type": "store"
+        },
+        {
+          "type": "store"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

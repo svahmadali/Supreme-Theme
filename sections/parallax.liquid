@@ -1,0 +1,645 @@
+{{ 'parallax.css' | asset_url | stylesheet_tag }}
+<parallax class="block parallax-section relative color-{{ section.settings.color_scheme }}">
+  <div class="parallax-inner-wrapper section-gap">
+    {% if section.settings.background_image != blank %}
+      <div class="parallax parallax-image" data-parallax-media>
+        {%- liquid
+          assign height = section.settings.background_image.width | divided_by: section.settings.background_image.aspect_ratio | round
+          assign sizes = '100vw'
+          assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+        -%}
+        {{
+          section.settings.background_image
+          | image_url: width: 3840
+          | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+        }}
+      </div>
+    {% else %}
+      <div class="parallax parallax-image" data-parallax-media>
+        {%- assign placeholder_image = 'hero-apparel-1' -%}
+        {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {% endif %}
+
+    <div class=" parallax-content">
+      {% if section.settings.enable_marquee and section.settings.heading != blank %}
+        {% assign limit = 10 %}
+        <marquee-text
+          class="scrolling-text--wrapper heading-font marquee-true direction-{{ section.settings.direction }}"
+          scrolling-speed="{{ section.settings.scrolling_speed }}"
+        >
+          {% for i in (1..limit) %}
+            <div class="scrolling-text-marquee--slide">
+              <div class="scrolling-text section-title body-font {{ section.settings.heading_size }}">
+                {{ section.settings.heading }}
+              </div>
+              <div class="scrolling-text section-title body-font {{ section.settings.heading_size }}">
+                {{ section.settings.heading }}
+              </div>
+              <div class="scrolling-text section-title body-font {{ section.settings.heading_size }}">
+                {{ section.settings.heading }}
+              </div>
+            </div>
+          {% endfor %}
+        </marquee-text>
+      {% endif %}
+      <div class="parallax-content--wrapper">
+        <div class="page--width">
+          <div class="parallax-image-with-text-wrapper flex wrap">
+            {% if section.settings.heading != blank and section.settings.enable_marquee == false %}
+              <heading-main class="main-heading">
+                <h3 class="section-title body-font {{ section.settings.heading_size }}">
+                  {{- section.settings.heading -}}
+                </h3>
+              </heading-main>
+            {% endif %}
+            {% for block in section.blocks %}
+              {% if block.type == 'image' %}
+                {% liquid
+                  assign image_ratio = block.settings.image_ratio
+                  if image_ratio == 'landscape'
+                    assign media_ratio = 75
+                  elsif image_ratio == 'square'
+                    assign media_ratio = 100
+                  elsif image_ratio == 'portrait'
+                    assign media_ratio = 125
+                  else
+                    if block.settings.image != blank
+                      assign media_ratio = 1 | divided_by: block.settings.image.aspect_ratio | times: 100
+                    else
+                      assign media_ratio = 100
+                    endif
+                  endif
+                %}
+                <div class="parallax-image-with-text-img">
+                  <div class="media-ratio" style="--media-ratio:{{ media_ratio }}%">
+                    {% if block.settings.image != blank %}
+                      {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                      {%- capture sizes -%}
+                                (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                            {%- endcapture -%}
+                      {{ block.settings.image | image_url: width: 1500 | image_tag: sizes: sizes, widths: widths }}
+                    {% else %}
+                      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                    {% if block.settings.product_list != blank %}
+                      <div class="parallax-product">
+                        {%- for product_card in block.settings.product_list -%}
+                          {% assign current_variant = product_card.selected_or_first_available_variant %}
+                          <div class="flex wrap">
+                            <div class="media-ratio">
+                              {%- if product_card.featured_media != blank -%}
+                                <img
+                                  srcset="
+                                    {%- if product_card.featured_media.width >= 165 -%}{{ product_card.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                                    {%- if product_card.featured_media.width >= 360 -%}{{ product_card.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                                    {%- if product_card.featured_media.width >= 533 -%}{{ product_card.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                                    {%- if product_card.featured_media.width >= 720 -%}{{ product_card.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                                    {%- if product_card.featured_media.width >= 940 -%}{{ product_card.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+                                    {%- if product_card.featured_media.width >= 1066 -%}{{ product_card.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                                    {{ product_card.featured_media | image_url }} {{ product_card.featured_media.width }}w
+                                  "
+                                  src="{{ product_card.featured_media | image_url: width: 533 }}"
+                                  sizes="(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                                  alt="{{ product_card.featured_media.alt | escape }}"
+                                  class="product-card--img"
+                                  loading="lazy"
+                                  width="{{ product_card.featured_media.width }}"
+                                  height="{{ product_card.featured_media.height }}"
+                                >
+                              {% else %}
+                                {%- capture current -%}{% cycle section.id: 1, 2, 3, 4 %}{%- endcapture -%}
+                                {%- assign placeholder_image = 'product-apparel-' | append: current -%}
+                                {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                              {% endif %}
+                            </div>
+                            <div class="product-list-detail">
+                              <span class="text-sm">{{- product_card.title | strip_html -}}</span>
+                              <product-price-list class="product-price-list">
+                                {%- assign price_min = product_card.price_min | default: 1899 | money -%}
+                                <product-sale-price class="product-price-actual">
+                                  {%- if product_card.price_varies -%}
+                                    <span class="product-actual-price varies-price">
+                                      {{ 'products.product.price.from_price_html' | t: price: price_min }}
+                                    </span>
+                                  {%- else -%}
+                                    <span class="product-actual-price">{{ price_min }}</span>
+                                  {%- endif -%}
+                                  {%- if product_card.compare_at_price_min > product_card.price_min -%}
+                                    <small class="product-compare-price">
+                                      {{- product_card.compare_at_price_min | money -}}
+                                    </small>
+                                  {%- endif -%}
+                                  {%- if current_variant.unit_price_measurement -%}
+                                    <span class="product-unit-price">
+                                      {{ current_variant.unit_price | money }} /
+                                      {% if current_variant.unit_price_measurement.reference_value != 1 -%}
+                                        {{- current_variant.unit_price_measurement.reference_value -}}
+                                      {%- endif %}
+                                      {{ current_variant.unit_price_measurement.reference_unit }}
+                                    </span>
+                                  {%- endif -%}
+                                </product-sale-price>
+                              </product-price-list>
+                            </div>
+                          </div>
+                        {% endfor %}
+                      </div>
+
+                      {%- for product_card in block.settings.product_list -%}
+                        <a href="{{ product_card.url | within : collection }}" class="parallax-add-to-btn" aria-label="{{ product_card.title }}"> 
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M10.2069 2.50039H8.63188V1.62539C8.63188 0.953391 8.08588 0.400391 7.40688 0.400391H4.5999C3.9279 0.400391 3.3749 0.946391 3.3749 1.62539V2.50039H1.7999C1.0299 2.50039 0.399902 3.12339 0.399902 3.90039V10.2004C0.399902 10.9704 1.0229 11.6004 1.7999 11.6004H10.1999C10.9699 11.6004 11.5999 10.9774 11.5999 10.2004V3.90039C11.5999 3.13039 10.9769 2.50039 10.1999 2.50039H10.2069ZM4.4319 1.62539C4.4319 1.52739 4.5089 1.45039 4.60688 1.45039H7.41388C7.51188 1.45039 7.58888 1.52739 7.58888 1.62539V2.50039H4.4389V1.62539H4.4319ZM10.5569 10.2074C10.5569 10.3964 10.4029 10.5574 10.2069 10.5574H1.8069C1.6179 10.5574 1.4569 10.4034 1.4569 10.2074V3.90739C1.4569 3.71839 1.6109 3.55739 1.8069 3.55739H3.3819V4.60739H4.4319V3.55739H7.58188V4.60739H8.63188V3.55739H10.2069C10.3959 3.55739 10.5569 3.71139 10.5569 3.90739V10.2074Z" fill="currentColor"/>
+                          </svg>
+                        </a>
+                      {%- endfor %}
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            <div class="parallax-image-with-text-cont">
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'heading' %}
+                    {%- if block.settings.heading != blank -%}
+                      <{{ block.settings.heading_seo }} class="parallax-title {{ block.settings.heading_size }}">
+                        {{- block.settings.heading -}}
+                      </{{ block.settings.heading_seo }}>
+                    {% endif %}
+                  {% when 'description' %}
+                    {%- if block.settings.description != blank -%}
+                      <div class="description parallax-description {{ block.settings.description_size }}">
+                        {{ block.settings.description | newline_to_br }}
+                      </div>
+                    {% endif %}
+                  {% when 'button' %}
+                    {%- if block.settings.btn_text != blank and block.settings.btn_link != blank -%}
+                      <div class="parallax-button">
+                        <a
+                          href="{{ block.settings.btn_link }}"
+                          class="{% if block.settings.button_style == 'text' %}underline--link{% else %}{{ settings.button_font }}-font button button-{{ block.settings.button_style }} button-{{ block.settings.btn_size }} hover-{{ block.settings.hover_effect }}{% endif %}"
+                        >
+                          <span class="button-text">{{ block.settings.btn_text }}</span>
+                          {% if block.settings.button_style == 'text' %}
+                            <span class="link-arrow">
+                              <svg
+                                width="8"
+                                height="8"
+                                viewBox="0 0 8 8"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H8V8H7V1.707L1.354 7.354L1 7.707L0.293 7L0.646 6.646L6.293 1H0V0Z" fill="currentColor"/>
+                              </svg>
+                            </span>
+                          {% endif %}
+                        </a>
+                      </div>
+                    {% endif %}
+                {% endcase %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</parallax>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+    --background-color-overlay: {{ section.settings.overlay_color.red }} {{ section.settings.overlay_color.green }} {{ section.settings.overlay_color.blue }};
+    --overlay-color-opacity: {{ section.settings.overlay_opacity | divided_by:100.0 }};
+  }
+
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.parallax.name",
+  "class": "section-parallax",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:global.color_scheme.label",
+      "default": "scheme-3"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:global.general_label.background_image.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Scrolling text",
+      "label": "t:global.general_label.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "default": "h1",
+      "label": "t:global.heading_size.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:global.heading_size.options.h1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:global.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:global.heading_size.options.h3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:global.heading_size.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:global.heading_size.options.h5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:global.heading_size.options.h6.label"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_marquee",
+      "label": "t:sections.parallax.settings.enable_marquee.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "scrolling_speed",
+      "label": "Scrolling speed",
+      "min": 1,
+      "max": 20,
+      "unit": "s",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "t:global.header.color.content"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "default": "#000000",
+      "label": "t:global.general_label.overlay_color.label"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "t:global.general_label.overlay_opacity.label",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "t:global.section_spacing.content"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "t:global.section_spacing.top_space_desktop.label",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "t:global.section_spacing.bottom_space_desktop.label",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "t:global.section_spacing.top_space_mobile.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "t:global.section_spacing.bottom_space_mobile.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "t:sections.parallax.blocks.image.name",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:global.general_label.image.label"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "default": "square",
+          "label": "t:global.image_size.label",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "t:global.image_size.options.auto  .label"
+            },
+            {
+              "value": "landscape",
+              "label": "t:global.image_size.options.landscape.label"
+            },
+            {
+              "value": "portrait",
+              "label": "t:global.image_size.options.portrait.label"
+            },
+            {
+              "value": "square",
+              "label": "t:global.image_size.options.square.label"
+            }
+          ]
+        },
+        {
+          "type": "product_list",
+          "limit": 1,
+          "id": "product_list",
+          "label": "t:global.general_label.products.label"
+        }
+      ]
+    },
+
+    {
+      "type": "heading",
+      "name": "t:sections.parallax.blocks.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "t:global.general_label.heading.label",
+          "default": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "default": "h2",
+          "label": "t:global.heading_size.label",
+          "options": [
+            {
+              "value": "h1",
+              "label": "t:global.heading_size.options.h1.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:global.heading_size.options.h2.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:global.heading_size.options.h3.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:global.heading_size.options.h4.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:global.heading_size.options.h5.label"
+            },
+            {
+              "value": "h6",
+              "label": "t:global.heading_size.options.h6.label"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "heading_seo",
+          "default": "h1",
+          "label": "t:global.heading_seo.label",
+          "info": "t:global.heading_seo.info",
+          "options": [
+            {
+              "value": "h1",
+              "label": "t:global.heading_seo.options.h1.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:global.heading_seo.options.h2.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:global.heading_seo.options.h3.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:global.heading_seo.options.h4.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:global.heading_seo.options.h5.label"
+            },
+            {
+              "value": "h6",
+              "label": "t:global.heading_seo.options.h6.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "t:sections.parallax.blocks.description.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "description",
+         "label": "t:global.general_label.description.label",
+          "default": "Tell your brand's story through images"
+        },
+        {
+          "type": "select",
+          "id": "description_size",
+          "default": "text-lg",
+         "label": "t:global.description_size.label",
+          "options": [
+            {
+              "value": "text-xl",
+              "label": "t:global.description_size.options.x-large.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:global.description_size.options.large.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:global.description_size.options.medium.label"
+            },
+            {
+              "value": "text-sm",
+              "label": "t:global.description_size.options.small.label"
+            },
+            {
+              "value": "text-xs",
+              "label": "t:global.description_size.options.x-small.label"
+
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.parallax.blocks.button.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "t:global.general_label.text.label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+           "label": "t:global.general_label.link.label"
+        },
+        {
+          "type": "select",
+          "id": "btn_size",
+           "default": "sm",
+          "label": "t:global.btn_size.label",
+          "options": [
+           {
+              "label": "t:global.btn_size.options.xsmall.label",
+              "value": "xsm"
+
+            },
+            {
+             "label": "t:global.btn_size.options.small.label",
+              "value": "sm"
+
+            },
+            {
+              "label": "t:global.btn_size.options.medium.label",
+              "value": "md"
+
+            },
+            {
+             "label": "t:global.btn_size.options.large.label",
+              "value": "lg"
+
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:global.button_style.label",
+          "options": [
+            {
+              "label": "t:global.button_style.options.solid.label",
+              "value": "solid"
+            },
+            {
+              "label": "t:global.button_style.options.outline.label",
+              "value": "outline"
+            },
+            {
+              "label": "t:global.button_style.options.text.label",
+              "value":"text"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "hover_effect",
+           "label": "t:global.hover_effect.label",
+          "options": [
+            {
+              "label": "t:global.hover_effect.options.standard.label",
+              "value": "standard"
+            },
+            {
+              "label": "t:global.hover_effect.options.none.label",
+              "value": "none"
+            }
+          ] 
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.parallax.presets.name",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "heading"
+        },
+        {
+          "type": "description"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

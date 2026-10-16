@@ -1,0 +1,314 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+<div class="customer login section-gap color-{{ section.settings.color_scheme }}">
+  <div class="customer_wrapper {% if section.settings.heading_side != blank or section.settings.content_side != blank  %}with-content{% endif %}">
+    <div id="login">
+      {% if section.settings.heading != blank or section.settings.description != blank %}
+        <div class="customer-head text-align-{{ section.settings.content_alignment }}">
+          {% if section.settings.heading != blank %}
+            <{{ section.settings.heading_seo }} class="section-title body-font {{ section.settings.heading_size }}">
+              {{- section.settings.heading -}}
+            </{{ section.settings.heading_seo }}>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <div class="section-description {{ section.settings.description_size }}">
+              {{ section.settings.description | newline_to_br }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <div class="customer-form-wrapper">
+        {%- form 'create_customer', novalidate: 'novalidate', class: 'account-form flex column' -%}
+          {%- if form.errors -%}
+            <div id="error-message" role="alert" class="alert alert-warning">
+              <div class="alert-content">
+                <p class="" tabindex="-1">{{ 'templates.contact.form.error_heading' | t }}</p>
+              </div>
+              <ul class="error-listing-content">
+                {%- for field in form.errors -%}
+                  <li>
+                    {%- if field == 'form' -%}
+                      {{ form.errors.messages[field] }}
+                    {%- else -%}
+                      <a href="#Customer-{{ field }}">
+                        {{ form.errors.translated_fields[field] | capitalize }}
+                        {{ form.errors.messages[field] }}
+                      </a>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {% endif %}
+          <div class="form-control">
+            <label for="RegisterForm-FirstName" class="hidden">{{ 'customer.register.first_name' | t }}</label>
+            <input
+              type="text"
+              name="customer[first_name]"
+              id="RegisterFormFirstName"
+              autocomplete="given-name"
+              placeholder="{{ 'customer.register.first_name' | t }}"
+              class="input"
+            >
+          </div>
+          <div class="form-control">
+            <label for="RegisterForm-LastName" class="hidden">{{ 'customer.register.last_name' | t }} </label>
+            <input
+              type="text"
+              name="customer[last_name]"
+              id="RegisterFormLastName"
+              autocomplete="family-name"
+              placeholder="{{ 'customer.register.last_name' | t }}"
+              class="input"
+            >
+          </div>
+          <div class="form-control">
+            <label for="RegisterForm-email" class="hidden">{{ 'customer.register.email' | t }}</label>
+            <input
+              type="email"
+              name="customer[email]"
+              id="RegisterFormEmail"
+              autocomplete="email"
+              autocapitalize="off"
+              {% if form.email %}
+                value="{{ form.email }}"
+              {% endif %}
+              spellcheck="false"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="Customer-Email-error"
+              {% endif %}
+              placeholder="{{ 'customer.register.email' | t }}"
+              pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)*[a-zA-Z]{2,}))$"
+              required
+              class="input"
+            >
+          </div>
+          <div class="form-control">
+            <label for="RegisterForm-password" class="hidden">{{ 'customer.register.password' | t }}</label>
+            <input
+              type="password"
+              name="customer[password]"
+              id="RegisterFormPassword"
+              autocapitalize="off"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="signUpForm-password-error"
+              {% endif %}
+              placeholder="{{ 'customer.register.password' | t }}"
+              required
+              class="input"
+            >
+          </div>
+          <button type="submit" class="button button-md w-100 {{ settings.button_font }}-font">
+            {{ 'customer.register.submit' | t }}
+          </button>
+          <a href="{{ routes.account_login_url }}" class="underline">{{ 'customer.register.sign_in' | t }}</a>
+        {% endform %}
+        {% if section.settings.heading_side != blank or section.settings.content_side != blank %}
+          <div class="customer-content">
+            {% if section.settings.heading_side != blank %}
+              <h5>{{ section.settings.heading_side }}</h5>
+            {% endif %}
+            {% if section.settings.content_side != blank %}
+              <div class="rte">{{ section.settings.content_side }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.main-register.name",
+   "class":"section-customers-register",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id":"color_scheme",
+      "label": "t:global.color_scheme.label", 
+      "default":"scheme-3"
+    },
+    {
+        "type":"inline_richtext",
+        "id":"heading",
+        "label": "t:global.general_label.heading.label",
+        "default":"Create account"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "default": "h1",
+        "label": "t:global.heading_size.label",
+        "options": [
+          {
+            "value": "h1",
+            "label": "t:global.heading_size.options.h1.label"
+          },
+          {
+            "value": "h2",
+          "label": "t:global.heading_size.options.h2.label"
+          },
+          {
+            "value": "h3",
+          "label": "t:global.heading_size.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_size.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_size.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_size.options.h6.label"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "heading_seo",
+        "default": "h4",
+        "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+         {
+            "value": "h1",
+            "label": "t:global.heading_seo.options.h1.label"
+          },
+          {
+            "value": "h2",
+           "label": "t:global.heading_seo.options.h2.label"
+          },
+          {
+            "value": "h3",
+           "label": "t:global.heading_seo.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_seo.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+       "label": "t:global.general_label.description.label",
+        "default":"Please fill in the information below"
+      },
+       {
+        "type": "select",
+        "id": "description_size",
+        "default": "text-lg",
+        "label": "t:global.description_size.label",
+          "options": [
+            {
+              "value": "text-xl",
+              "label": "t:global.description_size.options.x-large.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:global.description_size.options.large.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:global.description_size.options.medium.label"
+            },
+            {
+              "value": "text-sm",
+              "label": "t:global.description_size.options.small.label"
+            },
+            {
+              "value": "text-xs",
+              "label": "t:global.description_size.options.x-small.label"
+
+            }
+          ]
+
+  },
+  {
+    "type": "text_alignment",
+    "id":"content_alignment",
+     "label": "t:global.content_position.label",
+    "default":"center"
+  },
+    {
+    "type":"inline_richtext",
+    "id":"heading_side",
+     "label": "t:global.general_label.heading.label",
+    "default":"Heading"
+  },
+  {
+    "type":"richtext",
+    "id":"content_side",
+   "label": "t:global.general_label.content.label",
+    "default":"<p>Content</p>"
+  },
+   {
+    "type": "header",
+    "content": "t:global.section_spacing.content"
+    },
+    {
+    "type": "range",
+    "id": "top_space_desktop",
+    "label": "t:global.section_spacing.top_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_desktop",
+     "label": "t:global.section_spacing.bottom_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "top_space_mobile",
+    "label": "t:global.section_spacing.top_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_mobile",
+     "label": "t:global.section_spacing.bottom_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  }
+  ]
+}
+{% endschema %}

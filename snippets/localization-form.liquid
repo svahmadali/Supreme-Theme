@@ -1,0 +1,83 @@
+{% if section.settings.enable_language_selector %}
+    {% assign position = "footer"  %}
+  {% assign form_id = 'localization_form_language_language-' | append: position %}
+
+  <localization-form>
+    {% form 'localization', id: form_id, class: 'shopify-localization-form' %}
+      <div class="disclosure">
+        <button type="button" class="disclosure__button" aria-expanded="false" aria-controls="LanguageList">
+          {{ localization.language.endonym_name | capitalize }}
+
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+          </svg>
+        </button>
+        <div class="disclosure_wrapper">
+          <ul id="LanguageList" role="list" class="disclosure__list" hidden>
+            {% for language in localization.available_languages %}
+              <li class="disclosure__item" tabindex="-1">
+                <a
+                  href="#"
+                  {% if language.iso_code == localization.language.iso_code %}
+                    aria-current="true"
+                  {% endif %}
+                  hreflang="{{ language.iso_code }}"
+                  lang="{{ language.iso_code }}"
+                  data-value="{{ language.iso_code }}"
+                >
+                  {{ language.endonym_name | capitalize }}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.71 3.156a.75.75 0 0 1 .128 1.053l-6.929 8.846-.01.013c-.045.057-.104.134-.163.197a1 1 0 0 1-.382.263 1 1 0 0 1-.714-.005 1 1 0 0 1-.38-.268 6 6 0 0 1-.17-.212l-2.932-3.84a.75.75 0 1 1 1.193-.91l2.657 3.48 6.65-8.489a.75.75 0 0 1 1.052-.128"></path>
+                  </svg>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <input type="hidden" name="language_code" value="{{ localization.language.iso_code }}">
+      </div>
+    {% endform %}
+  </localization-form>
+{% endif %}
+{% if section.settings.enable_currency_selector %}
+  {% assign form_id = 'localization_form_language_currency-' | append: position %}
+  <localization-form>
+    {% form 'localization', id: form_id, class: 'shopify-localization-form' %}
+      <div class="disclosure">
+        <button type="button" class="disclosure__button" aria-expanded="false" aria-controls="CountryList">
+          <span class="countryflags countryflag__{{ localization.country.iso_code }}"> </span>
+          {{ localization.country.name }} ({{ localization.country.currency.iso_code }}
+          {{ localization.country.currency.symbol }})
+
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+          </svg>
+        </button>
+        <div class="disclosure_wrapper">
+          <ul id="CountryList" role="list" class="disclosure__list" hidden>
+            {% for country in localization.available_countries %}
+              <li class="disclosure__item" tabindex="-1">
+                <a
+                  class="countryflags"
+                  href="#"
+                  {% if country.iso_code == localization.country.iso_code %}
+                    aria-current="true"
+                  {% endif %}
+                  data-value="{{ country.iso_code }}"
+                >
+                  <span class="countryflags  countryflag__{{ country.iso_code }}"></span>
+                  {{ country.name }} ({{ country.currency.iso_code }}
+                  {{ country.currency.symbol }})
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.71 3.156a.75.75 0 0 1 .128 1.053l-6.929 8.846-.01.013c-.045.057-.104.134-.163.197a1 1 0 0 1-.382.263 1 1 0 0 1-.714-.005 1 1 0 0 1-.38-.268 6 6 0 0 1-.17-.212l-2.932-3.84a.75.75 0 1 1 1.193-.91l2.657 3.48 6.65-8.489a.75.75 0 0 1 1.052-.128"></path>
+                  </svg>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+      </div>
+    {% endform %}
+  </localization-form>
+{% endif %}

@@ -1,0 +1,21 @@
+<div class="configurator-topbar" role="navigation" aria-label="Configurator top navigation">
+  <div class="configurator-topbar-group">
+    {% for label in left_labels %}
+      <button type="button" class="configurator-topbar-button">{{ label }}</button>
+    {% endfor %}
+  </div>
+
+  <div class="configurator-price">{{ price_text }}</div>
+
+  <div class="configurator-topbar-group">
+    {% for label in right_labels %}
+      <button
+        type="button"
+        class="configurator-topbar-button{% if forloop.index0 == active_right_index %} is-active{% endif %}"
+        {% if forloop.index0 == active_right_index %}aria-current="page"{% endif %}
+      >
+        {{ label }}
+      </button>
+    {% endfor %}
+  </div>
+</div>

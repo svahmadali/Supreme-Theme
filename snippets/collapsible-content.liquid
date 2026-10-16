@@ -1,0 +1,100 @@
+<custom-accordion class="product-accordion-group block rte" id="product-accordion-group">
+  {% assign count_int = 1 %}
+  {% if block.settings.show_description %}
+    <div class="product-accordion-item">
+      <details
+        class="product-accordion accordion-details"
+        {% if block.settings.open_first_content %}
+          open
+        {% endif %}
+      >
+        <summary class="product-accordion-tab" content="collapsed-content">
+          <span class="text-with-icon">
+            {% if block.settings.description_heading != blank %}
+              {{- block.settings.description_heading -}}
+            {% else %}
+              Description
+            {% endif %}
+          </span>
+          <span class="accordion-arrow">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <mask id="path-1-inside-1_2180_206" fill="white">
+              <path d="M11 5V6L0 6L5.96046e-08 5H11Z"/>
+              <path d="M6 11H5L5 0L6 1.19209e-07L6 11Z"/>
+              </mask>
+              <path d="M11 5V6L0 6L5.96046e-08 5H11Z" fill="#7F7F7F"/>
+              <path d="M6 11H5L5 0L6 1.19209e-07L6 11Z" fill="#7F7F7F"/>
+              <path d="M11 5H12V4H11V5ZM11 6V7H12V6H11ZM0 6H-1L-1 7H-4.33488e-08L0 6ZM5.96046e-08 5V4H-1L-1 5H5.96046e-08ZM6 11V12H7V11H6ZM5 11H4V12H5V11ZM5 0V-1L4 -1V-8.66977e-08L5 0ZM6 1.19209e-07L7 2.05907e-07V-1L6 -1V1.19209e-07ZM11 5H10V6H11H12V5H11ZM11 6V5L4.33488e-08 5L0 6L-4.33488e-08 7L11 7V6ZM0 6H1V5H5.96046e-08H-1L-1 6H0ZM5.96046e-08 5V6H11V5V4H5.96046e-08V5ZM6 11V10H5V11V12H6V11ZM5 11H6L6 8.66977e-08L5 0L4 -8.66977e-08L4 11H5ZM5 0V1L6 1V1.19209e-07V-1L5 -1V0ZM6 1.19209e-07L5 3.25116e-08L5 11H6H7L7 2.05907e-07L6 1.19209e-07Z" fill="black" mask="url(#path-1-inside-1_2180_206)"/>
+            </svg>
+          </span>
+        </summary>
+        <div id="accordion-content-{{ count_int }}" class="accordion-content rte">
+          {{
+            product.description
+            | replace: '<table', '<div class="table-content"><table '
+            | replace: '</table>', '</table></div>'
+          }}
+        </div>
+        {% if block.settings.des_image != blank %}
+          <div class="tab-image-box">
+            {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+            {%- capture sizes -%}
+                  (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+              {%- endcapture -%}
+            {{ block.settings.des_image | image_url: width: 1500 | image_tag: sizes: sizes, widths: widths }}
+          </div>
+        {% endif %}
+      </details>
+    </div>
+  {% endif %}
+  {% for i in (1..3) %}
+    {% assign count_int = count_int | plus: 1 %}
+    {% liquid
+      assign headingindex = 'heading_' | append: forloop.index
+      assign heading = block.settings[headingindex]
+      assign description_index = 'description_' | append: forloop.index
+      assign custom_description = block.settings[description_index]
+      assign image_index = 'image_' | append: forloop.index
+      assign custom_images = block.settings[image_index]
+    %}
+    {% if heading != blank %}
+      <div class="product-accordion-item">
+        <details
+          class="product-accordion accordion-details"
+          {% if block.settings.open_first_content and block.settings.show_description == false and count_int == 2 %}
+            open
+          {% endif %}
+        >
+          <summary class="product-accordion-tab" content="collapsed-content">
+            <span class="text-with-icon">
+              {{ heading }}
+            </span>
+            <span class="accordion-arrow">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="path-1-inside-1_2180_206" fill="white">
+                <path d="M11 5V6L0 6L5.96046e-08 5H11Z"/>
+                <path d="M6 11H5L5 0L6 1.19209e-07L6 11Z"/>
+                </mask>
+                <path d="M11 5V6L0 6L5.96046e-08 5H11Z" fill="#7F7F7F"/>
+                <path d="M6 11H5L5 0L6 1.19209e-07L6 11Z" fill="#7F7F7F"/>
+                <path d="M11 5H12V4H11V5ZM11 6V7H12V6H11ZM0 6H-1L-1 7H-4.33488e-08L0 6ZM5.96046e-08 5V4H-1L-1 5H5.96046e-08ZM6 11V12H7V11H6ZM5 11H4V12H5V11ZM5 0V-1L4 -1V-8.66977e-08L5 0ZM6 1.19209e-07L7 2.05907e-07V-1L6 -1V1.19209e-07ZM11 5H10V6H11H12V5H11ZM11 6V5L4.33488e-08 5L0 6L-4.33488e-08 7L11 7V6ZM0 6H1V5H5.96046e-08H-1L-1 6H0ZM5.96046e-08 5V6H11V5V4H5.96046e-08V5ZM6 11V10H5V11V12H6V11ZM5 11H6L6 8.66977e-08L5 0L4 -8.66977e-08L4 11H5ZM5 0V1L6 1V1.19209e-07V-1L5 -1V0ZM6 1.19209e-07L5 3.25116e-08L5 11H6H7L7 2.05907e-07L6 1.19209e-07Z" fill="black" mask="url(#path-1-inside-1_2180_206)"/>
+              </svg>
+            </span>
+          </summary>
+          <div id="accordion-content-{{ count_int }}" class="accordion-content  rte">
+            {{ custom_description }}
+          </div>
+          {% if custom_images != blank %}
+            <div class="tab-image-box">
+              {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+              {%- capture sizes -%}
+                  (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+              {%- endcapture -%}
+              {{ custom_images | image_url: width: 1500 | image_tag: sizes: sizes, widths: widths }}
+            </div>
+          {% endif %}
+        </details>
+      </div>
+    {% endif %}
+  {% endfor %}
+</custom-accordion>

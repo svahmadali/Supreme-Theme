@@ -1,0 +1,20 @@
+<header class="account-header flex wrap align-items-center justify-content-between">
+  <div class="account-heading">
+    {% if section.settings.heading != blank %}
+      <{{ section.settings.heading_seo }} class="account-title {{ section.settings.heading_size }}">
+        {{- section.settings.heading -}}
+      </{{ section.settings.heading_seo }}>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <div class="description text-sm {{  section.settings.description_size }}">
+        {{ section.settings.description | newline_to_br }}
+      </div>
+    {% endif %}
+  </div>
+  <div class="account-button-wrapper flex column text-align-center">
+    <a href="{{ routes.account_logout_url }}" class="button w-100 {{ settings.button_font }}-font">
+      {{- 'customer.log_out' | t -}}
+    </a>
+    <a href="{{ routes.account_url }}" class="underline return-account text-sm"> {{ 'customer.account.return' | t }} </a>
+  </div>
+</header>

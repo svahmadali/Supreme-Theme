@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "show_page_title": true,
+        "heading_size": "h2",
+        "heading_seo": "h2",
+        "content_alignment": "center",
+        "top_space_desktop": 110,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "collapsible_content_tNQqbP": {
+      "type": "collapsible-content",
+      "blocks": {
+        "content_JbkM68": {
+          "type": "content",
+          "settings": {
+            "heading": "Where is my order?",
+            "description": "<p>Track your order through your account dashboard or the shipping confirmation email. Once shipped, you'll receive a tracking number to follow your package’s journey. Most orders arrive within 3–7 business days depending on your location and selected shipping method.</p>"
+          }
+        },
+        "content_hERd6Y": {
+          "type": "content",
+          "settings": {
+            "heading": "How long does shipping take?",
+            "description": "<p>We process and ship orders within 1–2 business days. Delivery typically takes 3–7 days for standard shipping. Express options are available at checkout for faster delivery, perfect for last-minute fashion needs or seasonal wardrobe updates.</p>"
+          }
+        },
+        "content_rizjMV": {
+          "type": "content",
+          "settings": {
+            "heading": "How can I change or cancel my order?",
+            "description": "<p>We aim to process orders quickly, so changes or cancellations must be requested within 1 hour of purchase. Contact our customer care team immediately with your order number. Once shipped, changes can’t be made, but returns are always an option.</p>"
+          }
+        },
+        "content_FE6gVy": {
+          "type": "content",
+          "settings": {
+            "heading": "Do you ship internationally?",
+            "description": "<p>Yes! We offer international shipping to most countries. Delivery timelines and costs vary based on destination. Customs fees may apply depending on local regulations. All charges will be clearly displayed at checkout for a hassle-free experience.</p>"
+          }
+        },
+        "content_VJKXFT": {
+          "type": "content",
+          "settings": {
+            "heading": "What are your shipping charges?",
+            "description": "<p>We offer <strong>free standard shipping</strong> on orders above a set value. For other orders, rates are calculated based on destination and weight. You'll see shipping options and charges at checkout, including express delivery for quicker fashion fixes.</p>"
+          }
+        },
+        "content_AbVYxf": {
+          "type": "content",
+          "settings": {
+            "heading": "Do you offer same-day or express delivery?",
+            "description": "<p>Yes, we offer express and next-day delivery in select cities. Same-day delivery may be available for local addresses if you order before noon. Check availability at checkout and get your fashion favorites faster.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "content_JbkM68",
+        "content_hERd6Y",
+        "content_rizjMV",
+        "content_FE6gVy",
+        "content_VJKXFT",
+        "content_AbVYxf"
+      ],
+      "name": "Collapsible content",
+      "settings": {
+        "color_scheme": "",
+        "heading": "",
+        "heading_size": "h4",
+        "heading_seo": "h1",
+        "description": "",
+        "description_size": "text-lg",
+        "open_first": false,
+        "content_position": "top",
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 100,
+        "top_space_mobile": 60,
+        "bottom_space_mobile": 60
+      }
+    }
+  },
+  "order": [
+    "main-page",
+    "collapsible_content_tNQqbP"
+  ]
+}

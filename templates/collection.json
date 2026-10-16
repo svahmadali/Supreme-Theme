@@ -1,0 +1,55 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-collection-banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "show_collection_title": true,
+        "show_collection_description": false,
+        "content_position": "none",
+        "show_collection_image": true,
+        "image_height": "450",
+        "mobile_image_height": "300",
+        "collection_list": [],
+        "overlay_color": "#000000",
+        "overlay_opacity": 9,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "image_size": "adapt",
+        "products_to_show": 16,
+        "mobile_item_per_row": "2",
+        "column_gap": 14,
+        "column_gap_mobile": 2,
+        "enable_sorting": true,
+        "enable_filtering": true,
+        "filter_type": "drawer",
+        "pagination_type": "on-button",
+        "top_space_desktop": 20,
+        "bottom_space_desktop": 110,
+        "top_space_mobile": 30,
+        "bottom_space_mobile": 50
+      }
+    }
+  },
+  "order": [
+    "main-collection-banner",
+    "main-collection"
+  ]
+}

@@ -1,0 +1,122 @@
+.gift-card-wrapper {
+  background: rgb(var(--background-color));
+  padding: 4.375rem 0rem;
+  min-height: 100vh;
+}
+
+.gift-card-main {
+  max-width: 41.875rem;
+  margin: 0 auto;
+  background: var(--background-color);
+  border: 0.125rem dashed rgb(var(--border-color));
+  border-radius: var(--rounded);
+}
+
+.gift-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+}
+
+.gift-card-main--card {
+  background-color: rgb(var(--foreground-color));
+  padding-bottom: 2rem;
+}
+
+.gift-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 85%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.gift-card--image,
+.gift-card-giftimg img {
+  width: 100%;
+}
+
+.gift-card-content-wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.875rem 2.5rem;
+}
+
+.gift-card-code {
+  font-size: var(--text-xxlarge);
+  color: rgb(var(--text-color));
+  letter-spacing: 0.188rem;
+  padding: 0.2rem 0.6rem;
+  background: rgb(var(--foreground-color));
+  border-radius: var(--rounded-input);
+}
+
+.gift-card-price {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 1.25rem 0rem;
+  width: 100%;
+  text-align: center;
+}
+
+.gift-card-main-price {
+  margin-bottom: 0.5rem;
+}
+
+.gift-card-remaining-price {
+  border: 0.063rem solid rgb(var(--border-color));
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--rounded-full);
+}
+
+.gift-card-qr-code {
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  margin: 0 auto 0.625rem;
+  border: 0.125rem solid rgb(var(--text-color));
+}
+
+.gift-card-buttons-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1.875rem 1.875rem;
+  max-width: 28.75rem;
+  margin: 0 auto;
+}
+
+.gift-card-buttons-wrapper .button {
+  flex: 1 1;
+}
+
+@media (min-width: 1200px) {
+  .gift-card-wrapper {
+    padding: 7.125rem 0rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .gift-card-code {
+    font-size: var(--text-xlarge);
+  }
+}
+
+@media (max-width: 575px) {
+  .gift-card-code {
+    padding: 0.313rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .gift-card-code {
+    font-size: var(--text-base) !important;
+  }
+}

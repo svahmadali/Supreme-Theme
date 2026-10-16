@@ -1,0 +1,97 @@
+<div class="color-{{ section.settings.color_scheme }} section-gap">
+  <div class="container">
+    <div class="grid-wrapper-flex">
+      <div class="grid-item-md-12">
+        <div class="text-align-{{ section.settings.content_alignment }}">
+          {{ section.settings.content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.custom-liquid.name",
+  "settings": [
+     {
+        "type": "color_scheme",
+        "id":"color_scheme",
+        "label": "t:global.color_scheme.label", 
+        "default":"scheme-1"
+    },
+     {
+      "type": "liquid",
+      "id": "content",
+      "label":"t:sections.custom-liquid.settings.content.label",
+      "info":"t:sections.custom-liquid.settings.content.info"
+  },
+     {
+      "type": "text_alignment",
+      "id":"content_alignment",
+      "label": "t:global.content_alignment.label",
+      "default":"center"
+    },
+     {
+        "type": "header",
+       "content": "t:global.section_spacing.content"
+      },
+     {
+      "type": "range",
+      "id": "top_space_desktop",
+     "label": "t:global.section_spacing.top_space_desktop.label",
+      "default":40,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+       "label": "t:global.section_spacing.bottom_space_desktop.label",
+      "default": 40,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+     "label": "t:global.section_spacing.top_space_mobile.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+       "label": "t:global.section_spacing.bottom_space_mobile.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.custom-liquid.presets.name"
+    }
+  ]
+}
+{% endschema %}

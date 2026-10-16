@@ -1,0 +1,140 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+<div class="customer login section-gap color-{{ section.settings.color_scheme }}">
+  <div class="customer_wrapper">
+    <div id="recover">
+      <div class="customer-head text-align-{{ section.settings.content_alignment }}">
+        <h3 class="account-heading">
+          {{ 'customer.activate_account.title' | t }}
+        </h3>
+        <p>
+          {{ 'customer.activate_account.subtext' | t }}
+        </p>
+      </div>
+      {%- form 'activate_customer_password', class: 'account-form' -%}
+        <div class="form-row content-justify-between">
+          <input type="hidden" name="return_to" value="{{ routes.account_url }}">
+          {%- if form.errors -%}
+            <ul class="form-message__wrapper error">
+              {%- for field in form.errors -%}
+                <li>
+                  {%- if field == 'form' -%}
+                    {{ form.errors.messages[field] }}
+                  {%- else -%}
+                    <a href="#{{ field }}" class="unstyled-link">
+                      {{ form.errors.translated_fields[field] | capitalize }}
+                      {{ form.errors.messages[field] }}
+                    </a>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+          <div class="form-control">
+            <label class="hidden" for="password">{{ 'customer.activate_account.password' | t }}</label>
+            <input
+              type="password"
+              class="input"
+              name="customer[password]"
+              id="password"
+              autocomplete="new-password"
+              placeholder="{{ 'customer.activate_account.password' | t }}"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="password-error"
+              {% endif %}
+            >
+          </div>
+          <div class="form-control">
+            <label class="hidden" for="password_confirmation">
+              {{- 'customer.activate_account.password_confirm' | t -}}
+            </label>
+            <input
+              type="password"
+              class="input"
+              name="customer[password_confirmation]"
+              id="password_confirmation"
+              autocomplete="new-password"
+              placeholder="{{ 'customer.activate_account.password_confirm' | t }}"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="password_confirmation-error"
+              {% endif %}
+            >
+          </div>
+          <button class="button button-md w-100 {{ settings.button_font }}-font">
+            {{ 'customer.activate_account.submit' | t }}
+          </button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.main-activate-account.name",
+  "class":"section-active-account",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id":"color_scheme",
+      "label": "t:global.color_scheme.label", 
+      "default":"scheme-3"
+      },
+      {
+        "type": "header",
+        "content": "t:global.section_spacing.content"
+      },
+        {
+          "type": "range",
+          "id": "top_space_desktop",
+        "label": "t:global.section_spacing.top_space_desktop.label",  
+          "default":70,
+          "min": 0,
+          "max": 150,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "bottom_space_desktop",
+          "label": "t:global.section_spacing.bottom_space_desktop.label",
+          "default": 70,
+          "min": 0,
+          "max": 150,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "top_space_mobile",
+        "label": "t:global.section_spacing.top_space_mobile.label",
+          "default": 40,
+          "min": 0,
+          "max": 100,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "bottom_space_mobile",
+        "label": "t:global.section_spacing.bottom_space_mobile.label",
+          "default": 40,
+          "min": 0,
+          "max": 100,
+          "step": 5
+        }
+  ]
+}
+{% endschema %}

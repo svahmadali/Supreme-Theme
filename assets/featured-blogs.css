@@ -1,0 +1,119 @@
+.article-posts--inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: var(--grid-gap, 1rem);
+}
+
+.article-posts--item {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.article-posts-width--image .article-posts--item:not(:first-child) {
+  border-bottom: 0.06rem solid rgba(var(--border-color));
+}
+
+.article-posts-width--image
+  .article-posts--item:not(:first-child)
+  .article-posts--image {
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.article-posts-width--image
+  .article-posts--item:is(:hover)
+  .article-posts--image {
+  opacity: 1;
+  visibility: visible;
+}
+
+.article-posts-width--image .article-posts--item:first-child {
+  grid-area: span 5;
+}
+
+.article-posts--image .media-ratio {
+  border-radius: var(--rounded-block);
+}
+
+.article-post-content {
+  padding: 0.8rem 0rem;
+  position: relative;
+}
+
+.article-separator {
+  display: block;
+  width: 0.06rem;
+  height: 1rem;
+  margin: 0rem 0.625rem;
+  background-color: rgba(var(--text-color), 0.4);
+}
+
+.article-posts-publish {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: rgba(var(--text-color));
+  margin-bottom: 0.5rem;
+}
+
+.article-posts-description {
+  margin-bottom: 1rem;
+}
+
+.article-posts--image .effect-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(50%) scaleX(2);
+  opacity: 0;
+  filter: blur(10px);
+  transition: all 0.3s ease-in-out;
+}
+
+.article-posts--image .effect-image-hover {
+  transition: all 0.4s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-posts--image:hover .effect-image {
+  transform: translateX(0) scaleX(1);
+  opacity: 1;
+  filter: blur(0);
+}
+
+.article-posts--image:hover .effect-image-hover {
+  transform: translateX(-50%) scaleX(2);
+  opacity: 0;
+  filter: blur(10px);
+}
+
+@media screen and (min-width: 1025px) {
+  .article-posts--inner:is(.article-posts-width--image) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0rem var(--grid-gap);
+  }
+  .article-posts-width--image
+    .article-posts--item:not(:first-child)
+    .article-post-content {
+    padding: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .article-posts--inner {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "color_scheme": "",
+        "cart_text": "",
+        "account_login": true,
+        "register_content": "Create an account or log in to take advantage of a customized shopping experience and expedite subsequent transactions.",
+        "top_space_desktop": 60,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "featured_collection_xWjYEF": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "enable_slider": true,
+        "enable_card": false,
+        "heading": "you might also like",
+        "heading_size": "h6",
+        "heading_seo": "h2",
+        "description": "",
+        "description_size": "text-base",
+        "show_collection_title": false,
+        "collection": "divine-drapes",
+        "image_size": "adapt",
+        "products_to_show": 8,
+        "column_per_row": 6,
+        "mobile_item_per_row": "2",
+        "column_gap": 10,
+        "column_gap_mobile": 20,
+        "top_space_desktop": 40,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_collection_xWjYEF"
+  ]
+}

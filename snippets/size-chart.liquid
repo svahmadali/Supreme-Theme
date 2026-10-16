@@ -1,0 +1,49 @@
+{%- if block.settings.size_chart != blank -%}
+  {% assign size_chart = pages[block.settings.size_chart] %}
+  {% capture size_chart_contetnt %}
+      {% if size_chart != blank %}
+          <div class="size-chart-content rte">
+              {{ size_chart.content | replace: '<table', '<div class="table-wrapper"><table'| replace: '</table>', '</table></div>'}}
+          </div>
+      {% endif %}
+  {% endcapture %}
+  {% if size_chart_contetnt != blank %}
+    <size-guide class="sizechart-box ">
+      <a
+        href="#size_guide-drawer"
+        class="size-chart underline"
+        data-id="sizeguide-drawer-{{ section.id }}"
+        data-drawer-head
+      >
+        <span class="button-text">{{ 'products.product.size_guide' | t }}</span>
+      </a>
+      <template data-sizeguide-content>
+        <sizechart-drawer
+          class="drawer drawer-sizeChart"
+          id="sizeguide-drawer-{{ section.id }}"
+          role="dialog"
+          data-drawer-open
+        >
+          <div class="overlay"  data-drawer-close></div>
+          <div class="drawer-base">
+            <modal-dialog-head class="modal-dialog-head">
+              {% if block.settings.size_chart_text != blank %}
+                <h4 class="drawer-heading h5">{{ block.settings.size_chart_text }}</h4>
+              {% endif %}
+              <a href="javascript:void(0);" class="drawer-close" data-drawer-close>
+                <close-btn>
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 1L1 21M1 1L21 21" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"/>
+                  </svg>
+                </close-btn>
+              </a>
+            </modal-dialog-head>
+            <modal-dialog-form class="modal-dialog-form">
+              {{ size_chart_contetnt }}
+            </modal-dialog-form>
+          </div>
+        </sizechart-drawer>
+      </template>
+    </size-guide>
+  {% endif %}
+{% endif %}

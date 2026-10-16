@@ -1,0 +1,626 @@
+{{ 'icons-with-text.css' | asset_url | stylesheet_tag }}
+<icons-with-text class="icons-with-text color-{{ section.settings.color_scheme }} section-gap">
+  <div class="page--width">
+    <div class="icons-with-text-grid">
+      {%- for block in section.blocks -%}
+        <div class="icons-with-text-item icons-{{ section.settings.icon_position }} text-align-{{ section.settings.icon_alignment }}">
+          <span class="icons-with-text--icon {{ section.settings.icon_size }}">
+            {% if block.settings.image_icon != blank %}
+              {% assign image_icon = block.settings.image_icon %}
+              <img
+                srcset="
+                  {%- if image_icon.width >= 50 -%}{{ image_icon | image_url: width: 50 }} 50w,{%- endif -%}
+                  {%- if image_icon.width >= 70 -%}{{ image_icon | image_url: width: 70 }} 70w,{%- endif -%}
+                  {%- if image_icon.width >= 80 -%}{{ image_icon | image_url: width: 80 }} 80w,{%- endif -%}
+                  {{ image_icon | image_url }} {{ image_icon.width }}w
+                "
+                src="{{ image_icon | image_url: width: 80 }}"
+                sizes="calc(100vw - 3rem)"
+                alt="{{ image_icon.alt | escape }}"
+                height="{{ image_icon.height }}"
+                width="{{ image_icon.width }}"
+                loading="lazy"
+              >
+
+            {% else %}
+              {%- render 'icons', icon: block.settings.icon -%}
+            {% endif %}
+          </span>
+          {%- if block.settings.heading != blank or block.settings.description != blank -%}
+            <div class="icons-with-text--content">
+              {% if block.settings.heading != blank %}
+                <div class="icons-with-text--title text-xl">{{ block.settings.heading }}</div>
+              {% endif %}
+              {% if block.settings.description != blank %}
+                <p class="icons-with-text--text">{{ block.settings.description }}</p>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</icons-with-text>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+    --icons-with-text-gap: {{ section.settings.column_gap }}px;
+
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+      --icons-with-text-item: {{ section.settings.items_per_row_mobile }};
+      --icons-with-text-gap: {{ section.settings.column_gap_mobile }}px;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.icons-with-text.name",
+  "tag": "section",
+  "class":"section-icon-with-text",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+      {
+          "type": "color_scheme",
+          "id":"color_scheme",
+          "label": "t:global.color_scheme.label", 
+          "default":"scheme-1"
+      },
+    {
+      "type": "select",
+      "id": "items_per_row_mobile",
+      "label": "t:sections.icons-with-text.settings.items_per_row_mobile.label",
+      "default": "1",
+      "options": [
+        {
+          "label": "t:sections.icons-with-text.settings.items_per_row_mobile.options.options__1.label",
+          "value": "1"
+        },
+        {
+         "label": "t:sections.icons-with-text.settings.items_per_row_mobile.options.options__2.label",
+          "value": "2"
+        }
+      ]
+    },
+
+    {
+        "type": "range",
+        "id":"column_gap",
+       "label":"t:global.general_label.column_gap.label",
+        "min":0,
+        "max":50,
+        "default":10,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id":"column_gap_mobile",
+       "label":"t:global.general_label.column_gap_mobile.label",
+        "min":0,
+        "max":20,
+        "default":10,
+        "step": 1,
+        "unit": "px"
+      },
+
+      {
+        "type": "header",
+        "content": "t:sections.icons-with-text.settings.header_icon.content"
+      },
+      {
+        "type": "select",
+        "id": "icon_position",
+        "label": "t:sections.icons-with-text.settings.icon_position.label",
+        "default": "vertical",
+        "options": [
+          {
+            "label": "t:sections.icons-with-text.settings.icon_position.options.vertical.label",
+            "value": "vertical"
+          },
+          {
+            "label": "t:sections.icons-with-text.settings.icon_position.options.horizontal.label",
+            "value": "horizontal"
+          }
+        ]
+      },
+      {
+        "type": "text_alignment",
+        "id":"icon_alignment",
+        "label":"t:global.content_alignment.label",
+        "default":"center"
+
+      },
+      {
+        "type": "select",
+        "id": "icon_size",
+        "label": "t:sections.icons-with-text.settings.icon_size.label",
+        "default": "small",
+        "options": [
+          {
+            "label": "t:sections.icons-with-text.settings.icon_size.options.small.label",
+            "value": "small"
+          },
+          {
+            "label": "t:sections.icons-with-text.settings.icon_size.options.medium.label",
+            "value": "medium"
+          },
+          {
+             "label": "t:sections.icons-with-text.settings.icon_size.options.large.label",
+            "value": "large"
+          }
+        ]
+    },
+     {
+      "type": "header",
+        "content": "t:global.section_spacing.content"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+     "label": "t:global.section_spacing.top_space_desktop.label",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+     "label": "t:global.section_spacing.bottom_space_desktop.label",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "t:global.section_spacing.top_space_mobile.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "t:global.section_spacing.bottom_space_mobile.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+
+  ],
+  "blocks": [
+    {
+      "type":"icon",
+      "name":"t:sections.icons-with-text.blocks.icon.name",
+      "limit": 8,
+      "settings":[
+         {
+          "type": "select",
+          "id": "icon",
+          "label": "t:sections.icons-with-text.blocks.icon.settings.label",
+          "default": "shipping",
+          "options": [
+
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.shipping.label",
+                "value": "shipping",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.return.label",
+                "value": "return",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.verified.label",
+                "value": "verified",
+              "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.global.label",
+                "value": "global",
+              "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+             {
+              "label": "t:sections.icons-with-text.blocks.icon.settings.options.dolla.label",
+                "value": "dolla",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+             {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.bell.label",
+                "value": "bell",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+
+            {
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.gift.label",
+              "value": "gift",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.alarm.label",
+                "value": "alarm",
+                 "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.ribben.label",
+                "value": "ribben",
+                 "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.star.label",
+                "value": "star",
+                 "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.heart.label",
+                "value": "heart",
+                 "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.hand.label",
+                "value": "hand",
+                 "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+             {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.trash.label",
+                "value": "trash",
+                 "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+             {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.cart.label",
+                "value": "cart",
+                 "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.basket.label",
+                "value": "basket",
+                 "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.calender.label",
+                "value": "calender",
+                 "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.folder.label",
+                "value": "folder",
+                 "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+
+             {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.case.label",
+                "value": "case",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+
+             {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.search.label",
+                "value": "search",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+
+             {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.gallery.label",
+                "value": "gallery",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+
+             {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.sun.label",
+                "value": "sun",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+
+             {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.cloud.label",
+                "value": "cloud",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+             {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.fire.label",
+                "value": "fire",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+             {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.copy.label",
+                "value": "copy",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+             {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.smile.label",
+                "value": "smile",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+             {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.sad.label",
+                "value": "sad",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+             {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.like.label",
+                "value": "like",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.dislike.label",
+                "value": "dislike",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.key.label",
+                "value": "key",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.shield.label",
+                "value": "shield",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.general.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.user.label",
+                "value": "user",
+                "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.phone.label",
+                "value": "phone",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.mail.label",
+                "value": "mail",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.location.label",
+                "value": "location",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.map.label",
+                "value": "map",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.store.label",
+                "value": "store",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+             {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.setting.label",
+                "value": "setting",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+             {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.edit.label",
+                "value": "edit",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+             {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.link.label",
+                "value": "link",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+             {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.share.label",
+                "value": "share",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.layers.label",
+                "value": "layers",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.card.label",
+                "value": "card",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.book.label",
+                "value": "book",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.plain.label",
+                "value": "plain",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.menu.label",
+                "value": "menu",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.download.label",
+                "value": "download",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.messages.label",
+                "value": "messages",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.dange.label",
+                "value": "dange",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.ruler.label",
+                "value": "ruler",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.graph.label",
+                "value": "graph",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+               "label": "t:sections.icons-with-text.blocks.icon.settings.options.network.label",
+                "value": "network",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+
+             {
+                "label": "t:sections.icons-with-text.blocks.icon.settings.options.power.label",
+                "value": "power",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.eye.label",
+              "value": "eye",
+             "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.minimize.label",
+              "value": "minimize",
+             "group":"t:sections.icons-with-text.blocks.icon.settings.options.community.group"
+            },
+            {
+
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.camera.label",
+              "value": "camera",
+              "group":"t:sections.icons-with-text.blocks.icon.settings.options.device.group"
+            },
+            {
+
+              "label": "t:sections.icons-with-text.blocks.icon.settings.options.headphone.label",
+              "value": "headphone",
+             "group":"t:sections.icons-with-text.blocks.icon.settings.options.device.group"
+            },
+            {
+
+              "label": "t:sections.icons-with-text.blocks.icon.settings.options.printer.label",
+              "value": "printer",
+             "group":"t:sections.icons-with-text.blocks.icon.settings.options.device.group"
+            },
+            {
+
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.sound.label",
+              "value": "sound",
+             "group":"t:sections.icons-with-text.blocks.icon.settings.options.device.group"
+            },
+             {
+              "label": "t:sections.icons-with-text.blocks.icon.settings.options.calculator.label",
+                "value": "calculator",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.device.group"
+            },
+             {
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.music.label",
+              "value": "music",
+             "group":"t:sections.icons-with-text.blocks.icon.settings.options.device.group"
+            },
+             {
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.play.label",
+              "value": "play",
+             "group":"t:sections.icons-with-text.blocks.icon.settings.options.device.group"
+            },
+            {
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.pause.label",
+              "value": "pause",
+             "group":"t:sections.icons-with-text.blocks.icon.settings.options.device.group"
+            },
+
+
+            {
+              "value": "facebook",
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.facebook.label",
+              "group":"t:sections.icons-with-text.blocks.icon.settings.options.social.group"
+            },
+            {
+              "value": "instagram",
+              "label": "t:sections.icons-with-text.blocks.icon.settings.options.instagram.label",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.social.group"
+            },
+            {
+              "value": "linkedin",
+              "label": "t:sections.icons-with-text.blocks.icon.settings.options.linkedin.label",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.social.group"
+            },
+            {
+              "value": "pinterest",
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.pinterest.label",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.social.group"
+            },
+            {
+              "value": "snapchat",
+              "label": "t:sections.icons-with-text.blocks.icon.settings.options.snapchat.label",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.social.group"
+            },
+            {
+              "value": "tikTok",
+             "label": "t:sections.icons-with-text.blocks.icon.settings.options.tikTok.label",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.social.group"
+            },
+            {
+              "value": "tumblr",
+              "label": "t:sections.icons-with-text.blocks.icon.settings.options.tumblr.label",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.social.group"
+            },
+            {
+              "value": "twitter",
+              "label": "t:sections.icons-with-text.blocks.icon.settings.options.twitter.label",
+               "group":"t:sections.icons-with-text.blocks.icon.settings.options.social.group"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "image_icon",
+          "label": "t:sections.icons-with-text.blocks.image_icon.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Add Heading here",
+         "label": "t:global.general_label.heading.label"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "default": "Add text here",
+          "label": "t:global.general_label.description.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+       "name":"t:sections.icons-with-text.presets.name",
+      "blocks":[
+        {
+         "type":"icon"
+        },
+         {
+         "type":"icon"
+        },
+         {
+         "type":"icon"
+        },
+         {
+         "type":"icon"
+        }
+      ]
+    }
+
+  ]
+}
+{% endschema %}

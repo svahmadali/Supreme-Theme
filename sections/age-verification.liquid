@@ -1,0 +1,334 @@
+{% if section.settings.enable_age_verification %}
+  <age-verification
+    class="drawer age-verification-section color-{{ section.settings.color_scheme }}"
+    data-ageverification
+    data-ageverification="{{ section.settings.enable_age_verification }}"
+    data-expiry="{{ section.settings.agepopup_cookie_set }}"
+  >
+    <div class="overlay"></div>
+    <div class="drawer-base">
+      <modal-dialog-head class="modal-dialog-head">
+        {% if section.settings.heading != blank %}
+          <{{ section.settings.heading_seo }} class="section-title body-font {{ section.settings.heading_size }}">
+            {{- section.settings.heading -}}
+          </{{ section.settings.heading_seo }}>
+        {% endif %}
+      </modal-dialog-head>
+      <modal-dialog-body class="modal-dialog-body">
+        <div class="age-verification ">
+          {% if section.settings.background_image != blank %}
+            <div class="bg-image-wrapper absolute">
+              {%- liquid
+                assign height = section.settings.background_image.width | divided_by: section.settings.background_image.aspect_ratio | round
+                assign sizes = '100vw'
+                assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+              -%}
+              {{
+                section.settings.background_image
+                | image_url: width: 3840
+                | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+              }}
+            </div>
+          {% endif %}
+          <div class="age-verify-content-text--wrapper relative flex text-align-{{ section.settings.desktop_alignment }} text-align-m--{{ section.settings.mobile_alignment }} content-{{  section.settings.content_position }} content-m-{{ section.settings.content_position_mobile }}">
+            <div class="age-verify-content-text" data-verify-wrapper>
+              {% if section.settings.age_verification_heading != blank %}
+                <{{ section.settings.heading_seo }} class="title {{ section.settings.heading_size }}">
+                  {{ section.settings.age_verification_heading }}
+                </{{ section.settings.heading_seo }}>
+              {% endif %}
+              {% if section.settings.age_verification_content != blank %}
+                <div class="age-desc">
+                  <p class="text">{{ section.settings.age_verification_content }}</p>
+                </div>
+              {% endif %}
+
+              {% if section.settings.approve_text != blank or section.settings.decline_text != blank %}
+                <div class="button-wrapper">
+                  {% if section.settings.decline_text != blank %}
+                    <button
+                      type="button"
+                      class="button button-md {{ settings.button_font }}-font"
+                      data-decline-age-button
+                    >
+                      {{ section.settings.decline_text }}
+                    </button>
+                  {% endif %}
+                  {% if section.settings.approve_text != blank %}
+                    <button
+                      type="button"
+                      class="button button-md {{ settings.button_font }}-font"
+                      data-approve-age-button
+                    >
+                      {{ section.settings.approve_text }}
+                    </button>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="hidden decline-message" data-decline-wrapper>
+              {% if section.settings.decline_heading != blank %}
+                <h3 class="title h2">{{ section.settings.decline_heading }}</h3>
+              {% endif %}
+              {% if section.settings.decline_subheading != blank %}
+                <p class="text-sm">{{ section.settings.decline_subheading }}</p>
+              {% endif %}
+              {% if section.settings.age_decline_button_text != blank %}
+                <div class="button-wrapper">
+                  <button type="button" class="button button-md {{ settings.button_font }}-font" data-back-button>
+                    <span>{{ section.settings.age_decline_button_text }}</span>
+                  </button>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </modal-dialog-body>
+    </div>
+  </age-verification>
+{% endif %}
+{% schema %}
+{
+  "name": "t:sections.age-verification.name",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:global.color_scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_age_verification",
+      "label": "t:sections.age-verification.settings.enable_age_verification.label",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:global.general_label.background_image.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "age_verification_heading",
+      "label": "t:global.general_label.heading.label",
+      "default": "Are you 18 years old or older?"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "default": "h3",
+      "label": "t:global.heading_size.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:global.heading_size.options.h1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:global.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:global.heading_size.options.h3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:global.heading_size.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:global.heading_size.options.h5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:global.heading_size.options.h6.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_seo",
+      "default": "h3",
+      "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:global.heading_seo.options.h1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:global.heading_seo.options.h2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:global.heading_seo.options.h3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:global.heading_seo.options.h5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+        }
+      ]
+    },
+    {
+      "type": "inline_richtext",
+      "id": "age_verification_content",
+      "label": "t:global.general_label.description.label",
+      "default": "Confirm your age"
+    },
+    {
+      "type": "text",
+      "id": "decline_text",
+      "label": "t:sections.age-verification.settings.decline_text.label",
+      "default": "No, I'm not"
+    },
+    {
+      "type": "text",
+      "id": "approve_text",
+      "label": "t:sections.age-verification.settings.approve_text.label",
+      "default": "Yes, I am"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.age-verification.settings.paragraph.content"
+    },
+    {
+      "type": "text",
+      "id": "decline_heading",
+      "label": "t:sections.age-verification.settings.decline_heading.label",
+      "default": "Come back when you're older"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "decline_subheading",
+      "label": "t:sections.age-verification.settings.decline_subheading.label",
+      "default": "Sorry, you’re not old enough to view this content. Try again later."
+    },
+    {
+      "type": "text",
+      "id": "age_decline_button_text",
+      "label": "t:sections.age-verification.settings.age_decline_button_text.label",
+      "default": "Oops, I entered incorrectly"
+    },
+    {
+      "type": "text_alignment",
+      "id": "desktop_alignment",
+      "label": "t:global.general_label.desktop_alignment.label",
+      "default": "right"
+    },
+    {
+      "type": "text_alignment",
+      "id": "mobile_alignment",
+      "label": "t:global.general_label.desktop_alignment.label",
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "default": "bottom--left",
+      "label": "t:global.content_position.label",
+      "options": [
+        {
+          "label": "t:global.content_position.options.top_left.label",
+          "value": "top--left"
+        },
+        {
+          "label": "t:global.content_position.options.top_center.label",
+          "value": "top--center"
+        },
+        {
+          "label": "t:global.content_position.options.top_right.label",
+          "value": "top--right"
+        },
+        {
+          "label": "t:global.content_position.options.middle_left.label",
+          "value": "middle--left"
+        },
+        {
+          "label": "t:global.content_position.options.middle_center.label",
+          "value": "middle--center"
+        },
+        {
+          "label": "t:global.content_position.options.middle_right.label",
+          "value": "middle--right"
+        },
+        {
+          "label": "t:global.content_position.options.bottom_left.label",
+          "value": "bottom--left"
+        },
+        {
+          "label": "t:global.content_position.options.bottom_center.label",
+          "value": "bottom--center"
+        },
+        {
+          "label": "t:global.content_position.options.bottom_right.label",
+          "value": "bottom--right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_position_mobile",
+      "label": "t:global.content_position_mobile.label",
+      "default": "bottom--left",
+      "options": [
+        {
+          "label": "t:global.content_position.options.top_left.label",
+          "value": "top--left"
+        },
+        {
+          "label": "t:global.content_position.options.top_center.label",
+          "value": "top--center"
+        },
+        {
+          "label": "t:global.content_position.options.top_right.label",
+          "value": "top--right"
+        },
+        {
+          "label": "t:global.content_position.options.middle_left.label",
+          "value": "middle--left"
+        },
+        {
+          "label": "t:global.content_position.options.middle_center.label",
+          "value": "middle--center"
+        },
+        {
+          "label": "t:global.content_position.options.middle_right.label",
+          "value": "middle--right"
+        },
+        {
+          "label": "t:global.content_position.options.bottom_left.label",
+          "value": "bottom--left"
+        },
+        {
+          "label": "t:global.content_position.options.bottom_center.label",
+          "value": "bottom--center"
+        },
+        {
+          "label": "t:global.content_position.options.bottom_right.label",
+          "value": "bottom--right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "agepopup_cookie_set",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "label": "t:sections.age-verification.settings.agepopup_cookie_set.label",
+      "info": "t:sections.age-verification.settings.agepopup_cookie_set.info",
+      "default": 10
+    }
+  ]
+}
+{% endschema %}

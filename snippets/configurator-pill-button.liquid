@@ -1,0 +1,32 @@
+{% liquid
+  assign is_selected = false
+  if selected
+    assign is_selected = true
+  endif
+
+  assign should_show_tick_icon = false
+  if show_tick_icon
+    assign should_show_tick_icon = true
+  endif
+%}
+
+<button
+  type="button"
+  class="configurator-pill-button{% if is_selected %} is-selected{% endif %}{% if should_show_tick_icon %} has-tick-icon{% endif %}"
+  data-configurator-pill
+  data-pill-index="{{ index }}"
+  aria-pressed="{% if is_selected %}true{% else %}false{% endif %}"
+>
+  <span class="configurator-pill-label">
+    {{ label }}
+    {% if price_note %}<span class="configurator-pill-price">{{ price_note }}</span>{% endif %}
+  </span>
+
+  {% if should_show_tick_icon %}
+    <span class="configurator-pill-tick-icon" aria-hidden="true">
+      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <path d="M2.5 6.2L4.8 8.5L9.5 3.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  {% endif %}
+</button>

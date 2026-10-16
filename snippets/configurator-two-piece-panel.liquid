@@ -1,0 +1,416 @@
+{% liquid
+  assign jacket_menu_items = 'TYPE|FIT|STYLE|SHOULDER PAD|FABRIC|LAPEL STYLE|LAPEL BUTTON HOLE|JACKET BUTTON STYLE / COLOR|SLEEVE BUTTON|JACKET POCKETS|JACKET VENTS|ADD PICKSTITCH|PICKSTITCH COLOR|LINING MATERIAL|MONOGRAM' | split: '|'
+%}
+
+<aside class="configurator-side-panel" data-two-piece-panel hidden>
+  <div class="configurator-side-panel-left">
+    {% render
+      'configurator-side-menu',
+      title: 'TWO PIECE SUIT- JACKET',
+      options: jacket_menu_items,
+      aria_label: 'Two piece suit jacket options'
+    %}
+
+    <button type="button" class="configurator-side-panel-add" aria-label="Add option">
+      +
+    </button>
+
+    <div class="configurator-side-panel-icons" aria-hidden="true">
+      <span class="configurator-garment-chip">JKT</span>
+      <span class="configurator-garment-chip">TRS</span>
+      <span class="configurator-garment-chip">VST</span>
+      <span class="configurator-garment-chip">ALL</span>
+    </div>
+
+    <div class="configurator-side-panel-actions">
+      <button type="button" class="configurator-continue-button configurator-side-action-button">NEXT ADD TO CART</button>
+      <button type="button" class="configurator-continue-button configurator-side-action-button">SAVE FOR LATER</button>
+    </div>
+  </div>
+
+  <div class="configurator-side-panel-middle">
+    <div class="configurator-submenu" data-configurator-submenu="type" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Type">
+        {% render 'configurator-pill-button',
+          label: 'TWO PIECE SUIT',
+          index: 0,
+          selected: true,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'THREE PIECE SUIT',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill',
+          price_note: '+ $288.00'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="fit" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Fit">
+        {% render 'configurator-pill-button',
+          label: 'SLIM FIT',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'CLASSIC FIT',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="style" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Style">
+        {% render 'configurator-pill-button',
+          label: 'SINGLE BREASTED ONE BUTTON',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'SINGLE BREASTED TWO BUTTON',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'DOUBLE BREASTED 4X1',
+          index: 2,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'DOUBLE BREASTED 6X2',
+          index: 3,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="fabric" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Fabric">
+        {% render 'configurator-pill-button',
+          label: 'ITALIAN',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'AMERICAN',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="shoulder-pad" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Shoulder Pad">
+        {% render 'configurator-pill-button',
+          label: 'AMERICAN',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'ITALIAN',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'SOFT HARDIN FABRIC',
+          index: 2,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="lapel-style" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Lapel Style">
+        {% render 'configurator-pill-button',
+          label: 'NOTCH',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'WIDE NOTCH',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'PEAK',
+          index: 2,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'WIDE PEAK',
+          index: 3,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'SHAWL',
+          index: 4,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'WIDE SHAWL',
+          index: 5,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="lapel-button-hole" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Lapel Button Hole">
+        {% render 'configurator-pill-button',
+          label: 'YES',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'NO',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="jacket-button-style" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Jacket Button Style">
+        {% render 'configurator-pill-button',
+          label: 'HORN',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'LEATHER',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'METAL',
+          index: 2,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="sleeve-button" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Sleeve Button">
+        {% render 'configurator-pill-button',
+          label: 'TWO BUTTONS',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'THREE BUTTONS',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="jacket-pockets" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Jacket Pockets">
+        {% render 'configurator-pill-button',
+          label: 'FLAP POCKETS',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'FLAP + TICKET POCKET',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'FLAP + TICKET POCKET SLANTED',
+          index: 2,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'FLAP POCKETS SLANTED',
+          index: 3,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'PATCHED POCKETS',
+          index: 4,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'JETTED POCKETS',
+          index: 5,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="jacket-vents" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Jacket Vents">
+        {% render 'configurator-pill-button',
+          label: 'SIDE VENTS',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'CENTER VENT',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="add-pickstitch" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Add Pickstitch">
+        {% render 'configurator-pill-button',
+          label: 'YES',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'NO',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="pickstitch-color" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Pickstitch Color">
+        {% render 'configurator-pill-button',
+          label: 'WHITE',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'BLACK',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'GOLD',
+          index: 2,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="lining-material" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Lining Material">
+        {% render 'configurator-pill-button',
+          label: 'SILK',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'POLYESTER',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'COTTON BLEND',
+          index: 2,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+
+    <div class="configurator-submenu" data-configurator-submenu="monogram" hidden>
+      <div class="configurator-submenu-pills" role="group" aria-label="Monogram">
+        {% render 'configurator-pill-button',
+          label: 'YES',
+          index: 0,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+        {% render 'configurator-pill-button',
+          label: 'NO',
+          index: 1,
+          selected: false,
+          show_tick_icon: true,
+          data_attr: 'data-submenu-pill'
+        %}
+      </div>
+    </div>
+  </div>
+</aside>

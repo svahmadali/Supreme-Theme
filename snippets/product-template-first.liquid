@@ -1,0 +1,27 @@
+<div class="main-product-tab-content">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {%- when 'collapsible_content' -%}
+        {% if block.settings.type_of_content == 'option1' %}
+          {% render 'collapsible-content', block: block, product: product %}
+        {% else %}
+          {% render 'drawer-content', section: section, block: block, product: product %}
+        {% endif %}
+
+      {% when 'complementary_products' %}
+        {% render 'complementary-products',
+          product: product,
+          section: section,
+          block: block,
+          current_variant: current_variant
+        %}
+    {% endcase %}
+  {% endfor %}
+</div>
+{% render 'product-media', product: product, section: section, current_variant: current_variant %}
+
+<div class="product-information--wrapper">
+  <div class="product-information--inner">
+    {% render 'product-info', product: product, section: section, current_variant: current_variant %}
+  </div>
+</div>

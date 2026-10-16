@@ -1,0 +1,384 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+{{ 'account.css' | asset_url | stylesheet_tag }}
+<address-section class="block account section-gap color-{{ section.settings.color_scheme }}">
+  <div class="page--width">
+    {% render 'account-head' %}
+    <account-body class="account-body block">
+      <div class="account-topbar flex wrap align-items-center">
+        <h5 class="account-topbar-title">
+          {{ 'customer.addresses.address_count' | t: count: customer.addresses.size }}
+        </h5>
+        <a href="{{ routes.account_addresses_url }}" class="underline text-sm">
+          {{ 'customer.addresses.view_address' | t: count: customer.addresses.size }}
+        </a>
+      </div>
+      <ul class="address-list">
+        <li class="address-list-item">
+          <h2 class="h6">{{ 'customer.order.billing_address' | t }}</h2>
+          <p>
+            {{ order.billing_address | format_address }}
+          </p>
+          <div class="payment-status">
+            {{ 'customer.order.payment_status' | t }}:
+            <span class="status">{{ order.financial_status_label }}</span>
+          </div>
+        </li>
+        <li class="address-list-item">
+          <h2 class="h6">{{ 'customer.order.shipping_address' | t }}</h2>
+          <p>
+            {{ order.shipping_address | format_address }}
+          </p>
+          <div class="payment-status">
+            {{ 'customer.order.fulfillment_status' | t }}:
+            <span class="status">{{ order.fulfillment_status_label }}</span>
+          </div>
+        </li>
+      </ul>
+    </account-body>
+    <order-list class="block order-list main-orders">
+      <div class="order-details ">
+        <div class="order-details-head">
+          <h5>{{ 'customer.orders.order_number_link' | t: number: order.name }}</h5>
+          {%- assign order_date = order.created_at | time_tag: format: 'date_at_time' -%}
+          <span class="text-sm">({{ 'customer.order.date_html' | t: date: order_date }})</span>
+          {%- if order.cancelled -%}
+            {%- assign cancelled_at = order.cancelled_at | time_tag: format: 'date_at_time' -%}
+            <span class="text-sm">{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</span>
+            <span class="text-sm">
+              {{- 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label -}}
+            </span>
+          {%- endif -%}
+        </div>
+        <div class="products-table">
+          <table class="table-products">
+            <thead align="left">
+              <tr>
+                <th>{{ 'customer.order.product' | t }}</th>
+                <th>{{ 'customer.order.price' | t }}</th>
+                <th align="center">{{ 'customer.order.quantity' | t }}</th>
+                <th align="right">{{ 'customer.order.total' | t }}</th>
+              </tr>
+            </thead>
+            <tbody align="left">
+              {%- for line_item in order.line_items -%}
+                <tr role="row">
+                  <td id="row_{{ order.id }}" data-label="{{ 'customer.order.product' | t }}">
+                    <div class="order-product-wrpper flex wrap align-items-center">
+                      {% if line_item.image != blank %}
+                        <a href="{{ line_item.product.url }}" tabindex="-1" class="order-product-img">
+                          <img
+                            src="{{ line_item.image | image_url: width: 100 }}"
+                            width="100"
+                            height="auto"
+                            alt="{{ line_item.title | strip_html }}"
+                            loading="lazy"
+                          >
+                        </a>
+                      {% endif %}
+                      <a
+                        href="{{ line_item.product.url }}"
+                        class="product-title"
+                      >
+                        {{- line_item.product.title | strip_html -}}
+                      </a>
+                      {%- if line_item.line_level_discount_allocations != blank -%}
+                        <div class="order-discount">
+                          {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M5.92896 0L12.1162 0.884384L13 7.07195L7.25466 12.817C7.13745 12.9342 6.9785 13 6.81276 13C6.64703 13 6.48808 12.9342 6.37086 12.817L0.183002 6.62944C0.065826 6.51224 0 6.35329 0 6.18756C0 6.02183 0.065826 5.86289 0.183002 5.74568L5.92896 0ZM7.69657 5.3038C7.81267 5.41986 7.9505 5.51191 8.10218 5.57471C8.25386 5.6375 8.41642 5.66981 8.58059 5.66978C8.74475 5.66975 8.90731 5.63739 9.05897 5.57454C9.21062 5.51169 9.34842 5.41959 9.46448 5.30349C9.58054 5.18739 9.6726 5.04957 9.7354 4.8979C9.7982 4.74623 9.8305 4.58367 9.83047 4.41951C9.83044 4.25535 9.79808 4.09281 9.73523 3.94116C9.67238 3.78951 9.58027 3.65172 9.46417 3.53566C9.34807 3.4196 9.21024 3.32755 9.05856 3.26476C8.90688 3.20196 8.74431 3.16966 8.58015 3.16969C8.2486 3.16975 7.93065 3.3015 7.69625 3.53597C7.46185 3.77044 7.3302 4.08842 7.33026 4.41995C7.33032 4.75149 7.46208 5.06942 7.69657 5.3038Z" fill="currentColor"/>
+                            </svg>
+                            <p>
+                              {{- discount_allocation.discount_application.title }} (<span
+                                >-{{ discount_allocation.amount | money -}}</span
+                              >)
+                            </p>
+                          {%- endfor -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </td>
+                  <td data-label="{{ 'customer.order.price' | t }}">
+                    {%- if line_item.original_price != line_item.final_price or line_item.unit_price_measurement -%}
+                      {%- if line_item.original_price != line_item.final_price -%}
+                        <div class="regular-price">
+                          <span class="hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                          <span>{{ line_item.final_price | money }}</span>
+                          <span class="hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                          <span class="compare-price">
+                            {{- line_item.original_price | money -}}
+                          </span>
+                        </div>
+                      {%- else -%}
+                        <span class="hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                        <span>{{ line_item.original_price | money }}</span>
+                      {%- endif -%}
+                      {%- if line_item.unit_price_measurement -%}
+                        <div class="unit-price">
+                          <span>
+                            {%- capture unit_price_separator -%}
+                                        <span aria-hidden="true">/</span>
+                                        <span class="hidden">{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+                                      {%- endcapture -%}
+                            {%- capture unit_price_base_unit -%}
+                                        {%- if line_item.unit_price_measurement.reference_value != 1 -%}
+                                          {{- line_item.unit_price_measurement.reference_value -}}
+                                        {%- endif -%}
+                                        {{ line_item.unit_price_measurement.reference_unit }}
+                                      {%- endcapture -%}
+                            <span data-unit-price>{{ line_item.unit_price | money }}</span>
+                            {{- unit_price_separator -}}
+                            {{- unit_price_base_unit -}}
+                          </span>
+                        </div>
+                      {%- endif -%}
+                    {%- else -%}
+                      <span>{{ line_item.final_price | money }}</span>
+                    {%- endif -%}
+                  </td>
+                  <td align="center">{{ line_item.quantity }}</td>
+                  <td align="right">
+                    {%- if line_item.original_line_price != line_item.final_line_price -%}
+                      <span class="hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                      <span>
+                        {{- line_item.original_line_price | money -}}
+                      </span>
+                      <span class="hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                      <span>{{ line_item.final_line_price | money }}</span>
+                    {%- else -%}
+                      <span>
+                        {{- line_item.original_line_price | money -}}
+                      </span>
+                    {%- endif -%}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <ul class="order-total text-sm bold">
+          <li class="flex justify-content-between">
+            <span>{{ 'customer.order.subtotal' | t }}</span>
+            <span>{{ order.line_items_subtotal_price | money }}</span>
+          </li>
+
+          {%- if order.cart_level_discount_applications != blank -%}
+            <li class="flex justify-content-between" data-label="{{ 'customer.order.subtotal' | t }}">
+              {%- for discount_application in order.cart_level_discount_applications -%}
+                <span class="discount">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.92896 0L12.1162 0.884384L13 7.07195L7.25466 12.817C7.13745 12.9342 6.9785 13 6.81276 13C6.64703 13 6.48808 12.9342 6.37086 12.817L0.183002 6.62944C0.065826 6.51224 0 6.35329 0 6.18756C0 6.02183 0.065826 5.86289 0.183002 5.74568L5.92896 0ZM7.69657 5.3038C7.81267 5.41986 7.9505 5.51191 8.10218 5.57471C8.25386 5.6375 8.41642 5.66981 8.58059 5.66978C8.74475 5.66975 8.90731 5.63739 9.05897 5.57454C9.21062 5.51169 9.34842 5.41959 9.46448 5.30349C9.58054 5.18739 9.6726 5.04957 9.7354 4.8979C9.7982 4.74623 9.8305 4.58367 9.83047 4.41951C9.83044 4.25535 9.79808 4.09281 9.73523 3.94116C9.67238 3.78951 9.58027 3.65172 9.46417 3.53566C9.34807 3.4196 9.21024 3.32755 9.05856 3.26476C8.90688 3.20196 8.74431 3.16966 8.58015 3.16969C8.2486 3.16975 7.93065 3.3015 7.69625 3.53597C7.46185 3.77044 7.3302 4.08842 7.33026 4.41995C7.33032 4.75149 7.46208 5.06942 7.69657 5.3038Z" fill="currentColor"/>
+                  </svg>
+                  {{ 'customer.order.discount' | t }}(
+                  {{- discount_application.title -}}
+                  )
+                </span>
+                <strong>
+                  {{- discount_application.total_allocated_amount | money -}}
+                </strong>
+              {%- endfor -%}
+            </li>
+          {%- endif -%}
+          {%- for shipping_method in order.shipping_methods -%}
+            <li
+              class="flex justify-content-between"
+              data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})"
+            >
+              <span>{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</span>
+              <span>{{ shipping_method.price | money }}</span>
+            </li>
+          {%- endfor -%}
+          {%- for tax_line in order.tax_lines -%}
+            <li class="flex justify-content-between">
+              <span>
+                {{- 'customer.order.tax' | t }} ({{ tax_line.title }}
+                {{ tax_line.rate | times: 100 }}%)</span
+              >
+              <span>{{ tax_line.price | money }}</span>
+            </li>
+          {% endfor %}
+          <li class="flex justify-content-between">
+            <span>{{ 'customer.order.total' | t }} :</span>
+            <span>{{ order.total_price | money }}</span>
+          </li>
+        </ul>
+        <a href="{{ routes.account_url }}" class="underline back-order">{{ 'customer.order.back_to_order' | t }}</a>
+      </div>
+    </order-list>
+  </div>
+</address-section>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+    }
+
+  }
+</style>
+{% schema %}
+  {
+    "name": "t:sections.main-order.name",
+    "class": "main-order",
+    "tag": "section",
+    "settings": [
+      {
+      "type": "color_scheme",
+      "id":"color_scheme",
+      "label": "t:global.color_scheme.label", 
+      "default":"scheme-1"
+  },
+    {
+        "type":"inline_richtext",
+        "id":"heading",
+         "label": "t:global.general_label.heading.label",
+        "default":"My Account"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "default": "h3",
+          "label": "t:global.heading_size.label",
+          "options": [
+            {
+              "value": "h1",
+              "label": "t:global.heading_size.options.h1.label"
+            },
+            {
+              "value": "h2",
+            "label": "t:global.heading_size.options.h2.label"
+            },
+            {
+              "value": "h3",
+            "label": "t:global.heading_size.options.h3.label"
+            },
+            {
+              "value": "h4",
+            "label": "t:global.heading_size.options.h4.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:global.heading_size.options.h5.label"
+            },
+            {
+              "value": "h6",
+            "label": "t:global.heading_size.options.h6.label"
+            }
+          ]
+      },
+      {
+        "type": "select",
+        "id": "heading_seo",
+        "default": "h3",
+         "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+         {
+            "value": "h1",
+            "label": "t:global.heading_seo.options.h1.label"
+          },
+          {
+            "value": "h2",
+           "label": "t:global.heading_seo.options.h2.label"
+          },
+          {
+            "value": "h3",
+           "label": "t:global.heading_seo.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_seo.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+          }
+        ]
+      },
+    {
+          "type": "textarea",
+          "id": "description",
+         "label": "t:global.general_label.description.label",
+          "default":"Add description here."
+        },
+        {
+          "type": "select",
+          "id": "description_size",
+          "default": "text-base",
+         "label": "t:global.description_size.label",
+          "options": [
+            {
+              "value": "text-xl",
+              "label": "t:global.description_size.options.x-large.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:global.description_size.options.large.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:global.description_size.options.medium.label"
+            },
+            {
+              "value": "text-sm",
+              "label": "t:global.description_size.options.small.label"
+            },
+            {
+              "value": "text-xs",
+              "label": "t:global.description_size.options.x-small.label"
+
+            }
+          ]
+      },
+    {
+    "type": "header",
+    "content": "t:global.section_spacing.content"
+    },
+    {
+    "type": "range",
+    "id": "top_space_desktop",
+    "label": "t:global.section_spacing.top_space_desktop.label",
+    "default": 40,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_desktop",
+     "label": "t:global.section_spacing.bottom_space_desktop.label",
+    "default": 40,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "top_space_mobile",
+    "label": "t:global.section_spacing.top_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_mobile",
+     "label": "t:global.section_spacing.bottom_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  }
+    ]
+  }
+{% endschema %}

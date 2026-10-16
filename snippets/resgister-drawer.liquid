@@ -1,0 +1,111 @@
+<account-drawer
+  class="drawer drawer-account"
+  id="registeraccount-drawer"
+  role="dialog"
+  data-drawer-open
+>
+  <div class="overlay" data-drawer-close></div>
+  <div class="drawer-base">
+    <modal-dialog-head class="modal-dialog-head">
+      <h2 class="drawer-heading h5">{{ 'customer.login_page.create_account' | t }}</h2>
+      <a href="#" class="drawer-close" data-drawer-close>
+        <close-btn>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 1L1 21M1 1L21 21" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"/>
+          </svg>
+        </close-btn>
+      </a>
+    </modal-dialog-head>
+    <modal-dialog-form class="modal-dialog-form">
+      <div class="customer-form-wrapper with-content">
+        {%- form 'create_customer', novalidate: 'novalidate', class: 'account-form flex column' -%}
+          {%- if form.errors -%}
+            <div id="error-message" role="alert" class="alert alert-warning">
+              <div class="alert-content">
+                <p class="" tabindex="-1">{{ 'templates.contact.form.error_heading' | t }}</p>
+              </div>
+              <ul class="error-listing-content">
+                {%- for field in form.errors -%}
+                  <li>
+                    {%- if field == 'form' -%}
+                      {{ form.errors.messages[field] }}
+                    {%- else -%}
+                      <a href="#Customer-{{ field }}">
+                        {{ form.errors.translated_fields[field] | capitalize }}
+                        {{ form.errors.messages[field] }}
+                      </a>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {% endif %}
+          <div class="form-control">
+            <label for="RegisterForm-FirstName" class="hidden">{{ 'customer.register.first_name' | t }}</label>
+            <input
+              type="text"
+              name="customer[first_name]"
+              id="RegisterFormFirstName"
+              autocomplete="given-name"
+              placeholder="{{ 'customer.register.first_name' | t }}"
+              class="input"
+            >
+          </div>
+          <div class="form-control">
+            <label for="RegisterForm-LastName" class="hidden">{{ 'customer.register.last_name' | t }} </label>
+            <input
+              type="text"
+              name="customer[last_name]"
+              id="RegisterFormLastName"
+              autocomplete="family-name"
+              placeholder="{{ 'customer.register.last_name' | t }}"
+              class="input"
+            >
+          </div>
+          <div class="form-control">
+            <label for="RegisterForm-email" class="hidden">{{ 'customer.register.email' | t }}</label>
+            <input
+              type="email"
+              name="customer[email]"
+              id="RegisterFormEmail"
+              autocomplete="email"
+              autocapitalize="off"
+              {% if form.email %}
+                value="{{ form.email }}"
+              {% endif %}
+              spellcheck="false"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="Customer-Email-error"
+              {% endif %}
+              placeholder="{{ 'customer.register.email' | t }}"
+              pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)*[a-zA-Z]{2,}))$"
+              required
+              class="input"
+            >
+          </div>
+          <div class="form-control">
+            <label for="RegisterForm-password" class="hidden">{{ 'customer.register.password' | t }}</label>
+            <input
+              type="password"
+              name="customer[password]"
+              id="RegisterFormPassword"
+              autocapitalize="off"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="signUpForm-password-error"
+              {% endif %}
+              placeholder="{{ 'customer.register.password' | t }}"
+              required
+              class="input"
+            >
+          </div>
+          <button type="submit" class="button button-md w-100 {{ settings.button_font }}-font">
+            {{ 'customer.register.submit' | t }}
+          </button>
+          <a href="{{ routes.account_login_url }}" class="underline"> {{'customer.register.sign_in' | t}} </a>
+        {% endform %}
+      </div>
+    </modal-dialog-form>
+  </div>
+</account-drawer>

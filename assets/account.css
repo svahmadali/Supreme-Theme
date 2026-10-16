@@ -1,0 +1,206 @@
+.account-button-wrapper {
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.account-topbar {
+  margin: 2rem 0rem;
+  gap: 1rem;
+}
+
+.account-topbar {
+  margin-bottom: 2rem;
+}
+
+.account-topbar-title {
+  margin: 0rem;
+}
+
+.return-account {
+  align-self: center;
+}
+
+.address-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 0.938rem;
+}
+
+.address-list-item {
+  background: rgb(var(--foreground-color));
+  padding: 2rem;
+  font-size: var(--text-small);
+  height: 100%;
+  min-height: 21rem;
+}
+
+.add-newaddress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.address-list-item p {
+  font-size: var(--text-small);
+  margin-bottom: 1rem;
+  line-height: 2;
+}
+
+.edit-button {
+  min-width: 5rem;
+  margin-right: 0.8rem;
+}
+
+.main-orders {
+  padding-top: 3rem;
+}
+
+.payment-status .status {
+  background-color: rgba(var(--background-color));
+  padding: 0.25rem 0.688rem;
+  border-radius: var(--rounded);
+  font-size: var(--text-small);
+  margin-left: 0.563rem;
+}
+
+.order-list-empty {
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.order-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  width: 2.938rem;
+  height: 2.938rem;
+  margin: 0 auto 1.6rem;
+}
+
+.order-empty-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.order-product-wrpper {
+  gap: 1rem;
+}
+
+.order-product-img {
+  width: 3.625rem;
+  min-width: 3.625rem;
+  height: 3.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-products :is(td, th) {
+  font-size: var(--text-small);
+  padding: 1.375rem 0.625rem;
+  border-bottom: 0.063rem solid rgb(var(--border-color));
+}
+
+.order-total {
+  padding: 2rem 0;
+}
+
+.order-total li:not(:last-child) {
+  margin-bottom: 0.6rem;
+}
+
+.order-details-head {
+  margin-bottom: 0.625rem;
+}
+
+.order-details-head h5 {
+  margin-bottom: 0.125rem;
+}
+
+.custom-checkmark {
+  margin: 2rem 0rem;
+}
+
+.custom-checkmark > input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkmark label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.custom-checkmark label:before {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 0.1rem;
+  border: 0.1rem solid rgb(var(--border-color));
+  background-color: rgb(var(--background-color));
+  transition: border-color 0.4s;
+  opacity: 1;
+}
+
+.custom-checkmark label .checkmark {
+  position: absolute;
+  left: 0.4rem;
+  top: calc(50% - 0.3rem);
+  z-index: 5;
+  visibility: hidden;
+  fill: rgb(var(--background-color));
+  opacity: 0;
+}
+
+.custom-checkmark > input[type="checkbox"]:checked + label:before {
+  border-color: rgb(var(--text-color));
+  background-color: rgb(var(--text-color));
+}
+
+.custom-checkmark > input[type="checkbox"]:checked + label .checkmark {
+  visibility: visible;
+  opacity: 1;
+}
+
+.add-newaddress-button {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 992px) {
+  .address-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .edit-button {
+    min-width: 7.5rem;
+    margin-right: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .account-button-wrapper {
+    max-width: 10rem;
+  }
+  .form-control-wrapper.flex .form-control {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .products-table {
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+  }
+  .order-product-wrpper {
+    flex-wrap: nowrap;
+  }
+}

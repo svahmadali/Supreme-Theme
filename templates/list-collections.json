@@ -1,0 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-collections-list": {
+      "type": "main-collections-list",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Collection of Moods",
+        "heading_size": "h4",
+        "heading_seo": "h2",
+        "content_alignment": "left",
+        "collections_per_page": 16,
+        "number_item": 3,
+        "mobile_item_per_row": "2",
+        "sort": "date_reversed",
+        "image_ratio": "adapt",
+        "card_style": "Square",
+        "text_alignment": "left",
+        "collection_text_size": "text-xl",
+        "column_gap": 35,
+        "column_gap_mobile": 2,
+        "top_space_desktop": 60,
+        "bottom_space_desktop": 50,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 20
+      }
+    },
+    "collection_list_4ybB4L": {
+      "type": "collection-list",
+      "name": "Collection list",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "Everyday Essentials",
+        "heading_size": "h2",
+        "heading_seo": "h2",
+        "description": "Effortless pieces you can wear on repeat. Explore timeless styles for everyday confidence.",
+        "description_size": "text-lg",
+        "content_alignment": "left",
+        "collection": [],
+        "image_ratio": "square",
+        "card_style": "Square",
+        "text_alignment": "left",
+        "collection_text_size": "text-xl",
+        "number_item": 2,
+        "mobile_item_per_row": "1",
+        "column_gap": 5,
+        "column_gap_mobile": 0,
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 65,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 50
+      }
+    }
+  },
+  "order": [
+    "main-collections-list",
+    "collection_list_4ybB4L"
+  ]
+}

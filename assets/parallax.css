@@ -1,0 +1,192 @@
+.parallax-inner-wrapper {
+  overflow: hidden;
+  z-index: 1;
+  min-height: 55rem;
+}
+
+.parallax-image {
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  clip: rect(0, auto, auto, 0);
+  overflow: hidden;
+}
+
+.parallax__container:after {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    var(--background-color-overlay) / var(--overlay-color-opacity)
+  );
+}
+
+.parallax-image > :is(img, svg) {
+  position: fixed;
+  top: 0rem;
+  transform: translateZ(0rem);
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.parallax-image-with-text-img .media-ratio {
+  border-radius: var(--rounded-block);
+}
+
+.parallax-content .scrolling-text--wrapper {
+  margin-bottom: 3rem;
+}
+
+.parallax-content--wrapper
+  .parallax-image-with-text-img
+  :is(img, .placeholder-svg) {
+  transition: all 0.3s ease-in-out;
+}
+
+.parallax-content--wrapper
+  .parallax-image-with-text-img:hover
+  :is(img, .placeholder-svg) {
+  transform: scale3d(1.1, 1.1, 1);
+  transform-style: preserve-3d;
+}
+
+.parallax-image-with-text-wrapper {
+  position: relative;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.parallax-image-with-text-wrapper .main-heading {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.parallax-content .scrolling-text {
+  margin-right: 5rem;
+}
+
+.parallax-image-with-text-wrapper > div {
+  flex: 0 0 100%;
+}
+
+.parallax-image-with-text-wrapper .parallax-image-with-text-cont {
+  padding-top: 1.5rem;
+}
+
+.parallax-button {
+  margin-top: 1.8rem;
+}
+
+.parallax-product {
+  position: absolute;
+  background: rgb(var(--foreground-color));
+  width: 350px;
+  max-width: calc(100% - 4.375rem);
+  max-height: calc(100% - 4.375rem);
+  bottom: 1rem;
+  right: 1rem;
+  top: auto;
+  left: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: var(--rounded-card);
+  z-index: 1;
+  opacity: 0;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.parallax-image-with-text-img:hover .parallax-product {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+.parallax-product .media-ratio {
+  border-radius: var(--rounded-card);
+}
+
+.parallax-product .product-list-detail {
+  padding: 0.5rem 0rem 0rem;
+  color: rgb(var(--background-color));
+}
+
+.parallax-product .product-compare-price {
+  color: rgb(var(--background-color));
+}
+
+.parallax-product .product-card-title {
+  font-size: var(--text-large);
+  text-transform: uppercase;
+}
+
+.parallax-product .product-price-list {
+  margin-top: 2rem;
+}
+
+.parallax-product .product-actual-price {
+  font-size: var(--text-h6);
+}
+
+.parallax-add-to-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background-color: rgba(var(--button-background-color));
+  color: rgba(var(--button-text-color));
+  padding: 0.5rem;
+  border-radius: 50%;
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  z-index: 1;
+}
+
+.parallax-product
+  .product-card-wrapper
+  .product-card-media
+  .quick-view-button-icon {
+  opacity: 1;
+  pointer-events: all;
+  background: rgb(var(--foreground-color));
+  top: auto;
+  bottom: 2rem;
+  transform: scale(1);
+}
+
+@media screen and (min-width: 1025px) {
+  .parallax-image-with-text-wrapper > div {
+    flex: 0 0 50%;
+    padding: 0rem 0.8rem;
+  }
+  .parallax-image-with-text-wrapper .parallax-image-with-text-cont {
+    padding: 3rem;
+  }
+  .parallax-product {
+    bottom: 2.188rem;
+    right: 2.188rem;
+  }
+  .parallax-add-to-btn {
+    width: 2.8rem;
+    height: 2.8rem;
+    right: 4rem;
+    bottom: 4rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .parallax-image-with-text-wrapper {
+    gap: 1.5rem;
+  }
+}

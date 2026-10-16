@@ -1,0 +1,277 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+{{ 'account.css' | asset_url | stylesheet_tag }}
+<div class="block account section-gap color-{{ section.settings.color_scheme }}">
+  <div class="page--width">
+    <header class="account-header flex wrap align-items-center justify-content-between">
+      <div class="account-heading">
+        {% if section.settings.heading != blank %}
+          <{{ section.settings.heading_seo }} class="account-title {{ section.settings.heading_size }}">
+            {{- section.settings.heading -}}
+          </{{ section.settings.heading_seo }}>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="description text-sm {{ section.settings.description_size }}">
+            {{ section.settings.description | newline_to_br }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="account-button-wrapper flex column text-align-center">
+        <a href="{{ routes.account_logout_url }}" class="button w-100 {{ settings.button_font }}-font">
+          {{- 'customer.log_out' | t -}}
+        </a>
+      </div>
+    </header>
+    <account-body class="account-body block">
+      <div class="account-topbar flex wrap align-items-center">
+        <h5 class="account-topbar-title">
+          {{ 'customer.addresses.address_count' | t: count: customer.addresses.size }}
+        </h5>
+        <a href="{{ routes.account_addresses_url }}" class="underline text-sm">
+          {{ 'customer.addresses.view_address' | t: count: customer.addresses.size }}
+        </a>
+      </div>
+      <ul class="address-list hidden">
+        {% if customer.default_address != blank %}
+          <li class="address-list-item">
+            <h2 class="h6">{{ 'customer.addresses.default' | t }}</h2>
+            <p>
+              {{ customer.default_address | format_address }}
+            </p>
+          </li>
+        {% endif %}
+      </ul>
+    </account-body>
+    {% paginate customer.orders by 20 %}
+      <order-list class="block order-list">
+        {% if customer.orders.size > 0 %}
+          <div class="order-details ">
+            <div class="products-table">
+              <table class="table-products">
+                <thead align="left">
+                  <tr role="row">
+                    <th align="left">{{ 'customer.order.order_title' | t }}</th>
+                    <th align="left">{{ 'customer.order.date' | t }}</th>
+                    <th align="left">{{ 'customer.order.payment_status' | t }}</th>
+                    <th align="left">{{ 'customer.order.fulfillment_status' | t }}</th>
+                    <th align="right">{{ 'customer.order.total' | t }}</th>
+                  </tr>
+                </thead>
+                <tbody align="left">
+                  {% for order in customer.orders %}
+                    <tr>
+                      <td align="left">
+                        <a href="{{ order.customer_url }}">{{ order.name }}</a>
+                      </td>
+                      <td align="left">{{ order.created_at | time_tag: format: 'date' }}</td>
+                      <td align="left">
+                        <span class="status">{{ order.financial_status_label }}</span>
+                      </td>
+                      <td align="left">{{ order.fulfillment_status_label }}</td>
+                      <td align="right">{{ order.total_price | money }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        {% else %}
+          <div class="order-list-empty ">
+            <span class="order-empty-icon">
+              <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.3507 10.7171C4.10576 10.7851 3.88293 10.9161 3.70445 11.0971C3.48697 11.3625 3.36613 11.6939 3.36174 12.0371C2.44132 20.8789 2.42174 26.186 3.36174 34.9633C3.3622 35.2754 3.45684 35.5802 3.63328 35.8377C3.80972 36.0952 4.05976 36.2934 4.3507 36.4066L22.9431 43.6446L23.5012 43.7993L24.0613 43.6426L42.6537 36.4085C42.9425 36.2923 43.1905 36.0932 43.3665 35.8364C43.5425 35.5796 43.6386 35.2765 43.6427 34.9652C44.6219 26.0803 44.6336 20.9573 43.6427 12.1546C43.6693 11.7698 43.5466 11.3896 43.3 11.0931C43.1375 10.8666 42.9131 10.6919 42.6537 10.5898V10.5938" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M43.6128 11.7436C43.5634 11.5027 43.4558 11.2774 43.2995 11.0876C43.1366 10.8614 42.9124 10.6868 42.6533 10.5843L24.0608 3.47747C23.8847 3.3996 23.6943 3.35938 23.5017 3.35938C23.3092 3.35938 23.1187 3.3996 22.9426 3.47747L13.6464 7.09451L4.35021 10.7115C4.10568 10.7784 3.88289 10.908 3.70396 11.0876C3.54735 11.278 3.43977 11.5039 3.39062 11.7456C3.44141 12.0034 3.55578 12.2445 3.72335 12.4469C3.89092 12.6494 4.10639 12.8068 4.35021 12.9049L22.9426 20.1429H24.0589L34.2735 16.1675L42.6552 12.9049C42.9012 12.809 43.1187 12.6521 43.2873 12.4489C43.4558 12.2458 43.5699 12.003 43.6187 11.7436H43.6148H43.6128Z" fill="currentColor" fill-opacity="0.12"></path>
+                <path d="M34.2735 16.1655L24.0608 20.1409H22.9426L4.35021 12.9049C4.10639 12.8068 3.89092 12.6494 3.72335 12.4469C3.55578 12.2445 3.44141 12.0034 3.39062 11.7456C3.43977 11.5039 3.54735 11.278 3.70396 11.0876C3.88289 10.908 4.10568 10.7784 4.35021 10.7115L13.6464 7.09451M34.2735 16.1655L42.6552 12.9049C42.9012 12.809 43.1187 12.6521 43.2873 12.4489C43.4558 12.2458 43.5699 12.003 43.6187 11.7436H43.6148C43.5653 11.5027 43.4578 11.2774 43.3015 11.0876C43.1386 10.8614 42.9143 10.6868 42.6552 10.5843L24.0628 3.47747C23.8867 3.3996 23.6962 3.35938 23.5037 3.35938C23.3111 3.35938 23.1207 3.3996 22.9446 3.47747L13.6464 7.09451M34.2735 16.1655L13.6464 7.09451M23.5027 43.7976V20.1409M30.3569 33.2911L38.1902 30.3536" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <h2 class="empty-title">{{'customer.orders.title' | t}}</h2>
+            <p>{{'customer.orders.none' | t}}</p>
+          </div>
+        {% endif %}
+
+        {%- if paginate.pages > 1 -%}
+          <div class="page-navigation text-align-center">
+            {% render 'pagination', paginate: paginate, anchor: '' %}
+          </div>
+        {% endif %}
+      </order-list>
+    {% endpaginate %}
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.main-account.name",
+  "class": "main-account",
+  "tag": "section",
+  "settings": [
+     {
+      "type": "color_scheme",
+      "id":"color_scheme",
+      "label": "t:global.color_scheme.label", 
+      "default":"scheme-1"
+  },
+    {
+        "type":"inline_richtext",
+        "id":"heading",
+        "label": "t:global.general_label.heading.label",
+        "default":"My Account"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "default": "h3",
+         "label": "t:global.heading_size.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:global.heading_size.options.h1.label"
+        },
+        {
+          "value": "h2",
+         "label": "t:global.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+         "label": "t:global.heading_size.options.h3.label"
+        },
+        {
+          "value": "h4",
+        "label": "t:global.heading_size.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:global.heading_size.options.h5.label"
+        },
+        {
+          "value": "h6",
+        "label": "t:global.heading_size.options.h6.label"
+        }
+      ]
+
+      },
+      {
+        "type": "select",
+        "id": "heading_seo",
+        "default": "h3",
+        "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+         {
+            "value": "h1",
+            "label": "t:global.heading_seo.options.h1.label"
+          },
+          {
+            "value": "h2",
+           "label": "t:global.heading_seo.options.h2.label"
+          },
+          {
+            "value": "h3",
+           "label": "t:global.heading_seo.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_seo.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+          }
+        ]
+      },
+    {
+          "type": "textarea",
+          "id": "description",
+         "label": "t:global.general_label.description.label",
+          "default":"Add description here."
+        },
+        {
+          "type": "select",
+          "id": "description_size",
+          "default": "text-base",
+          "label": "t:global.description_size.label",
+          "options": [
+            {
+              "value": "text-xl",
+              "label": "t:global.description_size.options.x-large.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:global.description_size.options.large.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:global.description_size.options.medium.label"
+            },
+            {
+              "value": "text-sm",
+              "label": "t:global.description_size.options.small.label"
+            },
+            {
+              "value": "text-xs",
+              "label": "t:global.description_size.options.x-small.label"
+
+            }
+          ]
+      },
+            {
+            "type": "header",
+            "content": "t:global.section_spacing.content"
+          },
+        {
+          "type": "range",
+          "id": "top_space_desktop",
+        "label": "t:global.section_spacing.top_space_desktop.label",  
+          "default":40,
+          "min": 0,
+          "max": 150,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "bottom_space_desktop",
+          "label": "t:global.section_spacing.bottom_space_desktop.label",
+          "default": 40,
+          "min": 0,
+          "max": 150,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "top_space_mobile",
+        "label": "t:global.section_spacing.top_space_mobile.label",
+          "default": 40,
+          "min": 0,
+          "max": 100,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "bottom_space_mobile",
+        "label": "t:global.section_spacing.bottom_space_mobile.label",
+          "default": 40,
+          "min": 0,
+          "max": 100,
+          "step": 5
+        }
+
+  ]
+}
+{% endschema %}

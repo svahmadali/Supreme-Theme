@@ -1,0 +1,174 @@
+.countdown-counter--wrapper {
+  gap: 1rem;
+}
+
+.counter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-number {
+  font-weight: 600;
+}
+
+.countdown-product-list {
+  width: 100%;
+  gap: 1rem;
+}
+
+.vertical-content :is(.countdown-with-content, .countdown-product-list) {
+  flex: 0 0 100%;
+  width: 100%;
+}
+
+.product-list-item {
+  width: 100%;
+  flex-wrap: wrap;
+  background-color: rgb(var(--background-color));
+  flex: 0 0 100%;
+  border-radius: var(--rounded-block);
+  border: 0.06rem solid rgba(var(--border-color));
+  overflow: hidden;
+}
+
+.product-list-item .product-list-item--img {
+  min-width: 5.75rem;
+  width: 5.75rem;
+  overflow: hidden;
+}
+
+.product-list-item .product-list-item--img :is(img, .placeholder-svg) {
+  transition: all 0.4s ease-in-out;
+}
+
+.product-list-item:hover .product-list-item--img :is(img, .placeholder-svg) {
+  transform: scale(1.2);
+}
+
+.product-list-detail {
+  padding: 1.1rem;
+  color: rgb(var(--text-color));
+  position: relative;
+  flex: 1 1;
+}
+
+.product-list-detail .add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: rgba(var(--button-background-secondary));
+  color: rgba(var(--button-text-secondary));
+  padding: 0.5rem;
+  border-radius: var(--rounded-button);
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+}
+
+.vertical-content .countdown-counter {
+  margin-bottom: 1.875;
+  display: block;
+}
+
+.countdown-description {
+  margin-bottom: 1rem;
+}
+
+.vertical-content .countdown-counter {
+  margin-bottom: 1rem;
+  display: block;
+}
+
+@media screen and (min-width: 992px) {
+  .horizontal-content .countdown-with-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+  .horizontal-content .countdown-with-content > * {
+    max-width: 33rem;
+  }
+  .countdown-counter--wrapper {
+    gap: 2rem;
+  }
+  .vertical-content .countdown-counter {
+    margin-bottom: 3rem;
+  }
+  .vertical-content .countdown-with-content {
+    flex: 0 0 40%;
+    width: 40%;
+    padding-right: 4rem;
+  }
+  .vertical-content .countdown-counter {
+    margin-top: 2rem;
+  }
+  .vertical-content .countdown-product-list {
+    flex: 0 0 60%;
+    width: 60%;
+  }
+  .product-list-item {
+    max-width: calc(100% / 2 - 1rem);
+  }
+  .horizontal-content .product-list-item {
+    max-width: calc(100% / 3 - 1rem);
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .countdown-wrapper:is(.vertical-content) {
+    max-width: 93.75rem;
+    margin: 0 auto;
+  }
+  .countdown-counter--wrapper {
+    gap: 3rem;
+  }
+  .vertical-content .countdown-with-content {
+    padding-right: 5rem;
+  }
+  .product-list-item .product-list-item--img {
+    min-width: 9rem;
+    width: 9rem;
+  }
+  .horizontal-content .product-list-item {
+    max-width: calc(100% / 4 - 1rem);
+  }
+  .horizontal-content .product-list-item .product-list-item--img {
+    min-width: 7.563rem;
+    width: 7.563rem;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .horizontal-content .product-list-item {
+    max-width: calc(100% / 5 - 1rem);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .countdown-with-content {
+    margin-bottom: 3rem;
+  }
+  .countdown-product-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.8rem;
+  }
+  .product-list-item {
+    max-width: calc(100% / 2 - 0.6rem);
+  }
+  .countdown-counter--wrapper {
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .product-list-item {
+    max-width: calc(86% / 1);
+  }
+}

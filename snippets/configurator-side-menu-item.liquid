@@ -1,0 +1,16 @@
+{% liquid
+  assign item_is_active = false
+  if is_active
+    assign item_is_active = true
+  endif
+%}
+
+<button
+  type="button"
+  class="configurator-side-panel-item{% if item_is_active %} is-active{% endif %}"
+  role="menuitem"
+  data-configurator-side-item
+  data-side-item-index="{{ index }}"
+>
+  <span class="configurator-side-panel-item-label">{{ label }}</span>
+</button>

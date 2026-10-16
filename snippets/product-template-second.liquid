@@ -1,0 +1,18 @@
+{% render 'product-media',
+  template: template,
+  product: product,
+  zoomImage: zoomImage,
+  slider_enable: slider_enable,
+  section: section,
+  current_variant: current_variant
+%}
+<div class="product-information--wrapper">
+  <div class="product-information--inner">
+    {% render 'product-info',
+      product_info: product_info,
+      product: product,
+      section: section,
+      current_variant: current_variant
+    %}
+  </div>
+</div>

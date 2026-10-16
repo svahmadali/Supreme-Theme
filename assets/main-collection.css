@@ -1,0 +1,124 @@
+.drawer-close .removeAll {
+  padding: 0 0 0 0.7rem;
+  margin: 0;
+}
+
+.hero-featured--collections {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.hero-featured--collection {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.2rem 0.9rem 0.2rem 0.2rem;
+  font-size: var(--text-small);
+  color: rgba(var(--text-color));
+  border-radius: 10rem;
+  border: 0.06rem solid currentcolor;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.hero-featured--collection:is(:hover, .is-active) {
+  background-color: rgba(var(--text-color));
+  color: rgba(var(--background-color));
+}
+
+.hero-featured-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  overflow: hidden;
+  border-radius: 10rem;
+}
+
+.hero-featured--collection .featured--img {
+  transition: all 0.3s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.hero-featured--collection:hover .featured--img {
+  transform: scale(1.2);
+}
+
+.hero-featured-text {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-featured-text:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: 100% 50%;
+  transform: translate3d(0, 150%, 0);
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.hero-featured-text > span {
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.hero-featured--collection:hover .hero-featured-text > span {
+  transform: translate3d(0, -150%, 0);
+}
+
+.hero-featured--collection:hover .hero-featured-text:after {
+  transform: translateZ(0);
+}
+
+.collection-product {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.collection-content--below {
+  padding-top: 1rem;
+  word-break: break-word;
+}
+
+@media screen and (min-width: 1025px) {
+  .hero-featured-image {
+    min-width: 2rem;
+    width: 2rem;
+    height: 2rem;
+  }
+  .collection-content--below {
+    padding-top: 2rem;
+  }
+  .collection-product--results {
+    flex: 1;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero-featured--collections {
+    gap: 1.3rem;
+    margin-top: auto;
+  }
+  .page-hero--text-wrapper {
+    padding: 2.5rem 0rem;
+  }
+  .page-hero--text {
+    max-height: calc(100% - 6rem);
+    margin-top: 0rem;
+  }
+}

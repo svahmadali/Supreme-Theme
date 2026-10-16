@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-order",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "My Account",
+        "heading_size": "h3",
+        "heading_seo": "h3",
+        "description": "Your cart may be empty now, but let us help you fill it up with amazing products.",
+        "description_size": "text-xl",
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 100,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

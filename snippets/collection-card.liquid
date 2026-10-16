@@ -1,0 +1,56 @@
+{% liquid
+  if image_ratio == 'landscape'
+    assign mediaRatio = 75
+  elsif image_ratio == 'square'
+    assign mediaRatio = 100
+  elsif image_ratio == 'portrait'
+    assign mediaRatio = 125
+  else
+    if collection_card.featured_image != blank
+      assign mediaRatio = 1 | divided_by: collection_card.featured_image.aspect_ratio | times: 100
+    else
+      assign mediaRatio = 100
+    endif
+  endif
+%}
+ 
+{% assign random_number = "now" | date: "%N" | modulo: 100 %}
+
+ <{% if collection_card %}a href="{{ collection_card.url }}" {% else %}div{% endif %} class="collection-list--card style-{{ section.settings.card_style }}">
+        <div class="collection-card--img">
+          <div class="media-ratio" style="--media-ratio:{{ mediaRatio }}%">
+          {%- if collection_card.featured_image -%}
+           <img
+              srcset="
+                {%- if collection_card.featured_image.width >= 165 -%}{{ collection_card.featured_image | image_url: width: 165 }} 165w,{%- endif -%}
+                {%- if collection_card.featured_image.width >= 330 -%}{{ collection_card.featured_image | image_url: width: 330 }} 330w,{%- endif -%}
+                {%- if collection_card.featured_image.width >= 535 -%}{{ collection_card.featured_image | image_url: width: 535 }} 535w,{%- endif -%}
+                {%- if collection_card.featured_image.width >= 750 -%}{{ collection_card.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+                {%- if collection_card.featured_image.width >= 1000 -%}{{ collection_card.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                {%- if collection_card.featured_image.width >= 1500 -%}{{ collection_card.featured_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                {%- if collection_card.featured_image.width >= 3000 -%}{{ collection_card.featured_image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                {{ collection_card.featured_image | image_url }} {{ collection_card.featured_image.width }}w
+              "
+              src="{{ collection_card.featured_image | image_url: width: 1500 }}"
+              sizes="(min-width: 750px) calc(100vw - 10rem),calc(100vw - 3rem)"
+              alt="{{ collection_card.featured_image.alt | escape }}-{{ random_number }}"
+              height="{{ collection_card.featured_image.height }}"
+              width="{{ collection_card.featured_image.width }}"
+              loading="lazy"
+            >
+          {% else %}
+               {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          </div>
+        </div>
+        <div class="collection-card--content">
+          <p class="collection-card--title {{ section.settings.collection_text_size }}">
+            {% if collection_card.title != blank %}
+              {{- collection_card.title -}}
+            {% else %}
+              {{ 'onboarding.collection_title' | t }}
+            {% endif -%}
+          </p>
+        </div>
+</{% if collection_card %}a{% else %}div{% endif %}>
+     

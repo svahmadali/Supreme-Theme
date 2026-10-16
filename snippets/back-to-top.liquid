@@ -1,0 +1,60 @@
+{% if settings.enable_back_to_top %}
+  <scroll-to-back
+    id="scroll-to-top"
+    class="back-to-top--{{ settings.back_to_top_btn_position }}"
+    style="display:none"
+  >
+    <span id="backtoscroll-value">
+      <svg width="13" height="12" viewBox="0 0 13 12" fill="none">
+        <path d="M1 5.7619L11.5588 5.7619M7.58824 11L12 5.7619L7.58824 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </scroll-to-back>
+  <style>
+    #scroll-to-top {
+        --scroll-top-background:{{ settings.btp_background }};
+        --scroll-top-color:{{ settings.btp_icon }};
+      --scroll-top-position:{{ settings.back_to_top_bottom_position}}px;
+    }
+  </style>
+  <script>
+    class ScrollToBack extends HTMLElement{
+      constructor() {
+            super(), 
+              this.pageHeight = window.innerHeight
+        }
+
+       
+        connectedCallback() {
+            this.addEventListener("click", this.onClick), this.addEventListener("touchstart", this.onClick, {
+                passive: !0
+            }), window.addEventListener("scroll", this.checkVisible.bind(this))
+        }
+        checkVisible(event) {
+            window.requestAnimationFrame(() => {
+                window.scrollY > this.pageHeight ? this.classList.add("back-to-top--active") : this.classList.remove("back-to-top--active")
+            })
+          
+            let scrollProgress = document.getElementById("scroll-to-top");
+            let progressValue = document.getElementById("backtoscroll-value");
+            let pos = document.documentElement.scrollTop;
+            let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrollValue = Math.round((pos * 100) / calcHeight);
+            if (pos > 200) {
+                scrollProgress.style.display = "grid";
+            } else {
+                scrollProgress.style.display = "none";
+            }
+            scrollProgress.style.background = `conic-gradient(var(--scroll-top-color) ${scrollValue}%, var(--scroll-top-background) ${scrollValue}%)`;
+        }
+        onClick() {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            })
+      }
+    }
+    customElements.define("scroll-to-back", ScrollToBack);
+  </script>
+{% endif %}

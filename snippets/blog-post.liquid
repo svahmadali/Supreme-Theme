@@ -1,0 +1,108 @@
+
+{%- liquid
+  if image_ratio == 'landscape'
+    assign mediaratio = 75
+  elsif image_ratio == 'square'
+    assign mediaratio = 100
+  elsif image_ratio == 'portrait'
+    assign mediaratio = 125
+  else
+    if article.image != blank
+      assign mediaratio = 1 | divided_by: article.image.aspect_ratio | times: 100
+    else
+      assign mediaratio = 100
+    endif
+  endif
+-%}
+
+<div class="article-posts--item">
+   <{%- if article != blank -%}a href="{{- article.url -}}" aria-label="{{ article.title }}" {% else %}div{% endif %} class="article-posts--image">
+
+     
+    <div  {% if layoutStyle == 'grid' or layoutStyle == 'width_image' and index == 1 %}class="media-ratio" style="--media-ratio:{{ mediaratio }}%"{% endif %}>
+     {% if article.image != blank %}
+             <img
+        class="effect-image"
+        src="{{ article.image.src | image_url: width: 533 }}"
+        alt="{{ article.image.src.alt | escape }}"
+        aria-hidden="true"
+            >
+         <img
+            class="effect-image-hover"
+                srcset="
+                  {%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+                  {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                  {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+                  {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+                  {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                  {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                  {{ article.image.src | image_url }} {{ article.image.src.width }}w
+                "
+                src="{{ article.image.src | image_url: width: 533 }}"
+                sizes="(min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                alt="{{ article.image.src.alt | escape }}"
+                {% unless lazy_load == false %}
+                  loading="lazy"
+                {% endunless %}
+                width="{{ article.image.width }}"
+                height="{{ article.image.height }}"
+              >
+          {% else %}
+          {% if placeholder_image != blank %}
+            {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        {% endif %}
+    </div>
+
+     
+   </{%- if article != blank -%}a{% else %}div{% endif %}>
+  <div class="article-post-content">
+    {%- if article != blank -%}
+    <div class="article-posts-publish text-sm">
+      {%- if section.settings.show_author -%} 
+            <span class="author">{{ article.author }}</span>
+      {%- endif -%}
+       {% if section.settings.show_date %}
+         {%- if section.settings.show_author -%} 
+         <span class="article-separator"></span>
+        {% endif %}{{ article.published_at | date: '%B %d, %Y' }}
+      {% endif %}
+      {% if section.settings.show_comment and article.comments_count != null %}
+         {% if section.settings.show_date or section.settings.show_author  %}
+           <span class="article-separator"></span>
+        {% endif %}{{ 'blogs.article.comments' | t: count: article.comments_count }}
+      {% endif %}
+    </div>
+    {% endif %}
+    <h6 class="article-posts-title">
+      {% if article != blank %}
+          {{ article.title }}
+      {% else %}
+       {{ 'onboarding.article_title' | t }}
+      {% endif %}
+    </h6>
+     {%- if section.settings.show_excerpt  -%}
+      <p class="article-posts-description">{% liquid
+        if article != blank
+          echo article.excerpt_or_content | strip_html | truncatewords: 10
+        else
+          echo 'blogs.article.content' | t
+        endif
+      %}
+      </p>
+    {% endif %}
+    {%- if article != blank -%}
+      <div class="article-posts-button">
+      <a href="{{- article.url -}}" class="underline--link">
+        <span class="button-text">{{ 'blogs.article.read_more' | t }}</span>
+        <span class="link-arrow">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H8V8H7V1.707L1.354 7.354L1 7.707L0.293 7L0.646 6.646L6.293 1H0V0Z" fill="currentColor"></path>
+          </svg>
+        </span>
+      </a>
+    </div>
+   {% endif %}
+  </div>
+</div>
+

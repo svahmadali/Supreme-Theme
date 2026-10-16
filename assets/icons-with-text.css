@@ -1,0 +1,134 @@
+.icons-with-text {
+  display: block;
+}
+
+.icons-with-text-grid {
+  grid: auto / repeat(var(--icons-with-text-item), 1fr);
+  grid-gap: var(--icons-with-text-gap);
+  align-items: start;
+  display: grid;
+}
+
+.icons-with-text-background .icons-with-text-item {
+  background-color: var(--foreground-color);
+  padding: 1.5rem;
+  border-radius: var(--rounded);
+}
+
+.icons-with-text-item {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.icons-with-text-item.icons-vertical {
+  flex-direction: column;
+}
+
+.icons-with-text-item.icons-vertical.text-align-left {
+  align-items: flex-start;
+}
+
+.icons-with-text-item.icons-vertical.text-align-center {
+  align-items: center;
+}
+
+.icons-with-text-item.icons-vertical.text-align-right {
+  align-items: flex-end;
+}
+
+.icons-with-text--icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  padding: 0.4rem;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  border: 1px solid rgba(var(--border-color));
+  border-radius: 50%;
+}
+
+.icons-with-text-item .icons-with-text--icon {
+  margin-bottom: 1rem;
+}
+
+.icons-with-text-item .icons-with-text--title {
+  margin-bottom: 0.7rem;
+}
+
+.icons-with-text--icon:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background-color: rgb(var(--text-color));
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+
+.icons-with-text-item:hover .icons-with-text--icon:before {
+  transform: scale(1);
+}
+
+.icons-with-text-item:hover .icons-with-text--icon {
+  color: rgb(var(--background-color));
+}
+
+.icons-with-text--icon svg {
+  width: 70%;
+  height: 70%;
+}
+
+.icons-with-text--icon.small {
+  min-width: 2.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.icons-with-text--icon.medium {
+  min-width: 2.8rem;
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.icons-with-text--icon.large {
+  min-width: 4rem;
+  width: 4rem;
+  height: 4rem;
+}
+
+.icons-with-text--content {
+  flex: 1 1;
+  width: 100%;
+}
+
+.icons-with-text--icon img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.icons-with-text--text {
+  word-break: break-word;
+}
+
+@media (min-width: 768px) {
+  .icons-with-text-grid {
+    --icons-with-text-item: 4;
+  }
+  .icons-with-text-item {
+    padding: 2rem;
+  }
+}

@@ -1,0 +1,129 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_UyqMac": {
+          "type": "announcement",
+          "settings": {
+            "announcement_text": "We offer free delivery on all orders"
+          }
+        },
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "announcement_text": "Enjoy up to 50% off on our hottest looks"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_UyqMac",
+        "announcement-bar-0"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "home_page_only": true,
+        "enable_count_down": true,
+        "date": "2026/10/10",
+        "auto_rotate": true,
+        "change_slides_speed": 12,
+        "enable_currency_selector": true,
+        "enable_language_selector": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_9Ne4d9": {
+          "type": "mega-menu",
+          "settings": {
+            "menu_label": "SHOP",
+            "collection_list": [],
+            "content_subheading_1": "50% off",
+            "content_heading_1": "Women Jeans",
+            "content_link_1": "shopify://collections",
+            "content_subheading_2": "80% off",
+            "content_heading_2": "WOMEN TRENDY CLOTHES",
+            "content_link_2": "shopify://collections/all",
+            "content_subheading_3": "",
+            "content_heading_3": "",
+            "content_link_3": "",
+            "content_subheading_4": "",
+            "content_heading_4": "",
+            "content_link_4": "shopify://collections",
+            "content_subheading_5": "",
+            "content_heading_5": "",
+            "content_link_5": ""
+          }
+        },
+        "mega_menu_GEyANU": {
+          "type": "mega-menu",
+          "settings": {
+            "menu_label": "WOMEN",
+            "collection_list": [],
+            "content_subheading_1": "SALE 50% OFF",
+            "content_heading_1": "Elevate Your Everyday",
+            "content_link_1": "shopify://collections",
+            "content_subheading_2": "Sale Alert: 20% Off",
+            "content_heading_2": "Chic Bottoms",
+            "content_link_2": "shopify://collections/frontpage",
+            "content_subheading_3": "Refresh 20% Off",
+            "content_heading_3": "Winter Vibes",
+            "content_link_3": "shopify://collections",
+            "content_subheading_4": "SALE 20% OFF",
+            "content_heading_4": "Bag Crush",
+            "content_link_4": "shopify://collections/all",
+            "content_subheading_5": "Fresh Arrivals",
+            "content_heading_5": "Summer & Winter",
+            "content_link_5": "shopify://collections"
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_9Ne4d9",
+        "mega_menu_GEyANU"
+      ],
+      "settings": {
+        "menu": "main-menu",
+        "secondary_menu": "main-menu",
+        "desktop_menu_position": "logo-center-menu--drawer",
+        "enable_menu_background": true,
+        "sticky_header": "on_scroll_up",
+        "transparent_header": true,
+        "show_search": true,
+        "show_account_icon": true,
+        "show_cart_icon": true,
+        "enable_account": true,
+        "enable_social_account": true,
+        "enable_localiztion": true,
+        "enable_currency_selector": true,
+        "enable_language_selector": true,
+        "content_heading": "Trending this Season",
+        "link_text": "VIEW ALL",
+        "url": "shopify://collections",
+        "page_1": "about-us",
+        "page_2": "contact",
+        "page_3": "",
+        "email_placeholder": "EMAIL",
+        "email": "info@example.com",
+        "phone_placeholder": "Contact Customer Support",
+        "phone": "+1 (213) 555-0123"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

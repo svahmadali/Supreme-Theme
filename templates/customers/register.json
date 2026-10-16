@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-register",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "CREATE AN ACCOUNT",
+        "heading_size": "h4",
+        "heading_seo": "h1",
+        "description": "",
+        "description_size": "text-lg",
+        "content_alignment": "left",
+        "heading_side": "Why sign up?",
+        "content_side": "<p>✔️ Early Access to New Drops<br/><br/>✔️ Seamless Checkout & Order Tracking<br/><br/>✔️ Personalized Recommendations</p>",
+        "top_space_desktop": 120,
+        "bottom_space_desktop": 120,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

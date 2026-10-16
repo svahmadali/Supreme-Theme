@@ -1,0 +1,134 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+{% render 'login-drawer', section: section %}
+
+{% schema %}
+  {
+    "name": "t:sections.main-login-drawer.name",
+   "settings": [
+  {
+    "type": "color_scheme",
+    "id":"color_scheme",
+   "label": "t:global.color_scheme.label", 
+    "default":"scheme-3"
+  },
+  {
+      "type":"inline_richtext",
+      "id":"heading",
+       "label": "t:global.general_label.heading.label",
+      "default":"Login account"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "default": "h2",
+       "label": "t:global.heading_size.label",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:global.heading_size.options.h1.label"
+        },
+        {
+          "value": "h2",
+         "label": "t:global.heading_size.options.h2.label"
+        },
+        {
+          "value": "h3",
+         "label": "t:global.heading_size.options.h3.label"
+        },
+        {
+          "value": "h4",
+        "label": "t:global.heading_size.options.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:global.heading_size.options.h5.label"
+        },
+        {
+          "value": "h6",
+        "label": "t:global.heading_size.options.h6.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_seo",
+      "default": "h4",
+     "label": "t:global.heading_seo.label",
+      "info": "t:global.heading_seo.info",
+      "options": [
+         {
+            "value": "h1",
+            "label": "t:global.heading_seo.options.h1.label"
+          },
+          {
+            "value": "h2",
+           "label": "t:global.heading_seo.options.h2.label"
+          },
+          {
+            "value": "h3",
+           "label": "t:global.heading_seo.options.h3.label"
+          },
+          {
+            "value": "h4",
+          "label": "t:global.heading_seo.options.h4.label"
+          },
+          {
+            "value": "h5",
+            "label": "t:global.heading_seo.options.h5.label"
+          },
+          {
+            "value": "h6",
+          "label": "t:global.heading_seo.options.h6.label"
+          }
+        ]
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+       "label": "t:global.general_label.description.label",
+      "default":"Please fill in the information below"
+    },
+     {
+      "type": "select",
+      "id": "description_size",
+      "default": "text-lg",
+       "label": "t:global.description_size.label",
+          "options": [
+            {
+              "value": "text-xl",
+              "label": "t:global.description_size.options.x-large.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:global.description_size.options.large.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:global.description_size.options.medium.label"
+            },
+            {
+              "value": "text-sm",
+              "label": "t:global.description_size.options.small.label"
+            },
+            {
+              "value": "text-xs",
+              "label": "t:global.description_size.options.x-small.label"
+
+            }
+          ]
+},
+ {
+    "type":"inline_richtext",
+    "id":"heading_side",
+   "label": "t:global.general_label.heading.label",
+    "default":"Heading"
+  },
+  {
+    "type":"richtext",
+    "id":"content_side",
+    "label": "t:global.general_label.content.label",
+    "default":"<p>Content</p>"
+  }
+]
+  }
+{% endschema %}

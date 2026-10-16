@@ -1,0 +1,93 @@
+.customer_wrapper {
+  width: 100%;
+  max-width: 31.25rem;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+}
+
+.customer_wrapper:is(.with-content) {
+  max-width: 62.5rem;
+}
+
+.customer_wrapper .button {
+  margin-top: 0.2rem;
+}
+.forgot-password {
+  margin-bottom: 1.25rem;
+}
+
+.customer_wrapper .button + a {
+  margin-top: 1rem;
+  align-self: center;
+}
+
+#recover:target ~ #login,
+#recover {
+  display: none;
+}
+
+#recover:target {
+  display: block;
+}
+.customer-head {
+  margin-bottom: 2rem;
+}
+
+.customer-content ul {
+  list-style-position: outside;
+}
+
+.customer-content ul li {
+  font-size: var(--text-small);
+  margin-bottom: 1rem;
+}
+
+.customer-content ul li svg {
+  width: 0.75rem;
+  min-width: 0.75rem;
+  height: 0.75rem;
+  fill: currentColor;
+}
+
+.customer_wrapper:is(.with-content) .customer-form-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.customer_wrapper:not(.with-content) .customer-content {
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 0.063rem solid rgb(var(--border-color));
+}
+
+.account-form {
+  flex: 1;
+}
+
+@media screen and (min-width: 992px) {
+  .customer_wrapper:is(.with-content)
+    .customer-form-wrapper
+    :is(.account-form, .customer-content) {
+    flex: 0 0 50%;
+    width: 100%;
+  }
+  .customer_wrapper:is(.with-content) .customer-form-wrapper .account-form {
+    padding-right: 4rem;
+  }
+  .customer_wrapper:is(.with-content) .customer-form-wrapper .customer-content {
+    padding-left: 4rem;
+    border-left: 0.063rem solid rgb(var(--border-color));
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .customer_wrapper:is(.with-content) .customer-content {
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 0.063rem solid rgb(var(--border-color));
+  }
+  .customer_wrapper:is(.with-content) .customer-form-wrapper :is(.account-form,.customer-content){
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}

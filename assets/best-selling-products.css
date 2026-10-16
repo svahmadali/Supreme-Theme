@@ -1,0 +1,128 @@
+.best-selling-products--card {
+  overflow: hidden;
+  position: relative;
+}
+
+.best-selling-products-media:before {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  background: rgb(
+    var(--background-color-overlay) / var(--overlay-color-opacity)
+  );
+  z-index: 1;
+}
+
+.best-selling-products--wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  padding: 3rem 0rem;
+  overflow: hidden;
+}
+
+.best-selling-products--wrapper .scrolling-text--wrapper {
+  position: absolute;
+  top: 0;
+}
+
+.best-selling-products-button {
+  position: relative;
+}
+
+.best-selling-products--slider .swiper:not(.swiper-initialized) .swiper-slide {
+  flex: 0 0 20%;
+  margin: 0 0.4rem;
+}
+
+.best-selling-products--slider {
+  position: absolute;
+  left: 0rem;
+  bottom: 0rem;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 110%, 0);
+  z-index: 1;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.best-selling-products--slider-card {
+  background-color: rgba(var(--background-color));
+  padding: 0.625rem;
+  position: relative;
+  z-index: 1;
+}
+
+#BestSellingProducts:target,
+.best-selling-products--slider.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0%, 0);
+}
+
+.selling-products-heading {
+  margin-bottom: 0.9rem;
+}
+
+.selling-products-heading .slider-controls a {
+  margin-right: 0.8rem;
+  font-size: var(--text-xsmall);
+}
+
+.best-selling-products--wrapper .scrolling-text {
+  font-size: clamp(2rem, 15vw, 5rem);
+  margin-right: 3rem;
+}
+
+@media screen and (min-width: 992px) {
+  .best-selling-products--slider-card {
+    padding: 1.875rem 3rem;
+  }
+  .selling-products-heading .slider-controls a {
+    margin-right: 1.3rem;
+    font-size: var(--text-small);
+  }
+  .best-selling-products-button {
+    position: absolute;
+    right: calc(0% + 5rem);
+    bottom: 4rem;
+  }
+}
+@media screen and (max-width: 991px) {
+  .selling-products-heading .section-title {
+    margin: 0;
+  }
+  .best-selling-products--wrapper .content-overlay {
+    margin-bottom: 1rem;
+  }
+  .best-selling-products--wrapper .page--width {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  .best-selling-products--slider .page--width {
+    padding-inline: 0rem;
+  }
+  .best-selling-products--wrapper {
+    padding: 3rem 0 1.8rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .best-selling-products--wrapper .content-overlay > div {
+    max-height: 90%;
+    overflow: hidden;
+    overflow-y: auto;
+    padding-right: 1rem;
+  }
+}

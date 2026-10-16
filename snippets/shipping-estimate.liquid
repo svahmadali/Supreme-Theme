@@ -1,0 +1,62 @@
+<cart-shipping-content id="cart-shipping" data-section="{{ section.id }}">
+  <div class="form-control-wrapper flex">
+    <div class="form-control">
+      <label class="hidden" for="shippingCountry-{{ section.id }}">
+        {{- 'general.shipping_estimate.country' | t -}}
+      </label>
+      <select
+        id="shippingCountry-{{ section.id }}"
+        name="shipping_address[country]"
+        data-address-country-select
+        data-default="{{ shop.address.country }}"
+        autocomplete="country"
+        class="input select"
+        placeholder="Country"
+        tanbindex="0"
+      >
+        {{ country_option_tags }}
+      </select>
+    </div>
+    <div class="form-control" id="shipping-state-{{ section.id }}">
+      <label class="hidden" for="shippingProvince-{{ section.id }}">
+        {{- 'general.shipping_estimate.province' | t -}}
+      </label>
+      <select
+        id="shippingProvince-{{ section.id }}"
+        name="shipping_address[province]"
+        autocomplete="address-level1"
+        class="input select"
+        tanbindex="0"
+        placeholder="State"
+        data-address-province-select
+      ></select>
+    </div>
+  </div>
+  <div class="form-control">
+    <label class="hidden" for="shippingZip-{{ section.id }}">
+      {{- 'general.shipping_estimate.zip' | t -}}
+    </label>
+    <input
+      type="text"
+      id="shippingZip-{{ section.id }}"
+      name="shipping_address[zip]"
+      class="input"
+      autocapitalize="characters"
+      autocomplete="postal-code"
+      data-address-zip
+      placeholder="{{ 'general.shipping_estimate.zip' | t }}"
+      id="ShippingCalculatorZip"
+    >
+  </div>
+  <div class="form-control">
+    <div class="form-error form-message error hidden" id="shippingErrors">
+      <div class="errors"></div>
+    </div>
+    <div id="shippingSuccess" class="form-message success hidden"></div>
+  </div>
+  <div class="form-control">
+    <button id="shippingEstimates" type="button" class="button button-sm {{ settings.button_font }}-font">
+      {{ 'general.shipping_estimate.estimate' | t }}
+    </button>
+  </div>
+</cart-shipping-content>

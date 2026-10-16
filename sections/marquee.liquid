@@ -1,0 +1,571 @@
+{{ 'marquee.css' | asset_url | stylesheet_tag }}
+<section class="scrolling-marquee-text-section relative section-gap color-{{ section.settings.color_scheme }} overflow-hidden">
+  {% if section.settings.background_image != blank %}
+    <div class="bg-image-wrapper absolute">
+      {%- liquid
+        assign height = section.settings.background_image.width | divided_by: section.settings.background_image.aspect_ratio | round
+        assign sizes = '100vw'
+        assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+      -%}
+      {{
+        section.settings.background_image
+        | image_url: width: 3840
+        | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+      }}
+    </div>
+  {% endif %}
+  <div class="scrolling-marquee-text--inner">
+    {% if section.blocks.size > 0 %}
+      {% assign limit = 10 %}
+      <div class="marque-twin--{{ section.settings.twin_marquee }}">
+        <div class="scrolling-text--card first background-{{  section.settings.background }}">
+          <marquee-text
+            class="scrolling-text--wrapper heading-font  marquee-true direction-{{ section.settings.direction }}"
+            scrolling-speed="{{ section.settings.scrolling_speed }}"
+          >
+            {% for i in (1..limit) %}
+              <div class="scrolling-text-marquee--slide">
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'text' %}
+                      {% if block.settings.text != blank %}
+                        <div
+                          id="scrolling-text-{{ block.id }}"
+                          class="scrolling-text {{ block.settings.text_style }}-text"
+                      
+                        >
+                          {{ block.settings.text }}
+                        </div>
+                      {% endif %}
+                    {% when 'image' %}
+                      {% if block.settings.image != blank %}
+                        <div
+                          class="scrolling-text--icon icon--{{ block.settings.image_size }}"
+                         
+                        >
+                          {% assign image_url = block.settings.image %}
+                          <img
+                            srcset="
+                              {%- if image_url.width >= 50 -%}{{ image_url | image_url: width: 50 }} 50w,{%- endif -%}
+                              {%- if image_url.width >= 70 -%}{{ image_url | image_url: width: 70 }} 70w,{%- endif -%}
+                              {%- if image_url.width >= 80 -%}{{ image_url | image_url: width: 80 }} 80w,{%- endif -%}
+
+                              {{ image_url | image_url }} {{ image_url.width }}w
+                            "
+                            src="{{ image_url | image_url: width: 80 }}"
+                            sizes="calc(100vw - 3rem)"
+                            alt="{{ image_url.alt | escape }}"
+                            height="{{ image_url.height }}"
+                            width="{{ image_url.width }}"
+                            loading="lazy"
+                          >
+                        </div>
+                      {% endif %}
+                    {% when 'button' %}
+                      {%- if block.settings.btn_text != blank and block.settings.btn_link != blank -%}
+                        <div class="scrolling-text-button" >
+                          <a
+                            href="{{ block.settings.btn_link }}"
+                            class="{% if block.settings.button_style == 'text' %}underline--link{% else %}button button-{{ block.settings.button_style }} button-{{ block.settings.btn_size }} hover-{{ block.settings.hover_effect }}{% endif %} {{ settings.button_font }}-font"
+                          >
+                            <span class="button-text">{{ block.settings.btn_text }}</span>
+                            {% if block.settings.button_style == 'text' %}
+                              <span class="link-arrow">
+                                <svg
+                                  width="8"
+                                  height="8"
+                                  viewBox="0 0 8 8"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H8V8H7V1.707L1.354 7.354L1 7.707L0.293 7L0.646 6.646L6.293 1H0V0Z" fill="currentColor"/>
+                                </svg>
+                              </span>
+                            {% endif %}
+                          </a>
+                        </div>
+                      {% endif %}
+                  {% endcase %}
+                {% endfor %}
+              </div>
+            {% endfor %}
+          </marquee-text>
+        </div>
+
+        <!-- Second Marquee -->
+        {% if section.settings.twin_marquee %}
+          <div class="scrolling-text--card second background-{{  section.settings.background }}">
+            <marquee-text
+              class="scrolling-text--wrapper heading-font marquee-true  {% if section.settings.direction =="left" %}direction-right{% else %}direction-left{% endif %}"
+              scrolling-speed="{{ section.settings.scrolling_speed }}"
+            >
+              {% for i in (1..limit) %}
+                <div class="scrolling-text-marquee--slide">
+                  {% for block in section.blocks %}
+                    {% case block.type %}
+                      {% when 'text' %}
+                        {% if block.settings.text != blank %}
+                          <div id="scrolling-text-{{ block.id }}" class="scrolling-text {{ block.settings.text_style }}-text">
+                            {{ block.settings.text }}
+                          </div>
+                        {% endif %}
+                      {% when 'image' %}
+                        {% if block.settings.image != blank %}
+                          <div class="scrolling-text--icon icon--{{ block.settings.image_size }}">
+                            {% assign image_url = block.settings.image %}
+                            <img
+                              srcset="
+                                {%- if image_url.width >= 50 -%}{{ image_url | image_url: width: 50 }} 50w,{%- endif -%}
+                                {%- if image_url.width >= 70 -%}{{ image_url | image_url: width: 70 }} 70w,{%- endif -%}
+                                {%- if image_url.width >= 80 -%}{{ image_url | image_url: width: 80 }} 80w,{%- endif -%}
+
+                                {{ image_url | image_url }} {{ image_url.width }}w
+                              "
+                              src="{{ image_url | image_url: width: 80 }}"
+                              sizes="calc(100vw - 3rem)"
+                              alt="{{ image_url.alt | escape }}"
+                              height="{{ image_url.height }}"
+                              width="{{ image_url.width }}"
+                              loading="lazy"
+                            >
+                          </div>
+                        {% endif %}
+                      {% when 'button' %}
+                        {%- if block.settings.btn_text != blank and block.settings.btn_link != blank -%}
+                          <div class="scrolling-text-button">
+                            <a
+                              href="{{ block.settings.btn_link }}"
+                              class="{% if block.settings.button_style == 'text' %}underline--link{% else %}button button-{{ block.settings.button_style }} button-{{ block.settings.btn_size }} hover-{{ block.settings.hover_effect }}{% endif %} {{ settings.button_font }}-font"
+                            >
+                              <span class="button-text">{{ block.settings.btn_text }}</span>
+                              {% if block.settings.button_style == 'text' %}
+                                <span class="link-arrow">
+                                  <svg
+                                    width="8"
+                                    height="8"
+                                    viewBox="0 0 8 8"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H8V8H7V1.707L1.354 7.354L1 7.707L0.293 7L0.646 6.646L6.293 1H0V0Z" fill="currentColor"/>
+                                  </svg>
+                                </span>
+                              {% endif %}
+                            </a>
+                          </div>
+                        {% endif %}
+                    {% endcase %}
+                  {% endfor %}
+                </div>
+              {% endfor %}
+            </marquee-text>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+<style>
+     #shopify-section-{{ section.id }} {
+       --section-gap-top:{{ section.settings.top_space_desktop }}px;
+       --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+
+       --background-color-overlay: {{ section.settings.overlay_color.red }} {{ section.settings.overlay_color.green }} {{ section.settings.overlay_color.blue }};
+       --overlay-color-opacity: {{ section.settings.overlay_opacity | divided_by:100.0 }};
+       --section-grid-gap:{{ section.settings.column_gap }}px;
+
+     }
+
+     #shopify-section-{{ section.id }} .second.background-solid{
+       --background-color:{{ section.settings.twin_solid_color.red }},{{ section.settings.twin_solid_color.green }},{{ section.settings.twin_solid_color.blue }};
+     }
+     #shopify-section-{{ section.id }} .second.background-gradient{
+         --gradient-marque-background:{{ section.settings.twin_gradient_color}};
+
+     }
+      #shopify-section-{{ section.id }} .first.background-solid{
+       --background-color:{{ section.settings.solid_color.red }},{{ section.settings.solid_color.green }},{{ section.settings.solid_color.blue }};
+     }
+     #shopify-section-{{ section.id }} .first.background-gradient{
+         --gradient-marque-background:{{ section.settings.gradient_color}};
+
+     }
+
+
+  {% for block in section.blocks %}
+
+       #shopify-section-{{ section.id }} #scrolling-text-{{ block.id }}{
+         --text-color:{{ block.settings.text_color.red }},{{ block.settings.text_color.green }},{{ block.settings.text_color.blue }};
+         font-size:{{ block.settings.desktop_font_size }}px;
+       }
+       #shopify-section-{{ section.id }} #scrolling-text-{{ block.id }}.highlight-text{
+         --text-color:{{ block.settings.text_color.red }},{{ block.settings.text_color.green }},{{ block.settings.text_color.blue }};
+         font-size:{{block.settings.desktop_font_size}}px;
+       }
+        #shopify-section-{{ section.id }} #scrolling-text-{{ block.id }}.gradient-text{
+          --gradient-text:{{ block.settings.gradient_text }};
+         font-size:{{block.settings.desktop_font_size}}px;
+       }
+
+
+     {% endfor %}
+     @media only screen and (max-width:767px) {
+       #shopify-section-{{ section.id }}.shopify-section{
+         --section-gap-top:{{ section.settings.top_space_mobile }}px;
+         --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+        --section-grid-gap:{{ section.settings.column_gap_mobile }}px;
+       }
+
+   {% for block in section.blocks %}
+
+       #shopify-section-{{ section.id }} #scrolling-text-{{ block.id }},#shopify-section-{{ section.id }} #scrolling-text-{{ block.id }}.highlight-text, #shopify-section-{{ section.id }} #scrolling-text-{{ block.id }}.gradient-text{
+         font-size:{{ block.settings.mobile_font_size}}px;
+       }
+
+     {% endfor %}
+     }
+</style>
+{% schema %}
+{
+  "name": "t:sections.marquee.name",
+  "class": "section-marquee",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:global.color_scheme.label",
+      "default": "scheme-3"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:global.general_label.background_image.label"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "t:sections.marquee.settings.direction.label",
+      "options": [
+        {
+          "value": "right",
+          "label": "t:sections.marquee.settings.direction.options.right.label"
+        },
+        {
+          "value": "left",
+          "label": "t:sections.marquee.settings.direction.options.left.label"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "scrolling_speed",
+      "label": "t:sections.marquee.settings.scrolling_speed.label",
+      "min": 1,
+      "max": 20,
+      "unit": "s",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "t:sections.marquee.settings.column_gap.label",
+      "min": 0,
+      "max": 50,
+      "default": 20,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "column_gap_mobile",
+      "label": "t:sections.marquee.settings.column_gap_mobile.label",
+      "min": 0,
+      "max": 50,
+      "default": 20,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "twin_marquee",
+      "label": "t:sections.marquee.settings.twin_marquee.label"
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "t:sections.marquee.settings.background.label",
+      "options": [
+        {
+          "label": "t:sections.marquee.settings.background.options.solid.label",
+          "value": "solid"
+        },
+        {
+          "label": "t:sections.marquee.settings.background.options.gradient.label",
+          "value": "gradient"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:global.header.color.content"
+    },
+    {
+      "type": "color",
+      "id": "solid_color",
+      "label": "t:sections.marquee.settings.solid_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "gradient_color",
+      "label": "t:sections.marquee.settings.gradient_color.label"
+    },
+    {
+      "type": "color",
+      "id": "twin_solid_color",
+      "label": "t:sections.marquee.settings.twin_solid_color.label"
+    },
+    {
+      "type": "color_background",
+      "id": "twin_gradient_color",
+      "label": "t:sections.marquee.settings.twin_gradient_color.label"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "default": "#000000",
+      "label": "t:global.general_label.overlay_color.label"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "t:global.general_label.overlay_opacity.label",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "t:global.section_spacing.content"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "t:global.section_spacing.top_space_desktop.label",
+      "default": 40,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "t:global.section_spacing.bottom_space_desktop.label",
+      "default": 40,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "t:global.section_spacing.top_space_mobile.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "t:global.section_spacing.bottom_space_mobile.label",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "t:sections.marquee.blocks.text.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "t:global.general_label.text.label",
+          "default": "Scrolling text"
+        },
+        {
+          "type": "number",
+          "id": "desktop_font_size",
+          "label": "t:sections.marquee.blocks.text.settings.desktop_font_size.label",
+          "default": 40
+        },
+        {
+          "type": "number",
+          "id": "mobile_font_size",
+          "label": "t:sections.marquee.blocks.text.settings.mobile_font_size.label",
+          "default": 20
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "label": "t:sections.marquee.blocks.text.settings.text_style.label",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.marquee.blocks.text.settings.text_style.options.none.label"
+            },
+            {
+              "value": "highlight",
+              "label": "t:sections.marquee.blocks.text.settings.text_style.options.highlight.label"
+            },
+            {
+              "value": "gradient",
+              "label": "t:sections.marquee.blocks.text.settings.text_style.options.gradient.label"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:global.header.color.content"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "t:global.general_label.text.label"
+        },
+        {
+          "type": "color_background",
+          "id": "gradient_text",
+          "label": "t:sections.marquee.blocks.text.settings.gradient_text.label"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "t:sections.marquee.blocks.image.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:global.general_label.image.label"
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+          "label": "t:global.image_size_option.label",
+          "default": "medium",
+          "options": [
+            {
+              "value": "small",
+              "label": "t:global.image_size_option.small.label"
+            },
+            {
+              "value": "medium",
+              "label": "t:global.image_size_option.medium.label"
+            },
+            {
+              "value": "large",
+              "label": "t:global.image_size_option.large.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.marquee.blocks.button.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "t:global.general_label.text.label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "t:global.general_label.link.label"
+        },
+        {
+          "type": "select",
+          "id": "btn_size",
+          "default": "sm",
+          "label": "t:global.btn_size.label",
+          "options": [
+            {
+              "label": "t:global.btn_size.options.xsmall.label",
+              "value": "xsm"
+            },
+            {
+              "label": "t:global.btn_size.options.small.label",
+              "value": "sm"
+            },
+            {
+              "label": "t:global.btn_size.options.medium.label",
+              "value": "md"
+            },
+            {
+              "label": "t:global.btn_size.options.large.label",
+              "value": "lg"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:global.button_style.label",
+          "options": [
+            {
+              "label": "t:global.button_style.options.solid.label",
+              "value": "solid"
+            },
+            {
+              "label": "t:global.button_style.options.outline.label",
+              "value": "outline"
+            },
+            {
+              "label": "t:global.button_style.options.text.label",
+              "value": "text"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "hover_effect",
+          "label": "t:global.hover_effect.label",
+          "options": [
+            {
+              "label": "t:global.hover_effect.options.standard.label",
+              "value": "standard"
+            },
+            {
+              "label": "t:global.hover_effect.options.none.label",
+              "value": "none"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.marquee.presets.name",
+      "blocks": [
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

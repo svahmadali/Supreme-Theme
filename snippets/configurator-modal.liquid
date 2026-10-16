@@ -1,0 +1,15 @@
+<div class="configurator-modal" role="dialog" aria-labelledby="configurator-main-menu-title" aria-modal="false">
+  <h2 id="configurator-main-menu-title" class="configurator-modal-title">{{ modal_title }}</h2>
+
+  <div class="configurator-menu-items" role="group" aria-label="Main menu items">
+    {% for item in menu_items %}
+      {% render 'configurator-pill-button', label: item, index: forloop.index0, selected: false %}
+    {% endfor %}
+  </div>
+
+  <div class="configurator-modal-separator"></div>
+
+  <button type="button" class="configurator-continue-button" data-configurator-continue>
+    {{ continue_label }}
+  </button>
+</div>

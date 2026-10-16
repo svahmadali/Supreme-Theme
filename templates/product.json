@@ -1,0 +1,607 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "vendor_e7qT4h": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title_8DjNPp": {
+          "type": "title",
+          "settings": {
+            "title_size": "h4"
+          }
+        },
+        "sku_V4wYid": {
+          "type": "sku",
+          "settings": {}
+        },
+        "text_PdWCLE": {
+          "type": "text",
+          "settings": {
+            "text": "Designed for style, built for comfort — this piece combines timeless design with premium materials to elevate your everyday wardrobe."
+          }
+        },
+        "price_q7VmNW": {
+          "type": "price",
+          "settings": {
+            "hide_shipping_content": false
+          }
+        },
+        "variant_hnkUdE": {
+          "type": "variant",
+          "settings": {
+            "enable_size_chart": true,
+            "size_chart_text": "Size chart",
+            "size_chart": "faqs-page"
+          }
+        },
+        "quantity_zbkraN": {
+          "type": "quantity",
+          "settings": {}
+        },
+        "text_icon_niXw8D": {
+          "type": "text_icon",
+          "settings": {
+            "text_1": "Delivered within 2-5 days",
+            "text_2": "30 days return policy",
+            "text_3": "Customer rating",
+            "text_4": "High-quality beige suede"
+          }
+        },
+        "pickup_rQkdFC": {
+          "type": "pickup",
+          "settings": {}
+        },
+        "button_C7ydG8": {
+          "type": "button",
+          "settings": {
+            "dynamic_checkout_btn": true,
+            "show_recipient_form": true
+          }
+        },
+        "collapsible_content_xDHXhz": {
+          "type": "collapsible_content",
+          "settings": {
+            "type_of_content": "option1",
+            "open_first_content": true,
+            "show_description": false,
+            "description_heading": "Description",
+            "heading_1": "DELIVERY & RETURNS",
+            "description_1": "<p><strong>Shipping:</strong><br/>We offer fast and reliable delivery across the country. Orders are typically processed within 1–2 business days.<br/><br/><strong>Returns:</strong><br/>Not quite right, No problem. You can return any unworn, unused items within 14 days of delivery for a full refund or exchange. To start a return, visit our <a href=\"https://adore-elite.myshopify.com/\" target=\"_blank\" title=\"https://adore-elite.myshopify.com/\">Arore-elite</a></p>",
+            "pageid_1": "contact",
+            "heading_2": "PERFORMANCE",
+            "description_2": "<p>Our products are crafted with precision to ensure durability, comfort, and timeless style. Whether you're wearing them on the move or at rest, expect materials that breathe, fit perfectly, and hold their shape over time. Designed for everyday excellence, tested for real-life wear.</p>",
+            "pageid_2": "about-us",
+            "heading_3": "ASK A QUESTION",
+            "description_3": "<p>Need help choosing the right size? Curious about fit, fabric, or care?<br/><br/>We’re here for you. Reach out to us through our live chat or email support and get a response within 24 hours.<br/><br/><strong>Customer support hours:</strong> Mon–Fri, 10am–6pm IST</p>",
+            "pageid_3": "contact"
+          }
+        },
+        "share_epQTL7": {
+          "type": "share",
+          "settings": {}
+        },
+        "complementary_products_C3NhHU": {
+          "type": "complementary_products",
+          "settings": {
+            "heading": "YOU MAY ALSO LIKE",
+            "products_count": 9
+          }
+        },
+        "description_tV68wW": {
+          "type": "description",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor_e7qT4h",
+        "title_8DjNPp",
+        "sku_V4wYid",
+        "text_PdWCLE",
+        "price_q7VmNW",
+        "variant_hnkUdE",
+        "quantity_zbkraN",
+        "text_icon_niXw8D",
+        "pickup_rQkdFC",
+        "button_C7ydG8",
+        "collapsible_content_xDHXhz",
+        "share_epQTL7",
+        "complementary_products_C3NhHU",
+        "description_tV68wW"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_layout": "full",
+        "enable_stickyProduct": true,
+        "product_template_type": "template1",
+        "image_size": "adapt",
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      }
+    },
+    "parallax_fHNJCC": {
+      "type": "parallax",
+      "blocks": {
+        "heading_pbUerB": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Heading",
+            "heading_size": "h1",
+            "heading_seo": "h1"
+          }
+        },
+        "description_8EN8xd": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "description": "Tell your brand's story through images",
+            "description_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_pbUerB",
+        "description_8EN8xd"
+      ],
+      "name": "Parallax",
+      "settings": {
+        "color_scheme": "",
+        "heading": "",
+        "heading_size": "h2",
+        "enable_marquee": true,
+        "direction": "left",
+        "scrolling_speed": 15,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "collection_list_fpfBnG": {
+      "type": "collection-list",
+      "name": "Collection list",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "Hottest Deals",
+        "heading_size": "h5",
+        "heading_seo": "h2",
+        "description": "We've crafted collections for every mood, moment, and muse. Discover what speaks to your style.",
+        "description_size": "text-xl",
+        "content_alignment": "center",
+        "collection": [],
+        "image_ratio": "portrait",
+        "card_style": "Square",
+        "text_alignment": "center",
+        "collection_text_size": "text-lg",
+        "number_item": 6,
+        "mobile_item_per_row": "2",
+        "column_gap": 1,
+        "column_gap_mobile": 2,
+        "top_space_desktop": 120,
+        "bottom_space_desktop": 120,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "slideshow_KkTWWd": {
+      "type": "slideshow",
+      "blocks": {
+        "image_slide_GRpKTr": {
+          "type": "image_slide",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "collection_list_enable": false,
+            "collection_list": [],
+            "content_width": "medium",
+            "content_alignment": "left",
+            "content_position": "bottom--left",
+            "content_position_mobile": "bottom--left",
+            "heading": "Unspoken Style, Boldly Worn",
+            "heading_size": "h4",
+            "heading_seo": "h3",
+            "description": "Fashion is more than just clothing it's the language of presence. This look tells a story of confidence, contrast, and connection. With bold textures, unexpected color pairings, and a spirit of unapologetic individuality.",
+            "description_size": "text-lg",
+            "btn_text": "Shop now",
+            "btn_link": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "btn_text_2": "Shop now",
+            "btn_link_2": "",
+            "btn_size_2": "sm",
+            "button_style_2": "solid",
+            "hover_effect_2": "standard",
+            "overlay_color": "#000000",
+            "overlay_opacity": 3
+          }
+        }
+      },
+      "block_order": [
+        "image_slide_GRpKTr"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "slide_style": "single",
+        "image_height": "750",
+        "mobile_image_height": "400",
+        "autoplay": false,
+        "autoplay_interval": 3,
+        "slide_gap": 10,
+        "desktop_alignment": "right",
+        "mobile_alignment": "center",
+        "icon_color": "#ffffff",
+        "icon_background": "#000000"
+      }
+    },
+    "multi_image_with_text_eN4zCF": {
+      "type": "multi-image-with-text",
+      "blocks": {
+        "heading_TnKwWT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Power Prints, Luxe Layers, Glam Mood",
+            "heading_size": "h4",
+            "heading_seo": "h4"
+          }
+        },
+        "description_LFxQG7": {
+          "type": "description",
+          "settings": {
+            "description": "Step into a world where fashion meets intention. Our collections are crafted for the modern wardrobe — blending comfort, confidence, and style in every piece. Whether you're dressing for the everyday or defining your next signature look, our designs are made to adapt, empower, and inspire. From timeless silhouettes to trend-forward essentials, each item is a reflection of thoughtful craftsmanship and effortless expression.\n\nBecause fashion isn't just about what you wear — it's about how it makes you feel. And we’re here to make you feel your best, every single day.",
+            "description_size": "text-xl"
+          }
+        },
+        "button_EJDJLB": {
+          "type": "button",
+          "settings": {
+            "btn_text": "SHOP NOW",
+            "btn_link": "shopify://collections/all",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard"
+          }
+        }
+      },
+      "block_order": [
+        "heading_TnKwWT",
+        "description_LFxQG7",
+        "button_EJDJLB"
+      ],
+      "name": "Multiimage with text",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "content_alignment": "left",
+        "column_gap": 50,
+        "column_gap_mobile": 20,
+        "top_space_desktop": 150,
+        "bottom_space_desktop": 120,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    },
+    "countdown_UHGndE": {
+      "type": "countdown",
+      "name": "Countdown",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "enable_countdown": true,
+        "countdown_layout": "horizontal",
+        "product_list_enable": true,
+        "product_list": [],
+        "date": "2025/11/01",
+        "heading": "Hurry Now!",
+        "heading_size": "h2",
+        "heading_seo": "h1",
+        "description": "Your favorites at unbeatable prices — but only for a limited time. Act fast!",
+        "description_size": "text-xl",
+        "btn_text": "GRAB THE DEAL",
+        "btn_link": "shopify://collections/all",
+        "btn_size": "md",
+        "button_style": "solid",
+        "hover_effect": "standard",
+        "top_space_desktop": 130,
+        "bottom_space_desktop": 125,
+        "top_space_mobile": 50,
+        "bottom_space_mobile": 40
+      }
+    },
+    "marquee_bh6Pwd": {
+      "type": "marquee",
+      "blocks": {
+        "text_tCjBWy": {
+          "type": "text",
+          "settings": {
+            "text": "Up to 50% Off  ——  Shop the Sale Collection Today →",
+            "desktop_font_size": 20,
+            "mobile_font_size": 16,
+            "text_style": "none",
+            "text_color": "#ffffff",
+            "gradient_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_tCjBWy"
+      ],
+      "name": "Marquee",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "direction": "left",
+        "scrolling_speed": 15,
+        "column_gap": 10,
+        "column_gap_mobile": 11,
+        "twin_marquee": true,
+        "background": "solid",
+        "solid_color": "#1c1c1c",
+        "gradient_color": "",
+        "twin_solid_color": "#6e558f",
+        "twin_gradient_color": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 50,
+        "top_space_desktop": 150,
+        "bottom_space_desktop": 40,
+        "top_space_mobile": 60,
+        "bottom_space_mobile": 40
+      }
+    },
+    "rich_text_Nkffne": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_YwQKCQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bold Looks, Real Stories",
+            "heading_size": "h3",
+            "heading_seo": "h2"
+          }
+        },
+        "description_PVtV7n": {
+          "type": "description",
+          "settings": {
+            "description": "<p>At the heart of our brand is a belief in bold expression, effortless confidence, and timeless design. Every piece is crafted to empower — blending modern silhouettes with versatile wearability. We celebrate individuality, diversity, and the art of showing up as your truest self.</p>",
+            "description_size": "lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YwQKCQ",
+        "description_PVtV7n"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "content_alignment": "left",
+        "option_style": "collage",
+        "content_width": "medium",
+        "top_space_desktop": 105,
+        "bottom_space_desktop": 100,
+        "top_space_mobile": 10,
+        "bottom_space_mobile": 50
+      }
+    },
+    "media_grid_yVAFVb": {
+      "type": "media-grid",
+      "blocks": {
+        "grid_EGRBYC": {
+          "type": "grid",
+          "settings": {
+            "video_on_hover": false,
+            "heading": "Coastal Ease",
+            "heading_size": "h4",
+            "heading_seo": "h5",
+            "description": "Effortless style meets seaside calm. Breezy silhouettes perfect for golden hours and everyday minimal looks.",
+            "description_size": "text-lg",
+            "content_width": "medium",
+            "content_position": "bottom--left",
+            "desktop_alignment": "left",
+            "content_position_mobile": "bottom--left",
+            "mobile_alignment": "left",
+            "btn_text": "Shop now",
+            "btn_link": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "column": 3,
+            "row": 2,
+            "row_mobile": "2",
+            "column_mobile": "1",
+            "text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 15
+          }
+        },
+        "grid_iVPfip": {
+          "type": "grid",
+          "settings": {
+            "video_on_hover": false,
+            "heading": "Modern Style",
+            "heading_size": "h4",
+            "heading_seo": "h5",
+            "description": "Warm tones and bold stripes create a smart, versatile edge for cool days and elevated casual dressing.",
+            "description_size": "text-lg",
+            "content_width": "medium",
+            "content_position": "bottom--left",
+            "desktop_alignment": "left",
+            "content_position_mobile": "bottom--left",
+            "mobile_alignment": "left",
+            "btn_text": "Shop now",
+            "btn_link": "",
+            "btn_size": "sm",
+            "button_style": "solid",
+            "hover_effect": "standard",
+            "column": 3,
+            "row": 2,
+            "row_mobile": "2",
+            "column_mobile": "1",
+            "text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 15
+          }
+        }
+      },
+      "block_order": [
+        "grid_EGRBYC",
+        "grid_iVPfip"
+      ],
+      "name": "Media grid",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "fullwidth": true,
+        "grid_gap": 4,
+        "desktop_height": "400",
+        "mobile_height": "450",
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      }
+    },
+    "collapsible_content_L3mMA3": {
+      "type": "collapsible-content",
+      "blocks": {
+        "content_jAYR8z": {
+          "type": "content",
+          "settings": {
+            "heading": "What is your return policy?",
+            "description": "<p>We accept returns within 30 days of delivery for unused, unworn items with original tags. Refunds are processed once the item is received and inspected. Return shipping costs may apply.</p>"
+          }
+        },
+        "content_ahaB9R": {
+          "type": "content",
+          "settings": {
+            "heading": "When Will I Get My Order?",
+            "description": "<p>Orders are processed within 1–3 business days and shipped with standard delivery timelines. Most domestic orders arrive within 5–7 days. You’ll receive a tracking link as soon as your order ships.</p>"
+          }
+        },
+        "content_agWFLQ": {
+          "type": "content",
+          "settings": {
+            "heading": "Do you ship internationally?",
+            "description": "<p>Yes, we offer international shipping to most countries. Delivery times and shipping fees vary based on your location. Customs duties may apply depending on your country’s regulations and are the customer’s responsibility.</p>"
+          }
+        },
+        "content_tXrjfa": {
+          "type": "content",
+          "settings": {
+            "heading": "How can I track my order?",
+            "description": "<p>Once your order ships, we’ll email you a tracking link to monitor its progress. You can also log into your account anytime to view order details and shipping updates in real time.</p>"
+          }
+        },
+        "content_zcBkdP": {
+          "type": "content",
+          "settings": {
+            "heading": "Can I cancel or change order?",
+            "description": "<p>Orders can be changed or canceled within a short window after placement. Please contact us as soon as possible. Once shipped, changes are not possible, but we’ll help with returns if needed.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "content_jAYR8z",
+        "content_ahaB9R",
+        "content_agWFLQ",
+        "content_tXrjfa",
+        "content_zcBkdP"
+      ],
+      "name": "Collapsible content",
+      "settings": {
+        "color_scheme": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_seo": "h2",
+        "description": "",
+        "description_size": "text-lg",
+        "open_first": true,
+        "content_position": "top",
+        "top_space_desktop": 70,
+        "bottom_space_desktop": 70,
+        "top_space_mobile": 25,
+        "bottom_space_mobile": 30
+      }
+    },
+    "before_after_zjbJjM": {
+      "type": "before-after",
+      "name": "Before after",
+      "settings": {
+        "color_scheme": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_seo": "h2",
+        "description": "",
+        "description_size": "text-lg",
+        "image_height": "750",
+        "mobile_image_height": "350",
+        "btn_text": "Shop now",
+        "btn_link": "",
+        "btn_size": "sm",
+        "button_style": "solid",
+        "hover_effect": "standard",
+        "layout": "fullwidth",
+        "before_text": "BEFORE",
+        "before_content": "✦ Casual layers with minimal impact.",
+        "after_text": "AFTER",
+        "after_content": "✦ Elevated, and ready to turn heads.",
+        "top_space_desktop": 0,
+        "bottom_space_desktop": 0,
+        "top_space_mobile": 0,
+        "bottom_space_mobile": 0
+      }
+    },
+    "featured_collection_bfaGbW": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "color_scheme": "",
+        "enable_slider": true,
+        "enable_card": false,
+        "heading": "you may also like",
+        "heading_size": "h5",
+        "heading_seo": "h6",
+        "description": "",
+        "description_size": "text-base",
+        "show_collection_title": false,
+        "collection": "",
+        "image_size": "portrait",
+        "products_to_show": 8,
+        "column_per_row": 6,
+        "mobile_item_per_row": "2",
+        "column_gap": 3,
+        "column_gap_mobile": 4,
+        "top_space_desktop": 75,
+        "bottom_space_desktop": 75,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main-product",
+    "parallax_fHNJCC",
+    "collection_list_fpfBnG",
+    "slideshow_KkTWWd",
+    "multi_image_with_text_eN4zCF",
+    "countdown_UHGndE",
+    "marquee_bh6Pwd",
+    "rich_text_Nkffne",
+    "media_grid_yVAFVb",
+    "collapsible_content_L3mMA3",
+    "before_after_zjbJjM",
+    "featured_collection_bfaGbW"
+  ]
+}

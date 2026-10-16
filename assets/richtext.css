@@ -1,0 +1,27 @@
+.rich-text {
+  display: grid;
+  align-items: flex-start;
+  margin: 0rem auto;
+}
+
+.rich-text--heading {
+  margin: 0;
+}
+
+@media screen and (min-width: 1025px) {
+  .rich-text {
+    grid-gap: 0.8rem;
+  }
+  .rich-text-with-collage {
+    grid-template-columns: 1fr 1fr;
+  }
+  .rich-text-with-collage > div {
+    padding: 0rem 1rem;
+  }
+  .rich-text-collage--wrapper .rich-text--button {
+    margin-top: 2.75rem;
+  }
+  .rich-text-with-collage .rich-text--text p {
+    margin-top: 0;
+  }
+}

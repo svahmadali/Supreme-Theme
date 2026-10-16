@@ -1,0 +1,85 @@
+{% liquid
+   assign product_variant = product.selected_or_first_available_variant
+  assign preOrder = false
+  if settings.enable_preorder and product_variant.inventory_quantity <= 0 and product_variant.inventory_policy == 'continue'
+    assign preOrder = true
+  endif
+%}
+<{% if product != blank %}product-form{% else %}div{% endif %}
+  class="product-form {% if settings.mobile_hide_varaint or settings.mobile_hide_switch_varaint %}mobile-hidden{% endif %}"
+  data-section-id="{{ section.id }}"
+>
+  <div class="product-form--error-message-wrapper" role="alert" hidden="">
+    <span class="product-form--error-message"></span>
+  </div>
+  {% if product != blank %}
+    {%- form 'product',
+      product,
+      id: product_form_id,
+      class: 'form main-product-form',
+      novalidate: 'novalidate',
+      data-type: 'add-to-cart-form'
+    -%}
+      <input
+        type="hidden"
+        class="product-variant-id"
+        name="id"
+        value="{{ product.selected_or_first_available_variant.id  }}"
+    
+      >
+      <div class="item-checkout-buttons">
+        <button
+          type="submit"
+          name="add"
+          aria-label="add to cart"
+          class="quick-add {{ class }}"
+          {% if settings.enable_cartdrawer %}
+            data-add-to-cart
+          {% endif %}
+    
+          {% unless product_variant.available %}
+            disabled
+          {% endunless %}
+          id="add-to-cart-{{section.id }}-{{ product.id }}-{{ 'now' | date: '%N' | modulo: 1000 }}"
+          data-card-Id="add-to-cart-{{section.id  }}-{{ product.id }}"
+          data-addtocart-main
+        >
+         <span data-add-to-cart-text >  
+            {% if cartdrawericon == true %}
+               <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M6.2085 1.00049V11.4175M1 6.20898H11.417" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"></path>
+                          </svg>
+              {% else %}
+                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14.01 3H11.76V1.75C11.76 0.79 10.98 0 10.01 0H6C5.04 0 4.25 0.78 4.25 1.75V3H2C0.9 3 0 3.89 0 5V14C0 15.1 0.89 16 2 16H14C15.1 16 16 15.11 16 14V5C16 3.9 15.11 3 14 3H14.01ZM5.76 1.75C5.76 1.61 5.87 1.5 6.00997 1.5H10.02C10.16 1.5 10.27 1.61 10.27 1.75V3H5.77V1.75H5.76ZM14.51 14.01C14.51 14.28 14.29 14.51 14.01 14.51H2.01C1.74 14.51 1.51 14.29 1.51 14.01V5.01C1.51 4.74 1.73 4.51 2.01 4.51H4.26V6.01H5.76V4.51H10.26V6.01H11.76V4.51H14.01C14.28 4.51 14.51 4.73 14.51 5.01V14.01Z" fill="currentColor"/>
+                </svg>
+            {% endif %}
+          </span>
+          <span class="button-loader loading--spinner hidden">
+            <svg width="25" height="25" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="6" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+                <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"/>
+              </circle>
+            </svg>
+          </span>
+        </button>
+      </div>
+    {% endform %}
+  {% else %}
+    <div class="item-checkout-buttons checkout-btn ">
+      <button  class="quick-add" disabled aria-label="quick add">
+       <span data-add-to-cart-text >          
+             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.01 3H11.76V1.75C11.76 0.79 10.98 0 10.01 0H6C5.04 0 4.25 0.78 4.25 1.75V3H2C0.9 3 0 3.89 0 5V14C0 15.1 0.89 16 2 16H14C15.1 16 16 15.11 16 14V5C16 3.9 15.11 3 14 3H14.01ZM5.76 1.75C5.76 1.61 5.87 1.5 6.00997 1.5H10.02C10.16 1.5 10.27 1.61 10.27 1.75V3H5.77V1.75H5.76ZM14.51 14.01C14.51 14.28 14.29 14.51 14.01 14.51H2.01C1.74 14.51 1.51 14.29 1.51 14.01V5.01C1.51 4.74 1.73 4.51 2.01 4.51H4.26V6.01H5.76V4.51H10.26V6.01H11.76V4.51H14.01C14.28 4.51 14.51 4.73 14.51 5.01V14.01Z" fill="currentColor"/>
+            </svg>
+          </span>
+      </button>
+    </div>
+  {% endif %}
+</{% if product != blank %}product-form{% else %}div{% endif %}>

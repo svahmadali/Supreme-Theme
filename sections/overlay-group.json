@@ -1,0 +1,139 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "aside",
+  "name": "Overlay groups",
+  "sections": {
+    "quick-view": {
+      "type": "quick-view",
+      "blocks": {
+        "title_rp3zzw": {
+          "type": "title",
+          "settings": {
+            "title_size": "h6"
+          }
+        },
+        "text_NKFqMP": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        },
+        "sku_KaDFCi": {
+          "type": "sku",
+          "settings": {}
+        },
+        "price_y4XUKz": {
+          "type": "price",
+          "settings": {
+            "hide_shipping_content": false
+          }
+        },
+        "variant_FAamm6": {
+          "type": "variant",
+          "settings": {
+            "enable_size_chart": false,
+            "size_chart_text": "Size chart",
+            "size_chart": ""
+          }
+        },
+        "quantity_FijWBb": {
+          "type": "quantity",
+          "settings": {}
+        },
+        "button_fA6qGR": {
+          "type": "button",
+          "settings": {
+            "dynamic_checkout_btn": true,
+            "show_recipient_form": false
+          }
+        }
+      },
+      "block_order": [
+        "title_rp3zzw",
+        "text_NKFqMP",
+        "sku_KaDFCi",
+        "price_y4XUKz",
+        "variant_FAamm6",
+        "quantity_FijWBb",
+        "button_fA6qGR"
+      ],
+      "settings": {}
+    },
+    "age-verification": {
+      "type": "age-verification",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-3",
+        "enable_age_verification": true,
+        "background_image": "shopify://shop_images/Best_Seller_products.jpg",
+        "age_verification_heading": "You Must Be 18+ to Continue",
+        "heading_size": "h2",
+        "heading_seo": "h2",
+        "age_verification_content": "You confirm that you meet the minimum legal age requirement in your region. If you are underage, please exit the site immediately.",
+        "decline_text": "NO, I'M NOT",
+        "approve_text": "YES, I AM",
+        "decline_heading": "Return when you're older.",
+        "decline_subheading": "We apologize, but you are too young to watch this content. Later, try again.",
+        "age_decline_button_text": "Oops, I entered incorrectly",
+        "content_position": "top--left",
+        "content_position_mobile": "middle--center",
+        "agepopup_cookie_set": 1
+      }
+    },
+    "login": {
+      "type": "main-login-drawer",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "Login account",
+        "heading_size": "h5",
+        "heading_seo": "h1",
+        "description": "Please fill in the information below",
+        "description_size": "text-base",
+        "heading_side": "Enjoy exclusive perks",
+        "content_side": "<p>✔️ Access Members-Only Products<br/><br/>✔️ Enjoy Premium Support<br/><br/>✔️ Unlock Personalized Experiences</p>"
+      }
+    },
+    "register": {
+      "type": "main-register-drawer",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "CREATE ACCOUNT",
+        "heading_size": "h4",
+        "heading_seo": "h1",
+        "description": "Please fill in the information below",
+        "description_size": "text-lg",
+        "heading_side": "Why sign up?",
+        "content_side": "<p>✔️ Early Access to New Drops<br/><br/>✔️ Seamless Checkout & Order Tracking<br/><br/>✔️ Personalized Recommendations</p>"
+      }
+    },
+    "newsletter-popup": {
+      "type": "newsletter-popup",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "newsletter_enable": true,
+        "enable_social_media": true,
+        "newsletter_img": "shopify://shop_images/menu-collection-style3.jpg",
+        "newsletter_subheading": "50% OFF",
+        "newsletter_heading": "Unlock Exclusive ADORE Vibes",
+        "newsletter_content": "<p>Subscribe now for latest updates, early releases, and members-only perks.</p>",
+        "popup_cookie_set": 4
+      }
+    }
+  },
+  "order": [
+    "quick-view",
+    "age-verification",
+    "login",
+    "register",
+    "newsletter-popup"
+  ]
+}

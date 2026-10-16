@@ -1,0 +1,295 @@
+slideshow-element {
+  display: block;
+}
+
+.slideshow-media {
+  overflow: hidden;
+}
+
+slideshow-picture {
+  display: block;
+  position: relative;
+}
+
+slideshow-picture:after {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(
+    var(--background-color-overlay) / var(--overlay-color-opacity)
+  );
+}
+
+.slideshow-img {
+  background-size: cover;
+  background-position: center;
+}
+
+.slideshow-media :is(.slideshow-image, .placeholder-svg) {
+  display: block;
+  transform: translate3d(0px, 0px, 0px) scale3d(1.3, 1.3, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform-style: preserve-3d;
+  transition: all 2s ease-in-out;
+}
+
+.slideshow-media:is(.swiper-slide-active)
+  :is(.slideshow-image, .placeholder-svg) {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transition: all 0.9s ease-in-out;
+}
+
+.slideshow--heading {
+  position: sticky;
+  top: 0rem;
+}
+
+.slideshow-content--wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  bottom: 0rem;
+  left: 0rem;
+  padding: 2rem 0rem;
+}
+
+.slide-list-collections .slideshow-content--wrapper {
+  padding-bottom: 10rem;
+}
+
+.slideshow-content--wrapper > .page--width {
+  height: 100%;
+}
+
+.slideshow-type--double *:is(.page--width, .slide-collections--list) {
+  padding-inline: 2rem;
+}
+
+.slideshow-content > div {
+  padding-inline: 0.1rem;
+  max-height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.slideshow-title {
+  word-break: break-word;
+}
+
+.slideshow-button-wrapper {
+  margin-top: 0.6rem;
+  margin-bottom: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.3rem;
+}
+
+.slidershow .play-button {
+  position: absolute;
+  left: calc(3rem * 3 + 0.5rem);
+  bottom: 2rem;
+  display: flex;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.slide-collections--item:not(:hover) .underline--link {
+  background: transparent;
+}
+
+.slide-collections--item:hover .underline--link .link-arrow {
+  transform: none;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.4rem;
+}
+
+.slide-collections--item .underline--link:before {
+  top: 0.48rem;
+}
+
+.slideshow-navigation {
+  position: absolute;
+  bottom: 2rem;
+  left: 0rem;
+  right: 0rem;
+  padding-inline: 2rem;
+  margin: 0 auto;
+}
+
+.slidershow .swiper-button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  top: unset;
+  left: unset;
+  margin: 0rem 0.625rem;
+  background: transparent;
+  border: 0.0625rem solid rgb(var(--arrow-color));
+}
+.slidershow .swiper-button:hover {
+  background: rgb(var(--arrow-color));
+}
+
+.slideshow-content .scrolling-text {
+  color: rgba(var(--text-color) / 0.7);
+  font-size: clamp(2rem, 15vw, 13.4rem);
+}
+
+.slide-collections--list {
+  position: absolute;
+  bottom: 4rem;
+  left: 0rem;
+  right: 0rem;
+  z-index: 1;
+  padding-inline: 2rem;
+}
+
+.slide-collections--wrapper {
+  display: flex;
+  grid-gap: 1rem;
+  overflow-x: auto;
+  padding: 0.6rem 0rem;
+}
+
+.slide-collections--item {
+  display: inline-flex;
+  align-items: center;
+  grid-gap: 0.813rem;
+  background-color: rgba(var(--foreground-color), 0.12);
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+  padding: 0.625rem;
+  border-radius: 0.375rem;
+  flex: 0 0 auto;
+  max-width: 13.75rem;
+  transform: translateY(0em);
+  transition: all 0.5s;
+}
+.slide-collections--list .slide-collections--item:hover {
+  transform: translateY(-0.25em);
+  transition: all 0.5s;
+}
+.slide-coll-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.75rem;
+  min-width: 3.75rem;
+  height: 3.75rem;
+  overflow: hidden;
+  border-radius: 0.36rem;
+}
+
+.slide-coll-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-collections--text p {
+  margin-bottom: 0rem;
+  word-break: break-word;
+}
+.slide-collections--text a {
+  font-size: var(--text-small);
+}
+
+@media screen and (min-width: 992px) {
+  .slideshow-img .mobile-img {
+    display: none;
+  }
+  .slideshow-navigation {
+    padding-block: max(
+      3.3rem,
+      50vw - var(--scrollbar-width, 0rem) / 2 - var(--page-width) / 2
+    );
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    gap: 0.5rem;
+    bottom: 0rem;
+    right: 0rem;
+    left: unset;
+    height: 100%;
+  }
+  .slideshow-navigation.text-align-left {
+    justify-content: flex-end;
+  }
+  .slidershow .swiper-button {
+    right: 0rem;
+  }
+  .slide-collections--list {
+    padding-inline: max(
+      3.3rem,
+      50vw - var(--scrollbar-width, 0rem) / 2 - var(--page-width) / 2
+    );
+    bottom: 4rem;
+    padding-top: 0.2rem;
+  }
+  .slide-collections--item {
+    padding: 0.4rem 1rem 0.4rem 0.4rem;
+  }
+  .slidershow .play-button {
+    left: auto;
+    right: 11.25rem;
+  }
+  .slideshow-type--double .play-button {
+    right: 2rem;
+    bottom: 6rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .slideshow-img .desktop-img {
+    display: none;
+  }
+  .slide-list-collections .slideshow-content {
+    max-height: 98%;
+  }
+  .slideshow-content--wrapper {
+    padding-bottom: 4rem;
+  }
+  .slidershow .swiper-button {
+    right: unset;
+  }
+  .slidershow .swiper-button:last-child {
+    margin: 0rem;
+  }
+  .slideshow-navigation {
+    bottom: 1rem;
+    z-index: 1;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .slideshow-navigation.text-align-m--center {
+    justify-content: right;
+  }
+  .slideshow-navigation.text-align-m--right {
+    justify-content: flex-start;
+  }
+  .slidershow .play-button {
+    left: auto;
+    right: 2rem;
+    bottom: 1rem;
+  }
+  .slide-collections--text a {
+    font-size: var(--text-xsmall);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .slideshow-content--wrapper .slide-collections--list {
+    padding-right: 0rem;
+  }
+  .slide-collections--item:last-child {
+    margin-right: 1rem;
+  }
+}

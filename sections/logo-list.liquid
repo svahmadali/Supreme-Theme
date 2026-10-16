@@ -1,0 +1,273 @@
+{{ 'logo-list.css' | asset_url | stylesheet_tag }}
+<logo-list class="block logo-list-section overflow-hidden section-gap color-{{ section.settings.color_scheme }}">
+  <div class="page--width">
+    {% if section.settings.marquee_enable == false %}
+      <div class="logo-list-grid">
+        {% for block in section.blocks %}
+          {% assign image = block.settings.image %}
+
+          <div class="logo-list-item image--{{ section.settings.image_size }}">
+            <div class="logo-list-image">
+              {% if image != blank %}
+                <img
+                  srcset="
+                    {%- if image.width >= 50 -%}{{ image | image_url: width: 50 }} 50w,{%- endif -%}
+                    {%- if image.width >= 75 -%}{{ image | image_url: width: 75 }} 75w,{%- endif -%}
+                    {%- if image.width >= 100 -%}{{ image | image_url: width: 100 }} 100w,{%- endif -%}
+                    {%- if image.width >= 125 -%}{{ image | image_url: width: 125 }} 125w,{%- endif -%}
+                    {%- if image.width >= 150 -%}{{ image | image_url: width: 150 }} 150w,{%- endif -%}
+                    {%- if image.width >= 200 -%}{{ image | image_url: width: 200 }} 200w,{%- endif -%}
+                    {%- if image.width >= 300 -%}{{ image | image_url: width: 300 }} 300w,{%- endif -%}
+                    {%- if image.width >= 500 -%}{{ image | image_url: width: 500 }} 500w,{%- endif -%}
+                    {%- if image.width >= 700 -%}{{ image | image_url: width: 500 }} 700w,{%- endif -%}
+
+                    {{ image | image_url }} {{ image.width }}w
+                  "
+                  src="{{ image | image_url: width: 80 }}"
+                  sizes="calc(100vw - 3rem)"
+                  alt="{{ image.alt | escape }}"
+                  height="{{ image.height }}"
+                  width="{{ image.width }}"
+                  loading="lazy"
+                >
+              {% else %}
+                {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <marquee-text
+        class="logo-list-marquee marquee-true direction-{{ section.settings.direction }}"
+        style="--logo-list-gap: 20px;"
+      >
+        {% assign limit = 10 %}
+        {% for i in (1..limit) %}
+          <div class="logo-list-marquee--inner">
+            {% for block in section.blocks %}
+              {% assign image = block.settings.image %}
+
+              <div class="logo-list-item image--{{ section.settings.image_size }}">
+                <div class="logo-list-image">
+                  {% if image != blank %}
+                    <img
+                      srcset="
+                        {%- if image.width >= 50 -%}{{ image | image_url: width: 50 }} 50w,{%- endif -%}
+                        {%- if image.width >= 75 -%}{{ image | image_url: width: 75 }} 75w,{%- endif -%}
+                        {%- if image.width >= 100 -%}{{ image | image_url: width: 100 }} 100w,{%- endif -%}
+                        {%- if image.width >= 125 -%}{{ image | image_url: width: 125 }} 125w,{%- endif -%}
+                        {%- if image.width >= 150 -%}{{ image | image_url: width: 150 }} 150w,{%- endif -%}
+                        {%- if image.width >= 200 -%}{{ image | image_url: width: 200 }} 200w,{%- endif -%}
+                        {%- if image.width >= 300 -%}{{ image | image_url: width: 300 }} 300w,{%- endif -%}
+                        {%- if image.width >= 500 -%}{{ image | image_url: width: 500 }} 500w,{%- endif -%}
+                        {%- if image.width >= 700 -%}{{ image | image_url: width: 500 }} 700w,{%- endif -%}
+
+                        {{ image | image_url }} {{ image.width }}w
+                      "
+                      src="{{ image | image_url: width: 80 }}"
+                      sizes="calc(100vw - 3rem)"
+                      alt="{{ image.alt | escape }}"
+                      height="{{ image.height }}"
+                      width="{{ image.width }}"
+                      loading="lazy"
+                    >
+                  {% else %}
+                    {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </marquee-text>
+    {% endif %}
+  </div>
+</logo-list>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+    --duration:{{ section.settings.scrolling_speed}}s;
+      --section-grid-gap:{{ section.settings.column_gap }}px;
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+      --section-grid-gap:{{ section.settings.column_gap_mobile }}px;
+
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.logo_list.name",
+  "class": "section-logo-list",
+  "tag": "section",
+   "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id":"color_scheme",
+      "label": "t:global.color_scheme.label",
+      "default":"scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "t:global.image_size_option.label",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+           "label": "t:global.image_size_option.small.label"
+        },
+        {
+          "value": "medium",
+         "label": "t:global.image_size_option.medium.label"
+        },
+        {
+          "value": "large",
+          "label": "t:global.image_size_option.large.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.logo_list.settings.marquee.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "marquee_enable",
+      "label": "t:sections.logo_list.settings.marquee_enable.label"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "t:sections.logo_list.settings.direction.label",
+      "options": [
+        {
+          "value": "right",
+         "label": "t:sections.logo_list.settings.direction.options.right.label"
+        },
+        {
+          "value": "left",
+          "label": "t:sections.logo_list.settings.direction.options.left.label"
+        }
+      ],
+      "default": "left"
+  },
+  {
+      "type": "range",
+      "id": "scrolling_speed",
+      "label": "t:sections.logo_list.settings.scrolling_speed.label",
+      "min": 1,
+      "max": 100,
+      "unit": "s",
+      "default": 15
+   },
+    {
+      "type": "header",
+       "content": "t:sections.logo_list.settings.header_space_logo.content"
+    },
+     {
+        "type": "range",
+        "id":"column_gap",
+          "label": "t:sections.logo_list.settings.column_gap.label",
+        "min":0,
+        "max":50,
+        "default":20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id":"column_gap_mobile",
+         "label": "t:sections.logo_list.settings.column_gap_mobile.label",
+        "min":0,
+        "max":50,
+        "default":20,
+        "step": 1,
+        "unit": "px"
+      },
+    {
+    "type": "header",
+     "content": "t:global.section_spacing.content"
+    },
+    {
+    "type": "range",
+    "id": "top_space_desktop",
+   "label": "t:global.section_spacing.top_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_desktop",
+    "label": "t:global.section_spacing.bottom_space_desktop.label",
+    "default": 70,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "top_space_mobile",
+ "label": "t:global.section_spacing.top_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_mobile",
+     "label": "t:global.section_spacing.bottom_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  }
+  ],
+   "blocks": [
+    {
+      "type":"image",
+      "name":"t:sections.logo_list.blocks.image.name",
+      "settings":[
+        {
+          "type":"image_picker",
+          "id":"image",
+          "label":"t:sections.logo_list.blocks.image.settings.logo_image.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.logo_list.presets.name",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+
+      ]
+    }
+  ]
+}
+{% endschema %}

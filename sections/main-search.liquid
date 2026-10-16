@@ -1,0 +1,331 @@
+{{ 'nouislider.min.css' | asset_url | stylesheet_tag }}
+{{ 'main-collection.css' | asset_url | stylesheet_tag }}
+{{ 'search.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign sort_by = search.sort_by | default: search.default_sort_by
+  if search.url
+    assign clearAll = search.url
+  else
+    assign terms = search.terms | escape
+    assign clearAll = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  endif
+-%}
+
+    {%- assign product_results = search.results | where: 'object_type', 'product' -%}
+{% paginate search.results by 24 %}
+  <div class="main-search-section section-gap  color-{{ section.settings.color_scheme }}">
+    <div class="page--width">
+      <search-form class="search-result-form">
+        <form action="{{ routes.search_url }}" method="get" class="predictive-search-form" role="search">
+          <div class="search-input-field">
+            <label for="search-input" class="hidden">{{'general.search.search' | t}}</label>
+            <input
+              type="search"
+              id="search-input"
+              name="q"
+              value="{{ search.terms | escape }}"
+              placeholder="{{'general.search.search_placeholder' | t}}"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
+              aria-label="Search"
+            >
+            <div class="search-button--wrapper">
+              <button type="button" value="clear" class="text-sm underline clear-search" data-search-input-clear>
+                {{'products.facets.clear' | t}}
+              </button>
+              <button type="submit" class="drawer-search-icon" aria-label="{{ 'products.facets.clear' | t }}">
+                <svg
+                  class="icon-small"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M19 19L15.5967 15.5963M18.0385 9.5202C18.0385 14.2258 14.2243 18.0405 9.5192 18.0405C4.8142 18.0405 1 14.2258 1 9.5202C1 4.81464 4.8142 1 9.5192 1C14.2243 1 18.0385 4.81464 18.0385 9.5202Z" stroke="black" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+        {% if search.results_count != 0 %}
+          <h1 class="text-align-start h3">{{ 'general.search.search_result' | t }}</h1>
+        {% endif %}
+      </search-form>
+      {%- if search.performed -%}
+        <div class="search-results flex wrap">
+          {% if search.results_count == 0 %}
+          {% else %}
+            {%- if product_results.size>0 and search.filters.size > 0 -%}
+              {% render 'filter-and-sort', results: search, section: section %}
+            {% endif %}
+
+            <div class="collection-product">
+              {%- if product_results.size > 0 and search.filters.size > 0 -%}
+                {% render 'facets', results: search, section: section %}
+              {% endif %}
+              {% capture active_filter_content %}
+              {%- for filter in search.filters -%}
+                {%- for value in filter.active_values -%}
+                    <facet-remove class="collection-facet-remove ">
+                        {{ value.label | escape }}
+                        <a class="collection-facet--light" href="{{ value.url_to_remove }}">
+                         <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          width="12"
+                          height="13"
+                          class="icon icon-close-small"
+                          viewBox="0 0 12 13"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M8.48627 9.32917L2.82849 3.67098" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M2.88539 9.38504L8.42932 3.61524" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        </a>
+                      </facet-remove>
+                {% endfor %}
+                  {% if filter.type == 'price_range' %}
+                    {%- if filter.min_value.value != null or filter.max_value.value != null -%}
+                      <facet-remove class="collection-facet-remove">
+                        {%- if filter.min_value.value -%}
+                          {{ filter.min_value.value | money }} 
+                        {%- else -%}
+                          {{ 0 | money }}
+                        {%- endif -%}
+                        -
+                        {%- if filter.max_value.value -%}
+                          {{ filter.max_value.value | money }}
+                        {%- else -%}
+                          {{ filter.range_max | money }}
+                        {%- endif -%}
+                        <a class="collection-facet--light" href="{{ filter.url_to_remove }}">
+                          <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          width="12"
+                          height="13"
+                          class="icon icon-close-small"
+                          viewBox="0 0 12 13"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M8.48627 9.32917L2.82849 3.67098" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M2.88539 9.38504L8.42932 3.61524" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        </a>
+                      </facet-remove>
+                    {% endif %}
+                  {% endif %}
+                 
+              {% endfor %}
+          {% endcapture %}
+              {% if section.settings.enable_filtering and search.filters.size > 0 and  product_results.size > 0 %}
+                {% render 'facets-content', results: search %}
+              {% endif %}
+              <div class="collection-product--results" id="result-products-container" data-id="{{  section.id  }}">
+                <div class="collection-facets-remove active-facet">
+                  {% if section.settings.enable_filtering
+                    and search.filters.size > 0
+                    and active_filter_content != blank
+                  %}
+                    {{ active_filter_content }}
+                    <a href="{{ clearAll }}" class="underline--link clear-all" role="button">
+                      <span class="button-text">{{'general.search.clear' | t}}</span>
+                    </a>
+                  {% endif %}
+                </div>
+
+                <div
+                  class="product-card-list grid grid-col-2 grid-col-4--wide"
+                  id="product-card-container"
+                  data-id="{{  section.id  }}"
+                >
+                  {%- for item in search.results -%}
+                    {%- case item.object_type -%}
+                      {%- when 'product' -%}
+                        {% assign product_form_id = 'product-form-'
+                          | append: section.id
+                          | append: forloop.index
+                          | append: '-'
+                          | append: collection.handle
+                        %}
+                        {%- capture current -%}{% cycle section.id: 1, 2, 3, 4 %}{%- endcapture -%}
+                        {%- assign placeholder_image = 'product-apparel-' | append: current -%}
+                        {% render 'product-card',
+                          product_card: item,
+                          section: section,
+                          product_form_id: product_form_id,
+                          media_ratio: section.settings.image_size,
+                          placeholder_image: placeholder_image
+                        %}
+                      {%- when 'article' -%}
+                        {% assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1 %}
+                        {% assign placeholder_image = 'blog-apparel-' | append: placeholder_image_index %}
+                        {% render 'blog-post',
+                          article: item,
+                          section: section,
+                          layoutStyle: 'grid',
+                          placeholder_image: placeholder_image,
+                          image_ratio: section.settings.image_size
+                        %}
+                      {%- when 'page' -%}
+                        <div class="page-search-item">
+                          <a
+                            href="{{ item.url }}"
+                            class=""
+                            title="{{ item.title | truncate: 50 | escape }}"
+                          >
+                            {{ item.title | truncate: 50 | escape }}
+                          </a>
+                        </div>
+                    {% endcase %}
+                  {% endfor %}
+                </div>
+                <div class="pagination-wrapper">
+                  {%- if paginate.pages > 1 -%}
+                    <nav class="pagination" role="navigation" aria-label="Pagination">
+                      {% render 'pagination', paginate: paginate, anchor: '' %}
+                    </nav>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endpaginate %}
+<script src="{{ 'nouislider.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'filter.js' | asset_url }}" defer="defer"></script>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+    --grid-gap:{{ section.settings.column_gap }}px;
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+      --grid-gap:{{ section.settings.column_gap_mobile }}px;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.main-search.name",
+  "settings": [
+     {
+          "type": "color_scheme",
+          "id":"color_scheme",
+          "label": "t:global.color_scheme.label",
+          "default":"scheme-1"
+      },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main-search.settings.enable_filtering.label"
+
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:sections.main-search.settings.enable_sorting.label"
+    },
+     {
+      "type": "select",
+      "id": "image_size",
+      "label": "t:sections.main-search.settings.image_size.label",
+      "default": "adapt",
+      "options": [
+         {
+          "value": "adapt",
+          "label": "t:global.image_size.options.auto.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:global.image_size.options.landscape.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:global.image_size.options.portrait.label"
+        },
+        {
+          "value": "square",
+          "label": "t:global.image_size.options.square.label"
+        }
+      ]
+      },
+    {
+        "type": "range",
+        "id":"column_gap",
+        "label":"t:global.general_label.column_gap.label",
+        "min":0,
+        "max":50,
+        "default":20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id":"column_gap_mobile",
+        "label":"t:global.general_label.column_gap_mobile.label",
+        "min":0,
+        "max":50,
+        "default":20,
+        "step": 1,
+        "unit": "px"
+      },
+     
+    {
+    "type": "header",
+    "content": "t:global.section_spacing.content"
+    },
+    {
+    "type": "range",
+    "id": "top_space_desktop",
+    "label": "t:global.section_spacing.top_space_desktop.label",
+    "default": 40,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_desktop",
+     "label": "t:global.section_spacing.bottom_space_desktop.label",
+    "default": 40,
+    "min": 0,
+    "max": 150,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "top_space_mobile",
+    "label": "t:global.section_spacing.top_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  },
+  {
+    "type": "range",
+    "id": "bottom_space_mobile",
+     "label": "t:global.section_spacing.bottom_space_mobile.label",
+    "default": 40,
+    "min": 0,
+    "max": 100,
+    "step": 5
+  }
+  ]
+}
+{% endschema %}

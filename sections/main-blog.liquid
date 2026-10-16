@@ -1,0 +1,245 @@
+{{ 'blog.css' | asset_url | stylesheet_tag }}
+<div class="section-gap color-{{ section.settings.color_scheme }}">
+  {% if blog.articles_count > 0 and section.settings.show_first_blog %}
+    <div class="page--width">
+      <div class="article-posts--large">
+        {%- for article in blog.articles limit: 1 -%}
+          {% assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1 %}
+          {% assign placeholder_image = 'blog-apparel-' | append: placeholder_image_index %}
+          {% render 'blog-post',
+            article: article,
+            section: section,
+            layoutStyle: 'grid',
+            placeholder_image: placeholder_image,
+            image_ratio: section.settings.image_ratio
+          %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% assign limit = section.settings.artical_per_page %}
+  {%- paginate blog.articles by limit -%}
+    <div class="blog-tab-wrapper">
+      <div class="page--width">
+        <div class="blog-tabs">
+          <a href="{{ blog.url }}" title="All" class="blog-tags {% if current_tags == blank %} is-active{% endif %}"
+            >{{ 'sections.featured_blog.view_all' | t }}</a
+          >
+
+          {%- for tag in blog.all_tags -%}
+            <a
+              href="{{ blog.url }}/tagged/{{ tag | handle }}"
+              class="blog-tags {% if current_tags contains tag %}is-active{% endif %}"
+            >
+              {{- tag -}}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-main-wrapper">
+      <div class="page--width">
+        <h2 class="blog-main-title h4">{{ blog.title | escape }}</h2>
+        {% if blog.articles_count > 0 %}
+          <div class="blog-grid">
+            {%- for article in blog.articles -%}
+            
+                {% assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1 %}
+                {% assign placeholder_image = 'blog-apparel-' | append: placeholder_image_index %}
+                {% render 'blog-post',
+                  article: article,
+                  section: section,
+                  layoutStyle: 'grid',
+                  placeholder_image: placeholder_image,
+                  image_ratio: section.settings.image_ratio
+                %}
+   
+            {% endfor %}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            <div class="pagination-wrapper">
+              {% render 'pagination', paginate: paginate, anchor: '' %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  {% endpaginate %}
+</div>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-gap-top:{{ section.settings.top_space_desktop }}px;
+    --section-gap-bottom:{{ section.settings.bottom_space_desktop }}px;
+     --grid-gap:{{ section.settings.column_gap }}px;
+  }
+
+  @media only screen and (max-width:767px) {
+    #shopify-section-{{ section.id }}.shopify-section{
+      --section-gap-top:{{ section.settings.top_space_mobile }}px;
+      --section-gap-bottom:{{ section.settings.bottom_space_mobile }}px;
+      --grid-gap:{{ section.settings.column_gap_mobile }}px;
+      --columns:{{ section.settings.mobile_item_per_row }};
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+   "tag":"section",
+   "class":"main-blog-page",
+  "settings": [
+     {
+    "type": "color_scheme",
+    "id":"color_scheme",
+    "label": "t:global.color_scheme.label", 
+    "default":"scheme-3"
+  },
+    {
+      "type":"checkbox",
+      "id":"show_first_blog",
+      "label":"t:sections.main-blog.settings.show_first_blog.label"
+    },
+    {
+    "type": "range",
+    "id": "artical_per_page",
+    "min": 3,
+    "max": 24,
+    "step": 3,
+    "default": 12,
+    "label":"t:sections.main-blog.settings.artical_per_page.label"
+  },
+  {
+   "type": "checkbox",
+   "id": "show_date",
+   "default": true,
+    "label":"t:sections.main-blog.settings.show_date.label"
+ },
+{
+   "type": "checkbox",
+   "id": "show_comment",
+   "default": true,
+   "label":"t:sections.main-blog.settings.show_comment.label"
+ },
+ {
+   "type": "checkbox",
+   "id": "show_author",
+   "default": true,
+    "label":"t:sections.main-blog.settings.show_author.label" 
+ },
+ {
+   "type": "checkbox",
+   "id": "show_excerpt",
+   "default": true,
+   "label":"t:sections.main-blog.settings.show_excerpt.label"
+ },
+  {
+    "type": "header",
+    "content": "t:sections.main-blog.settings.header_grid.content"
+  },
+  {
+    "type": "select",
+    "id": "image_ratio",
+    "default": "square",
+   "label": "t:global.image_size.label",
+    "options": [
+      {
+        "value": "adapt",
+         "label": "t:global.image_size.options.auto.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:global.image_size.options.landscape.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:global.image_size.options.portrait.label"
+        },
+        {
+          "value": "square",
+          "label": "t:global.image_size.options.square.label"
+        }
+    ]
+  },
+     {
+          "type": "select",
+          "id": "mobile_item_per_row",
+          "label": "t:sections.main-blog.settings.mobile_item_per_row.label",
+          "default":"2",
+          "options": [
+            {
+              "label": "t:sections.main-blog.settings.mobile_item_per_row.options.1_column.label",
+              "value": "1"
+            },
+             {
+              "label": "t:sections.main-blog.settings.mobile_item_per_row.options.2_column.label",
+              "value": "2"
+            }
+          ]
+    },
+   {
+      "type": "range",
+      "id":"column_gap",
+      "label":"t:global.general_label.column_gap.label",
+      "min":0,
+      "max":50,
+      "default":20,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id":"column_gap_mobile",
+      "label":"t:global.general_label.column_gap_mobile.label",
+      "min":0,
+      "max":50,
+      "default":20,
+      "step": 1,
+      "unit": "px"
+    },
+  {
+      "type": "header",
+      "content": "t:global.section_spacing.content"
+      },
+      {
+        "type": "range",
+        "id": "top_space_desktop",
+       "label": "t:global.section_spacing.top_space_desktop.label",
+        "default": 70,
+        "min": 0,
+        "max": 150,
+        "step": 5
+      },
+      {
+        "type": "range",
+        "id": "bottom_space_desktop",
+        "label": "t:global.section_spacing.bottom_space_desktop.label",
+        "default": 70,
+        "min": 0,
+        "max": 150,
+        "step": 5
+      },
+      {
+        "type": "range",
+        "id": "top_space_mobile",
+      "label": "t:global.section_spacing.top_space_mobile.label",
+        "default": 40,
+        "min": 0,
+        "max": 100,
+        "step": 5
+      },
+      {
+        "type": "range",
+        "id": "bottom_space_mobile",
+        "label": "t:global.section_spacing.bottom_space_mobile.label",
+        "default": 40,
+        "min": 0,
+        "max": 100,
+        "step": 5
+      }
+  ]
+}
+{% endschema %}

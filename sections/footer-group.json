@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu_xxPRCy": {
+          "type": "menu",
+          "settings": {
+            "heading": "COMPANY",
+            "menu": "main-menu"
+          }
+        },
+        "menu_z3cCiD": {
+          "type": "menu",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "main-menu"
+          }
+        },
+        "menu_c8BjyA": {
+          "type": "menu",
+          "settings": {
+            "heading": "COLLECTIONS",
+            "menu": "main-menu"
+          }
+        },
+        "menu_ETRk88": {
+          "type": "menu",
+          "settings": {
+            "heading": "CUSTOMER SUPPORT",
+            "menu": "main-menu"
+          }
+        }
+      },
+      "block_order": [
+        "menu_xxPRCy",
+        "menu_z3cCiD",
+        "menu_c8BjyA",
+        "menu_ETRk88"
+      ],
+      "settings": {
+        "enable_newsletter": true,
+        "heading": "SIGN UP FOR NEWS 10% OFF",
+        "placeholder_text": "info@example.com",
+        "image_width": 160,
+        "email_label": "EMAIL",
+        "email": "info@example.com",
+        "phone_label": "CALL US",
+        "phone": "+1 (213) 555-0123",
+        "social_text": "SOCIAL MEDIA",
+        "show_social": true,
+        "enable_currency_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_copyright_text": true,
+        "custom_copyright_text": "",
+        "enable_follow_on_shop": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 90,
+        "footer_text": "ABOUT DESCRIPTION",
+        "footer_description": "We’re committed to delivering a seamless shopping experience with fast shipping, secure payments, and dedicated customer support. Whether you're shopping for the latest trends or everyday essentials, we ensure quality, reliability, and satisfaction. Join thousands of happy customers and discover the difference today!",
+        "open_menu": false
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-addresses",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "My Account",
+        "heading_size": "h3",
+        "heading_seo": "h3",
+        "description": "Add description here.",
+        "description_size": "text-base",
+        "top_space_desktop": 100,
+        "bottom_space_desktop": 100,
+        "top_space_mobile": 40,
+        "bottom_space_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,58 @@
+{% if type == 'collections_content' %}
+  {% for collectionmenu in block.settings.collection_list %}
+    <li>
+      <a href="{{ collectionmenu.url }}" class="h6 link-reversed {{ settings.navigation_font }}-font">
+        {{- collectionmenu.title -}}
+      </a>
+    </li>
+  {% endfor %}
+{% elsif type == 'custom_content' %}
+  <div class="megamenu-items {{ custom_class }}">
+    <a
+      {% if link != blank %}
+        href="{{ link }}"
+      {% else %}
+        aria-disabled="true" role="link"
+      {% endif %}
+      class="menu-promotions-link {{ settings.navigation_font }}-font"
+    >
+      {% if image != blank %}
+        <div class="menu-promo-image">
+          <img
+            srcset="
+                {%- if image.width >= 100 -%}{{ image | image_url: width: 100 }} 100w,{%- endif -%}
+                {%- if image.width >= 150 -%}{{ image | image_url: width: 150 }} 150w,{%- endif -%}
+                {%- if image.width >= 200 -%}{{ image | image_url: width: 200 }} 200w,{%- endif -%}
+                {%- if image.width >= 300 -%}{{ image | image_url: width: 300 }} 300w,{%- endif -%}
+                {%- if image.width >= 500 -%}{{ image | image_url: width: 500 }} 500w,{%- endif -%}
+                {%- if image.width >= 700 -%}{{ image | image_url: width: 500 }} 700w,{%- endif -%}
+              {%- if image.width >= 800 -%}{{ image | image_url: width: 800 }} 800w,{%- endif -%}
+                {{ image | image_url }} {{ image.width }}w
+            "
+            src="{{ image | image_url: width: 80 }}"
+            sizes="calc(100vw - 3rem)"
+            alt="{{ image.alt | escape }}"
+            height="{{ image.height }}"
+            width="{{ image.width }}"
+            loading="lazy"
+          >
+          <span class="menu-promo-arrow">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.597656 0.640625H10.6242V10.5526H9.37092V2.7556L2.29466 9.75223L1.85098 10.1896L0.96488 9.31362L1.4073 8.87502L8.48482 1.87962H0.597656V0.640625Z" fill="currentColor"></path>
+            </svg>
+          </span>
+        </div>
+      {% endif %}
+      {% if heading != blank or subheading != blank %}
+        <div class="megamenu-promotions-text align-center">
+          {% if heading != blank %}
+            <strong class="{{ settings.navigation_font }}-font">{{ heading }}</strong>
+          {% endif %}
+          {% if subheading != blank %}
+            <p>{{ subheading }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    </a>
+  </div>
+{% endif %}

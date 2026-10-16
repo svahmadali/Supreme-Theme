@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "heading": "OOPS!",
+        "heading_size": "h1",
+        "heading_seo": "h2",
+        "description": "<h3>Seems like something went wrong.</h3><p>The page you requested does not exist.<br/><br/></p>",
+        "description_size": "text-lg",
+        "btn_text": "Continue shopping",
+        "btn_link": "shopify://collections/all",
+        "btn_size": "md",
+        "button_style": "solid",
+        "hover_effect_2": "standard",
+        "top_space_desktop": 150,
+        "bottom_space_desktop": 150,
+        "top_space_mobile": 100,
+        "bottom_space_mobile": 100
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

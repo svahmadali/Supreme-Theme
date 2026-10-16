@@ -1,0 +1,109 @@
+.media-grid--grid {
+  display: grid;
+  grid-auto-flow: dense;
+  gap: var(--grid-gap, 1rem);
+  width: 100%;
+  align-items: start;
+  grid: auto-flow dense var(--grid-height-mobile) / repeat(2, minmax(0, 1fr));
+}
+
+.media-grid--item {
+  background: rgba(var(--background-color-media));
+  border-radius: var(--rounded-block);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  grid-area: span var(--grid-row-span) / span var(--grid-column-span);
+}
+
+.media-grid--inner {
+  padding: 1.3rem;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.media-grid--img {
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.media-grid--img::after {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  bottom: 0rem;
+  right: 0rem;
+  background-color: rgba(
+    var(--background-color-overlay) / var(--overlay-color-opacity)
+  );
+}
+
+.media-grid--img :is(img, svg, video) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.media-grid--img :is(img, .deferred-media) {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.media-grid--hover:hover .media-grid--img img,
+.media-grid--hover .media-grid--img .deferred-media {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.media-grid--hover:hover .media-grid--img .deferred-media {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.media-grid--item:hover .media-grid--img :is(img, .placeholder-svg) {
+  transform: scale3d(1.1, 1.1, 1);
+  transform-style: preserve-3d;
+}
+
+.media-grid-content--wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+  position: relative;
+}
+
+.media-grid-content--wrapper :is(.media-grid--title, .description) {
+  color: rgba(var(--media-grid-text));
+}
+
+@media (min-width: 768px) {
+  .media-grid--grid {
+    grid: auto-flow dense var(--grid-height-desktop, 300px) / repeat(
+        4,
+        minmax(0, 1fr)
+      );
+  }
+  .media-grid--item {
+    grid-area: span var(--grid-row-span) / span var(--grid-column-span);
+  }
+  }.media-grid--inner {
+    padding: 3rem 1.5rem 1.5rem 3rem;
+}
+}

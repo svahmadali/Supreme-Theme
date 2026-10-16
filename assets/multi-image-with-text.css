@@ -1,0 +1,89 @@
+.multi-image-with--text-wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  grid-column-gap: var(--grid-gap, 1rem);
+}
+
+.multi-image-with--text-item {
+  flex: 0 0 100%;
+  flex-grow: 1;
+}
+
+.multi-image-with--text-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--rounded-block);
+}
+
+.multi-image-with--text-img :is(img, .placeholder-svg) {
+  transition: all 0.5s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.multi-image-with--text-img:hover :is(img, .placeholder-svg) {
+  transform: scale(1.1);
+}
+
+.multi-image-with--text-content > * {
+  word-break: break-word;
+}
+
+.multi-image-with--text-content :is(.button, .underline--link) + .description,
+.multi-image-with--text-content :is(.button, .underline--link) {
+  margin-top: 1.5rem;
+}
+
+.multi-image-with--text-content h1, .multi-image-with--text-content  .h1, .multi-image-with--text-content  h2, .multi-image-with--text-content  .h2, .multi-image-with--text-content  h3, .multi-image-with--text-content  .h3, .multi-image-with--text-content h4, .multi-image-with--text-content .h4, .multi-image-with--text-content h5, .multi-image-with--text-content .h5, .multi-image-with--text-content h6, .multi-image-with--text-content .h6, .multi-image-with--text-content .heading-font {
+    margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 1921px) {
+  .multi-image-with--text-wrapper {
+    max-width: 90%;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1680px) and (max-width: 1920px) {
+  .multi-image-with--text-wrapper {
+    max-width: 85%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .multi-image-with--text-wrapper {
+    gap: var(--grid-gap, 1rem);
+    flex-wrap: nowrap;
+  }
+  .multi-image-with--text-img.secondary--image {
+    order: 1;
+    align-self: flex-end;
+    justify-items: flex-end;
+  }
+  :is(.secondary--image-enabled) .multi-image-with--text-img {
+    max-width: calc(25% - var(--grid-gap, 1rem) * 0.5);
+  }
+  .multi-image-with--text-img,
+  .multi-image-with--text-content {
+    max-width: calc(50% - var(--grid-gap, 1rem) * 0.5);
+  }
+  .multi-image-with--text-content {
+    padding: var(--grid-gap, 1rem);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .multi-image-with--text-wrapper:is(.secondary--image-enabled)
+    .multi-image-with--text-img {
+    max-width: calc(100% / 2 - var(--grid-gap, 1rem) * 0.5);
+  }
+  .multi-image-with--text-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .multi-image-with--text-content {
+    margin-top: 1.5rem;
+  }
+}

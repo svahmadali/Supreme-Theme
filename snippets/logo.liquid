@@ -1,0 +1,40 @@
+{%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+{%- assign image_2x_size = settings.logo_width | times: 2 | at_most: 2560 -%}
+{%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+{% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+{% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+{{
+  settings.logo
+  | image_url: width: image_2x_size
+  | image_tag:
+    class: 'logo-img',
+    widths: widths,
+    height: logo_height,
+    width: settings.logo_width,
+    alt: logo_alt,
+    sizes: sizes,
+    preload: true
+}}
+
+{% if section.settings.transparent_header %}
+  {% liquid
+    if settings.white_logo != blank
+      assign transparent_image = settings.white_logo
+    else
+      assign transparent_image = settings.logo
+    endif
+  %}
+  {%- assign logo_alt_tr = transparent_image.alt | default: shop.name | escape -%}
+  {{
+    transparent_image
+    | image_url: width: image_2x_size
+    | image_tag:
+      class: 'logo-img logo-img-transparent',
+      widths: widths,
+      height: logo_height,
+      width: settings.logo_width,
+      alt: logo_alt_tr,
+      sizes: sizes,
+      preload: true
+  }}
+{% endif %}

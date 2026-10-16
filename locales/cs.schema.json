@@ -1,0 +1,4310 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "global": {
+    "header": {
+      "color": {
+        "content": "Barvy"
+      },
+      "button": {
+        "content": "Tlačítko"
+      },
+      "marquee": {
+        "content": "Stan"
+      },
+      "content": {
+        "content": "Obsah"
+      },
+      "collections": {
+        "label": "Sbírky"
+      },
+      "blocks": {
+        "content": "Bloky"
+      },
+      "grid": {
+        "content": "Mřížka"
+      },
+      "mobile": {
+        "content": "Mobilní"
+      },
+      "popup": {
+        "content": "Vyskakovací okno"
+      },
+      "layout": {
+        "content": "Rozložení"
+      },
+      "images": {
+        "content": "Obrázky"
+      },
+      "video": {
+        "content": "Conetnt"
+      }
+    },
+    "general_label": {
+      "image": {
+        "label": "Obraz"
+      },
+      "heading": {
+        "label": "Záhlaví"
+      },
+      "description": {
+        "label": "Popis"
+      },
+      "background_image": {
+        "label": "Obrázek na pozadí"
+      },
+      "desktop_alignment": {
+        "label": "Zarovnání stolních počítačů"
+      },
+      "mobile_alignment": {
+        "label": "Mobilní zarovnání"
+      },
+      "text": {
+        "label": "Text"
+      },
+      "link": {
+        "label": "Odkaz"
+      },
+      "content": {
+        "label": "Obsah"
+      },
+      "column_gap": {
+        "label": "Mezera mezi mřížkou (stolní počítač)"
+      },
+      "column_gap_mobile": {
+        "label": "Mezera mezi mřížkou (mobilní)"
+      },
+      "overlay_color": {
+        "label": "Overlay"
+      },
+      "overlay_opacity": {
+        "label": "Neprůhlednost"
+      },
+      "collection": {
+        "label": "Sbírka"
+      },
+      "collections": {
+        "label": "Sbírky"
+      },
+      "video": {
+        "label": "Video"
+      },
+      "products": {
+        "label": "Produkty"
+      },
+      "subheading": {
+        "label": "Poddaní"
+      },
+      "custom_image": {
+        "label": "Vlastní obrázek"
+      }
+    },
+    "color_scheme": {
+      "label": "Barevné schéma"
+    },
+    "heading_size": {
+      "label": "Velikost nadpisu",
+      "options": {
+        "h1": {
+          "label": "Xx-velké"
+        },
+        "h2": {
+          "label": "X-Large"
+        },
+        "h3": {
+          "label": "Velký"
+        },
+        "h4": {
+          "label": "Střední"
+        },
+        "h5": {
+          "label": "Malý"
+        },
+        "h6": {
+          "label": "X-Small"
+        }
+      }
+    },
+    "heading_seo": {
+      "label": "SEO SEO",
+      "info": "Záhlaví jsou pouze pro SEO a nemění se vizuální styl. ",
+      "options": {
+        "h1": {
+          "label": "H1"
+        },
+        "h2": {
+          "label": "H2"
+        },
+        "h3": {
+          "label": "H3"
+        },
+        "h4": {
+          "label": "H4"
+        },
+        "h5": {
+          "label": "H5"
+        },
+        "h6": {
+          "label": "H6"
+        }
+      }
+    },
+    "btn_size": {
+      "label": "Velikost",
+      "options": {
+        "xsmall": {
+          "label": "XSMALL"
+        },
+        "small": {
+          "label": "Malý"
+        },
+        "medium": {
+          "label": "Střední"
+        },
+        "large": {
+          "label": "Velký"
+        }
+      }
+    },
+    "button_style": {
+      "label": "Styl tlačítka",
+      "options": {
+        "solid": {
+          "label": "Solidní"
+        },
+        "outline": {
+          "label": "Obrys"
+        },
+        "text": {
+          "label": "Text"
+        }
+      }
+    },
+    "description_size": {
+      "label": "Popis Velikost",
+      "options": {
+        "x-large": {
+          "label": "X-Large"
+        },
+        "large": {
+          "label": "Velký"
+        },
+        "medium": {
+          "label": "Střední"
+        },
+        "small": {
+          "label": "Malý"
+        },
+        "x-small": {
+          "label": "X-Small"
+        }
+      }
+    },
+    "content_position": {
+      "label": "Pozice obsahu",
+      "options": {
+        "top_left": {
+          "label": "Vlevo nahoře"
+        },
+        "top_center": {
+          "label": "Horní centrum"
+        },
+        "top_right": {
+          "label": "Vpravo nahoře"
+        },
+        "middle_left": {
+          "label": "Střední levá"
+        },
+        "middle_center": {
+          "label": "Střední centrum"
+        },
+        "middle_right": {
+          "label": "Střední pravá"
+        },
+        "bottom_left": {
+          "label": "Vlevo dole"
+        },
+        "bottom_center": {
+          "label": "Spodní střed"
+        },
+        "bottom_right": {
+          "label": "Vpravo dole"
+        }
+      }
+    },
+    "content_position_mobile": {
+      "label": "Obsahová pozice mobilní"
+    },
+    "text_alignment": {
+      "label": "Zarovnání textu",
+      "options": {
+        "left": {
+          "label": "Vlevo"
+        },
+        "right": {
+          "label": "Právo"
+        },
+        "center": {
+          "label": "Centrum"
+        }
+      }
+    },
+    "heading_alignment": {
+      "label": "Zarovnání nadpisu",
+      "options": {
+        "left": {
+          "label": "Vlevo"
+        },
+        "right": {
+          "label": "Právo"
+        },
+        "center": {
+          "label": "Centrum"
+        }
+      }
+    },
+    "content_alignment": {
+      "label": "Zarovnání obsahu",
+      "options": {
+        "left": {
+          "label": "Vlevo"
+        },
+        "right": {
+          "label": "Právo"
+        },
+        "center": {
+          "label": "Centrum"
+        }
+      }
+    },
+    "image_height": {
+      "label": "Výška obrázku",
+      "options": {
+        "auto": {
+          "label": "Přizpůsobit"
+        },
+        "small": {
+          "label": "Malý"
+        },
+        "medium": {
+          "label": "Střední"
+        },
+        "large": {
+          "label": "Velký"
+        },
+        "x-large": {
+          "label": "X-Large"
+        },
+        "full": {
+          "label": "Celá obrazovka"
+        }
+      }
+    },
+    "mobile_image_height": {
+      "label": "Výška obrázku (mobilní)"
+    },
+    "layout": {
+      "label": "Rozložení",
+      "options": {
+        "fullwidth": {
+          "label": "Plná šířka"
+        },
+        "content_left": {
+          "label": "Obsah zbývá"
+        }
+      }
+    },
+    "content_width": {
+      "label": "Šířka obsahu",
+      "options": {
+        "small": {
+          "label": "Malý"
+        },
+        "medium": {
+          "label": "Střední"
+        },
+        "large": {
+          "label": "Velký"
+        }
+      }
+    },
+    "hover_effect": {
+      "label": "Vznášející se efekt",
+      "options": {
+        "standard": {
+          "label": "Norma"
+        },
+        "none": {
+          "label": "Žádný"
+        }
+      }
+    },
+    "position": {
+      "label": "Pozice",
+      "options": {
+        "left": {
+          "label": "Vlevo"
+        },
+        "right": {
+          "label": "Právo"
+        },
+        "top": {
+          "label": "Top"
+        },
+        "bottom": {
+          "label": "Dno"
+        }
+      }
+    },
+    "image_size": {
+      "label": "Poměr obrazu",
+      "options": {
+        "auto": {
+          "label": "Přizpůsobit"
+        },
+        "landscape": {
+          "label": "Krajina"
+        },
+        "portrait": {
+          "label": "Portrét"
+        },
+        "square": {
+          "label": "Náměstí"
+        }
+      }
+    },
+    "image_size_option": {
+      "label": "Velikost",
+      "small": {
+        "label": "Malý"
+      },
+      "medium": {
+        "label": "Střední"
+      },
+      "large": {
+        "label": "Velký"
+      }
+    },
+    "section_spacing": {
+      "content": "Szestup sekce",
+      "top_space_desktop": {
+        "label": "Top (Desktop)"
+      },
+      "bottom_space_desktop": {
+        "label": "Spodní (stolní počítač)"
+      },
+      "top_space_mobile": {
+        "label": "Top (mobilní)"
+      },
+      "bottom_space_mobile": {
+        "label": "Spodní (mobilní)"
+      }
+    },
+    "image_position": {
+      "label": "Pozice obrázku",
+      "options": {
+        "left": {
+          "label": "Vlevo"
+        },
+        "center": {
+          "label": "Centrum"
+        },
+        "right": {
+          "label": "Právo"
+        },
+        "top": {
+          "label": "Top"
+        },
+        "bottom": {
+          "label": "Dno"
+        }
+      }
+    },
+    "popup_position": {
+      "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+      "options": {
+        "top_left": {
+          "label": "Vlevo nahoře"
+        },
+        "top_center": {
+          "label": "Horní centrum"
+        },
+        "top_right": {
+          "label": "Vpravo nahoře"
+        },
+        "middle_left": {
+          "label": "Střední levá"
+        },
+        "middle_center": {
+          "label": "Střední centrum"
+        },
+        "middle_right": {
+          "label": "Střední pravá"
+        },
+        "bottom_left": {
+          "label": "Vlevo dole"
+        },
+        "bottom_center": {
+          "label": "Spodní střed"
+        },
+        "bottom_right": {
+          "label": "Vpravo dole"
+        }
+      }
+    },
+    "language_selector": {
+      "header": {
+        "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+      },
+      "paragraph": {
+        "label": "Chcete -li přidat jazyk, přejděte do svého [Nastavení jazyka.] (/Admin/Nastavení/jazyky)"
+      },
+      "show_language_selector": {
+        "label": "Povolit volič jazyků"
+      }
+    },
+    "currency_selector": {
+      "header": {
+        "label": "Volič měny"
+      },
+      "paragraph": {
+        "label": "Chcete -li přidat zemi/region, přejděte do [nastavení platby] (/admin/nastavení/platby)."
+      },
+      "show_language_selector": {
+        "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+      }
+    },
+    "pagination_style": {
+      "label": "Styl stránkování",
+      "options": {
+        "arrows": {
+          "label": "Šipky"
+        },
+        "dots": {
+          "label": "Tečky"
+        }
+      }
+    },
+    "image_ratio": {
+      "label": "Poměr obrazu",
+      "options": {
+        "adapt": {
+          "label": "Přizpůsobit"
+        },
+        "landscape": {
+          "label": "Krajina"
+        },
+        "portrait": {
+          "label": "Portrét"
+        },
+        "square": {
+          "label": "Náměstí"
+        }
+      }
+    },
+    "media_layout": {
+      "label": "Rozložení médií",
+      "options": {
+        "slider": {
+          "label": "Posuvník"
+        },
+        "grid": {
+          "label": "Mřížka"
+        },
+        "stacked": {
+          "label": "Naskládané"
+        }
+      }
+    },
+    "thumbnail_position": {
+      "label": "Pozice miniatury",
+      "options": {
+        "left": {
+          "label": "Vlevo"
+        },
+        "right": {
+          "label": "Právo"
+        },
+        "bottom": {
+          "label": "Dno"
+        },
+        "overlay": {
+          "label": "Overlay"
+        }
+      }
+    }
+  },
+  "sections": {
+    "age-verification": {
+      "name": "Ověření věku",
+      "settings": {
+        "enable_age_verification": {
+          "label": "Povolit ověření věku"
+        },
+        "decline_text": {
+          "label": "Odmítnout text"
+        },
+        "approve_text": {
+          "label": "Schválit text"
+        },
+        "paragraph": {
+          "content": "Tento obsah je pouze pro uživatele, kteří splňují věkový požadavek."
+        },
+        "decline_heading": {
+          "label": "Title pod 18 let"
+        },
+        "decline_subheading": {
+          "label": "Popis mladší 18 let"
+        },
+        "age_decline_button_text": {
+          "label": "Text tlačítka poklesu"
+        },
+        "agepopup_cookie_set": {
+          "label": "Frekvence",
+          "info": "Nastavte, kolik dní by mělo projít před návratem vyskakovacího okna po zamítnutí."
+        }
+      }
+    },
+    "announcement-bar": {
+      "name": "Oznámení bar",
+      "settings": {
+        "home_page_only": {
+          "label": "Povolit pouze domovskou stránku"
+        },
+        "enable_count_down": {
+          "label": "Povolit odpočítávání"
+        },
+        "date": {
+          "info": "Datum ukončení musí být nastaveno na budoucí datum a obsahuje následující formát: YYYY/MM/DD Příklad: 2025/01/01.",
+          "label": "Datum ukončení"
+        },
+        "auto_rotate": {
+          "label": "Automatické oznámení"
+        },
+        "change_slides_speed": {
+          "label": "Změnit každý"
+        },
+        "header__3": {
+          "content": "Volektor země/regionu",
+          "info": "Chcete -li přidat zemi/region, přejděte do [nastavení trhu.] (/Admin/Settings/Trhy)"
+        },
+        "enable_country_selector": {
+          "label": "Povolit volič země/regionu"
+        },
+        "header__4": {
+          "content": "Volný jazyk",
+          "info": "Chcete -li přidat jazyk, přejděte do svého [Nastavení jazyka.] (/Admin/Nastavení/jazyky)"
+        },
+        "enable_language_selector": {
+          "label": "Povolit volič jazyků"
+        }
+      },
+      "blocks": {
+        "announcement": {
+          "name": "Oznámení",
+          "settings": {
+            "text": {
+              "label": "Text",
+              "default": "Vítejte v našem obchodě"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Oznámení bar"
+      }
+    },
+    "apps": {
+      "name": "Aplikace",
+      "settings": {
+        "include_margins": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        }
+      },
+      "presets": {
+        "name": "Aplikace"
+      }
+    },
+    "before-after": {
+      "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+      "settings": {
+        "header_before": {
+          "content": "Před"
+        },
+        "before_image": {
+          "label": "Před obrázkem"
+        },
+        "header_after": {
+          "content": "Po"
+        },
+        "after_image": {
+          "label": "Po obrázku"
+        }
+      },
+      "presets": {
+        "name": "Předtím"
+      }
+    },
+    "best-selling-products": {
+      "name": "Nejprodávanější produkty",
+      "settings": {
+        "scrolling_speed": {
+          "label": "Rychlost posouvání"
+        },
+        "header_product_list": {
+          "content": "Seznam produktů"
+        },
+        "product_list_heading": {
+          "label": "Záhlaví seznamu produktů"
+        },
+        "product_list": {
+          "label": "Seznam produktů"
+        },
+        "column_per_row": {
+          "label": "Sloupec produktu"
+        },
+        "mobile_item_per_row": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+          "options": {
+            "1_column": {
+              "label": "1 sloupec"
+            },
+            "2_column": {
+              "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Nejprodávanější produkty"
+      }
+    },
+    "collapsible-content": {
+      "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+      "settings": {
+        "open_first": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "content_position": {
+          "label": "Pozice obsahu",
+          "options": {
+            "top": {
+              "label": "Top"
+            },
+            "left": {
+              "label": "Vlevo"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "content": {
+          "name": "obsah"
+        }
+      },
+      "presets": {
+        "name": "Skládací obsah"
+      }
+    },
+    "collection-carousel": {
+      "name": "Kolekce kolotoč",
+      "blocks": {
+        "name": "Sbírka",
+        "settings": {
+          "collection": {
+            "label": "Sbírka"
+          },
+          "image": {
+            "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+          },
+          "subheading": {
+            "label": "Poddaní"
+          },
+          "heading": {
+            "label": "Vlastní nadpis"
+          },
+          "product_list": {
+            "label": "Produkty"
+          }
+        }
+      },
+      "presets": {
+        "name": "Kolekce kolotoč"
+      }
+    },
+    "collection-list": {
+      "name": "Seznam sbírek",
+      "settings": {
+        "collection": {
+          "label": "Sbírka"
+        },
+        "card_style": {
+          "label": "Styl karty",
+          "options": {
+            "circle": {
+              "label": "Kruh"
+            },
+            "rounded": {
+              "label": "Zaoblený"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        },
+        "text_alignment": {
+          "label": "Zarovnání textu"
+        },
+        "collection_text_size": {
+          "label": "Velikost textu sběru",
+          "options": {
+            "xlarge": {
+              "label": "Xlarge"
+            },
+            "large": {
+              "label": "Velký"
+            },
+            "medium": {
+              "label": "Střední"
+            },
+            "small": {
+              "label": "Malý"
+            },
+            "x-small": {
+              "label": "X-Small"
+            }
+          }
+        },
+        "number_item": {
+          "label": "Počet položky za řádky"
+        },
+        "mobile_item_per_row": {
+          "label": "Počet položky za řádky (mobilní)",
+          "options": {
+            "options__1": {
+              "label": "1 sloupec"
+            },
+            "options__2": {
+              "label": "2 sloupce"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "featured_collection": {
+          "name": "Sbírka",
+          "settings": {
+            "collection": {
+              "label": "Sbírka"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Seznam sbírek"
+      }
+    },
+    "collection-tab": {
+      "name": "Karty sběru",
+      "settings": {
+        "products_count": {
+          "label": "Počet produktů"
+        },
+        "mobile_item_per_row": {
+          "label": "Počet položky za řádky (mobilní)",
+          "options": {
+            "options__1": {
+              "label": "1 sloupec"
+            },
+            "options__2": {
+              "label": "2 sloupce"
+            }
+          }
+        },
+        "tab_style": {
+          "label": "Styl karty",
+          "options": {
+            "horizontal": {
+              "label": "Horizontální"
+            },
+            "vertical": {
+              "label": "Vertikální"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "name": "Sbírka"
+      },
+      "presets": {
+        "name": "Karty sběru"
+      }
+    },
+    "compact-categories": {
+      "name": "Kompaktní kategorie",
+      "blocks": {
+        "name": "Kategorie",
+        "settings": {
+          "collection": {
+            "label": "Sbírka"
+          },
+          "heading": {
+            "label": "Vlastní nadpis"
+          },
+          "text_style": {
+            "label": "Textový styl",
+            "options": {
+              "none": {
+                "label": "Žádný"
+              },
+              "line": {
+                "label": "Linka pokroku"
+              },
+              "image": {
+                "label": "Obrázek vznáší se"
+              }
+            }
+          }
+        },
+        "image": {
+          "name": "Obraz"
+        }
+      },
+      "presets": {
+        "name": "Kompaktní kategorie"
+      }
+    },
+    "contact": {
+      "name": "Kontakt",
+      "settings": {
+        "fullwidth": {
+          "label": "Povolit plnou šířku"
+        },
+        "blocks": {
+          "content": {
+            "name": "Obsah",
+            "settings": {
+              "header": {
+                "content": "Kontaktní informace"
+              },
+              "email_label": {
+                "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+              },
+              "email_content": {
+                "label": "E-mail"
+              },
+              "phone_label": {
+                "label": "Kontaktní štítek"
+              },
+              "phone_content": {
+                "label": "Kontakt"
+              },
+              "address_label": {
+                "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+              },
+              "address_content": {
+                "label": "Adresa"
+              }
+            }
+          },
+          "form": {
+            "name": "Formulář",
+            "settings": {
+              "form_button_text": {
+                "label": "Text tlačítka formuláře"
+              }
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Kontakt"
+      }
+    },
+    "countdown": {
+      "name": "Odpočítávání",
+      "settings": {
+        "enable_countdown": {
+          "label": "Povolit odpočítávání"
+        },
+        "countdown_layout": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+          "options": {
+            "horizontal": {
+              "label": "Plná šířka"
+            },
+            "vertical": {
+              "label": "Vlevo"
+            }
+          }
+        },
+        "product_list_enable": {
+          "label": "Zobrazit seznam produktů"
+        },
+        "product_list": {
+          "label": "Seznam produktů"
+        },
+        "date": {
+          "info": "Datum ukončení musí být nastaveno na budoucí datum a obsahuje následující formát: YYYY/MM/DD Příklad: 2025/01/01.",
+          "label": "Datum"
+        }
+      },
+      "presets": {
+        "name": "Odpočítávání"
+      }
+    },
+    "custom-liquid": {
+      "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+      "settings": {
+        "content": {
+          "label": "Kód kapaliny",
+          "info": "Přidejte úryvky aplikací nebo jiný kód a vytvořte pokročilé přizpůsobení. "
+        }
+      },
+      "presets": {
+        "name": "Vlastní kapalina"
+      }
+    },
+    "event-calendar": {
+      "name": "Kalendář události",
+      "settings": {
+        "style_layout": {
+          "label": "Rozložení",
+          "options": {
+            "event-grid": {
+              "label": "Mřížka"
+            },
+            "event-listing": {
+              "label": "Seznam"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "event": {
+          "name": "Událost",
+          "settings": {
+            "location": {
+              "label": "Umístění"
+            },
+            "date": {
+              "label": "Datum"
+            },
+            "time": {
+              "label": "Čas"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Kalendář události"
+      }
+    },
+    "featured-blog": {
+      "name": "Představené blogy",
+      "settings": {
+        "blog": {
+          "label": "Blogy"
+        },
+        "post_limit": {
+          "label": "Počet blogových příspěvků k zobrazení"
+        },
+        "show_date": {
+          "label": "Zobrazit datum"
+        },
+        "show_comment": {
+          "label": "Zobrazit komentář"
+        },
+        "show_author": {
+          "label": "Zobrazit autor"
+        },
+        "show_excerpt": {
+          "label": "Zobrazit výňatek"
+        },
+        "layout_style": {
+          "label": "Styl",
+          "options": {
+            "grid": {
+              "label": "Mřížka"
+            },
+            "width_image": {
+              "label": "Šířka"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Představené blogy"
+      }
+    },
+    "featured-collection-list": {
+      "name": "Seznam obsažených sbírek",
+      "settings": {
+        "collection_list": {
+          "label": "Seznam sbírek"
+        },
+        "enable_background": {
+          "label": "Povolit pozadí"
+        },
+        "enable_border": {
+          "label": "Povolit hranici"
+        },
+        "border_type": {
+          "label": "Typ hranice",
+          "options": {
+            "round": {
+              "label": "Kolo"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        },
+        "image_position": {
+          "label": "Pozice obrázku",
+          "options": {
+            "left": {
+              "label": "Vlevo"
+            },
+            "center": {
+              "label": "Top"
+            }
+          }
+        },
+        "mobile_item_per_row": {
+          "label": "Počet položky za řádky (mobilní)",
+          "options": {
+            "options__1": {
+              "label": "1 sloupec"
+            },
+            "options__2": {
+              "label": "2 sloupce"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Seznam obsažených sbírek"
+      }
+    },
+    "featured-collection": {
+      "name": "Představená sbírka",
+      "settings": {
+        "enable_slider": {
+          "label": "Povolte posuvník"
+        },
+        "enable_card": {
+          "label": "Povolit kartu"
+        },
+        "show_collection_title": {
+          "label": "Zobrazit název sbírky"
+        },
+        "collection": {
+          "label": "Sbírka"
+        },
+        "products_to_show": {
+          "label": "Produkt k zobrazení"
+        },
+        "column_per_row": {
+          "label": "Sloupec produktu"
+        },
+        "mobile_item_per_row": {
+          "label": "Položka produktu na řádky (mobilní)",
+          "options": {
+            "1_column": {
+              "label": "1 sloupec"
+            },
+            "2_column": {
+              "label": "2 sloupec"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Představená sbírka"
+      }
+    },
+    "featured-product": {
+      "name": "Hlavní produkt",
+      "blocks": {
+        "title": {
+          "name": "Titul",
+          "settings": {
+            "title_size": {
+              "label": "Velikost titulu"
+            }
+          }
+        },
+        "vendor": {
+          "name": "Prodejce"
+        },
+        "sku": {
+          "name": "SKU"
+        },
+        "text": {
+          "name": "Text"
+        },
+        "price": {
+          "name": "Cena",
+          "settings": {
+            "hide_shipping_content": {
+              "label": "Skrýt přepravní obsah"
+            }
+          }
+        },
+        "variant": {
+          "name": "Varianta",
+          "settings": {
+            "enable_size_chart": {
+              "label": "Povolit graf velikosti"
+            },
+            "size_chart_text": {
+              "label": "Graf velikosti"
+            },
+            "size_chart": {
+              "label": "Vyberte velikost grafu"
+            }
+          }
+        },
+        "quantity": {
+          "name": "Množství"
+        },
+        "buy_buttons": {
+          "name": "Koupit tlačítka",
+          "settings": {
+            "dynamic_checkout_btn": {
+              "label": "Zobrazit dynamická tlačítka pokladny",
+              "info": "Pomocí platebních metod dostupných ve vašem obchodě zákazníci vidí jejich preferovanou možnost, jako je PayPal nebo Apple Pay. "
+            },
+            "show_recipient_form": {
+              "label": "Zobrazit formulář informací o příjemci pro dárkové karty",
+              "info": "Umožňuje kupujícím odesílat dárkové karty k naplánovanému datu spolu s osobní zprávou. "
+            }
+          }
+        },
+        "share": {
+          "name": "Sociální podíl"
+        },
+        "description": {
+          "name": "Popis"
+        },
+        "pickup": {
+          "name": "Vyzvednutí a dostupnost",
+          "settings": {
+            "pickup_store_text": {
+              "label": "Odkaz text"
+            }
+          }
+        },
+        "custom_liquid": {
+          "name": "Vlastní kapalina",
+          "settings": {
+            "custom_liquid": {
+              "label": "Kapalný",
+              "info": "Přidejte úryvky aplikací nebo jiný kapalný kód a vytvořte pokročilé přizpůsobení."
+            }
+          }
+        },
+        "collapsible_content": {
+          "name": "Skládací obsah",
+          "settings": {
+            "type_of_content": {
+              "label": "Typ obsahu",
+              "options": {
+                "option1": {
+                  "label": "Skládací"
+                },
+                "option2": {
+                  "label": "Karty"
+                }
+              }
+            },
+            "open_first_content": {
+              "label": "Výchozí otevřený první obsah"
+            },
+            "show_description": {
+              "label": "Zobrazit nadpis popisu"
+            },
+            "description_heading": {
+              "label": "Přidat nadpis popisu"
+            },
+            "des_image": {
+              "label": "Popis Obrázek"
+            },
+            "content_paragraph_1": {
+              "content": "Obsah 1"
+            },
+            "description": {
+              "label": "Přidat obsah"
+            },
+            "add_page": {
+              "label": "Přidat stránku"
+            },
+            "content_paragraph_2": {
+              "content": "Obsah 2"
+            },
+            "content_paragraph_3": {
+              "content": "Obsah 3"
+            }
+          }
+        },
+        "text_icon": {
+          "name": "Text s ikonou",
+          "settings": {
+            "custom_svg_1": {
+              "label": "SVG 1"
+            },
+            "text_1": {
+              "label": "Text 1"
+            },
+            "custom_svg_2": {
+              "label": "SVG 2"
+            },
+            "text_2": {
+              "label": "Text 2"
+            },
+            "custom_svg_3": {
+              "label": "SVG 3"
+            },
+            "text_3": {
+              "label": "Text 3"
+            },
+            "custom_svg_4": {
+              "label": "SVG 4"
+            },
+            "text_4": {
+              "label": "Text 4"
+            }
+          }
+        }
+      },
+      "settings": {
+        "product": {
+          "label": "Produkt"
+        },
+        "image_size": {
+          "label": "Velikost obrázku produktu",
+          "options": {
+            "auto": {
+              "label": "Přizpůsobit"
+            },
+            "landscape": {
+              "label": "Krajina"
+            },
+            "portrait": {
+              "label": "Portrét"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Hlavní produkt"
+      }
+    },
+    "footer": {
+      "name": "Zápatí",
+      "blocks": {
+        "menu": {
+          "name": "Menu",
+          "settings": {
+            "menu": {
+              "label": "Menu"
+            }
+          }
+        }
+      },
+      "settings": {
+        "enable_newsletter": {
+          "label": "Povolit zpravodaj"
+        },
+        "placeholder_text": {
+          "label": "Zástupný text"
+        },
+        "image": {
+          "label": "Logo"
+        },
+        "image_width": {
+          "label": "Šířka loga"
+        },
+        "header_contact": {
+          "content": "Kontakt"
+        },
+        "email_label": {
+          "label": "E -mailový štítek"
+        },
+        "email": {
+          "label": "E-mail"
+        },
+        "phone_label": {
+          "label": "Telefonní štítek"
+        },
+        "phone": {
+          "label": "Telefon"
+        },
+        "other_content": {
+          "content": "Jiný obsah"
+        },
+        "social_text": {
+          "label": "Sociální text"
+        },
+        "show_social": {
+          "label": "Ukázat sociální"
+        },
+        "enable_currency_selector": {
+          "label": "Povolit volič měny",
+          "info": "Chcete -li přidat měnu, přejděte do svého [Nastavení trhu.] (/Admin/Nastavení/trhy)"
+        },
+        "enable_language_selector": {
+          "info": "Chcete -li přidat jazyk, přejděte do svého [Nastavení jazyka.] (/Admin/Nastavení/jazyky)",
+          "label": "Povolit volič jazyků"
+        },
+        "payment_enable": {
+          "label": "Zobrazit ikony platby"
+        },
+        "show_copyright_text": {
+          "label": "Povolit text autorských práv"
+        },
+        "custom_copyright_text": {
+          "label": "Přepsat text autorských práv"
+        },
+        "enable_follow_on_shop": {
+          "info": "Abychom zákazníkům umožnili sledovat váš obchod v aplikaci Shop z vašeho průčelí, musí být povolena platba Shop. ",
+          "label": "Povolit sledování v obchodě"
+        },
+        "header_footer_description": {
+          "content": "Popis spodní části zápatí"
+        },
+        "header_mobile_layout": {
+          "content": "Mobilní rozložení"
+        },
+        "open_menu": {
+          "label": "Zpočátku se zobrazí otevřené"
+        }
+      }
+    },
+    "header": {
+      "name": "Záhlaví",
+      "settings": {
+        "menu": {
+          "label": "Hlavní nabídka"
+        },
+        "secondary_menu": {
+          "label": "Sekundární menu",
+          "info": "Bude to fungovat pouze pro nabídku zásuvky."
+        },
+        "desktop_menu_position": {
+          "label": "Pozice nabídky loga na ploše",
+          "options": {
+            "logo-left-menu--left": {
+              "label": "Vlevo vlevo logo vlevo"
+            },
+            "logo-left-menu--center": {
+              "label": "Logo Left Menu Center"
+            },
+            "logo-center-menu--left": {
+              "label": "Vlevo menu logo centra"
+            },
+            "logo-center-menu--drawer": {
+              "label": "Nabídka s logem zásuvky"
+            },
+            "logo-left-menu--drawer": {
+              "label": "Nabídka s logem zásuvky zbývá"
+            }
+          }
+        },
+        "enable_menu_background": {
+          "label": "Povolte pozadí nabídky"
+        },
+        "sticky_header": {
+          "label": "Sticky Header",
+          "options": {
+            "header-sticky-none": {
+              "label": "Žádný"
+            },
+            "on_scroll_up": {
+              "label": "Na posunu nahoru"
+            },
+            "is-sticky": {
+              "label": "Vždy"
+            }
+          }
+        },
+        "transparent_header": {
+          "label": "Povolit průhlednou záhlaví"
+        },
+        "show_search": {
+          "label": "Zobrazit vyhledávání"
+        },
+        "show_account_icon": {
+          "label": "Zobrazit účet"
+        },
+        "show_cart_icon": {
+          "label": "Zobrazit vozík"
+        },
+        "enable_account": {
+          "label": "Povolit účet"
+        },
+        "enable_social_account": {
+          "label": "Povolit sociální účet"
+        },
+        "enable_localiztion": {
+          "label": "Povolit lokalizaci"
+        },
+        "header__3": {
+          "content": "Volektor země/regionu",
+          "info": "Chcete -li přidat zemi/region, přejděte do [nastavení trhu.] (/Admin/Settings/Trhy)"
+        },
+        "enable_country_selector": {
+          "label": "Povolit volič země/region"
+        },
+        "header__4": {
+          "content": "Volný jazyk",
+          "info": "Chcete -li přidat jazyk, přejděte do svého [Nastavení jazyka.] (/Admin/Nastavení/jazyky)"
+        },
+        "enable_language_selector": {
+          "label": "Povolit volič jazyků"
+        },
+        "header_drawer_content": {
+          "content": "Obsah zásuvky"
+        },
+        "link_text": {
+          "label": "Odkaz text"
+        },
+        "pages": {
+          "content": "Stránky"
+        },
+        "page_1": {
+          "label": "Strana 1"
+        },
+        "page_2": {
+          "label": "Strana 2"
+        },
+        "page_3": {
+          "label": "Strana 3"
+        },
+        "header_contact_details": {
+          "content": "Kontaktní údaje"
+        },
+        "email_placeholder": {
+          "label": "E -mail zástupného symbolu"
+        },
+        "email": {
+          "label": "E-mail"
+        },
+        "phone_placeholder": {
+          "label": "Zástupník telefonu"
+        },
+        "phone": {
+          "label": "Telefon"
+        }
+      },
+      "blocks": {
+        "mega-menu": {
+          "name": "Mega menu",
+          "settings": {
+            "menu_label": {
+              "label": "Štítek nabídky",
+              "info": "Zadejte položku nabídky a použijte mega nabídku."
+            },
+            "collection_list": {
+              "label": "Seznam sbírek"
+            },
+            "content_1": {
+              "content": "Obsah 1"
+            },
+            "subheading": {
+              "label": "Poddaní"
+            },
+            "content_2": {
+              "content": "Obsah 2"
+            },
+            "content_3": {
+              "content": "Obsah 3"
+            },
+            "content_4": {
+              "content": "Obsah 4"
+            },
+            "content_5": {
+              "content": "Obsah 5"
+            }
+          }
+        }
+      }
+    },
+    "icons-with-text": {
+      "name": "Ikona s textem",
+      "settings": {
+        "items_per_row_mobile": {
+          "label": "Položky na řádky (mobilní)",
+          "options": {
+            "options__1": {
+              "label": "1 položka"
+            },
+            "options__2": {
+              "label": "2 položky"
+            }
+          }
+        },
+        "header_icon": {
+          "content": "Ikona"
+        },
+        "icon_position": {
+          "label": "Pozice",
+          "options": {
+            "vertical": {
+              "label": "Top"
+            },
+            "horizontal": {
+              "label": "Vlevo"
+            }
+          }
+        },
+        "icon_size": {
+          "label": "Velikost",
+          "options": {
+            "small": {
+              "label": "Malý"
+            },
+            "medium": {
+              "label": "Střední"
+            },
+            "large": {
+              "label": "Velký"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "icon": {
+          "name": "Ikona",
+          "settings": {
+            "label": "Ikona",
+            "options": {
+              "general": {
+                "group": "Generál"
+              },
+              "shipping": {
+                "label": "Přeprava"
+              },
+              "return": {
+                "label": "Návrat"
+              },
+              "verified": {
+                "label": "Ověřeno"
+              },
+              "global": {
+                "label": "Globální"
+              },
+              "dolla": {
+                "label": "Dolla"
+              },
+              "bell": {
+                "label": "Zvonek"
+              },
+              "gift": {
+                "label": "Dárek"
+              },
+              "alarm": {
+                "label": "Poplach"
+              },
+              "ribben": {
+                "label": "Ribben"
+              },
+              "star": {
+                "label": "Hvězda"
+              },
+              "heart": {
+                "label": "Srdce"
+              },
+              "hand": {
+                "label": "Ruka"
+              },
+              "trash": {
+                "label": "Odpadky"
+              },
+              "cart": {
+                "label": "Vozík"
+              },
+              "basket": {
+                "label": "Košík"
+              },
+              "calender": {
+                "label": "Kalendář"
+              },
+              "folder": {
+                "label": "Složka"
+              },
+              "case": {
+                "label": "Věc"
+              },
+              "search": {
+                "label": "Vyhledávání"
+              },
+              "gallery": {
+                "label": "Galerie"
+              },
+              "sun": {
+                "label": "Slunce"
+              },
+              "cloud": {
+                "label": "Mrak"
+              },
+              "fire": {
+                "label": "Oheň"
+              },
+              "copy": {
+                "label": "Kopie"
+              },
+              "smile": {
+                "label": "Úsměv"
+              },
+              "sad": {
+                "label": "Smutný"
+              },
+              "like": {
+                "label": "Jako"
+              },
+              "dislike": {
+                "label": "Nechuť"
+              },
+              "key": {
+                "label": "Klíč"
+              },
+              "shield": {
+                "label": "Štít"
+              },
+              "community": {
+                "group": "Společenství"
+              },
+              "user": {
+                "label": "Uživatel"
+              },
+              "phone": {
+                "label": "Telefon"
+              },
+              "mail": {
+                "label": "Pošta"
+              },
+              "location": {
+                "label": "Umístění"
+              },
+              "map": {
+                "label": "Mapa"
+              },
+              "store": {
+                "label": "Obchod"
+              },
+              "setting": {
+                "label": "Nastavení"
+              },
+              "edit": {
+                "label": "Upravit"
+              },
+              "link": {
+                "label": "Odkaz"
+              },
+              "share": {
+                "label": "Podíl"
+              },
+              "layers": {
+                "label": "Vrstvy"
+              },
+              "card": {
+                "label": "Karta"
+              },
+              "book": {
+                "label": "Rezervovat"
+              },
+              "plain": {
+                "label": "Prostý"
+              },
+              "menu": {
+                "label": "Menu"
+              },
+              "download": {
+                "label": "Stáhnout"
+              },
+              "messages": {
+                "label": "Zprávy"
+              },
+              "dange": {
+                "label": "Dange"
+              },
+              "ruler": {
+                "label": "Pravítko"
+              },
+              "graph": {
+                "label": "Graf"
+              },
+              "network": {
+                "label": "Síť"
+              },
+              "power": {
+                "label": "Moc"
+              },
+              "eye": {
+                "label": "Oko"
+              },
+              "minimize": {
+                "label": "Minimalizovat"
+              },
+              "device": {
+                "group": "Zařízení"
+              },
+              "camera": {
+                "label": "Fotoaparát"
+              },
+              "headphone": {
+                "label": "Sluchátka"
+              },
+              "printer": {
+                "label": "Tiskárna"
+              },
+              "sound": {
+                "label": "Zvuk"
+              },
+              "calculator": {
+                "label": "Kalkulačka"
+              },
+              "music": {
+                "label": "Hudba"
+              },
+              "play": {
+                "label": "Hrát"
+              },
+              "pause": {
+                "label": "Pauza"
+              },
+              "social": {
+                "group": "Sociální"
+              },
+              "facebook": {
+                "label": "Facebook"
+              },
+              "instagram": {
+                "label": "Instagram"
+              },
+              "linkedin": {
+                "label": "LinkedIn"
+              },
+              "pinterest": {
+                "label": "Pinterest"
+              },
+              "snapchat": {
+                "label": "Snapchat"
+              },
+              "tikTok": {
+                "label": "Tiktok"
+              },
+              "tumblr": {
+                "label": "Tumblr"
+              },
+              "twitter": {
+                "label": "Cvrlikání"
+              }
+            }
+          }
+        },
+        "image_icon": {
+          "label": "Ikona obrázku"
+        }
+      },
+      "presets": {
+        "name": "Ikona s textem"
+      }
+    },
+    "logo_list": {
+      "name": "Seznam loga",
+      "settings": {
+        "marquee": {
+          "content": "Stan"
+        },
+        "marquee_enable": {
+          "label": "Povolit markýzu"
+        },
+        "direction": {
+          "label": "Směr",
+          "options": {
+            "right": {
+              "label": "Právo"
+            },
+            "left": {
+              "label": "Vlevo"
+            }
+          }
+        },
+        "scrolling_speed": {
+          "label": "Rychlost posouvání"
+        },
+        "header_space_logo": {
+          "content": "Prostor mezi logem"
+        },
+        "column_gap": {
+          "label": "Space (Desktop)"
+        },
+        "column_gap_mobile": {
+          "label": "Space (mobilní)"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "Obraz",
+          "settings": {
+            "logo_image": {
+              "label": "Obrázek loga"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Seznam loga"
+      }
+    },
+    "main-404": {
+      "name": "Hlavní 404"
+    },
+    "main-account": {
+      "name": "Účet"
+    },
+    "main-activate-account": {
+      "name": "Aktivace účtu"
+    },
+    "main-addresses": {
+      "name": "Adresy"
+    },
+    "main-article": {
+      "name": "Hlavní článek",
+      "settings": {
+        "show_image": {
+          "label": "Zobrazit efekt Blur"
+        },
+        "show_date": {
+          "label": "Zobrazit datum článku"
+        },
+        "show_comment": {
+          "label": "Zobrazit komentář"
+        },
+        "show_author": {
+          "label": "Zobrazit autor"
+        },
+        "show_tags": {
+          "label": "Zobrazit značky"
+        },
+        "show_comments": {
+          "label": "Zobrazit komentáře článků"
+        },
+        "show_social": {
+          "label": "Zobrazit ikony sociálního podílu"
+        }
+      }
+    },
+    "main-blog-banner": {
+      "name": "Hlavní banner blogu",
+      "settings": {
+        "banner_image": {
+          "label": "Obrázek banneru",
+          "info": "Doporučeno 1920 x 200px."
+        },
+        "image_height": {
+          "label": "Výška banneru (stolní počítač)",
+          "options": {
+            "auto": {
+              "label": "Přizpůsobit"
+            },
+            "small": {
+              "label": "Malý"
+            },
+            "medium": {
+              "label": "Střední"
+            },
+            "large": {
+              "label": "Velký"
+            },
+            "x-large": {
+              "label": "X-Large"
+            },
+            "full": {
+              "label": "Celá obrazovka"
+            }
+          }
+        },
+        "mobile_image_height": {
+          "label": "Výška banneru (mobilní)"
+        }
+      }
+    },
+    "main-blog": {
+      "name": "Hlavní blogy",
+      "settings": {
+        "show_first_blog": {
+          "label": "Horké tento týden"
+        },
+        "artical_per_page": {
+          "label": "Artical na stránku"
+        },
+        "show_date": {
+          "label": "Zobrazit datum"
+        },
+        "show_comment": {
+          "label": "Zobrazit komentář"
+        },
+        "show_author": {
+          "label": "Zobrazit autor"
+        },
+        "show_excerpt": {
+          "label": "Zobrazit výňatek"
+        },
+        "header_grid": {
+          "content": "Mřížka"
+        },
+        "mobile_item_per_row": {
+          "label": "Položky na řádky (mobilní)",
+          "options": {
+            "1_column": {
+              "label": "1 sloupec"
+            },
+            "2_column": {
+              "label": "2 sloupec"
+            }
+          }
+        }
+      }
+    },
+    "main-cart": {
+      "name": "Hlavní vozík",
+      "settings": {
+        "cart_text": {
+          "label": "Text vozíku"
+        },
+        "account_login": {
+          "label": "Zobrazit registr"
+        },
+        "register_content": {
+          "label": "Přidejte obsah pro registr"
+        }
+      }
+    },
+    "main-collection-banner": {
+      "name": "Hlavní kolekční banner",
+      "settings": {
+        "show_collection_title": {
+          "label": "Zobrazit název sbírky"
+        },
+        "show_collection_description": {
+          "label": "Zobrazit popis sbírky"
+        },
+        "content_position": {
+          "label": "Pozice obsahu",
+          "options": {
+            "none": {
+              "label": "Žádný"
+            },
+            "below_image": {
+              "label": "Obsah pod bannerem"
+            },
+            "description_below_banner": {
+              "label": "Pouze popis pod bannerem"
+            }
+          }
+        },
+        "show_collection_image": {
+          "label": "Zobrazit obrázek sbírky"
+        },
+        "custom_collection_image": {
+          "label": "Obrázek vlastní sbírky"
+        },
+        "mobile_image_height": {
+          "label": "Výška obrázku (mobilní)"
+        },
+        "collection_list": {
+          "label": "Seznam sbírek"
+        }
+      }
+    },
+    "main-collection": {
+      "name": "Hlavní kolekce",
+      "settings": {
+        "products_to_show": {
+          "label": "Produkt k zobrazení"
+        },
+        "image_size": {
+          "label": "Velikost obrazu mřížky",
+          "options": {
+            "auto": {
+              "label": "Přizpůsobit"
+            },
+            "landscape": {
+              "label": "Krajina"
+            },
+            "portrait": {
+              "label": "Portrét"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        },
+        "mobile_item_per_row": {
+          "label": "Položka produktu na řádky (mobilní)",
+          "options": {
+            "1_column": {
+              "label": "1 sloupec"
+            },
+            "2_column": {
+              "label": "2 sloupec"
+            }
+          }
+        },
+        "header_filter_sort": {
+          "content": "Filtr a třídění"
+        },
+        "enable_sorting": {
+          "label": "Povolit třídění"
+        },
+        "enable_filtering": {
+          "label": "Povolit filtr"
+        },
+        "filter_type": {
+          "label": "Typ filtru",
+          "options": {
+            "sidebar": {
+              "label": "Postranní panel"
+            },
+            "drawer": {
+              "label": "Výstavce"
+            }
+          }
+        },
+        "header_pagination": {
+          "content": "Stránkování"
+        },
+        "pagination_type": {
+          "label": "Typ stránkování",
+          "options": {
+            "pagination": {
+              "label": "Stránkování"
+            },
+            "infinite": {
+              "label": "Nekonečný svitek"
+            },
+            "on-button": {
+              "label": "Na kliknutí na tlačítko"
+            }
+          }
+        }
+      }
+    },
+    "main-collection-list": {
+      "name": "Hlavní seznam sbírek",
+      "settings": {
+        "collections_per_page": {
+          "label": "Sbírky na stránku"
+        },
+        "number_item": {
+          "label": "Počet položky za řádky"
+        },
+        "mobile_item_per_row": {
+          "label": "Položka produktu na řádky (mobilní)",
+          "options": {
+            "options__1": {
+              "label": "1 sloupec"
+            },
+            "options__2": {
+              "label": "2 sloupce"
+            }
+          }
+        },
+        "sort": {
+          "label": "Třídit",
+          "alphabetical": {
+            "label": "Abecedně, A-z"
+          },
+          "alphabetical_reversed": {
+            "label": "Abecedně, Z-A"
+          },
+          "date_reversed": {
+            "label": "Datum, nové pro staré"
+          },
+          "date": {
+            "label": "Datum, staré na nové"
+          },
+          "products_high": {
+            "label": "Počet produktů, vysoký až nízký"
+          },
+          "products_low": {
+            "label": "Počet produktů, nízký až vysoký"
+          }
+        },
+        "card_style": {
+          "label": "Styl karty",
+          "options": {
+            "circle": {
+              "label": "Kruh"
+            },
+            "rounded": {
+              "label": "Zaoblený"
+            },
+            "Square": {
+              "label": "Náměstí"
+            }
+          }
+        },
+        "collection_text_size": {
+          "label": "Velikost textu sběru",
+          "options": {
+            "xlarge": {
+              "label": "Xlarge"
+            },
+            "large": {
+              "label": "Velký"
+            },
+            "medium": {
+              "label": "Střední"
+            },
+            "small": {
+              "label": "Malý"
+            },
+            "x-small": {
+              "label": "X-Small"
+            }
+          }
+        }
+      }
+    },
+    "main-login-drawer": {
+      "name": "Přihlášení"
+    },
+    "main-login": {
+      "name": "Hlavní přihlášení"
+    },
+    "main-order": {
+      "name": "Objednávka"
+    },
+    "main-page-banner": {
+      "name": "Hlavní stránka Banner",
+      "settings": {
+        "show_page_title": {
+          "label": "Zobrazit název stránky"
+        },
+        "heading": {
+          "label": "Vlastní nadpis"
+        },
+        "banner_image": {
+          "label": "Obrázek banneru"
+        }
+      }
+    },
+    "main-page": {
+      "name": "Hlavní stránka",
+      "settings": {
+        "show_page_title": {
+          "label": "Zobrazit název stránky"
+        },
+        "heading_size": {
+          "label": "Velikost titulu"
+        }
+      }
+    },
+    "main-password": {
+      "name": "Hlavní heslo"
+    },
+    "main-collection-product-grid": {
+      "name": "Produktová mřížka",
+      "settings": {
+        "products_per_page": {
+          "label": "Produkty na stránku"
+        },
+        "columns_desktop": {
+          "label": "Počet sloupců na ploše"
+        },
+        "enable_filtering": {
+          "label": "Povolit filtrování",
+          "info": "Přizpůsobte filtry pomocí aplikace Search & Discovery. "
+        },
+        "filter_type": {
+          "label": "Rozložení filtru pro stolní počítače",
+          "options__1": {
+            "label": "Horizontální"
+          },
+          "options__2": {
+            "label": "Vertikální"
+          },
+          "options__3": {
+            "label": "Výstavce"
+          },
+          "info": "Zásuvka je výchozí rozložení mobilních zařízení."
+        },
+        "enable_sorting": {
+          "label": "Povolit třídění"
+        },
+        "image_ratio": {
+          "label": "Poměr obrazu",
+          "options__1": {
+            "label": "Přizpůsobit se obrázku"
+          },
+          "options__2": {
+            "label": "Portrét"
+          },
+          "options__3": {
+            "label": "Náměstí"
+          }
+        },
+        "show_secondary_image": {
+          "label": "Zobrazit druhý obrázek na vznášení"
+        },
+        "show_vendor": {
+          "label": "Zobrazit prodejce"
+        },
+        "show_rating": {
+          "label": "Zobrazit hodnocení produktů",
+          "info": "Chcete -li zobrazit hodnocení, přidejte aplikaci hodnocení produktu. "
+        },
+        "header__1": {
+          "content": "Filtrování a třídění"
+        },
+        "header__3": {
+          "content": "Produktová karta"
+        },
+        "enable_tags": {
+          "label": "Povolit filtrování",
+          "info": "Přizpůsobte filtry pomocí aplikace Search & Discovery. "
+        },
+        "quick_add": {
+          "label": "Rychlé přidání",
+          "info": "Hromadí je optimalizována pro položky zakoupené ve vyšších množstvích.",
+          "options": {
+            "option_1": "Žádný",
+            "option_2": "Norma",
+            "option_3": "Hromad"
+          }
+        },
+        "header_mobile": {
+          "content": "Mobilní rozložení"
+        },
+        "columns_mobile": {
+          "label": "Počet sloupců na mobilu",
+          "options__1": {
+            "label": "1 sloupec"
+          },
+          "options__2": {
+            "label": "2 sloupce"
+          }
+        }
+      }
+    },
+    "main-list-collections": {
+      "name": "Seznam seznamu sbírek",
+      "settings": {
+        "title": {
+          "label": "Záhlaví",
+          "default": "Sbírky"
+        },
+        "sort": {
+          "label": "Třídit sbírky od:",
+          "options__1": {
+            "label": "Abecedně, A-z"
+          },
+          "options__2": {
+            "label": "Abecedně, Z-A"
+          },
+          "options__3": {
+            "label": "Datum, nové pro staré"
+          },
+          "options__4": {
+            "label": "Datum, staré na nové"
+          },
+          "options__5": {
+            "label": "Počet produktů, vysoký až nízký"
+          },
+          "options__6": {
+            "label": "Počet produktů, nízký až vysoký"
+          }
+        },
+        "image_ratio": {
+          "label": "Poměr obrazu",
+          "options__1": {
+            "label": "Přizpůsobit se obrázku"
+          },
+          "options__2": {
+            "label": "Portrét"
+          },
+          "options__3": {
+            "label": "Náměstí"
+          },
+          "info": "Přidejte obrázky úpravou svých sbírek. "
+        },
+        "columns_desktop": {
+          "label": "Počet sloupců na ploše"
+        },
+        "header_mobile": {
+          "content": "Mobilní rozložení"
+        },
+        "columns_mobile": {
+          "label": "Počet sloupců na mobilu",
+          "options__1": {
+            "label": "1 sloupec"
+          },
+          "options__2": {
+            "label": "2 sloupce"
+          }
+        }
+      }
+    },
+    "main-product": {
+      "name": "Hlavní produkt",
+      "blocks": {
+        "title": {
+          "name": "Titul",
+          "settings": {
+            "title_size": {
+              "label": "Velikost titulu"
+            }
+          }
+        },
+        "vendor": {
+          "name": "Prodejce"
+        },
+        "sku": {
+          "name": "SKU"
+        },
+        "text": {
+          "name": "Text"
+        },
+        "price": {
+          "name": "Cena",
+          "settings": {
+            "hide_shipping_content": {
+              "label": "Skrýt přepravní obsah"
+            }
+          }
+        },
+        "variant": {
+          "name": "Varianta",
+          "settings": {
+            "enable_size_chart": {
+              "label": "Povolit graf velikosti"
+            },
+            "size_chart_text": {
+              "label": "Graf velikosti"
+            },
+            "size_chart": {
+              "label": "Vyberte velikost grafu"
+            }
+          }
+        },
+        "quantity": {
+          "name": "Množství"
+        },
+        "buy_buttons": {
+          "name": "Koupit tlačítka",
+          "settings": {
+            "dynamic_checkout_btn": {
+              "label": "!!!>>> Failed to fetch <<<!!!",
+              "info": "Pomocí platebních metod dostupných ve vašem obchodě zákazníci vidí jejich preferovanou možnost, jako je PayPal nebo Apple Pay. "
+            },
+            "show_recipient_form": {
+              "label": "Zobrazit formulář informací o příjemci pro dárkové karty",
+              "info": "Umožňuje kupujícím odesílat dárkové karty k naplánovanému datu spolu s osobní zprávou. "
+            }
+          }
+        },
+        "share": {
+          "name": "Sociální podíl"
+        },
+        "description": {
+          "name": "Popis"
+        },
+        "pickup": {
+          "name": "Vyzvednutí a dostupnost",
+          "settings": {
+            "pickup_store_text": {
+              "label": "Odkaz text"
+            }
+          }
+        },
+        "custom_liquid": {
+          "name": "Vlastní kapalina",
+          "settings": {
+            "custom_liquid": {
+              "label": "Kapalný",
+              "info": "Přidejte úryvky aplikací nebo jiný kapalný kód a vytvořte pokročilé přizpůsobení."
+            }
+          }
+        },
+        "collapsible_content": {
+          "name": "Skládací obsah",
+          "settings": {
+            "type_of_content": {
+              "label": "Typ obsahu",
+              "options": {
+                "option1": {
+                  "label": "Skládací"
+                },
+                "option2": {
+                  "label": "Karty"
+                }
+              }
+            },
+            "open_first_content": {
+              "label": "Výchozí otevřený první obsah"
+            },
+            "show_description": {
+              "label": "Zobrazit nadpis popisu"
+            },
+            "description_heading": {
+              "label": "Přidat nadpis popisu"
+            },
+            "des_image": {
+              "label": "Popis Obrázek"
+            },
+            "content_paragraph_1": {
+              "content": "Obsah 1"
+            },
+            "description": {
+              "label": "Přidejte obsah"
+            },
+            "add_page": {
+              "label": "Přidat stránku"
+            },
+            "content_paragraph_2": {
+              "content": "Obsah 2"
+            },
+            "content_paragraph_3": {
+              "content": "Obsah 3"
+            }
+          }
+        },
+        "complementary_products": {
+          "name": "Doplňkové výrobky",
+          "settings": {
+            "paragraph": {
+              "content": "Chcete -li vybrat doplňkové produkty, přidejte aplikaci Search & Discovery. "
+            },
+            "products_count": {
+              "label": "Počítání produktů"
+            }
+          }
+        },
+        "text_icon": {
+          "name": "Text s ikonou",
+          "settings": {
+            "custom_svg_1": {
+              "label": "SVG 1"
+            },
+            "text_1": {
+              "label": "Text 1"
+            },
+            "custom_svg_2": {
+              "label": "SVG 2"
+            },
+            "text_2": {
+              "label": "Text 2"
+            },
+            "custom_svg_3": {
+              "label": "SVG 3"
+            },
+            "text_3": {
+              "label": "Text 3"
+            },
+            "custom_svg_4": {
+              "label": "SVG 4"
+            },
+            "text_4": {
+              "label": "Text 4"
+            }
+          }
+        }
+      },
+      "settings": {
+        "section_layout": {
+          "label": "Rozložení sekce",
+          "options": {
+            "full": {
+              "label": "Plný"
+            },
+            "contain": {
+              "label": "Obsahovat"
+            }
+          }
+        },
+        "enable_stickyProduct": {
+          "label": "Povolit lepkavý produkt na ploše"
+        },
+        "product_template_type": {
+          "label": "Styl šablony produktu",
+          "options": {
+            "template1": {
+              "label": "Rozdělený kolotoč"
+            },
+            "template2": {
+              "label": "Kolotoč s miniaturami"
+            },
+            "template3": {
+              "label": "Naskládané"
+            },
+            "template4": {
+              "label": "Sloupce mřížky 2"
+            },
+            "template5": {
+              "label": "Kolotoč"
+            }
+          }
+        },
+        "image_size": {
+          "label": "Velikost obrázku produktu"
+        }
+      }
+    },
+    "main-register-drawer": {
+      "name": "Rejstřík"
+    },
+    "main-register": {
+      "name": "Hlavní registr"
+    },
+    "main-reset-password": {
+      "name": "Hlavní resetování hesla"
+    },
+    "main-search": {
+      "name": "Hlavní vyhledávání",
+      "settings": {
+        "enable_filtering": {
+          "label": "Povolit filtr"
+        },
+        "enable_sorting": {
+          "label": "Povolit třídění"
+        },
+        "image_size": {
+          "label": "Velikost obrazu mřížky"
+        }
+      }
+    },
+    "map": {
+      "name": "Mapa",
+      "settings": {
+        "map_iframe": {
+          "label": "Mapa iframe"
+        },
+        "image_height": {
+          "label": "Výška mapy"
+        },
+        "mobile_image_height": {
+          "label": "Výška mapy (mobilní)"
+        }
+      },
+      "presets": {
+        "name": "Mapa"
+      }
+    },
+    "marquee": {
+      "name": "Stan",
+      "settings": {
+        "direction": {
+          "label": "Směr",
+          "options": {
+            "right": {
+              "label": "Právo"
+            },
+            "left": {
+              "label": "Vlevo"
+            }
+          }
+        },
+        "scrolling_speed": {
+          "label": "Rychlost posouvání"
+        },
+        "column_gap": {
+          "label": "Space (Desktop)"
+        },
+        "column_gap_mobile": {
+          "label": "Space (mobilní)"
+        },
+        "twin_marquee": {
+          "label": "Povolit dvojče Marquees"
+        },
+        "background": {
+          "label": "Marquee pozadí",
+          "options": {
+            "solid": {
+              "label": "Solidní"
+            },
+            "gradient": {
+              "label": "Gradient"
+            }
+          }
+        },
+        "solid_color": {
+          "label": "Marquee Solid Backings"
+        },
+        "gradient_color": {
+          "label": "Marquee Gradient pozadí"
+        },
+        "twin_solid_color": {
+          "label": "Twin Marquee Solid pozadí"
+        },
+        "twin_gradient_color": {
+          "label": "Twin Marquee Gradient pozadí"
+        }
+      },
+      "blocks": {
+        "text": {
+          "name": "Text",
+          "settings": {
+            "desktop_font_size": {
+              "label": "Velikost písma (stolní počítač)"
+            },
+            "mobile_font_size": {
+              "label": "Velikost písma (mobilní)"
+            },
+            "text_style": {
+              "label": "Styl",
+              "options": {
+                "none": {
+                  "label": "Žádný"
+                },
+                "highlight": {
+                  "label": "mrtvice"
+                },
+                "gradient": {
+                  "label": "Gradient"
+                }
+              }
+            },
+            "gradient_text": {
+              "label": "Text gradientu"
+            }
+          }
+        },
+        "image": {
+          "name": "Obraz"
+        },
+        "button": {
+          "name": "Tlačítko"
+        }
+      },
+      "presets": {
+        "name": "Stan"
+      }
+    },
+    "media-gallery": {
+      "name": "Mediální galerie",
+      "settings": {
+        "icon": {
+          "label": "Ikona profilu"
+        },
+        "icon_text": {
+          "label": "Text profilu"
+        },
+        "link": {
+          "label": "Odkaz"
+        },
+        "link_text": {
+          "label": "Odkaz text"
+        }
+      },
+      "blocks": {
+        "name": "Média",
+        "settings": {
+          "image": {
+            "label": "Obraz"
+          },
+          "video": {
+            "label": "Video"
+          },
+          "social_media_icon": {
+            "label": "Ikona sociálních médií",
+            "options": {
+              "facebook": {
+                "label": "Facebook"
+              },
+              "instagram": {
+                "label": "Instagram"
+              },
+              "linkedin": {
+                "label": "LinkedIn"
+              },
+              "pinterest": {
+                "label": "Pinterest"
+              },
+              "snapchat": {
+                "label": "Snapchat"
+              },
+              "tikTok": {
+                "label": "Tiktok"
+              },
+              "tumblr": {
+                "label": "Tumblr"
+              },
+              "twitter": {
+                "label": "Cvrlikání"
+              },
+              "none": {
+                "label": "Žádný"
+              }
+            }
+          },
+          "link": {
+            "label": "Odkaz"
+          },
+          "product": {
+            "label": "Produkt"
+          },
+          "product_on_hover": {
+            "label": "Produkt na vznášení"
+          }
+        },
+        "presets": {
+          "name": "Mediální galerie"
+        }
+      }
+    },
+    "media-grid": {
+      "name": "Mediální mřížka",
+      "settings": {
+        "fullwidth": {
+          "label": "Povolit plnou šířku"
+        },
+        "grid_gap": {
+          "label": "Mezera mřížky"
+        },
+        "desktop_height": {
+          "label": "Výška stolního počítače",
+          "options": {
+            "300": {
+              "label": "Malý"
+            },
+            "400": {
+              "label": "Střední"
+            },
+            "500": {
+              "label": "Velký"
+            }
+          }
+        },
+        "mobile_height": {
+          "label": "Výška mobilního telefonu",
+          "options": {
+            "250": {
+              "label": "Malý"
+            },
+            "350": {
+              "label": "Střední"
+            },
+            "450": {
+              "label": "Velký"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "grid": {
+          "name": "Mřížka",
+          "settings": {
+            "video_on_hover": {
+              "label": "Video na vznášení"
+            },
+            "column": {
+              "label": "Sloupec"
+            },
+            "row": {
+              "label": "Řádek"
+            },
+            "row_mobile": {
+              "label": "Řádek (mobilní)"
+            },
+            "column_mobile": {
+              "label": "Sloupec (mobilní)"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Mediální mřížka"
+      }
+    },
+    "multicollection": {
+      "name": "Multicollection",
+      "blocks": {
+        "collection": {
+          "name": "Sbírka",
+          "settings": {
+            "collection": {
+              "label": "Sbírka"
+            },
+            "collection_heading": {
+              "label": "Záhlaví"
+            },
+            "products_to_show": {
+              "label": "Produkt k zobrazení"
+            },
+            "image_size": {
+              "label": "Velikost obrazu mřížky",
+              "options": {
+                "adapt": {
+                  "label": "Přizpůsobit"
+                },
+                "landscape": {
+                  "label": "Krajina"
+                },
+                "portrait": {
+                  "label": "Portrét"
+                },
+                "square": {
+                  "label": "Náměstí"
+                }
+              }
+            },
+            "collection_title": {
+              "label": "Obsah sběru"
+            },
+            "custom_image": {
+              "label": "Vlastní obrázek"
+            },
+            "btn_text": {
+              "label": "Text"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Multicollection"
+      }
+    },
+    "multiimage-with-text": {
+      "name": "Multiimage s textem",
+      "settings": {
+        "image_first": {
+          "label": "První obrázek"
+        },
+        "image_second": {
+          "label": "Druhý obrázek"
+        }
+      },
+      "blocks": {
+        "heading": {
+          "name": "Záhlaví"
+        },
+        "description": {
+          "name": "Popis"
+        },
+        "button": {
+          "name": "Tlačítko"
+        }
+      },
+      "presets": {
+        "name": "Multiimage s textem"
+      }
+    },
+    "multicolumn": {
+      "name": "Multicolumn",
+      "settings": {
+        "title": {
+          "label": "Záhlaví",
+          "default": "Multicolumn"
+        },
+        "image_width": {
+          "label": "Šířka obrazu",
+          "options__1": {
+            "label": "Jedna třetí šířka sloupce"
+          },
+          "options__2": {
+            "label": "Polovina šířky sloupce"
+          },
+          "options__3": {
+            "label": "Plná šířka sloupce"
+          }
+        },
+        "image_ratio": {
+          "label": "Poměr obrazu",
+          "options__1": {
+            "label": "Přizpůsobit se obrázku"
+          },
+          "options__2": {
+            "label": "Portrét"
+          },
+          "options__3": {
+            "label": "Náměstí"
+          },
+          "options__4": {
+            "label": "Kruh"
+          }
+        },
+        "columns_desktop": {
+          "label": "Počet sloupců na ploše"
+        },
+        "column_alignment": {
+          "label": "Zarovnání sloupce",
+          "options__1": {
+            "label": "Vlevo"
+          },
+          "options__2": {
+            "label": "Centrum"
+          }
+        },
+        "background_style": {
+          "label": "Sekundární pozadí",
+          "options__1": {
+            "label": "Žádný"
+          },
+          "options__2": {
+            "label": "Zobrazit jako pozadí sloupce"
+          }
+        },
+        "button_label": {
+          "label": "Štítek tlačítka",
+          "default": "Štítek tlačítka"
+        },
+        "button_link": {
+          "label": "Odkaz na tlačítko"
+        },
+        "header_mobile": {
+          "content": "Mobilní rozložení"
+        },
+        "columns_mobile": {
+          "label": "Počet sloupců na mobilu",
+          "options__1": {
+            "label": "1 sloupec"
+          },
+          "options__2": {
+            "label": "2 sloupce"
+          }
+        },
+        "swipe_on_mobile": {
+          "label": "Povolit přejetí přejetí na mobilu"
+        }
+      },
+      "blocks": {
+        "column": {
+          "name": "Sloupec",
+          "settings": {
+            "image": {
+              "label": "Obraz"
+            },
+            "title": {
+              "label": "Záhlaví",
+              "default": "Sloupec"
+            },
+            "text": {
+              "label": "Popis",
+              "default": "<p>Spárujte text s obrázkem, který se zaměřuje na vybraný produkt, sběr nebo blogový příspěvek. </p>"
+            },
+            "link_label": {
+              "label": "Link Label"
+            },
+            "link": {
+              "label": "Odkaz"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Multicolumn"
+      }
+    },
+    "newsletter_popup": {
+      "name": "Bulletin",
+      "settings": {
+        "newsletter_enable": {
+          "label": "Povolit vyskakovací bulletin"
+        },
+        "enable_social_media": {
+          "label": "Povolit sociální média"
+        },
+        "newsletter_img": {
+          "label": "Obraz"
+        },
+        "newsletter_subheading": {
+          "label": "Poddaní"
+        },
+        "newsletter_heading": {
+          "label": "Záhlaví"
+        },
+        "newsletter_content": {
+          "label": "Popis"
+        },
+        "popup_cookie_set": {
+          "label": "Frekvence",
+          "info": "Počet dní před zamítnutým vyskakovacím oknem se znovu objeví. "
+        }
+      }
+    },
+    "newsletter": {
+      "name": "Bulletin",
+      "settings": {
+        "content_position": {
+          "label": "Pozice obsahu",
+          "options": {
+            "left": {
+              "label": "Vlevo"
+            },
+            "center": {
+              "label": "Centrum"
+            },
+            "right": {
+              "label": "Právo"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Bulletin"
+      }
+    },
+    "parallax": {
+      "name": "Parallax",
+      "settings": {
+        "enable_marquee": {
+          "label": "Povolte záhlaví marquee"
+        },
+        "direction": {
+          "label": "Směr",
+          "options": {
+            "right": {
+              "label": "Právo"
+            },
+            "left": {
+              "label": "Vlevo"
+            }
+          }
+        },
+        "scrolling_speed": {
+          "label": "Rychlost posouvání"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "Obraz"
+        },
+        "heading": {
+          "name": "Záhlaví"
+        },
+        "description": {
+          "name": "Popis"
+        },
+        "button": {
+          "name": "Tlačítko"
+        }
+      },
+      "presets": {
+        "name": "Parallax"
+      }
+    },
+    "product_bundle": {
+      "name": "Svazek produktů",
+      "settings": {
+        "header_bundle": {
+          "content": "Svazek"
+        },
+        "product_list": {
+          "label": "Seznam produktů na svazek"
+        },
+        "total_bundle": {
+          "label": "Počet svazků"
+        },
+        "image_size": {
+          "label": "Velikost obrazu mřížky",
+          "options": {
+            "adapt": {
+              "label": "Přizpůsobit"
+            },
+            "landscape": {
+              "label": "Krajina"
+            },
+            "portrait": {
+              "label": "Portrét"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        },
+        "bundle_text": {
+          "label": "Text svazku"
+        }
+      },
+      "presets": {
+        "name": "Svazek produktů"
+      }
+    },
+    "quick_view": {
+      "name": "Rychlý pohled",
+      "blocks": {
+        "title": {
+          "name": "Titul",
+          "settings": {
+            "title_size": {
+              "label": "Velikost titulu"
+            }
+          }
+        },
+        "sku": {
+          "name": "SKU"
+        },
+        "text": {
+          "name": "Text"
+        },
+        "price": {
+          "name": "Cena",
+          "settings": {
+            "hide_shipping_content": {
+              "label": "Skrýt přepravní obsah"
+            }
+          }
+        },
+        "variant": {
+          "name": "Varianta",
+          "settings": {
+            "enable_size_chart": {
+              "label": "Povolit graf velikosti"
+            },
+            "size_chart_text": {
+              "label": "Graf velikosti"
+            },
+            "size_chart": {
+              "label": "Vyberte velikost grafu"
+            }
+          }
+        },
+        "quantity": {
+          "name": "Množství"
+        },
+        "buy_buttons": {
+          "name": "Koupit tlačítka",
+          "settings": {
+            "dynamic_checkout_btn": {
+              "label": "Zobrazit dynamická tlačítka pokladny",
+              "info": "Pomocí platebních metod dostupných ve vašem obchodě zákazníci vidí jejich preferovanou možnost, jako je PayPal nebo Apple Pay. "
+            },
+            "show_recipient_form": {
+              "label": "Zobrazit formulář informací o příjemci pro dárkové karty",
+              "info": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+            }
+          }
+        }
+      }
+    },
+    "recently_view_products": {
+      "name": "Nedávno si prohlíží produkty",
+      "settings": {
+        "image_size": {
+          "label": "Velikost obrazu mřížky",
+          "options": {
+            "adapt": {
+              "label": "Přizpůsobit"
+            },
+            "landscape": {
+              "label": "Krajina"
+            },
+            "portrait": {
+              "label": "Portrét"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        },
+        "products_count": {
+          "label": "Počítání produktů"
+        },
+        "mobile_item_per_row": {
+          "label": "Položka produktu na řádky (mobilní)",
+          "options": {
+            "1": {
+              "label": "1 sloupec"
+            },
+            "2": {
+              "label": "2 sloupec"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Nedávno si prohlíží produkty"
+      }
+    },
+    "recommended-products": {
+      "name": "Doporučené produkty",
+      "settings": {
+        "image_size": {
+          "label": "Velikost obrazu mřížky",
+          "options": {
+            "adapt": {
+              "label": "Přizpůsobit"
+            },
+            "landscape": {
+              "label": "Krajina"
+            },
+            "portrait": {
+              "label": "Portrét"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        },
+        "products_count": {
+          "label": "Počítání produktů"
+        },
+        "column_per_row": {
+          "label": "Sloupec produktu"
+        },
+        "mobile_item_per_row": {
+          "label": "Položka produktu na řádky (mobilní)",
+          "options": {
+            "1": {
+              "label": "1 sloupec"
+            },
+            "2": {
+              "label": "2 sloupec"
+            }
+          }
+        }
+      }
+    },
+    "related_post": {
+      "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+      "settings": {
+        "post_limit": {
+          "label": "Limit příspěvku"
+        },
+        "show_date": {
+          "label": "Zobrazit datum"
+        },
+        "show_comment": {
+          "label": "Zobrazit komentář"
+        },
+        "show_author": {
+          "label": "Zobrazit autor"
+        },
+        "show_excerpt": {
+          "label": "Zobrazit výňatek"
+        }
+      }
+    },
+    "rich-text": {
+      "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+      "settings": {
+        "option_style": {
+          "label": "Styl",
+          "options": {
+            "none": {
+              "label": "Žádný"
+            },
+            "collage": {
+              "label": "Koláž"
+            }
+          }
+        },
+        "content_width": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+          "options": {
+            "small": {
+              "label": "Malý"
+            },
+            "medium": {
+              "label": "Střední"
+            },
+            "large": {
+              "label": "Velký"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "heading": {
+          "name": "Záhlaví"
+        },
+        "description": {
+          "name": "Popis"
+        },
+        "button": {
+          "name": "Tlačítko"
+        }
+      },
+      "presets": {
+        "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+      }
+    },
+    "scrolling_content": {
+      "name": "Posouvání obsahu",
+      "setting": {
+        "mobile_item_per_row": {
+          "label": "Položky na řádky (mobilní)",
+          "options": {
+            "1_column": {
+              "label": "1 sloupec"
+            },
+            "2_column": {
+              "label": "2 sloupec"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "collections": {
+          "name": "Sbírky"
+        },
+        "text": {
+          "name": "Mediální obsah"
+        },
+        "products": {
+          "name": "Produkty"
+        }
+      },
+      "presets": {
+        "name": "Posouvání obsahu"
+      }
+    },
+    "shop_the_look": {
+      "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+      "blocks": {
+        "hotspot": {
+          "name": "Místo",
+          "settings": {
+            "image": {
+              "label": "Obraz"
+            },
+            "header_spot_1": {
+              "content": "Spot 1"
+            },
+            "header_spot_2": {
+              "content": "Spot 2"
+            },
+            "header_spot_3": {
+              "content": "Spot 3"
+            },
+            "header_spot_4": {
+              "content": "Spot 4"
+            },
+            "spot": {
+              "label": "Místo"
+            },
+            "product": {
+              "label": "Produkt"
+            },
+            "horizontal": {
+              "label": "Horizont"
+            },
+            "vertical": {
+              "label": "Vertikální"
+            },
+            "spot_color": {
+              "label": "Místo"
+            },
+            "spot_color_background": {
+              "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Nakupujte vzhled"
+      }
+    },
+    "showcase_collection_list": {
+      "name": "Seznam sbírek předvádění",
+      "blocks": {
+        "collection": {
+          "name": "Sbírka"
+        }
+      },
+      "presets": {
+        "name": "Seznam sbírek předvádění"
+      }
+    },
+    "slideshow": {
+      "name": "Prezentace",
+      "settings": {
+        "slide_style": {
+          "label": "Styl prezentace",
+          "options": {
+            "single": {
+              "label": "Jediný snímek"
+            },
+            "double": {
+              "label": "Dvojitá skluzavka"
+            }
+          }
+        },
+        "image_height": {
+          "label": "Výška posuvného"
+        },
+        "mobile_image_height": {
+          "label": "Výška snímek (mobilní)"
+        },
+        "autoplay": {
+          "label": "Povolit autoPlay"
+        },
+        "autoplay_interval": {
+          "label": "Čas mezi snímky"
+        },
+        "slide_gap": {
+          "label": "Mezera skluzu"
+        },
+        "desktop_alignment": {
+          "label": "Zarovnání stolních počítačů",
+          "options": {
+            "start": {
+              "label": "Top"
+            },
+            "center": {
+              "label": "Střední"
+            },
+            "end": {
+              "label": "Dno"
+            }
+          }
+        },
+        "mobile_alignment": {
+          "label": "Mobilní zarovnání"
+        },
+        "icon_color": {
+          "label": "Ikona"
+        },
+        "icon_background": {
+          "label": "Pozadí"
+        },
+        "header_pagination": {
+          "content": "Stránkování"
+        },
+        "header_arrow_icon": {
+          "content": "Barva ikony šipky"
+        }
+      },
+      "blocks": {
+        "image_slide": {
+          "name": "Snímek obrázku",
+          "settings": {
+            "collection_list_enable": {
+              "label": "Zobrazit seznam sbírek"
+            },
+            "collection_list": {
+              "label": "Sbírka"
+            },
+            "header_button_1": {
+              "content": "Tlačítko 1"
+            },
+            "header_button_2": {
+              "content": "Tlačítko 2"
+            }
+          }
+        },
+        "video_slide": {
+          "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+          "settings": {
+            "slide_video": {
+              "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+            },
+            "collection_list_enable": {
+              "label": "Zobrazit seznam sbírek"
+            },
+            "collection_list": {
+              "label": "Sbírka"
+            },
+            "header_button_1": {
+              "content": "Tlačítko 1"
+            },
+            "header_button_2": {
+              "content": "Tlačítko 2"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Prezentace"
+      }
+    },
+    "store-locator": {
+      "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+      "settings": {
+        "style_option": {
+          "label": "Styl",
+          "options": {
+            "left": {
+              "label": "Vlevo"
+            },
+            "top": {
+              "label": "Top"
+            }
+          }
+        }
+      },
+      "blocks": {
+        "store": {
+          "name": "Obchod",
+          "settings": {
+            "store_image": {
+              "label": "Obrázek skladujte"
+            },
+            "store_name": {
+              "label": "Záhlaví"
+            },
+            "location_label": {
+              "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+            },
+            "location": {
+              "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+            },
+            "phone_label": {
+              "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+            },
+            "phone": {
+              "label": "Telefon"
+            },
+            "time_label": {
+              "label": "Time Label"
+            },
+            "time_date": {
+              "label": "Čas"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Lokátor obchodu"
+      }
+    },
+    "testimonial": {
+      "name": "Svědectví",
+      "settings": {
+        "content_alignment": {
+          "label": "Blok zarovnání obsahu"
+        },
+        "blocks": {
+          "quote": {
+            "name": "Citovat",
+            "settings": {
+              "header_author": {
+                "content": "Autor"
+              },
+              "author": {
+                "label": "Jméno"
+              }
+            }
+          }
+        },
+        "presets": {
+          "name": "Svědectví"
+        }
+      }
+    },
+    "video": {
+      "name": "Video",
+      "settings": {
+        "image": {
+          "label": "Obrázek náhledu videa"
+        },
+        "video_url": {
+          "label": "URL vidoe"
+        },
+        "video": {
+          "label": "Video"
+        },
+        "animate_content": {
+          "label": "Animate obsah"
+        },
+        "video_type": {
+          "label": "Typ",
+          "options": {
+            "onclick": {
+              "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+            },
+            "autoplay": {
+              "label": "Autoplay"
+            }
+          }
+        },
+        "video_heading": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        }
+      },
+      "presets": {
+        "name": "Video"
+      }
+    }
+  },
+  "settings_schema": {
+    "logo": {
+      "name": "Logo",
+      "settings": {
+        "logo_image": {
+          "label": "Logo"
+        },
+        "white_image": {
+          "label": "Bílé logo",
+          "info": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "logo_width": {
+          "label": "Šířka loga plochy"
+        },
+        "favicon": {
+          "label": "Favicon obrázek",
+          "info": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        }
+      }
+    },
+    "colors": {
+      "name": "Barvy",
+      "settings": {
+        "background": {
+          "label": "Pozadí"
+        },
+        "alternate_background": {
+          "label": "Popředí"
+        },
+        "heading": {
+          "label": "Záhlaví"
+        },
+        "text": {
+          "label": "Text"
+        },
+        "link_text": {
+          "label": "Odkaz"
+        },
+        "border": {
+          "label": "Pohraniční"
+        },
+        "button_bg": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "button_text": {
+          "label": "Text tlačítka"
+        },
+        "button_border": {
+          "label": "Hranice knoflíku"
+        },
+        "secondary_button_bg": {
+          "label": "Pozadí sekundárního tlačítka"
+        },
+        "secondary_button_text": {
+          "label": "Text sekundárního tlačítka"
+        },
+        "secondary_button_border": {
+          "label": "Sekundární hranice knoflíku"
+        },
+        "button_background": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "input_bg": {
+          "label": "Vstupní pozadí"
+        },
+        "input_text": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "input_border": {
+          "label": "Vstupní hranice"
+        },
+        "arrow_background": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "arrow_color": {
+          "label": "Šipka"
+        }
+      }
+    },
+    "global": {
+      "settings": {
+        "header_global": {
+          "content": "Globální"
+        },
+        "success_background": {
+          "label": "Úspěch pozadí"
+        },
+        "success_text": {
+          "label": "Text úspěchu"
+        },
+        "error_background": {
+          "label": "Chybové pozadí"
+        },
+        "error_text": {
+          "label": "Text chyby"
+        },
+        "header_content": {
+          "content": "Záhlaví"
+        },
+        "header_background": {
+          "label": "Pozadí"
+        },
+        "header_text": {
+          "label": "Text"
+        },
+        "header_text_hover": {
+          "label": "Text vznášející se"
+        },
+        "transparent_header_text": {
+          "label": "Text průhledného záhlaví"
+        },
+        "submenu_background": {
+          "label": "Podnabídka pozadí"
+        },
+        "submenu_text": {
+          "label": "Podnabídka text"
+        },
+        "submenu_text_hover": {
+          "label": "TEXT HOTUMU"
+        },
+        "footer_content": {
+          "content": "Zápatí"
+        },
+        "footer_background": {
+          "label": "Pozadí"
+        },
+        "footer_text": {
+          "label": "Text"
+        },
+        "hover_footer_text": {
+          "label": "Vznášející text"
+        },
+        "footer_border_color": {
+          "label": "Barva hranic"
+        }
+      }
+    },
+    "typography": {
+      "name": "Typografie",
+      "settings": {
+        "type_header_font": {
+          "label": "Písmo",
+          "info": "Výběr jiného písma může ovlivnit rychlost vašeho obchodu. "
+        },
+        "heading_letter_type": {
+          "label": "Velká písmena"
+        },
+        "heading_scale": {
+          "label": "Velikost základny"
+        },
+        "type_heading_letter_spacing": {
+          "label": "Rozestup dopisů"
+        },
+        "header__1": {
+          "content": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "header__2": {
+          "content": "Tělo"
+        },
+        "type_body_font": {
+          "label": "Písmo",
+          "info": "Výběr jiného písma může ovlivnit rychlost vašeho obchodu. "
+        },
+        "body_scale": {
+          "label": "Velikost základny"
+        },
+        "type_body_letter_spacing": {
+          "label": "Rozestup dopisů"
+        },
+        "accent_text": {
+          "content": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "type_accent_letter_spacing": {
+          "label": "Rozestup dopisů"
+        },
+        "navigation": {
+          "content": "Navigace"
+        },
+        "navigation_font": {
+          "label": "Písmo",
+          "options": {
+            "heading": {
+              "label": "Záhlaví"
+            },
+            "body": {
+              "label": "Tělo"
+            },
+            "accent": {
+              "label": "Přízvuk"
+            }
+          }
+        },
+        "font_weight": {
+          "label": "Hmotnost",
+          "options": {
+            "normal": {
+              "label": "Normální"
+            },
+            "bold": {
+              "label": "Odvážné"
+            }
+          }
+        },
+        "header_button": {
+          "content": "Tlačítko"
+        },
+        "button_letter_type": {
+          "label": "Velká písmena"
+        },
+        "header_lables": {
+          "content": "Štítky"
+        },
+        "paragraph": {
+          "content": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "label_letter_type": {
+          "label": "Velká písmena"
+        }
+      }
+    },
+    "layout": {
+      "name": "Rozložení",
+      "settings": {
+        "page_width": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "fullwidth": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "header_styling": {
+          "content": "Styling"
+        },
+        "button_style": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+          "options": {
+            "round": {
+              "label": "Kolo"
+            },
+            "slightly_round": {
+              "label": "Mírně kulaté"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        },
+        "input_style": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+          "options": {
+            "round": {
+              "label": "Kolo"
+            },
+            "slightly_round": {
+              "label": "Mírně kulaté"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        },
+        "product_card": {
+          "label": "Karty produktů",
+          "options": {
+            "round": {
+              "label": "Kolo"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        },
+        "blocks_style": {
+          "label": "Bloky",
+          "options": {
+            "round": {
+              "label": "Kolo"
+            },
+            "square": {
+              "label": "Náměstí"
+            }
+          }
+        }
+      }
+    },
+    "product": {
+      "name": "Produkt",
+      "settings": {
+        "show_save_amount": {
+          "label": "Zobrazit částku uložení"
+        },
+        "off_type": {
+          "label": "Ukládání typu displeje",
+          "options": {
+            "amount": {
+              "label": "Množství"
+            },
+            "percentage": {
+              "label": "Procento"
+            }
+          }
+        },
+        "save_amount_text": {
+          "label": "Uložit text částky"
+        },
+        "enable_preorder": {
+          "label": "Povolit předobjednávku"
+        }
+      }
+    },
+    "product_cards": {
+      "name": "Karty produktů",
+      "settings": {
+        "card_style": {
+          "label": "Styl",
+          "options": {
+            "standard": {
+              "label": "Norma"
+            },
+            "card": {
+              "label": "Karta"
+            }
+          }
+        },
+        "text_alignment": {
+          "label": "Zarovnání textu"
+        },
+        "second_image_hove": {
+          "label": "Zobrazit druhý obrázek na vznášení"
+        },
+        "show_vendor_card": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "enable_card_border": {
+          "label": "Povolte hranici karty"
+        },
+        "mobile_layout": {
+          "content": "Mobilní rozložení"
+        },
+        "mobile_hide_quick_button": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "mobile_hide_varaint": {
+          "label": "Skrýt variantu na mobilu"
+        },
+        "mobile_hide_switch_varaint": {
+          "label": "Skrýt vzorky barev na mobilu"
+        },
+        "mobile_show_vendor_card": {
+          "label": "Skrýt prodejce na mobilu"
+        }
+      }
+    },
+    "swatches": {
+      "name": "Políčka",
+      "settings": {
+        "swatches_style": {
+          "label": "Styl vzorníku",
+          "options": {
+            "square": {
+              "label": "Náměstí"
+            },
+            "circle": {
+              "label": "Kruh"
+            }
+          }
+        },
+        "colorname": {
+          "label": "Název barevných možností",
+          "info": "Název možnosti, který obsahuje barvy. "
+        },
+        "swatchs_custom_value": {
+          "label": "Vlastní barevné kódy/obrázky",
+          "info": "Zadejte každý vzorník do nové linky. "
+        },
+        "sizename": {
+          "label": "Název možností velikosti",
+          "info": "Název možnosti, který obsahuje velikost. "
+        }
+      }
+    },
+    "badges": {
+      "name": "Odznaky",
+      "settings": {
+        "header_sale_badge": {
+          "content": "Odznak prodeje"
+        },
+        "sale_badge_bg": {
+          "label": "Barva pozadí"
+        },
+        "sale_badge_text": {
+          "label": "Barva textu"
+        },
+        "custom_bdge": {
+          "content": "Vlastní odznak"
+        },
+        "new_badge_bg": {
+          "label": "Barva pozadí"
+        },
+        "new_badge_text": {
+          "label": "Barva textu"
+        },
+        "sold_out_badge": {
+          "content": "Vyprodaný odznak"
+        },
+        "sold_badge_bg": {
+          "label": "Barva pozadí"
+        },
+        "sold_badge_text": {
+          "label": "Barva textu"
+        },
+        "preorder_badge": {
+          "content": "Předběžný odznak"
+        },
+        "preorder_badge_bg": {
+          "label": "Barva pozadí"
+        },
+        "preorder_badge_text": {
+          "label": "Barva textu"
+        },
+        "show_badge": {
+          "content": "Zobrazit odznak"
+        },
+        "sale_badge": {
+          "label": "Zobrazit odznak prodeje"
+        },
+        "soldout_badge": {
+          "label": "Výprodej"
+        },
+        "preorder_badge_1": {
+          "label": "Předběžný odznak"
+        },
+        "header_custom": {
+          "content": "Vlastní značka"
+        },
+        "custom_tag": {
+          "label": "Značky produktů"
+        },
+        "custom_tag_badge": {
+          "label": "Text odznaku"
+        }
+      }
+    },
+    "search_input": {
+      "name": "Hledat chování",
+      "settings": {
+        "header": {
+          "content": "Vyhledávání"
+        },
+        "predictive_search_enabled": {
+          "label": "Povolit prediktivní vyhledávání"
+        },
+        "enable_queries": {
+          "label": "Povolit dotazy"
+        },
+        "enable_article": {
+          "label": "Povolit články"
+        },
+        "enable_collections": {
+          "label": "Povolit sbírky"
+        },
+        "enable_pages": {
+          "label": "Povolit stránky"
+        },
+        "search_suggestions": {
+          "content": "Návrhy vyhledávání"
+        },
+        "suggestions_list": {
+          "label": "Seznam Suhhestion",
+          "info": "Použijte \",\" pro více dotazů."
+        },
+        "enable_suggestions": {
+          "label": "Povolit návrhy"
+        },
+        "suggestions_heading": {
+          "label": "Záhlaví"
+        },
+        "header_collection_suggestions": {
+          "content": "Návrhy sbírky"
+        },
+        "enable_collection_suggestions": {
+          "label": "Povolte návrh sbírky"
+        },
+        "collection_suggestions_heading": {
+          "label": "Záhlaví"
+        },
+        "collection_suggestions": {
+          "label": "Sbírka"
+        },
+        "header_product_suggestions": {
+          "content": "Návrhy produktu"
+        },
+        "enable_product_suggestions": {
+          "label": "Povolit návrhy produktu"
+        },
+        "product_suggestions_heading": {
+          "label": "Záhlaví"
+        },
+        "product_suggestions": {
+          "label": "Produkty"
+        }
+      }
+    },
+    "cart_drawer": {
+      "name": "Zásuvka vozíku",
+      "settings": {
+        "enable_cart_drawer": {
+          "label": "Povolte zásuvku vozíku"
+        },
+        "empty_drawer_content": {
+          "content": "Obsah prázdného vozíku"
+        },
+        "empty_text": {
+          "label": "Text"
+        },
+        "collection_list": {
+          "label": "Seznam sbírek"
+        },
+        "header_upsell": {
+          "content": "Produkty UPSELL"
+        },
+        "enable_upsell_product": {
+          "label": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!"
+        },
+        "upsell_product_heading": {
+          "label": "Záhlaví"
+        },
+        "upsell_product": {
+          "label": "Produkty"
+        }
+      }
+    },
+    "drawer_overlay": {
+      "name": "!!!>>> Unexpected token '<', \"<html lang\"... is not valid JSON <<<!!!",
+      "settings": {
+        "background_color_overlay": {
+          "label": "Barva překrytí pozadí"
+        },
+        "overlay_color_opacity": {
+          "label": "Overlay Opacity"
+        }
+      }
+    },
+    "gift_card": {
+      "name": "Dárková karta",
+      "settings": {
+        "gift_card_logo": {
+          "label": "Obrázek loga"
+        },
+        "gift_logo_width": {
+          "label": "Šířka loga"
+        }
+      }
+    },
+    "login_drawer": {
+      "name": "Přihlášení/zásuvka registru",
+      "settings": {
+        "drawer_login": {
+          "label": "Povolte zásuvku účtu"
+        }
+      }
+    },
+    "social-media": {
+      "name": "Sociální média",
+      "settings": {
+        "header": {
+          "content": "Sociální účty"
+        },
+        "social_twitter_link": {
+          "label": "X / Twitter",
+          "info": "https://x.com/shopify"
+        },
+        "social_facebook_link": {
+          "label": "Facebook",
+          "info": "https://facebook.com/shopify"
+        },
+        "social_pinterest_link": {
+          "label": "Pinterest",
+          "info": "https://pinterest.com/shopify"
+        },
+        "social_instagram_link": {
+          "label": "Instagram",
+          "info": "http://instagram.com/shopify"
+        },
+        "social_tiktok_link": {
+          "label": "Tiktok",
+          "info": "https://tiktok.com/@shopify"
+        },
+        "social_tumblr_link": {
+          "label": "Tumblr",
+          "info": "https://shopify.tumblr.com"
+        },
+        "social_snapchat_link": {
+          "label": "Snapchat",
+          "info": "https://www.snapchat.com/add/shopify"
+        },
+        "social_youtube_link": {
+          "label": "YouTube",
+          "info": "https://www.youtube.com/shopify"
+        },
+        "social_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https://vimeo.com/shopify"
+        }
+      }
+    },
+    "cart": {
+      "name": "Vozík",
+      "settings": {
+        "show_cart_note": {
+          "label": "Povolte poznámku košíku"
+        },
+        "shipping_estimates": {
+          "label": "Povolit odhad přepravy"
+        },
+        "show_shipping": {
+          "label": "Povolte přepravní lištu",
+          "info": "Poznámka: Tato funkce funguje pouze s metodou přepravy. "
+        },
+        "shipping_rate": {
+          "label": "Minimální přepravní cena",
+          "info": "Napište číslo, žádné písmena nebo speciální znaky."
+        },
+        "shipping_text": {
+          "label": "Zpráva",
+          "info": "Použijte || cena || "
+        },
+        "shipping_success_text": {
+          "label": "Zpráva o úspěchu"
+        },
+        "enable_gift_wrap": {
+          "label": "Povolte dárkový obal"
+        },
+        "gift_wrap_product": {
+          "label": "Produkt"
+        },
+        "gift_wrap_text": {
+          "label": "Text"
+        }
+      }
+    },
+    "scroll_to_top": {
+      "name": "Přejděte na vrchol",
+      "settings": {
+        "enable_back_to_top": {
+          "label": "Povolte, aby svitek na vrchol"
+        },
+        "back_to_top_btn_position": {
+          "label": "Horizontální poloha",
+          "options": {
+            "left": {
+              "label": "Vlevo"
+            },
+            "center": {
+              "label": "Centrum"
+            },
+            "right": {
+              "label": "Právo"
+            }
+          }
+        },
+        "back_to_top_bottom_position": {
+          "label": "Svislá poloha"
+        },
+        "header_color": {
+          "content": "Barva"
+        },
+        "btp_icon": {
+          "label": "Ikony"
+        },
+        "btp_background": {
+          "label": "Pozadí"
+        }
+      }
+    }
+  }
+}

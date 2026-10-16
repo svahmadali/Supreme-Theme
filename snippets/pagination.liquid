@@ -1,0 +1,34 @@
+
+<ul class="pagination-list list-style-none" role="list">
+  <li class="pagination-previous {% unless paginate.previous %} disabled{% endunless %}">
+    <{% if paginate.previous %}a href="{{ paginate.previous.url }}{{ anchor }}" {% else %}span{% endif %} class="pagination-item pagination-item--prev " aria-label="{{ 'general.pagination.previous' | t }}">
+      <svg aria-hidden="true" focusable="false" class="icon-caret" viewBox="0 0 10 6">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+      </svg>
+    </{% if paginate.previous %}a{% else %}span{% endif %}>
+  </li>
+  {% for page in paginate.parts %}
+  {% if page.is_link %}
+  <li class="pagination-nav">
+    <a href="{{ page.url }}{{ anchor }}" class="pagination-item link" aria-label="{{ 'general.pagination.page' | t: number: page.title }}">{{page.title}}</a>
+  </li>
+  {%- else -%} 
+  {%- if page.title == paginate.current_page -%}
+  <li>
+      <span class="pagination-item pagination-item--current light">{{ page.title }}</span>
+  </li> 
+  {%- else -%}  
+  <li>
+      <span class="pagination-item link">{{ page.title }}</span>
+  </li>  
+  {%- endif -%}
+  {% endif %}
+  {% endfor %}
+  <li class="pagination-next  {% unless paginate.next %} disabled{% endunless %}">
+    <{% if paginate.next %}a href="{{ paginate.next.url }}{{ anchor }}" {% else %}span{% endif %} class="pagination-item pagination-icon pagination-item--next" aria-label="{{ 'general.pagination.next' | t }}">
+      <svg aria-hidden="true" focusable="false" class="icon-caret" viewBox="0 0 10 6">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+      </svg>
+    </{% if paginate.next %}a{% else %}span{% endif %}>
+  </li>
+</ul>
